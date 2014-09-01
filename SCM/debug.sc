@@ -175,7 +175,7 @@ if
 then
     045B: text_draw_2numbers 'POS1' number 0@  1@ at 4@ 5@  // ~1~.~1~
 else
-    045B: text_draw_2numbers 'POS1' number 0@  1@ at 4@ 5@  // ~1~.0~1~
+    045B: text_draw_2numbers 'POS2' number 0@  1@ at 4@ 5@  // ~1~.0~1~
 end
 000B: 5@ +=  15.0  
 return

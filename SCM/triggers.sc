@@ -71,7 +71,7 @@ then
 			while fading
 				wait 0 ms
 			end
-			// 0417: start_mission M02_DONTSPANKMABITCHUP
+			0417: start_mission M02_DONTSPANKMABITCHUP
 		end
 		if
 			8256:   not is_player $PLAYER_CHAR defined
