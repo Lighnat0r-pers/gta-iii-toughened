@@ -31,7 +31,7 @@ end_thread
 0317: increment_mission_attempts 
 01B6: set_weather WEATHER_CLOUDY
 00C0: set_current_time 4 0 
-03CB: load_scene 807.0 -937.0 36.5625 
+03CB: load_scene 507.0 -937.0 36.5625 
 0001: wait 0 ms 
 0004: $FLAG_BLIP_ON_EIGHTBALL = 0 
 0004: $RADAR_BLIP_PED1_EIGHTBALL = 0 
@@ -63,7 +63,7 @@ end_thread
 if
 	0038:   $FLAG_REACHED_HIDEOUT == 0 
 then 
-	0247: request_model #KURUMA 
+	0247: request_model #BANSHEE 
 	023C: load_special_actor 'EIGHT' as 1 
 	038B: load_all_models_now 
 	0005: $CAR_8BALL_X = 0.0 
@@ -86,17 +86,26 @@ then
 	0004: $BROKEN_BRIDGE_OBJECTS_INITIALIZED = 1 
 end
 
-0171: set_player $PLAYER_CHAR z_angle_to 180.0 
-00A5: $CAR_EIGHTBALL = create_car #KURUMA at 812.0 -945.5 35.75
+
+02CE: get_ground_z_for_3d_coord 540.0 -935.0 100.0 store_to $GROUND_EIGHT
+
+0107: $RAMP_EIGHT = create_object #JUMP_BOX1 at 582.5 -930.0 38.3
+01C7: remove_object_from_mission_cleanup_list $RAMP_EIGHT 
+0177: set_object $RAMP_EIGHT z_angle_to 90.0
+
+00A5: $CAR_EIGHTBALL = create_car #BANSHEE at 540.0 -938.0 $GROUND_EIGHT
 0229: set_car $CAR_EIGHTBALL color_to 58 1 
-0175: set_car $CAR_EIGHTBALL z_angle_to 262.375
+0175: set_car $CAR_EIGHTBALL z_angle_to 270.0
 0224: set_car $CAR_EIGHTBALL health_to 500 
-009A: $EIGHTBALL = create_char PEDTYPE_SPECIAL model #SPECIAL01 at 811.875 -942.4375 -100.0
+
+0055: set_player_coordinates $PLAYER_CHAR to 540.0 -937.6 -100.0
+0171: set_player $PLAYER_CHAR z_angle_to 180.0 
+009A: $EIGHTBALL = create_char PEDTYPE_SPECIAL model #SPECIAL01 at 540.0 -937.6 -100.0
 0245: set_actor $EIGHTBALL walk_style_to ANIM_GANG2_PED
 01ED: clear_actor $EIGHTBALL threat_search 
-01BE: set_actor $EIGHTBALL to_look_at_spot 811.875 -939.9375 35.75 
 022D: set_actor $EIGHTBALL to_look_at_player $PLAYER_CHAR 
-016E: override_next_restart at 811.875 -939.9375 35.75 heading 180.0 //Restarts at the bridge
+
+016E: override_next_restart at 540.0 -937.6 $GROUND_EIGHT heading 180.0 //Restarts at the bridge
 0177: set_object $PORTLAND_HIDEOUT_DOOR z_angle_to 0.0 
 02A3: toggle_widescreen 1 
 01B4: set_player $PLAYER_CHAR controllable 0 
@@ -109,7 +118,7 @@ end
 018E: stop_sound $FIRE_SOUND_8BALL 
 018D: $FIRE_SOUND_8BALL = create_sound SOUND_PRETEND_FIRE_LOOP at 790.5 -935.625 38.0 
 01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 1 
-015F: set_camera_position 785.0 -936.75 39.75 0.0 rotation 0.0 0.0 
+015F: set_camera_position 520.0 -930.75 45.75 0.0 rotation 0.0 0.0 
 0159: camera_on_ped $EIGHTBALL mode FIXED switchstyle JUMP_CUT
 03CF: load_wav 'LIB_A1' 
 0169: set_fade_color 0 0 0 
@@ -127,8 +136,8 @@ wait 2000 ms
 gosub @CHECK_EIGHT_STATUS_EIGHTBALL
 gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 
-015F: set_camera_position 804.5625 -933.0 39.9375 0.0 rotation 0.0 0.0 
-0160: point_camera 805.1875 -933.6875 39.5625 switchstyle JUMP_CUT
+015F: set_camera_position 540.5625 -923.0 45.0 0.0 rotation 0.0 0.0 
+0157: camera_on_player $PLAYER_CHAR mode FIXED switchstyle JUMP_CUT
 00BA: print_big 'EBAL' duration 15000 ms style 2  // 'GIVE ME LIBERTY'
 03D1: play_wav 
 00BC: print_now 'EBAL_A' duration 5000 ms flag 1  // I know a place on the edge of the Red Light District where we can lay low,
@@ -221,6 +230,7 @@ while true
 	gosub @CHECK_CLEAR_PLAYER_WANTED_LEVEL
 	gosub @CHECK_EIGHT_STATUS_EIGHTBALL
 	gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
+	gosub @CHECK_PLAYER_IN_RESTRICTED_AREA
 end 
 
 // creates two cops cars that drive onto the bridge
@@ -259,6 +269,7 @@ while 10000 > 16@
 	gosub @CHECK_EIGHT_STATUS_EIGHTBALL
 	gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 	gosub @CHECK_IN_VEHICLE_STATUS_EIGHTBALL
+	gosub @CHECK_PLAYER_IN_RESTRICTED_AREA
 end
 
 0006: 16@ = 0 
@@ -277,6 +288,7 @@ while true
 	gosub @CHECK_EIGHT_STATUS_EIGHTBALL
 	gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 	gosub @CHECK_IN_VEHICLE_STATUS_EIGHTBALL
+	gosub @CHECK_PLAYER_IN_RESTRICTED_AREA
 end
 
 03E6: remove_text_box 
@@ -574,6 +586,7 @@ then
 	018E: stop_sound $FIRE_SOUND_8BALL 
 	0108: destroy_object $BROKEN_BRIDGE_REMAINS 
 	0108: destroy_object $BROKEN_BRIDGE_POLICE_CARS
+	0108: destroy_object $RAMP_EIGHT 
 	if
 		0038:   $DEBUGUNLOCKISLANDS == 0
 	then 
@@ -1170,6 +1183,7 @@ then
 	00BC: print_now 'EBAL_4' duration 5000 ms flag 1  // ~r~8-Ball's dead!
 	goto @MISSION_FAILED_EIGHTBALL
 end
+return
 
 ////////////////////////////////////////////
 
@@ -1227,8 +1241,6 @@ else
 	end
 end
 return
-
-
 
 ////////////////////////////////////////////
 
@@ -1301,6 +1313,48 @@ then
 		00BC: print_now 'WRECKED' duration 5000 ms flag 1  // ~r~The vehicle is wrecked!
 		goto @MISSION_FAILED_EIGHTBALL
 	end
+end
+return
+
+////////////////////////////////////////////
+
+:CHECK_PLAYER_IN_RESTRICTED_AREA
+0054: get_player_coordinates $PLAYER_CHAR store_to $PLAYERX $PLAYERY $PLAYERZ
+if
+	0022:   500.0 > $PLAYERX
+then
+	00BC: print_now 'AREA51' duration 10000 ms flag 1  // ~g~You're not supposed to be here, go back now!
+	if
+		0038: $RESTICTED_TIMER_RESET_FLAG == 0
+	then
+		01BD: $RESTRICTED_TIMER_STARTED = current_time_in_ms
+		0004: $RESTICTED_TIMER_RESET_FLAG = 1
+	else
+		01BD: $RESTRICTED_TIMER_CURRENT = current_time_in_ms 
+		0084: $RESTRICTED_TIMER = $RESTRICTED_TIMER_CURRENT 
+		0060: $RESTRICTED_TIMER -= $RESTRICTED_TIMER_STARTED
+		if
+			0018:   $RESTRICTED_TIMER > 10000 
+		then
+			gosub @KILL_PLAYER_RESTRICTED	
+		end
+	end
+else
+	0004: $RESTICTED_TIMER_RESET_FLAG = 0
+	00BE: clear_prints
+end
+return
+
+////////////////////////////////////////////
+
+:KILL_PLAYER_RESTRICTED
+if
+	00E0:   is_player_in_any_car $PLAYER_CHAR
+then
+	00DA: $PLAYER_CAR_EIGHT = store_car_player_is_in $PLAYER_CHAR
+	020B: explode_car $PLAYER_CAR_EIGHT
+else
+	0322: kill_player $PLAYER_CHAR
 end
 return
 

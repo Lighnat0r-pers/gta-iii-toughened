@@ -3,7 +3,8 @@
 // -------------------------------------------------------
 :DEBUG_VARIABLES
 0004: $MASTERDEBUG                = 0 // Set to 1 to enable debug functions as defined in the STARTER thread.
-0004: $DEBUGUNLOCKISLANDS	  = 0 // Unlock the other islands
+0004: $DEBUGUNLOCKISLANDS	  = 0 // Unlock the other islands.
+0004: $DEBUGSHOWCOORDS		  = 1 // Shows the player location.
 return
 
 //#####################################################################################
@@ -21,8 +22,8 @@ if
 	0038:   $MASTERDEBUG == 1  
 then
 	0004: $DEBUGUNLOCKISLANDS = 1
+	0004: $DEBUGSHOWCOORDS = 1
 	0109: player $PLAYER_CHAR money += 10000000
-	004F: create_thread @COORDS			// Enable if you need coordinates display in DEBUG mode
 	004F: create_thread @JOEYS_BUGGY_LOOP
 
 
@@ -110,6 +111,11 @@ then
 	004F: create_thread @CAT_MISSION1_LOOP				//THE EXCHANGE
 
 
+end
+if
+	0038:   $DEBUGSHOWCOORDS == 1
+then
+	004F: create_thread @COORDS			// Enable if you need coordinates display in DEBUG mode
 end
 end_thread
 
