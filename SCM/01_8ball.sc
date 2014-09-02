@@ -92,7 +92,14 @@ end
 0107: $RAMP_EIGHT = create_object #JUMP_BOX1 at 582.5 -930.0 38.3
 01C7: remove_object_from_mission_cleanup_list $RAMP_EIGHT 
 0177: set_object $RAMP_EIGHT z_angle_to 90.0
-
+/*
+if
+	8038:   not $FAILED_ONCE_EIGHT == 1
+then
+	0382: set_object $RAMP_EIGHT collision_detection 0
+	0004: $FAILED_ONCE_EIGHT = 1
+end
+*/
 00A5: $CAR_EIGHTBALL = create_car #BANSHEE at 540.0 -938.0 $GROUND_EIGHT
 0229: set_car $CAR_EIGHTBALL color_to 58 1 
 0175: set_car $CAR_EIGHTBALL z_angle_to 270.0

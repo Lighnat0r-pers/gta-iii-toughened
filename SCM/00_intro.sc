@@ -1160,17 +1160,17 @@ end
 if
 	0038:   $MASTERDEBUG == 1
 then
-	03CB: load_scene 807.0 -937.0 35.5625
-	0055: set_player_coordinates $PLAYER_CHAR to 825.875 -939.9375 35.00 
+	03CB: load_scene 507.0 -937.0 35.5625
+	0055: set_player_coordinates $PLAYER_CHAR to 520.0 -937.6 -100.0 
 	016A: fade 1 for 0 ms 
 	0247: request_model #BANSHEE
 	038B: load_all_models_now 
-	00A5: $CAR_EIGHTBALL = create_car #BANSHEE at 825.0 -945.5 35.75
-	0175: set_car $CAR_EIGHTBALL z_angle_to 262.375 
+	00A5: $CAR_EIGHTBALL = create_car #BANSHEE at 520.0 -932.6 -100.0
+	0175: set_car $CAR_EIGHTBALL z_angle_to 270.0
 	01C3: remove_references_to_car $CAR_EIGHTBALL
 	gosub @SWITCH_CAR_GENERATOR
 else
-	0055: set_player_coordinates $PLAYER_CHAR to 811.875 -939.9375 35.75 
+	0055: set_player_coordinates $PLAYER_CHAR to 540.0 -937.6 -100.0 
 	0169: set_fade_color 0 0 0 
 	016A: fade 0 for 0 ms 
 end
