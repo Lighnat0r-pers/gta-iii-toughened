@@ -141,260 +141,311 @@ return
 // All code related to traffic: forbidden paths, gang cars, gang zones, car class zones
 :TRAFFIC_INFO
 // Portland Zones
+// Liberty City
 015C: set_zone_gang_info 'CITYZON' DAY 12 0 0 0 0 0 0 0 20 
 015C: set_zone_gang_info 'CITYZON' NIGHT 8 0 0 0 0 0 0 0 10 
 0152: set_zone_car_info 'CITYZON' DAY 10 0 0 0 0 0 0 0 20 240 240 240 240 0 0 
 0152: set_zone_car_info 'CITYZON' NIGHT 8 0 0 0 0 0 0 0 10 240 240 240 240 0 0 
-0324: set_zone_pedgroup_info 'CITYZON' DAY 0  // Liberty City
-0324: set_zone_pedgroup_info 'CITYZON' NIGHT 0  // Liberty City
+0324: set_zone_pedgroup_info 'CITYZON' DAY 0
+0324: set_zone_pedgroup_info 'CITYZON' NIGHT 0  
+// Portland
 015C: set_zone_gang_info 'IND_ZON' DAY 12 0 0 0 0 0 0 0 20 
 015C: set_zone_gang_info 'IND_ZON' NIGHT 8 0 0 0 0 0 0 0 10 
 0152: set_zone_car_info 'IND_ZON' DAY 10 0 0 0 0 0 0 0 20 500 0 0 450 0 0 
 0152: set_zone_car_info 'IND_ZON' NIGHT 8 0 0 0 0 0 0 0 10 500 0 0 450 0 0 
-0324: set_zone_pedgroup_info 'IND_ZON' DAY 11  // Portland
-0324: set_zone_pedgroup_info 'IND_ZON' NIGHT 12  // Portland
+0324: set_zone_pedgroup_info 'IND_ZON' DAY 11  
+0324: set_zone_pedgroup_info 'IND_ZON' NIGHT 12
+// Staunton Island
 015C: set_zone_gang_info 'COM_ZON' DAY 12 0 0 0 0 0 0 0 20 
 015C: set_zone_gang_info 'COM_ZON' NIGHT 8 0 0 0 0 0 0 0 10 
 0152: set_zone_car_info 'COM_ZON' DAY 10 0 0 0 0 0 0 0 20 0 300 450 150 0 0 
 0152: set_zone_car_info 'COM_ZON' NIGHT 8 0 0 0 0 0 0 0 10 0 300 450 150 0 0 
-0324: set_zone_pedgroup_info 'COM_ZON' DAY 0  // Staunton Island
-0324: set_zone_pedgroup_info 'COM_ZON' NIGHT 0  // Staunton Island
+0324: set_zone_pedgroup_info 'COM_ZON' DAY 0  
+0324: set_zone_pedgroup_info 'COM_ZON' NIGHT 0
+// Shoreside Vale
 015C: set_zone_gang_info 'SUB_ZON' DAY 12 0 0 0 0 0 0 0 20 
 015C: set_zone_gang_info 'SUB_ZON' NIGHT 8 0 0 0 0 0 0 0 10 
 0152: set_zone_car_info 'SUB_ZON' DAY 10 0 0 0 0 0 0 0 20 0 500 450 0 0 0 
 0152: set_zone_car_info 'SUB_ZON' NIGHT 8 0 0 0 0 0 0 0 10 0 500 450 0 0 0 
-0324: set_zone_pedgroup_info 'SUB_ZON' DAY 0  // Shoreside Vale
-0324: set_zone_pedgroup_info 'SUB_ZON' NIGHT 0  // Shoreside Vale
-015C: set_zone_gang_info 'LITTLEI' DAY 17 300 0 0 0 0 0 0 20 
-015C: set_zone_gang_info 'LITTLEI' NIGHT 11 400 0 0 0 0 0 0 10 
-0152: set_zone_car_info 'LITTLEI' DAY 10 100 0 0 0 0 0 0 20 400 0 0 350 20 0 
-0152: set_zone_car_info 'LITTLEI' NIGHT 8 150 0 0 0 0 0 0 10 550 0 0 150 0 0 
-0324: set_zone_pedgroup_info 'LITTLEI' DAY 3  // Saint Mark's
-0324: set_zone_pedgroup_info 'LITTLEI' NIGHT 4  // Saint Mark's
+0324: set_zone_pedgroup_info 'SUB_ZON' DAY 0  
+0324: set_zone_pedgroup_info 'SUB_ZON' NIGHT 0
+
+// Portland Zones - Main areas
+// Chinatown
 015C: set_zone_gang_info 'CHINA' DAY 20 0 300 0 0 0 0 0 20 
 015C: set_zone_gang_info 'CHINA' NIGHT 12 0 400 0 0 0 0 0 10 
 0152: set_zone_car_info 'CHINA' DAY 10 0 100 0 0 0 0 0 10 400 0 0 350 0 0 
 0152: set_zone_car_info 'CHINA' NIGHT 8 0 150 0 0 0 0 0 20 550 0 0 200 0 0 
-0324: set_zone_pedgroup_info 'CHINA' DAY 5  // Chinatown
-0324: set_zone_pedgroup_info 'CHINA' NIGHT 6  // Chinatown
+0324: set_zone_pedgroup_info 'CHINA' DAY 5 
+0324: set_zone_pedgroup_info 'CHINA' NIGHT 6  
+// Saint Mark's
+015C: set_zone_gang_info 'LITTLEI' DAY 17 300 0 0 0 0 0 0 20 
+015C: set_zone_gang_info 'LITTLEI' NIGHT 11 400 0 0 0 0 0 0 10 
+0152: set_zone_car_info 'LITTLEI' DAY 10 100 0 0 0 0 0 0 20 400 0 0 350 20 0 
+0152: set_zone_car_info 'LITTLEI' NIGHT 8 150 0 0 0 0 0 0 10 550 0 0 150 0 0 
+0324: set_zone_pedgroup_info 'LITTLEI' DAY 3  
+0324: set_zone_pedgroup_info 'LITTLEI' NIGHT 4
+// Hepburn Heights
 015C: set_zone_gang_info 'TOWERS' DAY 15 0 0 300 0 0 0 0 0 
 015C: set_zone_gang_info 'TOWERS' NIGHT 10 0 0 400 0 0 0 0 0 
 0152: set_zone_car_info 'TOWERS' DAY 8 0 0 100 0 0 0 0 20 400 0 0 350 0 0 
 0152: set_zone_car_info 'TOWERS' NIGHT 6 0 0 150 0 0 0 0 10 550 0 0 200 0 0 
-0324: set_zone_pedgroup_info 'TOWERS' DAY 9  // Hepburn Heights
-0324: set_zone_pedgroup_info 'TOWERS' NIGHT 10  // Hepburn Heights
+0324: set_zone_pedgroup_info 'TOWERS' DAY 9  
+0324: set_zone_pedgroup_info 'TOWERS' NIGHT 10
+// Red Light District
 015C: set_zone_gang_info 'REDLIGH' DAY 6 0 0 0 0 0 0 0 20 
 015C: set_zone_gang_info 'REDLIGH' NIGHT 13 0 0 0 0 0 0 0 10 
 0152: set_zone_car_info 'REDLIGH' DAY 5 0 0 0 0 0 0 0 10 550 0 0 350 0 0 
 0152: set_zone_car_info 'REDLIGH' NIGHT 7 0 0 0 0 0 0 0 20 600 0 0 200 0 0 
-0324: set_zone_pedgroup_info 'REDLIGH' DAY 1  // Red Light District
-0324: set_zone_pedgroup_info 'REDLIGH' NIGHT 2  // Red Light District
+0324: set_zone_pedgroup_info 'REDLIGH' DAY 1  
+0324: set_zone_pedgroup_info 'REDLIGH' NIGHT 2
+// Trenton
 015C: set_zone_gang_info 'PORT_I' DAY 10 0 0 0 0 0 0 0 0 
 015C: set_zone_gang_info 'PORT_I' NIGHT 7 0 0 0 0 0 0 0 0 
 0152: set_zone_car_info 'PORT_I' DAY 8 0 0 0 0 0 0 0 20 300 0 0 400 20 0 
 0152: set_zone_car_info 'PORT_I' NIGHT 6 0 0 0 0 0 0 0 10 500 0 0 400 0 0 
-0324: set_zone_pedgroup_info 'PORT_I' DAY 11  // Trenton
-0324: set_zone_pedgroup_info 'PORT_I' NIGHT 12  // Trenton
+0324: set_zone_pedgroup_info 'PORT_I' DAY 11
+0324: set_zone_pedgroup_info 'PORT_I' NIGHT 12  
+// Portland Harbor
 015C: set_zone_gang_info 'PORT_E' DAY 10 0 0 0 0 0 0 0 0 
 015C: set_zone_gang_info 'PORT_E' NIGHT 8 0 0 0 0 0 0 0 0 
 0152: set_zone_car_info 'PORT_E' DAY 8 0 0 0 0 0 0 0 20 300 0 0 400 20 0 
 0152: set_zone_car_info 'PORT_E' NIGHT 6 0 0 0 0 0 0 0 10 500 0 0 400 0 0 
-0324: set_zone_pedgroup_info 'PORT_E' DAY 7  // Portland Harbor
-0324: set_zone_pedgroup_info 'PORT_E' NIGHT 8  // Portland Harbor
+0324: set_zone_pedgroup_info 'PORT_E' DAY 7
+0324: set_zone_pedgroup_info 'PORT_E' NIGHT 8  
+// Atlantic Quays
 015C: set_zone_gang_info 'PORT_S' DAY 10 0 0 0 0 0 0 0 0 
 015C: set_zone_gang_info 'PORT_S' NIGHT 8 0 0 0 0 0 0 0 0 
 0152: set_zone_car_info 'PORT_S' DAY 8 0 0 0 0 0 0 0 20 300 0 0 500 20 0 
 0152: set_zone_car_info 'PORT_S' NIGHT 6 0 0 0 0 0 0 0 10 500 0 0 400 0 0 
-0324: set_zone_pedgroup_info 'PORT_S' DAY 11  // Atlantic Quays
-0324: set_zone_pedgroup_info 'PORT_S' NIGHT 12  // Atlantic Quays
+0324: set_zone_pedgroup_info 'PORT_S' DAY 11
+0324: set_zone_pedgroup_info 'PORT_S' NIGHT 12  
+// Callahan Point
 015C: set_zone_gang_info 'PORT_W' DAY 10 0 10 0 0 0 0 0 0 
 015C: set_zone_gang_info 'PORT_W' NIGHT 5 0 10 0 0 0 0 0 0 
 0152: set_zone_car_info 'PORT_W' DAY 8 0 0 0 0 0 0 0 20 300 0 0 400 0 0 
 0152: set_zone_car_info 'PORT_W' NIGHT 6 0 0 0 0 0 0 0 10 500 0 0 400 0 0 
-0324: set_zone_pedgroup_info 'PORT_W' DAY 11  // Callahan Point
-0324: set_zone_pedgroup_info 'PORT_W' NIGHT 12  // Callahan Point
+0324: set_zone_pedgroup_info 'PORT_W' DAY 11
+0324: set_zone_pedgroup_info 'PORT_W' NIGHT 12  
+// Harwood
 015C: set_zone_gang_info 'HARWOOD' DAY 10 0 0 0 0 0 0 0 0 
 015C: set_zone_gang_info 'HARWOOD' NIGHT 8 0 0 0 0 0 0 0 0 
 0152: set_zone_car_info 'HARWOOD' DAY 8 0 0 0 0 0 0 0 20 400 0 0 300 0 0 
 0152: set_zone_car_info 'HARWOOD' NIGHT 6 0 0 0 0 0 0 0 10 600 0 0 200 0 0 
-0324: set_zone_pedgroup_info 'HARWOOD' DAY 11  // Harwood
-0324: set_zone_pedgroup_info 'HARWOOD' NIGHT 12  // Harwood
+0324: set_zone_pedgroup_info 'HARWOOD' DAY 11
+0324: set_zone_pedgroup_info 'HARWOOD' NIGHT 12  
+// Portland Beach
 015C: set_zone_gang_info 'EASTBAY' DAY 10 0 0 0 0 0 0 0 0 
 015C: set_zone_gang_info 'EASTBAY' NIGHT 5 0 0 0 0 0 0 0 0 
 0152: set_zone_car_info 'EASTBAY' DAY 5 0 0 0 0 0 0 0 20 500 0 0 480 0 0 
 0152: set_zone_car_info 'EASTBAY' NIGHT 4 0 0 0 0 0 0 0 10 500 0 0 490 0 0 
-0324: set_zone_pedgroup_info 'EASTBAY' DAY 11  // Portland Beach
-0324: set_zone_pedgroup_info 'EASTBAY' NIGHT 12  // Portland Beach
+0324: set_zone_pedgroup_info 'EASTBAY' DAY 11  
+0324: set_zone_pedgroup_info 'EASTBAY' NIGHT 12
+// Portland View
 015C: set_zone_gang_info 'S_VIEW' DAY 10 0 0 0 0 0 0 0 30 
 015C: set_zone_gang_info 'S_VIEW' NIGHT 8 0 0 0 0 0 0 0 20 
 0152: set_zone_car_info 'S_VIEW' DAY 10 0 0 0 0 0 0 0 30 400 0 0 300 100 0 
 0152: set_zone_car_info 'S_VIEW' NIGHT 8 0 0 0 0 0 0 0 20 500 0 0 200 100 0 
-0324: set_zone_pedgroup_info 'S_VIEW' DAY 11  // Portland View
-0324: set_zone_pedgroup_info 'S_VIEW' NIGHT 12  // Portland View
+0324: set_zone_pedgroup_info 'S_VIEW' DAY 11  
+0324: set_zone_pedgroup_info 'S_VIEW' NIGHT 12 
+// Callahan Bridge
+015C: set_zone_gang_info 'ROADBR1' DAY 30 0 0 0 0 0 0 0 0 
+015C: set_zone_gang_info 'ROADBR1' NIGHT 20 0 0 0 0 0 0 0 0 
+0152: set_zone_car_info 'ROADBR1' DAY 12 0 0 0 0 0 0 0 20 400 0 0 400 0 100 
+0152: set_zone_car_info 'ROADBR1' NIGHT 10 0 0 0 0 0 0 0 10 400 0 0 400 0 100 
+0324: set_zone_pedgroup_info 'ROADBR1' DAY 11  
+0324: set_zone_pedgroup_info 'ROADBR1' NIGHT 12  
+
+// Portland - Filler areas or special areas
+// Portland cop station
 015C: set_zone_gang_info 'COPS_1' DAY 10 0 0 0 0 0 0 0 60 
 015C: set_zone_gang_info 'COPS_1' NIGHT 8 0 0 0 0 0 0 0 60 
 0152: set_zone_car_info 'COPS_1' DAY 10 0 0 0 0 0 0 0 90 400 0 0 400 0 0 
 0152: set_zone_car_info 'COPS_1' NIGHT 8 0 0 0 0 0 0 0 90 400 0 0 400 0 0 
 0324: set_zone_pedgroup_info 'COPS_1' DAY 11 
 0324: set_zone_pedgroup_info 'COPS_1' NIGHT 12 
+// Portland hospital
 015C: set_zone_gang_info 'HOSPI_1' DAY 10 0 0 0 0 0 0 0 60 
 015C: set_zone_gang_info 'HOSPI_1' NIGHT 8 0 0 0 0 0 0 0 60 
 0152: set_zone_car_info 'HOSPI_1' DAY 10 0 0 0 0 0 0 0 90 400 0 0 400 0 0 
 0152: set_zone_car_info 'HOSPI_1' NIGHT 8 0 0 0 0 0 0 0 90 400 0 0 400 0 0 
 0324: set_zone_pedgroup_info 'HOSPI_1' DAY 17 
 0324: set_zone_pedgroup_info 'HOSPI_1' NIGHT 18 
-015C: set_zone_gang_info 'ROADBR1' DAY 30 0 0 0 0 0 0 0 0 
-015C: set_zone_gang_info 'ROADBR1' NIGHT 20 0 0 0 0 0 0 0 0 
-0152: set_zone_car_info 'ROADBR1' DAY 12 0 0 0 0 0 0 0 20 400 0 0 400 0 100 
-0152: set_zone_car_info 'ROADBR1' NIGHT 10 0 0 0 0 0 0 0 10 400 0 0 400 0 100 
-0324: set_zone_pedgroup_info 'ROADBR1' DAY 11  // Callahan Bridge
-0324: set_zone_pedgroup_info 'ROADBR1' NIGHT 12  // Callahan Bridge
+// Triad fish factory
 015C: set_zone_gang_info 'FISHFAC' DAY 2 0 1000 0 0 0 0 0 0 
 015C: set_zone_gang_info 'FISHFAC' NIGHT 2 0 1000 0 0 0 0 0 0 
 0152: set_zone_car_info 'FISHFAC' DAY 6 0 0 0 0 0 0 0 20 200 0 0 600 0 0 
 0152: set_zone_car_info 'FISHFAC' NIGHT 4 0 0 0 0 0 0 0 10 200 0 0 600 0 0 
 0324: set_zone_pedgroup_info 'FISHFAC' DAY 11 
 0324: set_zone_pedgroup_info 'FISHFAC' NIGHT 12 
+// Tiny area between Portland view, St. marks and Portland beach
 015C: set_zone_gang_info 'FILLIN1' DAY 10 0 0 0 0 0 0 0 0 
 015C: set_zone_gang_info 'FILLIN1' NIGHT 8 0 0 0 0 0 0 0 0 
 0152: set_zone_car_info 'FILLIN1' DAY 8 0 0 0 0 0 0 0 20 500 0 0 400 0 0 
 0152: set_zone_car_info 'FILLIN1' NIGHT 6 0 0 0 0 0 0 0 10 400 0 0 400 0 0 
 0324: set_zone_pedgroup_info 'FILLIN1' DAY 11 
 0324: set_zone_pedgroup_info 'FILLIN1' NIGHT 12 
+// The street from callahan bridge to the diner in chinatown
 015C: set_zone_gang_info 'MAIN_D1' DAY 15 0 300 0 0 0 0 0 20 
 015C: set_zone_gang_info 'MAIN_D1' NIGHT 10 0 500 0 0 0 0 0 10 
 0152: set_zone_car_info 'MAIN_D1' DAY 24 0 100 0 0 0 0 0 20 300 0 0 300 20 100 
 0152: set_zone_car_info 'MAIN_D1' NIGHT 18 0 150 0 0 0 0 0 10 300 0 0 300 20 100 
 0324: set_zone_pedgroup_info 'MAIN_D1' DAY 5 
 0324: set_zone_pedgroup_info 'MAIN_D1' NIGHT 6 
+// Street bit in portland from the diner in chinatown and ends one block to the left
 015C: set_zone_gang_info 'MAIN_D2' DAY 15 0 300 0 0 0 0 0 20 
 015C: set_zone_gang_info 'MAIN_D2' NIGHT 10 0 400 0 0 0 0 0 10 
 0152: set_zone_car_info 'MAIN_D2' DAY 24 0 100 0 0 0 0 0 20 300 0 0 300 20 100 
 0152: set_zone_car_info 'MAIN_D2' NIGHT 18 0 150 0 0 0 0 0 10 300 0 0 300 20 100 
 0324: set_zone_pedgroup_info 'MAIN_D2' DAY 5 
 0324: set_zone_pedgroup_info 'MAIN_D2' NIGHT 6 
+// Street bit in portland from where D2 anded and continues up towards the red light district
 015C: set_zone_gang_info 'MAIN_D3' DAY 15 0 300 0 0 0 0 0 20 
 015C: set_zone_gang_info 'MAIN_D3' NIGHT 10 0 400 0 0 0 0 0 10 
 0152: set_zone_car_info 'MAIN_D3' DAY 24 0 100 0 0 0 0 0 20 300 0 0 300 20 100 
 0152: set_zone_car_info 'MAIN_D3' NIGHT 18 0 150 0 0 0 0 0 10 300 0 0 300 20 100 
 0324: set_zone_pedgroup_info 'MAIN_D3' DAY 5 
 0324: set_zone_pedgroup_info 'MAIN_D3' NIGHT 6 
+// Street bit from where D3 ended, covers the subway entrance area
 015C: set_zone_gang_info 'MAIN_D4' DAY 15 0 300 0 0 0 0 0 20 
 015C: set_zone_gang_info 'MAIN_D4' NIGHT 10 0 400 0 0 0 0 0 10 
 0152: set_zone_car_info 'MAIN_D4' DAY 24 0 100 0 0 0 0 0 20 300 0 0 300 20 100 
 0152: set_zone_car_info 'MAIN_D4' NIGHT 18 0 150 0 0 0 0 0 10 300 0 0 300 20 100 
 0324: set_zone_pedgroup_info 'MAIN_D4' DAY 5 
 0324: set_zone_pedgroup_info 'MAIN_D4' NIGHT 6 
+// Covers the street that goes from the RLD's subway entrance towards harwood
 015C: set_zone_gang_info 'MAIN_D5' DAY 15 0 0 0 0 0 0 0 20 
 015C: set_zone_gang_info 'MAIN_D5' NIGHT 10 0 0 0 0 0 0 0 10 
 0152: set_zone_car_info 'MAIN_D5' DAY 24 0 0 0 0 0 0 0 20 400 0 0 300 20 100 
 0152: set_zone_car_info 'MAIN_D5' NIGHT 18 0 0 0 0 0 0 0 10 300 0 0 400 20 100 
 0324: set_zone_pedgroup_info 'MAIN_D5' DAY 1 
 0324: set_zone_pedgroup_info 'MAIN_D5' NIGHT 2 
+// Covers the street that goes from the RLD's subway entrance towards harwood, last bit near the fire station
 015C: set_zone_gang_info 'MAIN_D6' DAY 15 0 0 300 0 0 0 0 20 
 015C: set_zone_gang_info 'MAIN_D6' NIGHT 10 0 0 400 0 0 0 0 10 
 0152: set_zone_car_info 'MAIN_D6' DAY 24 0 0 100 0 0 0 0 20 300 0 0 300 20 100 
 0152: set_zone_car_info 'MAIN_D6' NIGHT 18 0 0 150 0 0 0 0 10 300 0 0 300 20 100 
 0324: set_zone_pedgroup_info 'MAIN_D6' DAY 9 
 0324: set_zone_pedgroup_info 'MAIN_D6' NIGHT 10 
-// Staunton Zones
+
+// Staunton Zones - Main areas
+// Aspatria
 015C: set_zone_gang_info 'STADIUM' DAY 30 0 0 0 0 0 0 0 0 
 015C: set_zone_gang_info 'STADIUM' NIGHT 16 0 0 0 0 0 0 0 0 
 0152: set_zone_car_info 'STADIUM' DAY 20 0 0 0 0 0 0 0 20 300 150 0 250 0 200 
 0152: set_zone_car_info 'STADIUM' NIGHT 17 0 0 0 0 0 0 0 10 300 150 0 250 0 200 
-0324: set_zone_pedgroup_info 'STADIUM' DAY 15  // Aspatria
-0324: set_zone_pedgroup_info 'STADIUM' NIGHT 16  // Aspatria
+0324: set_zone_pedgroup_info 'STADIUM' DAY 15  
+0324: set_zone_pedgroup_info 'STADIUM' NIGHT 16
+// Rockford
 015C: set_zone_gang_info 'HOSPI_2' DAY 30 0 0 0 0 0 0 0 0 
 015C: set_zone_gang_info 'HOSPI_2' NIGHT 16 0 0 0 0 0 0 0 0 
 0152: set_zone_car_info 'HOSPI_2' DAY 20 0 0 0 0 0 0 0 20 300 150 0 250 0 200 
 0152: set_zone_car_info 'HOSPI_2' NIGHT 17 0 0 0 0 0 0 0 10 300 150 0 250 0 200 
-0324: set_zone_pedgroup_info 'HOSPI_2' DAY 17  // Rockford
-0324: set_zone_pedgroup_info 'HOSPI_2' NIGHT 18  // Rockford
+0324: set_zone_pedgroup_info 'HOSPI_2' DAY 17  
+0324: set_zone_pedgroup_info 'HOSPI_2' NIGHT 18
+// Liberty Campus
 015C: set_zone_gang_info 'UNIVERS' DAY 30 0 0 0 0 0 0 0 20 
 015C: set_zone_gang_info 'UNIVERS' NIGHT 16 0 0 0 0 0 0 0 10 
 0152: set_zone_car_info 'UNIVERS' DAY 20 0 0 0 0 0 0 0 20 300 300 300 0 20 0 
 0152: set_zone_car_info 'UNIVERS' NIGHT 17 0 0 0 0 0 0 0 10 300 300 300 0 20 0 
-0324: set_zone_pedgroup_info 'UNIVERS' DAY 23  // Liberty Campus
-0324: set_zone_pedgroup_info 'UNIVERS' NIGHT 24  // Liberty Campus
+0324: set_zone_pedgroup_info 'UNIVERS' DAY 23
+0324: set_zone_pedgroup_info 'UNIVERS' NIGHT 24  
+// Fort Staunton
 015C: set_zone_gang_info 'CONSTRU' DAY 30 0 0 0 0 0 300 0 20 
 015C: set_zone_gang_info 'CONSTRU' NIGHT 16 0 0 0 0 0 400 0 10 
 0152: set_zone_car_info 'CONSTRU' DAY 20 0 0 0 0 0 100 0 20 300 100 0 250 0 150 
 0152: set_zone_car_info 'CONSTRU' NIGHT 17 0 0 0 0 0 150 0 10 300 100 0 250 0 150 
-0324: set_zone_pedgroup_info 'CONSTRU' DAY 19  // Fort Staunton
-0324: set_zone_pedgroup_info 'CONSTRU' NIGHT 20  // Fort Staunton
+0324: set_zone_pedgroup_info 'CONSTRU' DAY 19 
+0324: set_zone_pedgroup_info 'CONSTRU' NIGHT 20  
+// Belleville Park
 015C: set_zone_gang_info 'PARK' DAY 30 0 0 0 0 0 0 0 20 
 015C: set_zone_gang_info 'PARK' NIGHT 16 0 0 0 0 0 0 0 10 
 0152: set_zone_car_info 'PARK' DAY 20 0 0 0 0 0 0 0 20 300 300 300 0 0 0 
 0152: set_zone_car_info 'PARK' NIGHT 17 0 0 0 0 0 0 0 10 300 300 300 0 0 0 
-0324: set_zone_pedgroup_info 'PARK' DAY 25  // Belleville Park
-0324: set_zone_pedgroup_info 'PARK' NIGHT 26  // Belleville Park
+0324: set_zone_pedgroup_info 'PARK' DAY 25
+0324: set_zone_pedgroup_info 'PARK' NIGHT 26
+// Newport
 015C: set_zone_gang_info 'COM_EAS' DAY 30 0 0 0 0 300 0 0 20 
 015C: set_zone_gang_info 'COM_EAS' NIGHT 16 0 0 0 0 400 0 0 10 
 0152: set_zone_car_info 'COM_EAS' DAY 20 0 0 0 0 100 0 0 20 400 250 0 0 0 150 
 0152: set_zone_car_info 'COM_EAS' NIGHT 17 0 0 0 0 150 0 0 10 400 250 0 0 0 100 
-0324: set_zone_pedgroup_info 'COM_EAS' DAY 21  // Newport
-0324: set_zone_pedgroup_info 'COM_EAS' NIGHT 22  // Newport
+0324: set_zone_pedgroup_info 'COM_EAS' DAY 21
+0324: set_zone_pedgroup_info 'COM_EAS' NIGHT 22  
+// Bedford Point
 015C: set_zone_gang_info 'SHOPING' DAY 30 0 0 0 0 0 0 0 20 
 015C: set_zone_gang_info 'SHOPING' NIGHT 16 0 0 0 0 0 0 0 10 
 0152: set_zone_car_info 'SHOPING' DAY 20 0 0 0 0 0 0 0 30 300 250 250 0 0 100 
 0152: set_zone_car_info 'SHOPING' NIGHT 17 0 0 0 0 0 0 0 20 300 250 250 0 0 100 
-0324: set_zone_pedgroup_info 'SHOPING' DAY 21  // Bedford Point
-0324: set_zone_pedgroup_info 'SHOPING' NIGHT 22  // Bedford Point
+0324: set_zone_pedgroup_info 'SHOPING' DAY 21
+0324: set_zone_pedgroup_info 'SHOPING' NIGHT 22  
+// Torrington
 015C: set_zone_gang_info 'YAKUSA' DAY 30 0 0 0 300 0 0 0 20 
 015C: set_zone_gang_info 'YAKUSA' NIGHT 16 0 0 0 400 0 0 0 10 
 0152: set_zone_car_info 'YAKUSA' DAY 20 0 0 0 100 0 0 0 40 350 200 250 0 0 0 
 0152: set_zone_car_info 'YAKUSA' NIGHT 17 0 0 0 150 0 0 0 20 350 200 200 0 0 0 
-0324: set_zone_pedgroup_info 'YAKUSA' DAY 21  // Torrington
-0324: set_zone_pedgroup_info 'YAKUSA' NIGHT 22  // Torrington
+0324: set_zone_pedgroup_info 'YAKUSA' DAY 21
+0324: set_zone_pedgroup_info 'YAKUSA' NIGHT 22  
+// Callahan Bridge - Stauton side
 015C: set_zone_gang_info 'ROADBR2' DAY 30 0 0 0 0 0 0 0 20 
 015C: set_zone_gang_info 'ROADBR2' NIGHT 20 0 0 0 0 0 0 0 10 
 0152: set_zone_car_info 'ROADBR2' DAY 20 0 0 0 0 0 0 0 30 300 250 250 0 0 100 
 0152: set_zone_car_info 'ROADBR2' NIGHT 17 0 0 0 0 0 0 0 20 300 250 250 0 0 100 
-0324: set_zone_pedgroup_info 'ROADBR2' DAY 21  // Callahan Bridge
-0324: set_zone_pedgroup_info 'ROADBR2' NIGHT 22  // Callahan Bridge
-// Shoreside Vale Zones
+0324: set_zone_pedgroup_info 'ROADBR2' DAY 21
+0324: set_zone_pedgroup_info 'ROADBR2' NIGHT 22  
+
+// Shoreside Vale Zones - Main areas
+// Francis Intl. Airport
 015C: set_zone_gang_info 'AIRPORT' DAY 20 0 0 0 0 0 0 0 20 
 015C: set_zone_gang_info 'AIRPORT' NIGHT 10 0 0 0 0 0 0 0 10 
 0152: set_zone_car_info 'AIRPORT' DAY 15 0 0 0 0 0 0 0 40 300 300 300 0 0 0 
 0152: set_zone_car_info 'AIRPORT' NIGHT 13 0 0 0 0 0 0 0 20 300 300 300 0 0 0 
-0324: set_zone_pedgroup_info 'AIRPORT' DAY 27  // Francis Intl. Airport
-0324: set_zone_pedgroup_info 'AIRPORT' NIGHT 28  // Francis Intl. Airport
+0324: set_zone_pedgroup_info 'AIRPORT' DAY 27
+0324: set_zone_pedgroup_info 'AIRPORT' NIGHT 28  
+// Wichita Gardens
 015C: set_zone_gang_info 'PROJECT' DAY 20 0 0 0 0 0 0 300 0 
 015C: set_zone_gang_info 'PROJECT' NIGHT 10 0 0 0 0 0 0 400 0 
 0152: set_zone_car_info 'PROJECT' DAY 15 0 0 0 0 0 0 100 20 500 150 0 150 0 0 
 0152: set_zone_car_info 'PROJECT' NIGHT 13 0 0 0 0 0 0 150 10 500 100 0 150 0 0 
-0324: set_zone_pedgroup_info 'PROJECT' DAY 9  // Wichita Gardens
-0324: set_zone_pedgroup_info 'PROJECT' NIGHT 10  // Wichita Gardens
+0324: set_zone_pedgroup_info 'PROJECT' DAY 9  
+0324: set_zone_pedgroup_info 'PROJECT' NIGHT 10
+// Pike Creek
 015C: set_zone_gang_info 'SUB_IND' DAY 20 0 0 0 0 0 0 0 20 
 015C: set_zone_gang_info 'SUB_IND' NIGHT 10 0 0 0 0 0 0 0 10 
 0152: set_zone_car_info 'SUB_IND' DAY 15 0 0 0 0 0 0 0 20 300 300 300 0 0 0 
 0152: set_zone_car_info 'SUB_IND' NIGHT 13 0 0 0 0 0 0 0 10 300 300 300 0 0 0 
-0324: set_zone_pedgroup_info 'SUB_IND' DAY 7  // Pike Creek
-0324: set_zone_pedgroup_info 'SUB_IND' NIGHT 8  // Pike Creek
+0324: set_zone_pedgroup_info 'SUB_IND' DAY 7
+0324: set_zone_pedgroup_info 'SUB_IND' NIGHT 8  
+// Cedar Grove
 015C: set_zone_gang_info 'SWANKS' DAY 20 0 0 0 0 0 70 0 30 
 015C: set_zone_gang_info 'SWANKS' NIGHT 10 0 0 0 0 0 90 0 20 
 0152: set_zone_car_info 'SWANKS' DAY 15 0 0 0 0 0 70 0 30 0 400 400 0 20 0 
 0152: set_zone_car_info 'SWANKS' NIGHT 13 0 0 0 0 0 90 0 20 0 400 400 0 20 0 
-0324: set_zone_pedgroup_info 'SWANKS' DAY 29  // Cedar Grove
-0324: set_zone_pedgroup_info 'SWANKS' NIGHT 30  // Cedar Grove
+0324: set_zone_pedgroup_info 'SWANKS' DAY 29
+0324: set_zone_pedgroup_info 'SWANKS' NIGHT 30  
+// Cochrane Dam
 015C: set_zone_gang_info 'BIG_DAM' DAY 8 0 0 0 0 0 0 0 0 
 015C: set_zone_gang_info 'BIG_DAM' NIGHT 6 0 0 0 0 0 0 0 0 
 0152: set_zone_car_info 'BIG_DAM' DAY 8 0 0 0 0 0 0 0 20 300 300 0 300 0 0 
 0152: set_zone_car_info 'BIG_DAM' NIGHT 6 0 0 0 0 0 0 0 10 300 300 0 300 0 0 
-0324: set_zone_pedgroup_info 'BIG_DAM' DAY 11  // Cochrane Dam
-0324: set_zone_pedgroup_info 'BIG_DAM' NIGHT 12  // Cochrane Dam
+0324: set_zone_pedgroup_info 'BIG_DAM' DAY 11
+0324: set_zone_pedgroup_info 'BIG_DAM' NIGHT 12  
+
+// Shoreside Vale - Filler areas or special areas
+// The area with the D-ice final fight & gripped, connects to Cedar grove and Aspatria
 015C: set_zone_gang_info 'SUB_ZO2' DAY 20 0 0 0 0 0 0 0 20 
 015C: set_zone_gang_info 'SUB_ZO2' NIGHT 10 0 0 0 0 0 0 0 10 
 0152: set_zone_car_info 'SUB_ZO2' DAY 15 0 0 0 0 0 0 0 20 0 500 450 0 0 0 
 0152: set_zone_car_info 'SUB_ZO2' NIGHT 13 0 0 0 0 0 0 0 10 0 500 450 0 0 0 
-0324: set_zone_pedgroup_info 'SUB_ZO2' DAY 0  // Shoreside Vale
-0324: set_zone_pedgroup_info 'SUB_ZO2' NIGHT 0  // Shoreside Vale
+0324: set_zone_pedgroup_info 'SUB_ZO2' DAY 0  
+0324: set_zone_pedgroup_info 'SUB_ZO2' NIGHT 0
+// Covers a tiny gap left by the above area, connects to Cedar grove and Aspatria
 015C: set_zone_gang_info 'SUB_ZO3' DAY 20 0 0 0 0 0 0 0 20 
 015C: set_zone_gang_info 'SUB_ZO3' NIGHT 10 0 0 0 0 0 0 0 10 
 0152: set_zone_car_info 'SUB_ZO3' DAY 15 0 0 0 0 0 0 0 20 0 500 450 0 0 0 
 0152: set_zone_car_info 'SUB_ZO3' NIGHT 13 0 0 0 0 0 0 0 10 0 500 450 0 0 0 
 0324: set_zone_pedgroup_info 'SUB_ZO3' DAY 0  // Shoreside Vale
-0324: set_zone_pedgroup_info 'SUB_ZO3' NIGHT 0  // Shoreside Vale
+0324: set_zone_pedgroup_info 'SUB_ZO3' NIGHT 0  
+// Cochrane Dam - The area used by the final mission
 015C: set_zone_gang_info 'WEE_DAM' DAY 8 0 0 0 0 0 100 0 0 
 015C: set_zone_gang_info 'WEE_DAM' NIGHT 5 0 0 0 0 0 100 0 0 
 0152: set_zone_car_info 'WEE_DAM' DAY 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
