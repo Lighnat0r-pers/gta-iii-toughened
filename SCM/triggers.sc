@@ -236,7 +236,7 @@ then
 			while fading
 				wait 0 ms
 			end
-			// 0417: start_mission M05_FAREWELLCHUNKYLEECHONG
+			0417: start_mission M05_FAREWELLCHUNKYLEECHONG
 		end
 		if
 			8256:   not is_player $PLAYER_CHAR defined
@@ -422,7 +422,7 @@ then
 			while fading
 				wait 0 ms
 			end
-			0417: start_mission M09_THEPICKUP
+			// 0417: start_mission M09_THEPICKUP
 		end
 		if
 			8256:   not is_player $PLAYER_CHAR defined
