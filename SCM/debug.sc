@@ -30,8 +30,8 @@ then
 	//0055: set_player_coordinates $PLAYER_CHAR to 892.75 -425.75 13.875
 
 	02A7: $LUIGI_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_LUIGI at 892.75 -425.75 13.875
-	004F: create_thread @LUIGI_MISSION2_LOOP		//DONT SPANK MA BITCH UP
-	//004F: create_thread @LUIGI_MISSION3_LOOP		//DRIVE MISTY FOR ME
+	//004F: create_thread @LUIGI_MISSION2_LOOP		//DONT SPANK MA BITCH UP
+	004F: create_thread @LUIGI_MISSION3_LOOP		//DRIVE MISTY FOR ME
 
 
 
