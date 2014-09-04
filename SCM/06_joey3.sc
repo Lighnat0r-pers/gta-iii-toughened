@@ -9,7 +9,7 @@
 
 // Mission start stuff
 
-:M26_VANHEIST
+:M06_VANHEIST
 
 gosub @MISSION_START_JOEY3
 if 
