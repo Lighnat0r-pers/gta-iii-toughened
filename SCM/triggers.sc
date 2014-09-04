@@ -281,7 +281,7 @@ then
 			while fading
 				wait 0 ms
 			end
-			// 0417: start_mission M06_VANHEIST
+			0417: start_mission M06_VANHEIST
 		end
 		if
 			8256:   not is_player $PLAYER_CHAR defined
