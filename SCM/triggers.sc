@@ -467,7 +467,7 @@ then
 			while fading
 				wait 0 ms
 			end
-			// 0417: start_mission M10_SALVATORESCALLEDAMEETING
+			0417: start_mission M10_SALVATORESCALLEDAMEETING
 		end
 		if
 			8256:   not is_player $PLAYER_CHAR defined
@@ -512,7 +512,7 @@ then
 			while fading
 				wait 0 ms
 			end
-			// 0417: start_mission M11_TRIADSANDTRIBULATIONS
+			0417: start_mission M11_TRIADSANDTRIBULATIONS
 		end
 		if
 			8256:   not is_player $PLAYER_CHAR defined
@@ -557,7 +557,7 @@ then
 			while fading
 				wait 0 ms
 			end
-			// 0417: start_mission M12_BLOWFISH
+			0417: start_mission M12_BLOWFISH
 		end
 		if
 			8256:   not is_player $PLAYER_CHAR defined

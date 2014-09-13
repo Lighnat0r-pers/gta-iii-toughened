@@ -46018,7 +46018,7 @@ $TESTMISSION = 49
 0001: wait 0 ms 
 0002: jump @TONI4_1645 
 
-:TONI4_HINT
+:TONI4_HINT //EDITED
 00D6: if 
 8038:   not $TONI4_HINTSHOWN == 1
 00BC: text_highpriority 'T4_HINT' 5000 ms 1  // Remember: Keep your friends close, but your enemies closer.
