@@ -157,8 +157,17 @@ while true
 	wait 0 ms
 end //while
 
+00A5: $TONI2_TRIAD_VAN_FAKE = create_car #BELLYUP at 867.0 -663.5625 14.75
+0175: set_car $TONI2_TRIAD_VAN_FAKE z_angle_to 180.0 
+00A9: car_set_idle $TONI2_TRIAD_VAN_FAKE 
+
 while 8214:   not pickup $TONI2_BRIEFCASE picked_up 
 	wait 0 ms
+	if
+		01FC:   player $PLAYER_CHAR near_car $TONI2_TRIAD_VAN_FAKE radius 2.0 4.0 unknown 0
+	then
+		020B: explode_car $TONI2_TRIAD_VAN_FAKE
+	end
 end
 	 
 // START OF MISSION
@@ -170,29 +179,25 @@ end
 0395: clear_area 1 at 869.375 -639.0 range 15.0 1.0 
 
 009A: $TONI2_TRIAD1  = create_char PEDTYPE_GANG_TRIAD model #GANG03 at 869.375 -639.0 -100.0
-01B2: give_actor $TONI2_TRIAD1 weapon WEAPONTYPE_PISTOL ammo 100 
-035F: set_actor $TONI2_TRIAD1 armour_to 100
+01B2: give_actor $TONI2_TRIAD1 weapon WEAPONTYPE_BASEBALLBAT ammo 1 
 0211: actor $TONI2_TRIAD1 walk_to 869.375 -656.0 
 0395: clear_area 1 at 868.5 -637.0 range 15.0 1.0 
 
 009A: $TONI2_TRIAD2 = create_char PEDTYPE_GANG_TRIAD model #GANG03 at 868.5 -637.0 -100.0
 0173: set_actor $TONI2_TRIAD2 z_angle_to 180.0 
-01B2: give_actor $TONI2_TRIAD2 weapon WEAPONTYPE_UZI ammo 200 
-035F: set_actor $TONI2_TRIAD2 armour_to 100
+01B2: give_actor $TONI2_TRIAD2 weapon WEAPONTYPE_PISTOL ammo 200 
 015F: set_camera_position 869.6875 -666.0 16.0 0.0 rotation 0.0 0.0 
 0159: camera_on_ped $TONI2_TRIAD1 mode FIXED switchstyle INTERPOLATION 
 0001: wait 2500 ms 
 0395: clear_area 1 at 869.375 -688.0 range 15.0 1.0 
 
 009A: $TONI2_TRIAD3 = create_char PEDTYPE_GANG_TRIAD model #GANG04 at 869.375 -688.0 -100.0
-01B2: give_actor $TONI2_TRIAD3 weapon WEAPONTYPE_PISTOL ammo 100
-035F: set_actor $TONI2_TRIAD3 armour_to 100
+01B2: give_actor $TONI2_TRIAD3 weapon WEAPONTYPE_BASEBALLBAT ammo 1 
 0211: actor $TONI2_TRIAD3 walk_to 869.375 -678.0 
 0395: clear_area 1 at 868.5 -690.0 range 15.0 1.0
  
 009A: $TONI2_TRIAD4 = create_char PEDTYPE_GANG_TRIAD model #GANG04 at 868.5 -690.0 -100.0
-01B2: give_actor $TONI2_TRIAD4 weapon WEAPONTYPE_UZI ammo 200 
-035F: set_actor $TONI2_TRIAD4 armour_to 100
+01B2: give_actor $TONI2_TRIAD4 weapon WEAPONTYPE_PISTOL ammo 100 
 0159: camera_on_ped $TONI2_TRIAD3 mode FIXED switchstyle INTERPOLATION 
 0001: wait 2500 ms 
 0395: clear_area 1 at 892.5625 -666.0 range 15.0 4.0 
@@ -201,10 +206,8 @@ end
 0175: set_car $TONI2_TRIAD_VAN z_angle_to 180.0 
 0129: $TONI2_TRIAD5 = create_actor PEDTYPE_GANG_TRIAD #GANG03 in_car $TONI2_TRIAD_VAN driverseat
 01C8: $TONI2_TRIAD6 = create_actor PEDTYPE_GANG_TRIAD model #GANG03 in_car $TONI2_TRIAD_VAN passenger_seat 0
-01B2: give_actor $TONI2_TRIAD5 weapon WEAPONTYPE_UZI ammo 200 
-01B2: give_actor $TONI2_TRIAD6 weapon WEAPONTYPE_PISTOL ammo 100 
-035F: set_actor $TONI2_TRIAD5 armour_to 100
-035F: set_actor $TONI2_TRIAD6 armour_to 100 
+01B2: give_actor $TONI2_TRIAD5 weapon WEAPONTYPE_PISTOL ammo 27 
+01B2: give_actor $TONI2_TRIAD6 weapon WEAPONTYPE_BASEBALLBAT ammo 1 
 00A9: car_set_idle $TONI2_TRIAD_VAN 
 0158: camera_on_vehicle $TONI2_TRIAD_VAN mode FIXED switchstyle INTERPOLATION 
 01D3: actor $TONI2_TRIAD6 leave_car $TONI2_TRIAD_VAN
