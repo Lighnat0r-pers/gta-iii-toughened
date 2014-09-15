@@ -90,8 +90,11 @@ end
 02CE: get_ground_z_for_3d_coord 540.0 -935.0 100.0 store_to $GROUND_EIGHT
 
 0107: $RAMP_EIGHT = create_object #JUMP_BOX1 at 582.5 -930.0 38.3
+0107: $RAMP_EIGHT2 = create_object #JUMP_BOX1 at 582.5 -930.0 38.3
 01C7: remove_object_from_mission_cleanup_list $RAMP_EIGHT 
+01C7: remove_object_from_mission_cleanup_list $RAMP_EIGHT2
 0177: set_object $RAMP_EIGHT z_angle_to 90.0
+0177: set_object $RAMP_EIGHT2 z_angle_to 90.0
 /*
 if
 	8038:   not $FAILED_ONCE_EIGHT == 1
@@ -594,6 +597,7 @@ then
 	0108: destroy_object $BROKEN_BRIDGE_REMAINS 
 	0108: destroy_object $BROKEN_BRIDGE_POLICE_CARS
 	0108: destroy_object $RAMP_EIGHT 
+	0108: destroy_object $RAMP_EIGHT2
 	if
 		0038:   $DEBUGUNLOCKISLANDS == 0
 	then 
@@ -1375,7 +1379,7 @@ return
 if 
 	0038:   $FLAG_REACHED_HIDEOUT == 0 
 then
-	0255: set_critical_mission_restart_at 811.875 -939.9375 35.75 angle 180.0 // New bridge restart
+	0255: set_critical_mission_restart_at 540.0 -937.6 $GROUND_EIGHT angle 180.0 // New bridge restart
 else
 	0255: set_critical_mission_restart_at 883.5 -308.1875 7.5625 angle 90.0 // Player hideout
 end
