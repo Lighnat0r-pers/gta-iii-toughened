@@ -15,7 +15,7 @@ while true
 		0038:   $DISPLAYED_PISTOL_NOW_AT_AMMUNITION_HELP_TEXT == 0
 	then
 		0215: destroy_pickup $SHOP_PISTOL
-		0213: $AMMUNATION_COLT_PICKUP = create_pickup #COLT45 type PICKUP_IN_SHOP at 1068.5 -400.75 15.1875 
+		0213: $AMMUNATION_COLT_PICKUP = create_pickup #COLT45 type PICKUP_IN_SHOP at 1068.5 -400.75 15.1875
 		014D: text_pager 'COLT_IN' 140 2 0  // The Pistol is now in stock at Ammunation!
 		0004: $DISPLAYED_PISTOL_NOW_AT_AMMUNITION_HELP_TEXT = 1
 		end_thread
@@ -39,6 +39,7 @@ while true
 		0038:   $ONMISSION == 0
 		0038:   $DISPLAYED_UZI_NOW_AT_AMMUNITION_HELP_TEXT == 0
 	then
+		0215: destroy_pickup $SHOP_UZI 
 		0213: $AMMUNATION_UZI_PICKUP = create_pickup #UZI type PICKUP_IN_SHOP at 1070.5 -400.75 15.1875
 		014D: text_pager 'UZI_IN' 140 2 0  // The Uzi is now in stock at Ammunation!
 		0004: $DISPLAYED_UZI_NOW_AT_AMMUNITION_HELP_TEXT = 1

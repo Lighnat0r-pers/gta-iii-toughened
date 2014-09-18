@@ -30,8 +30,8 @@ then
 	//0055: set_player_coordinates $PLAYER_CHAR to 892.75 -425.75 13.875
 
 	02A7: $LUIGI_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_LUIGI at 892.75 -425.75 13.875
-	//004F: create_thread @LUIGI_MISSION2_LOOP		//DONT SPANK MA BITCH UP
-	004F: create_thread @LUIGI_MISSION3_LOOP		//DRIVE MISTY FOR ME
+	004F: create_thread @LUIGI_MISSION2_LOOP		//DONT SPANK MA BITCH UP
+	//004F: create_thread @LUIGI_MISSION3_LOOP		//DRIVE MISTY FOR ME
 
 
 
@@ -62,7 +62,7 @@ then
 	004F: create_thread @FRANKIE_MISSION1_LOOP		//CHAPERONE
 	//004F: create_thread @FRANKIE_MISSION2_LOOP		//CUTTING THE GRASS
 	//004F: create_thread @FRANKIE_MISSION21_LOOP		//BOMB DA BASE ACT I
-	004F: create_thread @FRANKIE_MISSION3_LOOP		//BOMB DA BASE ACT II
+	//004F: create_thread @FRANKIE_MISSION3_LOOP		//BOMB DA BASE ACT II
 	//004F: create_thread @FRANKIE_MISSION4_LOOP		//LAST REQUESTS
 
 
@@ -89,7 +89,7 @@ then
 	//0055: set_player_coordinates $PLAYER_CHAR to 84.0625 -1548.688 28.25
 
 	02A7: $DONALD_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_DON at 86.0625 -1548.688 28.25
-	// 004F: create_thread @LOVE_MISSION1_LOOP		//LIBERATOR ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//004F: create_thread @LOVE_MISSION1_LOOP		//LIBERATOR
 	//004F: create_thread @LOVE_MISSION2_LOOP		//WAKA GASHIRA WIPEOUT
 	//004F: create_thread @LOVE_MISSION3_LOOP		//A DROP IN THE OCEAN
 	//004F: create_thread @LOVE_MISSION4_LOOP		//GRAND THEFT AERO
@@ -99,7 +99,7 @@ then
 	//0055: set_player_coordinates $PLAYER_CHAR to 365.9375 -328.0 20.25
 
 	02A7: $ASUKA2_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_ASUKA at 366.9375 -328.0 20.25
-	// 004F: create_thread @ASUKA_SUBURBAN_MISSION1_LOOP		//BAIT ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//004F: create_thread @ASUKA_SUBURBAN_MISSION1_LOOP		//BAIT
 	//004F: create_thread @ASUKA_SUBURBAN_MISSION2_LOOP		//ESPRESSO 2 GO
 	//004F: create_thread @ASUKA_SUBURBAN_MISSION3_LOOP		//SAM
 

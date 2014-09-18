@@ -106,7 +106,7 @@ end
 00A5: $CAR_EIGHTBALL = create_car #BANSHEE at 540.0 -938.0 $GROUND_EIGHT
 0229: set_car $CAR_EIGHTBALL color_to 58 1 
 0175: set_car $CAR_EIGHTBALL z_angle_to 270.0
-0224: set_car $CAR_EIGHTBALL health_to 500 
+0224: set_car $CAR_EIGHTBALL health_to 500.0 
 
 0055: set_player_coordinates $PLAYER_CHAR to 540.0 -937.6 -100.0
 0171: set_player $PLAYER_CHAR z_angle_to 180.0 
@@ -559,15 +559,16 @@ then
 	end
 	0177: set_object $PORTLAND_HIDEOUT_DOOR z_angle_to 0.0 
 	023C: load_special_actor 'EIGHT2' as 1 
-	0247: request_model #KURUMA 
+	0247: request_model #MRWHOOP 
 	038B: load_all_models_now 
 	009A: $EIGHTBALL = create_char PEDTYPE_SPECIAL model #SPECIAL01 at 884.25 -309.1875 7.562
 	0245: set_actor $EIGHTBALL walk_style_to ANIM_GANG2_PED
 	0173: set_actor $EIGHTBALL z_angle_to 90.0 
 	01ED: clear_actor $EIGHTBALL threat_search 
-	00A5: $CAR_EIGHTBALL = create_car #KURUMA at $CAR_8BALL_X $CAR_8BALL_Y $CAR_8BALL_Z
+	00A5: $CAR_EIGHTBALL = create_car #MRWHOOP at $CAR_8BALL_X $CAR_8BALL_Y $CAR_8BALL_Z
 	0175: set_car $CAR_EIGHTBALL z_angle_to $CAR_8BALL_HEADING 
-	0229: set_car $CAR_EIGHTBALL color_to $CAR_COLOUR1_8BALL $CAR_COLOUR2_8BALL 
+	0229: set_car $CAR_EIGHTBALL color_to 0 0
+	0224: set_car $CAR_EIGHTBALL health_to 500.0 
 	01B7: release_weather 
 	01D5: actor $PLAYER_ACTOR go_to_and_drive_car $CAR_EIGHTBALL 
 	01D4: actor $EIGHTBALL go_to_car $CAR_EIGHTBALL and_enter_it_as_a_passenger 
@@ -1418,7 +1419,8 @@ return
 0249: release_model #INDHIBUILD3 
 0249: release_model #LUIGICLUBOUT 
 0249: release_model #LUIGIINEERCLUB 
-0249: release_model #KURUMA 
+0249: release_model #MRWHOOP 
+0249: release_model #BANSHEE 
 0164: disable_marker $RADAR_BLIP_COORD1_EIGHTBALL 
 0164: disable_marker $RADAR_BLIP_COORD2_EIGHTBALL 
 0164: disable_marker $RADAR_BLIP_CAR1_EIGHTBALL 

@@ -315,13 +315,13 @@ end //while
 
 0004: $FLAG_PLAYER_IN_CAR_LM2 = 1 
 0335: set_free_paynspray_to 1 
+0329:   garage $PORTLAND_PAYNSPRAY_GARAGE respray_done
 
 :RESPRAY_BIT_LUIGI2
 0164: disable_marker $LUIGI2_DEALER_CAR_MARKER 
 02A8: $LUIGI2_SPRAYSHOP_MARKER = create_marker RADAR_SPRITE_SPRAY at 924.0 -361.0 10.0 
 03BC: $SPHERE1_LM2 = create_sphere 925.0625 -350.5 9.25 radius 2.5 
 0004: $CURRENT_STEP_FOR_BLIP_MANIPULATION = 1
-0329:   garage $PORTLAND_PAYNSPRAY_GARAGE respray_done
 
 // waiting for the player to respray the car
 

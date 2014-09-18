@@ -231,7 +231,7 @@ end //while
 0175: set_car $LIPSFORELLI_CAR z_angle_to 90.0 
 0294: set_car $LIPSFORELLI_CAR resprayable_to 0 
 0186: $BLIP1_JM1 = create_marker_above_car $LIPSFORELLI_CAR 
-0004: $COUNTDOWN_JM1 = 121000 
+0004: $COUNTDOWN_JM1 = 151000 
 014E: start_timer_at $COUNTDOWN_JM1 
 
 gosub @CHECK_VEHICLE_STATUS_JOEY1
@@ -497,7 +497,7 @@ then
 		01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 1 
 		01B4: set_player $PLAYER_CHAR controllable 0 
 		02A3: toggle_widescreen 1 
-		015F: set_camera_position 1337.813 -468.625 49.75 0.0 rotation 0.0 0.0 
+		015F: set_camera_position 1337.813 -468.625 49.75 rotation 0.0 0.0 0.0 
 		0160: point_camera 1337.0 -468.0 49.9375 switchstyle JUMP_CUT
 		wait 3000 ms
 		00BC: print_now 'NOBOMB1' duration 3000 ms flag 1  // Hmm.. Nothing seems to be happening. 
@@ -514,7 +514,7 @@ then
 		02A3: toggle_widescreen 0 
 		01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 0 
 		02EB: restore_camera_jumpcut
-		014E: start_timer_at $1763
+		014E: start_timer_at $COUNTDOWN_JM1
 		0004: $JOEY1_FAKEBOMB_CUTSCENE_PLAYED = 1
 	end
 end
