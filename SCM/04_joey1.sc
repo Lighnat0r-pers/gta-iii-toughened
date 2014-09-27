@@ -231,7 +231,7 @@ end //while
 0175: set_car $LIPSFORELLI_CAR z_angle_to 90.0 
 0294: set_car $LIPSFORELLI_CAR resprayable_to 0 
 0186: $BLIP1_JM1 = create_marker_above_car $LIPSFORELLI_CAR 
-0004: $COUNTDOWN_JM1 = 151000 
+0004: $COUNTDOWN_JM1 = 166000 
 014E: start_timer_at $COUNTDOWN_JM1 
 
 gosub @CHECK_VEHICLE_STATUS_JOEY1
