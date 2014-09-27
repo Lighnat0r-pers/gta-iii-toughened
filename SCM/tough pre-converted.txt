@@ -49490,7 +49490,7 @@ $TESTMISSION = 49
 010E: set_player $PLAYER_CHAR minimum_wanted_level_to 3 // EDITED 
 0319: set_actor $MARIA wander_state_to 1 
 0054: store_player $PLAYER_CHAR position_to $2074 $2075 $2076 
-0239: actor $MARIA run_to 1259.2 -1105.4 
+0239: actor $MARIA run_to 1259.2 -1105.4 //EDITED
 0006: 17@ = 0
 0004: $2018 = 9 // integer values 
 
@@ -49505,12 +49505,12 @@ $TESTMISSION = 49
 0002: jump @FRANK1_13039 
 
 :FRANK1_12984
-00D6: if or
+00D6: if or //EDITED
 00EC:   actor $MARIA 0 1259.2 -1105.4 radius 0.5 0.5 
 0019:   17@ > 10000 // To prevent softlock in case the position is blocked. 
 004D: jump_if_false @FRANK1_13039 
-00BC: text_highpriority 'TEST1' 4000 ms 2
-01D2: actor $MARIA follow_player $PLAYER_CHAR 
+00BC: text_highpriority 'TEST1' 4000 ms 2 //EDITED
+01D2: actor $MARIA follow_player $PLAYER_CHAR //EDITED
 00D6: if 
 00E9:   player $PLAYER_CHAR 0 $MARIA radius 4.0 4.0 
 004D: jump_if_false @FRANK1_13039 
@@ -52829,7 +52829,7 @@ $TESTMISSION = 49
 
 :FRANK2_8023
 00D6: if 
-00FB:   player $PLAYER_CHAR 0 $CURLY_BOB radius 40.0 40.0 40.0 
+00FB:   player $PLAYER_CHAR 0 $CURLY_BOB radius 40.0 40.0 40.0 //EDITED
 004D: jump_if_false @FRANK2_8093 
 00D6: if 
 0038:   $2124 == 0 // integer values 

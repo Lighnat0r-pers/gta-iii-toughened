@@ -610,7 +610,7 @@ then
 			while fading
 				wait 0 ms
 			end
-			// 0417: start_mission M13_CHAPERONE
+			0417: start_mission M13_CHAPERONE
 		end
 		if
 			8256:   not is_player $PLAYER_CHAR defined
@@ -658,7 +658,7 @@ then
 			while fading
 				wait 0 ms
 			end
-			// 0417: start_mission M14_CUTTINGTHEGRASS
+			0417: start_mission M14_CUTTINGTHEGRASS
 		end
 		if
 			8256:   not is_player $PLAYER_CHAR defined
@@ -709,7 +709,7 @@ then
 				while fading
 					wait 0 ms
 				end
-				// 0417: start_mission M15_BOMBDABASEACTI
+				0417: start_mission M15_BOMBDABASEACTI
 			end
 			if
 				8256:   not is_player $PLAYER_CHAR defined
@@ -765,7 +765,7 @@ then
 			while fading
 				wait 0 ms
 			end
-			// 0417: start_mission M16_BOMBDABASEACTII
+			0417: start_mission M16_BOMBDABASEACTII
 		end
 		if
 			8256:   not is_player $PLAYER_CHAR defined
