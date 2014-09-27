@@ -90,11 +90,10 @@ end
 02CE: get_ground_z_for_3d_coord 540.0 -935.0 100.0 store_to $GROUND_EIGHT
 
 0107: $RAMP_EIGHT = create_object #JUMP_BOX1 at 582.5 -930.0 38.3
-0107: $RAMP_EIGHT2 = create_object #JUMP_BOX1 at 582.5 -930.0 38.3
-01C7: remove_object_from_mission_cleanup_list $RAMP_EIGHT 
-01C7: remove_object_from_mission_cleanup_list $RAMP_EIGHT2
+//01C7: remove_object_from_mission_cleanup_list $RAMP_EIGHT 
 0177: set_object $RAMP_EIGHT z_angle_to 90.0
-0177: set_object $RAMP_EIGHT2 z_angle_to 90.0
+0382: set_object $RAMP_EIGHT collision_detection 1
+
 /*
 if
 	8038:   not $FAILED_ONCE_EIGHT == 1
@@ -266,7 +265,8 @@ gosub @CHECK_CLEAR_PLAYER_WANTED_LEVEL
 gosub @CHECK_EIGHT_STATUS_EIGHTBALL
 gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 
-018A: $RADAR_BLIP_COORD1_EIGHTBALL = create_checkpoint_at 875.0 -309.0 -100.0
+02CE: get_ground_z_for_3d_coord 875.0 -309.0 -100.0 store_to $GROUND_SAFEHOUSE_EIGHT
+018A: $RADAR_BLIP_COORD1_EIGHTBALL = create_checkpoint_at 875.0 -309.0 $GROUND_SAFEHOUSE_EIGHT
 0004: $CURRENT_STEP_FOR_BLIP_MANIPULATION = 1 
 0006: 16@ = 0 
 0004: $BLOB_FLAG = 1 
@@ -299,6 +299,7 @@ while true
 	gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 	gosub @CHECK_IN_VEHICLE_STATUS_EIGHTBALL
 	gosub @CHECK_PLAYER_IN_RESTRICTED_AREA
+	gosub @CHECK_PLAYER_IN_PORTLAND_FOR_MARKER
 end
 
 03E6: remove_text_box 
@@ -598,7 +599,6 @@ then
 	0108: destroy_object $BROKEN_BRIDGE_REMAINS 
 	0108: destroy_object $BROKEN_BRIDGE_POLICE_CARS
 	0108: destroy_object $RAMP_EIGHT 
-	0108: destroy_object $RAMP_EIGHT2
 	if
 		0038:   $DEBUGUNLOCKISLANDS == 0
 	then 
@@ -1185,6 +1185,24 @@ wait 750 ms
 
 goto @MISSION_PASSED_EIGHTBALL
 
+////////////////////////////////////////////
+
+:CHECK_PLAYER_IN_PORTLAND_FOR_MARKER
+if and
+	0256:   is_player $PLAYER_CHAR defined 
+	8038:   not $SAFEHOUSE_MARKER_RECREATED_EIGHT == 1
+then
+	if
+		03C6:   current_island == LEVEL_INDUSTRIAL
+	then
+		0164: disable_marker $RADAR_BLIP_COORD1_EIGHTBALL 
+		wait 0 ms
+		018A: $RADAR_BLIP_COORD1_EIGHTBALL = create_checkpoint_at 875.0 -309.0 $GROUND_SAFEHOUSE_EIGHT
+		0004: $SAFEHOUSE_MARKER_RECREATED_EIGHT = 1
+	end
+end
+return
+
 
 ////////////////////////////////////////////
 
@@ -1245,7 +1263,7 @@ else
 		if
 			0038:   $CURRENT_STEP_FOR_BLIP_MANIPULATION == 1
 		then
-			018A: $RADAR_BLIP_COORD1_EIGHTBALL = create_checkpoint_at 875.0 -309.0 -100.0
+			018A: $RADAR_BLIP_COORD1_EIGHTBALL = create_checkpoint_at 875.0 -309.0 $GROUND_SAFEHOUSE_EIGHT
 		else
 			018A: $RADAR_BLIP_COORD2_EIGHTBALL = create_checkpoint_at 906.1875 -426.0 -100.0  
 		end
