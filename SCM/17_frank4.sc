@@ -203,6 +203,7 @@ once at the docks (where a boat is already spawned) spawn asuka and have her + m
 :DIDNT_FALL_FOR_TRAP
 
 014D: text_pager 'FM4_1B' 140 10 2  // Salvatore might be listening in, so don't say anything. Drive us to the waterfront in Harwood.
+018A: $BLIP3_FM4 = create_checkpoint_at 766.0 -30.00 -100.0 
 
 // Create escape boat in Harwood.
 00A5: $BOAT_MAR = create_car #REEFER at 755.0 -42.5 -100.0
@@ -217,6 +218,8 @@ while 823D:   not special_actor 3 loaded
 	wait 0 ms
 end //while
 
+// Causes the blip on the car to be automatically removed by the code in place for checking if in car.
+0004: $FLAG_BLIP_ON_FAKE_BOMB_CAR = 1
 
 //Wait until the player is in the marker at the waterfront stopped in the car. Maria has to be there, as well.
 while true
@@ -241,12 +244,12 @@ end //while
 //Stuff to do when player reaches the waterfront.
 
 //Disable blip for fake boat
-0164: disable_marker $BLIP2_FM4 
+0164: disable_marker $BLIP2_FM4
+0164: disable_marker $BLIP3_FM4
 
 01B4: set_player $PLAYER_CHAR controllable 0
 0169: set_fade_color 0 0 0 
 016A: fade 0 for 1500 ms 
-
 0006: 16@ = 0 
 
 while true
@@ -261,29 +264,39 @@ while fading
 	wait 0 ms
 end
 
-00A1: set_char_coordinates $MARIA to 768.0 -29.5 1.75
+00AB: set_car_coordinates $BOAT_MAR to 755.0 -42.5 0.5 
+0175: set_car $BOAT_MAR z_angle_to 90.0
+
+wait 100 ms
+
+0362: remove_actor $MARIA from_car_and_place_at 759.0 -43.0 1.1
+00A1: set_char_coordinates $MARIA to 757.0 -41.5 1.75
 02A9: set_char_only_damaged_by_player $MARIA to 1 
-0173: set_actor $MARIA z_angle_to 17.0 
+0173: set_actor $MARIA z_angle_to 178.0 
 03FC: set_actor $MARIA stays_on_current_island 0 
 0438: set_actor $MARIA ignore_level_transitions 1 
-009A: $ASUKA = create_char PEDTYPE_SPECIAL model #SPECIAL03 at 767.5 -27.5 1.75
+009A: $ASUKA = create_char PEDTYPE_SPECIAL model #SPECIAL03 at 758.5 -43.0 1.1
 02A9: set_char_only_damaged_by_player $ASUKA to 1 
-0173: set_actor $ASUKA z_angle_to 178.0 
+0173: set_actor $ASUKA z_angle_to 17.0 
 03FC: set_actor $ASUKA stays_on_current_island 0 
 0438: set_actor $ASUKA ignore_level_transitions 1 
+
+wait 100 ms
+
 03F9: make_actors $MARIA $ASUKA converse_in 999999 ms 
 020E: actor $ASUKA look_at_actor $MARIA 
+020E: actor $MARIA look_at_actor $ASUKA 
 
 if and
 	8119:   not car $BOAT_MAR wrecked
 	00E0:   is_player_in_any_car $PLAYER_CHAR 
 then
-	012A: put_player $PLAYER_CHAR at 766.375 -21.0 1.0 and_remove_from_car
+	012A: put_player $PLAYER_CHAR at 755.375 -43.0 1.0 and_remove_from_car
 end
 
 0369: put_player $PLAYER_CHAR in_car $BOAT_MAR 
 
-015F: set_camera_position 780.0 -33.0 10.0 rotation 0.0 0.0 0.0 
+015F: set_camera_position 770.0 -45.0 10.0 rotation 0.0 0.0 0.0 
 0157: camera_on_player $PLAYER_CHAR mode FIXED switchstyle JUMP_CUT
 
 0369: put_player $PLAYER_CHAR in_car $BOAT_MAR
@@ -308,7 +321,7 @@ end
 if
 	8119:   not car $BOAT_MAR wrecked 
 then
-	018A: $FLAG_PLAYER_GOT_FRANK4_MESSAGE = create_checkpoint_at 565.25 -678.375 -100.0 
+	018A: $BLIP4_FM4 = create_checkpoint_at 565.25 -665.375 -100.0 
 	0186: $BOAT_BLIP = create_marker_above_car $BOAT_MAR 
 end
 
@@ -325,8 +338,6 @@ then
 	0323: enable_boat $BOAT_MAR anchor 0  
 end
 
-0004: $FLAG_BLIP_ON_FAKE_BOMB_CAR = 1 
-
 if or
 	0118:   actor $ASUKA dead 
 	0118:   actor $MARIA dead
@@ -340,9 +351,9 @@ end
 //Wait for the player to reach the marker in staunton.
 while true
 	if or
-		8057:   not is_player_in_area_3d $PLAYER_CHAR coords 565.25 -678.375 -2.0 to 575.25 -688.375 4.0 sphere 1 
-		80A4:   not is_char_in_area_3d $MARIA from 565.25 -678.375 -2.0 to 575.25 -688.375 4.0 sphere 0 
-		80A4:   not is_char_in_area_3d $ASUKA from 565.25 -678.375 -2.0 to 575.25 -688.375 4.0 sphere 0 
+		8057:   not is_player_in_area_3d $PLAYER_CHAR coords 565.25 -660.375 -2.0 to 575.25 -670.375 4.0 sphere 1 
+		80A4:   not is_char_in_area_3d $MARIA from 565.25 -660.375 -2.0 to 575.25 -670.375 4.0 sphere 0 
+		80A4:   not is_char_in_area_3d $ASUKA from 565.25 -660.375 -2.0 to 575.25 -670.375 4.0 sphere 0 
 	jf break
 	wait 0 ms
 	if
@@ -360,8 +371,8 @@ while true
 		00DC:   is_player_in_car $PLAYER_CHAR car $BOAT_MAR 
 		0038:   $FLAG_CAR_BLIP_DISPLAYED_FM4 == 1 
 	then
-		0164: disable_marker $FLAG_PLAYER_GOT_FRANK4_MESSAGE 
-		018A: $FLAG_PLAYER_GOT_FRANK4_MESSAGE = create_checkpoint_at 565.25 -678.375 -100.0 
+		0164: disable_marker $BLIP4_FM4 
+		018A: $BLIP4_FM4 = create_checkpoint_at 565.25 -678.375 -100.0 
 		0164: disable_marker $BOAT_BLIP 
 		0004: $FLAG_CAR_BLIP_DISPLAYED_FM4 = 0 
 	end
@@ -371,7 +382,7 @@ while true
 	then
 		0164: disable_marker $BOAT_BLIP 
 		0186: $BOAT_BLIP = create_marker_above_car $BOAT_MAR 
-		0164: disable_marker $FLAG_PLAYER_GOT_FRANK4_MESSAGE 
+		0164: disable_marker $BLIP4_FM4 
 		00BC: print_now 'IN_VEH' duration 5000 ms flag 1  // ~g~Hey! Get back in the vehicle!
 		0004: $FLAG_CAR_BLIP_DISPLAYED_FM4 = 1 
 	end
@@ -407,7 +418,7 @@ then
 end
 
 00BE: clear_prints 
-0164: disable_marker $FLAG_PLAYER_GOT_FRANK4_MESSAGE 
+0164: disable_marker $BLIP4_FM4 
 
 //EVERYONE OFF THE BOAT IN COMMERCIAL CUTSCENE*******************************************************************
 
@@ -574,7 +585,7 @@ if
 	0038:   $MARIA_PAGER_PLAYED == 0
 then
 	if or
-		0039:   17@ == 35000 // 35 sec, a time in which anyone should be able to reach the red light district
+		0019:   17@ > 35000 // 35 sec, a time in which anyone should be able to reach the red light district
 		0121:   player $PLAYER_CHAR in_zone 'REDLIGH'  // Red Light District
 	then
 		014D: text_pager 'FM4_1' 140 10 2  // This is Maria. The boat's a trap! Meet me in the alley in the Red Light District.
@@ -673,6 +684,7 @@ return
 01B6: set_weather WEATHER_SUNNY
 0164: disable_marker $BLIP1_FM4 
 0164: disable_marker $BLIP2_FM4 
+0164: disable_marker $BLIP3_FM4 
 
 0006: 16@ = 0 
 while true
@@ -807,7 +819,8 @@ goto @MISSION_END_FRANK4
 0004: $ON_MISSION_FOR_FRANK = 0 
 0164: disable_marker $BLIP1_FM4 
 0164: disable_marker $BLIP2_FM4 
-0164: disable_marker $FLAG_PLAYER_GOT_FRANK4_MESSAGE 
+0164: disable_marker $BLIP3_FM4 
+0164: disable_marker $BLIP4_FM4 
 0164: disable_marker $BOAT_BLIP 
 01B7: release_weather 
 0249: release_model #REEFER 
