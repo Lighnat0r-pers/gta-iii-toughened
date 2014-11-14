@@ -181,7 +181,11 @@ end
 018A: $BLIP2_FM4 = create_checkpoint_at 835.6875 -1091.688 -100.0 
 
 //Wait until the player is in the marker at the docks stopped in a car or on foot.
-while 80FA:   not player $PLAYER_CHAR stopped 1 827.25 -1084.25 6.75 radius 5.0 5.0 4.0 
+while true
+	if and
+		80FA:   not player $PLAYER_CHAR stopped 1 827.25 -1084.25 6.75 radius 5.0 5.0 4.0 // check in car
+		80F6:   not player $PLAYER_CHAR 0 827.25 -1084.25 6.75 radius 5.0 5.0 4.0 // check on foot
+	jf break
 	wait 0 ms
 	gosub @CHECK_MARIA_PAGER_FRANK4
 end //while
@@ -235,6 +239,9 @@ while true
 end //while
 
 //Stuff to do when player reaches the waterfront.
+
+//Disable blip for fake boat
+0164: disable_marker $BLIP2_FM4 
 
 01B4: set_player $PLAYER_CHAR controllable 0
 0169: set_fade_color 0 0 0 
@@ -318,7 +325,7 @@ then
 	0323: enable_boat $BOAT_MAR anchor 0  
 end
 
-0004: $FLAG_CAR_BLIP_DISPLAYED_FM4 = 1 
+0004: $FLAG_BLIP_ON_FAKE_BOMB_CAR = 1 
 
 if or
 	0118:   actor $ASUKA dead 
@@ -574,7 +581,7 @@ then
 		//Create car which the player needs to get in to receive instructions for the next part of the mission.
 		00A5: $FAKE_BOMB_CAR = create_car #CHEETAH at 951.0 -421.0 14.5625
 		0186: $BLIP1_FM4 = create_marker_above_car $FAKE_BOMB_CAR
-		01C8: $MARIA = create_actor PEDTYPE_SPECIAL model #SPECIAL02 in_car $FAKE_BOMB_CAR passenger_seat 1 
+		01C8: $MARIA = create_actor PEDTYPE_SPECIAL model #SPECIAL02 in_car $FAKE_BOMB_CAR passenger_seat 0 
 		01ED: clear_actor $MARIA threat_search 
 		035F: set_actor $MARIA armour_to 100 
 		039E: set_char_cant_be_dragged_out $MARIA to 1 
@@ -726,7 +733,9 @@ end
 wait 2000 ms
 
 020B: explode_car $BOMB_BOAT
-wait 10000 ms
+wait 5000 ms
+00BA: print_big 'RIP' duration 5000 ms style 1  // ~r~There is no escaping the inevitable...
+wait 5000 ms
 0322: kill_player $PLAYER_CHAR
 goto @MISSION_FAILED_FRANK4
 
