@@ -70,10 +70,10 @@ then
 	//0055: set_player_coordinates $PLAYER_CHAR to 523.6875 -644.0 16.0625
 
 	02A7: $ASUKA1_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_ASUKA at 523.6875 -643.0 16.0625
-	004F: create_thread @ASUKA_MISSION1_LOOP		//SAYONARA SALVATORE
+	//004F: create_thread @ASUKA_MISSION1_LOOP		//SAYONARA SALVATORE
 	//004F: create_thread @ASUKA_MISSION2_LOOP		//UNDER SURVEILLANCE
 	//004F: create_thread @ASUKA_MISSION3_LOOP		//PAPARAZZI PURGE
-	//004F: create_thread @ASUKA_MISSION4_LOOP		//PAYDAY FOR RAY
+	004F: create_thread @ASUKA_MISSION4_LOOP		//PAYDAY FOR RAY
 
 
 
@@ -159,6 +159,16 @@ while true
         	0087: 2@ = 10@
         	gosub @COORDS_FRACT
         	gosub @COORDS_DRAW
+		/*
+		if
+			0038:   $SHOULD_LAUGH == 1
+		then
+			0004: $SHOULD_LAUGH = 0
+		else
+			0004: $SHOULD_LAUGH = 1
+			004F: create_thread @LAUGHS
+		end
+		*/
 	end
         wait 250 ms
         03F0: text_draw_toggle  0

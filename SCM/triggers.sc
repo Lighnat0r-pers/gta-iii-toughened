@@ -864,7 +864,7 @@ then
 			while fading
 				wait 0 ms
 			end
-			// 0417: start_mission M18_SAYONARASALVATORE
+			0417: start_mission M18_SAYONARASALVATORE
 		end
 		if
 			8256:   not is_player $PLAYER_CHAR defined
@@ -909,7 +909,7 @@ then
 			while fading
 				wait 0 ms
 			end
-			// 0417: start_mission M19_UNDERSURVEILLANCE
+			0417: start_mission M19_UNDERSURVEILLANCE
 		end
 		if
 			8256:   not is_player $PLAYER_CHAR defined
@@ -954,7 +954,7 @@ then
 			while fading
 				wait 0 ms
 			end
-			// 0417: start_mission M20_PAPARAZZIPURGE
+			0417: start_mission M20_PAPARAZZIPURGE
 		end
 		if
 			8256:   not is_player $PLAYER_CHAR defined
@@ -999,7 +999,7 @@ then
 			while fading
 				wait 0 ms
 			end
-			// 0417: start_mission M21_PAYDAYFORRAY
+			0417: start_mission M21_PAYDAYFORRAY
 		end
 		if
 			8256:   not is_player $PLAYER_CHAR defined
@@ -1050,7 +1050,7 @@ then
 			while fading
 				wait 0 ms
 			end
-			// 0417: start_mission M22_SILENCETHESNEAK
+			0417: start_mission M22_SILENCETHESNEAK
 		end
 		if
 			8256:   not is_player $PLAYER_CHAR defined
@@ -1096,7 +1096,7 @@ then
 			while fading
 				wait 0 ms
 			end
-			// 0417: start_mission M23_ARMSSHORTAGE
+			0417: start_mission M23_ARMSSHORTAGE
 		end
 		if
 			8256:   not is_player $PLAYER_CHAR defined

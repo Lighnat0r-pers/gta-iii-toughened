@@ -653,7 +653,8 @@ return
 024A: $PHONE_RAY1 = create_phone_at 229.0625 -1537.563 
 024A: $PHONE_RAY2 = create_phone_at -53.5 -699.0 
 024A: $PHONE_RAY3 = create_phone_at 204.6875 -135.0625 
-024A: $PHONE_RAY4 = create_phone_at 60.1875 -964.75 
+024A: $PHONE_RAY4 = create_phone_at 60.1875 -964.75
+024A: $PHONE_RAY5 = create_phone_at 178.5 -15.75
 
 02A7: $LUIGI_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_LUIGI at 892.75 -425.75 13.875
 0164: disable_marker $LUIGI_MISSION_MARKER 

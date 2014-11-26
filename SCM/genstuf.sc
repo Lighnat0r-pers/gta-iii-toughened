@@ -896,3 +896,87 @@ return
 03C5: create_random_car_for_carpark 283.1875 -502.75 35.1875 89.4375 
 03C5: create_random_car_for_carpark 302.375 -485.5 35.1875 266.0 
 return
+
+:LAUGHS
+03A4: name_thread 'LAUGHS' 
+while 0038:   $SHOULD_LAUGH == 1
+	0209: 0@ = random_int_in_ranges 0 13 // 13 options
+//	if
+//		0039:   0@ == 0
+//	then
+		03CF: load_wav 'S1_F' 
+//	end
+
+/*
+	if
+		0039:   0@ == 1
+	then
+		03CF: load_wav 'LAUGH2'
+	end
+	if
+		0039:   0@ == 2
+	then
+		03CF: load_wav 'LAUGH3'
+	end
+	if
+		0039:   0@ == 3
+	then
+		03CF: load_wav 'LAUGH4'
+	end
+	if
+		0039:   0@ == 4
+	then
+		03CF: load_wav 'LAUGH5'
+	end
+	if
+		0039:   0@ == 5
+	then
+		03CF: load_wav 'LAUGH6'
+	end
+	if
+		0039:   0@ == 6
+	then
+		03CF: load_wav 'LAUGH7'
+	end
+	if
+		0039:   0@ == 7
+	then
+		03CF: load_wav 'LAUGH8'
+	end
+	if
+		0039:   0@ == 8
+	then
+		03CF: load_wav 'LAUGH9'
+	end
+	if
+		0039:   0@ == 9
+	then
+		03CF: load_wav 'LAUGHA'
+	end
+	if
+		0039:   0@ == 10
+	then
+		03CF: load_wav 'LAUGHB'
+	end
+	if
+		0039:   0@ == 11
+	then
+		03CF: load_wav 'LAUGHC'
+	end
+	if
+		0039:   0@ == 12
+	then
+		03CF: load_wav 'LAUGHD'
+	end
+*/
+	while 83D0:   not wav_loaded
+		wait 0 ms
+	end
+	03D1: play_wav
+	while 83D2:   now wav_ended
+		wait 0 ms
+	end
+	wait 100 ms
+	goto @LAUGHS // keep looping
+end //while
+end_thread

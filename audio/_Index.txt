@@ -1,5 +1,0 @@
-s3_aed.wav		original name: s3_a.wav
-Bomb Da Base Act II Eightball dialogue changed to no longer wait for the first shot to head in.
-
-s5_lrq.wav		original name: s5_lrq.wav !!!UNCHANGED!!!
-Last Requests intro cutscene changed to make Salvatore direct you to a boat instead of the car.
