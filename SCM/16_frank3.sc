@@ -406,46 +406,12 @@ end //while
 
 while true
 	if or
-		001B:   7000 > 16@ 
+		001B:   21000 > 16@ 
 		83D0:   not wav_loaded
 	jf break
 	wait 0 ms
 	gosub @CHECK_8BALL_STATUS_FRANK3
 	gosub @CHECK_8BALL_IN_RANGE_STATUS_FRANK3
-	if
-		0038:   $FLAG_GUN_HELP1_FM3 == 0 
-	then
-		03E5: text_box 'HELP7_A'  // Press and hold the~h~ ~k~~PED_LOCK_TARGET~ button ~w~to ~h~target~w~ with the sniper rifle.
-		0004: $FLAG_GUN_HELP1_FM3 = 1 
-	end
-end //while
-
-0006: 16@ = 0 
-
-while 001B:   7000 > 16@ 
-	wait 0 ms
-	gosub @CHECK_8BALL_STATUS_FRANK3
-	gosub @CHECK_8BALL_IN_RANGE_STATUS_FRANK3
-	if
-		0038:   $FLAG_GUN_HELP2_FM3 == 0 
-	then
-		03E5: text_box 'HELP8_A'  // Press the~h~ ~k~~PED_SNIPER_ZOOM_IN~ button ~w~to ~h~zoom in ~w~with the rifle and the~h~ ~k~~PED_SNIPER_ZOOM_OUT~ button ~w~to ~h~zoom out ~w~again.
-		0004: $FLAG_GUN_HELP2_FM3 = 1 
-	end
-end //while
-
-0006: 16@ = 0 
-
-while 001B:   7000 > 16@ 
-	wait 0 ms
-	gosub @CHECK_8BALL_STATUS_FRANK3
-	gosub @CHECK_8BALL_IN_RANGE_STATUS_FRANK3
-	if
-		0038:   $FLAG_GUN_HELP3_FM3 == 0 
-	then
-		03E5: text_box 'HELP9_A'  // Press the~h~ ~k~~PED_FIREWEAPON~ button ~w~to ~h~fire~w~ the sniper rifle.
-		0004: $FLAG_GUN_HELP3_FM3 = 1 
-	end
 end //while
 
 //sets up the default guards on the boat
@@ -635,7 +601,7 @@ while 8038:   not  $FLAG_BLOKE_IN_AREA_FM3 == 13
 					03D1: play_wav 
 					0004: $FLAG_PLAYED_8BALL_AUDIO_FM3 = 1
 				end
-				00BC: print_now 'FM3_8I' duration 5000 ms flag 1  // ~w~Get a good vantage point then I'll head in when you fire the first shot.
+				00BC: print_now 'FM3_8I' duration 5000 ms flag 1  // ~w~Get a good vantage point then I'll head in.
 				018A: $RADAR_BLIP_COORD3_FM3 = create_checkpoint_at 1498.688 -870.5 -100.0 
 				0004: $FLAG_BLOKE_IN_AREA_FM3 = 1 
 				0004: $FLAG_GOT_MESSAGE_FM3 = 1 
