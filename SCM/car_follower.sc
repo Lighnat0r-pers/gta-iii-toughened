@@ -16,14 +16,16 @@ while true
 end //while
 
 // Create the car
-00A5: $FOLLOW_CAR = create_car $FOLLOW_CAR_MODEL at $FOLLOW_CAR_START_X $FOLLOW_CAR_START_Y -100.0 
+03D3: get_closest_car_node_at $FOLLOW_CAR_START_X $FOLLOW_CAR_START_Y -100.0 store_to $FOLLOW_CAR_START_X $FOLLOW_CAR_START_Y $FOLLOW_CAR_START_Z heading $FOLLOW_CAR_START_ANGLE
+00A5: $FOLLOW_CAR = create_car $FOLLOW_CAR_MODEL at $FOLLOW_CAR_START_X $FOLLOW_CAR_START_Y $FOLLOW_CAR_START_Z
 02AA: set_car $FOLLOW_CAR immune_to_nonplayer 1 
 020A: set_car $FOLLOW_CAR door_status_to CARLOCK_LOCKED 
-02AC: set_car $IA_CAR_RM3 immunities 1 1 1 0 0 // Bulletproof, Fireproof, Explosion-proof
+02AC: set_car $FOLLOW_CAR immunities 1 1 1 0 0 // Bulletproof, Fireproof, Explosion-proof
+0175: set_car $FOLLOW_CAR z_angle_to $FOLLOW_CAR_START_ANGLE
 0129: $FOLLOW_DRIVER = create_actor PEDTYPE_GANG_COLOMBIAN $FOLLOW_DRIVER_MODEL in_car $FOLLOW_CAR driverseat 
 
 // Car AI
-00AE: set_car_driving_style $FOLLOW_CAR to DRIVINGMODE_AVOIDCARS
+00A8: car_wander_randomly $FOLLOW_CAR
 
 while 01FC:   player $PLAYER_CHAR near_car $FOLLOW_CAR radius 200.0 200.0 unknown 0 // Follower has not lost the player
 	wait 0 ms
@@ -36,32 +38,17 @@ while 01FC:   player $PLAYER_CHAR near_car $FOLLOW_CAR radius 200.0 200.0 unknow
 		// From this point all ranges will have to follow the player
 		0054: get_player_coordinates $PLAYER_CHAR store_to $PLAYER_X $PLAYER_Y $PLAYER_Z
 		00A7: car_goto_coordinates $FOLLOW_CAR coords $PLAYER_X $PLAYER_Y $PLAYER_Z
+		00AE: set_car_driving_style $FOLLOW_CAR to DRIVINGMODE_AVOIDCARS
 
 		if
-			01FC:   player $PLAYER_CHAR near_car $FOLLOW_CAR radius 70.0 70.0 unknown 0 //blend in with normal traffic, keep following player.
+			01FC:   player $PLAYER_CHAR near_car $FOLLOW_CAR radius 70.0 70.0 unknown 0 // Try to catch up level 1.
 		then
-			00AE: set_car_driving_style $FOLLOW_CAR to DRIVINGMODE_STOPFORCARS
-			00AD: set_car_cruise_speed $FOLLOW_CAR to 20.0 
+			00AD: set_car_cruise_speed $FOLLOW_CAR to 50.0 
 		else
-			// From this point all ranges will try to catch up to the player.
-			00AE: set_car_driving_style $FOLLOW_CAR to DRIVINGMODE_AVOIDCARS
-
 			if
-				01FC:   player $PLAYER_CHAR near_car $FOLLOW_CAR radius 110.0 110.0 unknown 0 // Try to catch up level 1.
+				01FC:   player $PLAYER_CHAR near_car $FOLLOW_CAR radius 120.0 120.0 unknown 0 // Try to catch up level 2.
 			then
-				00AD: set_car_cruise_speed $FOLLOW_CAR to 40.0 	
-			else
-				if
-					01FC:   player $PLAYER_CHAR near_car $FOLLOW_CAR radius 140.0 140.0 unknown 0 // Try to catch up level 2.
-				then
-					00AD: set_car_cruise_speed $FOLLOW_CAR to 50.0 	
-				else
-					if
-						01FC:   player $PLAYER_CHAR near_car $FOLLOW_CAR radius 170.0 170.0 unknown 0 // Try to catch up level 2.
-					then
-						00AD: set_car_cruise_speed $FOLLOW_CAR to 60.0 	
-					end
-				end
+				00AD: set_car_cruise_speed $FOLLOW_CAR to 75.0 	
 			end
 		end
 	end

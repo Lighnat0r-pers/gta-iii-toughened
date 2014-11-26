@@ -157,16 +157,9 @@ end
 0004: $COUNTDOWN_AS4 = 211000 
 014E: start_timer_at $COUNTDOWN_AS4 
 
-// Define the follow car and create the thread that will handle creation and ai.
-0004: $FOLLOW_CAR_MODEL = #COLUMB
-0004: $FOLLOW_DRIVER_MODEL = #GANG11
-0006: $FOLLOW_CAR_START_X = 460.0
-0006: $FOLLOW_CAR_START_Y = -722.5
-004F: create_thread @CAR_FOLLOWER
-
 0188: $BLIP1_AS4 = create_marker_above_object $PHONE_1_OBJ 
 024C: text_phone $PHONE_RAY1 'AM4_1E'  // Get to the Phone at the Hospital. 
-03CF: load_wav 'A4_E' 
+03CF: load_wav 'H5_A' 
 
 
 while true
@@ -198,13 +191,18 @@ end
 0396: pause_timer 0 
 0164: disable_marker $BLIP1_AS4 
 
-
+// Define the follow car and create the thread that will handle creation and ai.
+0004: $FOLLOW_CAR_MODEL = #COLUMB
+0004: $FOLLOW_DRIVER_MODEL = #GANG11
+0006: $FOLLOW_CAR_START_X = 295.0
+0006: $FOLLOW_CAR_START_Y = -1580.0
+004F: create_thread @CAR_FOLLOWER
 
 0188: $BLIP1_AS4 = create_marker_above_object $PHONE_5_OBJ 
 024C: text_phone $PHONE_RAY5 'AM4_1A'  // Get to the Phone in West Belleville Park.
 01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 0 
 03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 0 
-03CF: load_wav 'A4_G' 
+03CF: load_wav 'A4_A' 
 
 while true
 	if or
@@ -241,7 +239,7 @@ end
 024C: text_phone $PHONE_RAY2 'AM4_1B' // Get to the Phone on Liberty Campus.
 01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 0 
 03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 0 
-03CF: load_wav 'A4_H'
+03CF: load_wav 'A4_B'
 
 while true
 	if or
@@ -277,7 +275,7 @@ end
 024C: text_phone $PHONE_RAY3 'AM4_1C'  // Get to the Phone in South Belleville Park.
 01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 0 
 03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 0 
-03CF: load_wav 'A4_I' 
+03CF: load_wav 'A4_C' 
 
 while true
 	if or
@@ -311,7 +309,7 @@ end
 024C: text_phone $PHONE_RAY4 'AM4_1D'  // Meet me in the toilet block in the park.
 01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 0 
 03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 0 
-03CF: load_wav 'A4_J' 
+03CF: load_wav 'A4_D' 
 
 while true
 	if or
@@ -334,7 +332,7 @@ if
 then
 	0004: $SHAKE_FOLLOW_CAR_FAILED = 1
 	024C: text_phone $PHONE_RAY4 'AM4_1F'  // Get lost.
-	03CF: load_wav 'A4_F'
+	03CF: load_wav 'H5_B'
 end
 
 while 83C2:   not phone $PHONE_RAY4 answered 
