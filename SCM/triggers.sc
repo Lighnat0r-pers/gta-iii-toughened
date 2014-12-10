@@ -1142,7 +1142,7 @@ then
 			while fading
 				wait 0 ms
 			end
-			// 0417: start_mission M24_EVIDENCEDASH
+			0417: start_mission M24_EVIDENCEDASH
 		end
 		if
 			8256:   not is_player $PLAYER_CHAR defined
