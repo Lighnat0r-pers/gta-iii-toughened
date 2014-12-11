@@ -335,4 +335,9 @@ RED = 0
 //follow route
 FOLLOW_ROUTE_BACKFORWARD = 2
 
+//kill frenzy status
+FRENZY_ONGOING = 1
+FRENZY_PASSED = 2
+FRENZY_FAILED = 3
+
 END
