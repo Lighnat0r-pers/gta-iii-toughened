@@ -1,5 +1,5 @@
 #define AppName "GTA III Toughened"
-#define AppVersion "0.1"
+#define AppVersion "0.5"
 
 [Setup]
 AppName={#AppName}
@@ -25,13 +25,22 @@ WizardSmallImageFile=Sunrise (Logo).bmp
 ; SetupLogging=yes                                                          ACTIVATE THIS TO GENERATE A DEBUG LOG IN THE TEMP FOLDER
 
 [Files]
-Source: "{#AppName}.exe"; DestDir: "{app}"
-Source: "toughened.gxt"; DestDir: "{app}\TEXT"
-Source: "objtgh.dat"; DestDir: "{app}\data"
-Source: "tough.scm"; DestDir: "{app}\data"
-Source: "{#AppName} Readme.txt"; DestDir: "{app}"; Flags:isreadme
+Source: "{#AppName}.exe"; DestDir: "{app}";     
+Source: "toughened.gxt"; DestDir: "{app}\TEXT";
+Source: "objtgh.dat"; DestDir: "{app}\data";
+Source: "tough.scm"; DestDir: "{app}\data";   
+Source: "{#AppName} Readme.txt"; DestDir: "{app}"; Flags:isreadme;
 Source: "{#AppName} Install Guide.txt"; DestDir: "{app}";
 Source: "{#AppName} Update Checker.exe"; DestDir: "{app}";
+Source: "s3_aed.wav"; DestDir: "{app}\audio";
+Source: "s5_led.wav"; DestDir: "{app}\audio";
+Source: "a4_e.wav"; DestDir: "{app}\audio";
+Source: "a4_f.wav"; DestDir: "{app}\audio";
+Source: "a4_g.wav"; DestDir: "{app}\audio";
+Source: "a4_h.wav"; DestDir: "{app}\audio";
+Source: "a4_i.wav"; DestDir: "{app}\audio";
+Source: "a4_j.wav"; DestDir: "{app}\audio";
+; Radio stuff needs to be included here still.
 
 [Icons]
 Name: "{commondesktop}\{#AppName}"; Filename: "{app}\{#AppName}.exe"; Tasks: desktopicon
