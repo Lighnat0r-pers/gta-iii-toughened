@@ -46,7 +46,7 @@ goto @EIGHTBALL_MISSION_LOOP
 //#####################################################################################
 
 :LUIGI_MISSION2_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if or
 	0038:   $FLAG_STAUNTON_OPEN == 1 
 	0038:   $DONT_SPANK_MA_BITCH_UP_COMPLETED == 1
@@ -92,7 +92,7 @@ goto @LUIGI_MISSION2_LOOP
 
 
 :LUIGI_MISSION3_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if or
 	0038:   $FLAG_STAUNTON_OPEN == 1 
 	0038:   $DRIVE_MISTY_FOR_ME_COMPLETED == 1
@@ -143,7 +143,7 @@ goto @LUIGI_MISSION3_LOOP
 //#####################################################################################
 
 :JOEY_MISSION1_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if or
 	0038:   $FLAG_STAUNTON_OPEN == 1 
 	0038:   $MIKE_LIPS_LAST_LUNCH_COMPLETED == 1
@@ -211,7 +211,7 @@ end
 goto @JOEY_MISSION1_LOOP
 
 :JOEY_MISSION2_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if or
 	0038:   $FLAG_STAUNTON_OPEN == 1 
 	0038:   $FAREWELL_CHUNKY_COMPLETED == 1
@@ -256,7 +256,7 @@ end
 goto @JOEY_MISSION2_LOOP
 
 :JOEY_MISSION3_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if or
 	0038:   $FLAG_STAUNTON_OPEN == 1 
 	0038:   $VAN_HEIST_COMPLETED == 1
@@ -301,7 +301,7 @@ end
 goto @JOEY_MISSION3_LOOP
 
 :JOEY_MISSION4_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if or
 	0038:   $FLAG_STAUNTON_OPEN == 1 
 	0038:   $CIPRIANIS_CHAUFFEUR_COMPLETED == 1
@@ -352,7 +352,7 @@ goto @JOEY_MISSION4_LOOP
 //#####################################################################################
 
 :TONI_MISSION1_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if or
 	0038:   $FLAG_STAUNTON_OPEN == 1 
 	0038:   $TAKING_OUT_THE_LAUNDRY_COMPLETED == 1
@@ -397,7 +397,7 @@ end
 goto @TONI_MISSION1_LOOP
 
 :TONI_MISSION2_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if or
 	0038:   $FLAG_STAUNTON_OPEN == 1 
 	0038:   $THE_PICKUP_COMPLETED == 1
@@ -442,7 +442,7 @@ end
 goto @TONI_MISSION2_LOOP
 
 :TONI_MISSION3_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if or
 	0038:   $FLAG_STAUNTON_OPEN == 1 
 	0038:   $SALVATORES_CALLED_A_MEETING_COMPLETED == 1
@@ -487,7 +487,7 @@ end
 goto @TONI_MISSION3_LOOP
 
 :TONI_MISSION4_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if or
 	0038:   $FLAG_STAUNTON_OPEN == 1 
 	0038:   $TRIADS_AND_TRIBULATIONS_COMPLETED == 1
@@ -532,7 +532,7 @@ end
 goto @TONI_MISSION4_LOOP
 
 :TONI_MISSION5_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if or
 	0038:   $FLAG_STAUNTON_OPEN == 1 
 	0038:   $BLOW_FISH_COMPLETED == 1
@@ -583,7 +583,7 @@ goto @TONI_MISSION5_LOOP
 //#####################################################################################
 
 :FRANKIE_MISSION1_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if or
 	0038:   $FLAG_STAUNTON_OPEN == 1 
 	0038:   $CHAPERONE_COMPLETED == 1
@@ -631,7 +631,7 @@ goto @FRANKIE_MISSION1_LOOP
 
 
 :FRANKIE_MISSION2_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if or
 	0038:   $FLAG_STAUNTON_OPEN == 1 
 	0038:   $CUTTING_THE_GRASS_COMPLETED == 1
@@ -679,7 +679,7 @@ goto @FRANKIE_MISSION2_LOOP
 
 
 :FRANKIE_MISSION21_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if or
 	0038:   $FLAG_STAUNTON_OPEN == 1 
 	0038:   $BOMB_DA_BASE_ACT_I_COMPLETED == 1
@@ -740,7 +740,7 @@ goto @FRANKIE_MISSION21_LOOP
 
 
 :FRANKIE_MISSION3_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if or
 	0038:   $FLAG_STAUNTON_OPEN == 1 
 	0038:   $BOMB_DA_BASE_ACT_II_COMPLETED == 1
@@ -786,7 +786,7 @@ goto @FRANKIE_MISSION3_LOOP
 
 
 :FRANKIE_MISSION4_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if or
 	0038:   $FLAG_STAUNTON_OPEN == 1 
 	0038:   $LAST_REQUESTS_COMPLETED == 1
@@ -840,7 +840,7 @@ goto @FRANKIE_MISSION4_LOOP
 //#####################################################################################
 
 :ASUKA_MISSION1_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if
 	0038:   $SAYONARA_SALVATORE_COMPLETED == 1 
 then
@@ -885,7 +885,7 @@ goto @ASUKA_MISSION1_LOOP
 
 
 :ASUKA_MISSION2_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if
 	0038:   $UNDER_SURVEILLANCE_COMPLETED == 1 
 then
@@ -930,7 +930,7 @@ goto @ASUKA_MISSION2_LOOP
 
 
 :ASUKA_MISSION3_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if
 	0038:   $PAPARAZZI_PURGE_COMPLETED == 1 
 then
@@ -975,7 +975,7 @@ goto @ASUKA_MISSION3_LOOP
 
 
 :ASUKA_MISSION4_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if
 	0038:   $PAYDAY_FOR_RAY_COMPLETED == 1 
 then
@@ -1071,7 +1071,7 @@ goto @RAY_MISSION1_LOOP
 
 
 :RAY_MISSION2_LOOP
-0001: wait 0 ms
+wait 0 ms
 if
 	0038:   $ARMS_SHORTAGE_COMPLETED == 1 
 then
@@ -1117,7 +1117,7 @@ goto @RAY_MISSION2_LOOP
 
 
 :RAY_MISSION3_LOOP
-0001: wait 0 ms
+wait 0 ms
 if
 	0038:   $EVIDENCE_DASH_COMPLETED == 1 
 then
@@ -1168,7 +1168,7 @@ goto @RAY_MISSION3_LOOP
 //#####################################################################################
 
 :LOVE_MISSION1_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if
 	0038:   $LIBERATOR_COMPLETED == 1 
 then
@@ -1213,7 +1213,7 @@ goto @LOVE_MISSION1_LOOP
 
 
 :LOVE_MISSION2_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if
 	0038:   $WAKAGASHIRA_WIPEOUT_COMPLETED == 1 
 then
@@ -1258,7 +1258,7 @@ goto @LOVE_MISSION2_LOOP
 
 
 :LOVE_MISSION3_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 if
 	0038:   $A_DROP_IN_THE_OCEAN_COMPLETED == 1 
 then
@@ -1302,8 +1302,7 @@ end
 goto @LOVE_MISSION3_LOOP
 
 :LOVE_MISSION4_LOOP
-0001: wait $WAIT_TIME ms
-end_thread ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+wait $WAIT_TIME ms
 if
 	0038:   $GRAND_THEFT_AERO_COMPLETED == 1 
 then
@@ -1327,7 +1326,7 @@ then
 			while fading
 				wait 0 ms
 			end
-			// 0417: start_mission M28_GRANDTHEFTAERO ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			0417: start_mission M28_GRANDTHEFTAERO
 		end
 		if
 			8256:   not is_player $PLAYER_CHAR defined
@@ -1353,7 +1352,7 @@ goto @LOVE_MISSION4_LOOP
 //#####################################################################################
 
 :ASUKA_SUBURBAN_MISSION1_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 end_thread ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 if
 	0038:   $BAIT_COMPLETED == 1 
@@ -1398,7 +1397,7 @@ end
 goto @ASUKA_SUBURBAN_MISSION1_LOOP
 
 :ASUKA_SUBURBAN_MISSION2_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 end_thread ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 if
 	0038:   $ESPRESSO_2_GO_COMPLETED == 1 
@@ -1443,7 +1442,7 @@ end
 goto @ASUKA_SUBURBAN_MISSION2_LOOP
 
 :ASUKA_SUBURBAN_MISSION3_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 end_thread ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 if
 	0038:   $SAM_COMPLETED == 1 
@@ -1494,7 +1493,7 @@ goto @ASUKA_SUBURBAN_MISSION3_LOOP
 //#####################################################################################
 
 :CAT_MISSION1_LOOP
-0001: wait $WAIT_TIME ms
+wait $WAIT_TIME ms
 end_thread ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 if
 	0038:   $THE_EXCHANGE_COMPLETED == 1 
