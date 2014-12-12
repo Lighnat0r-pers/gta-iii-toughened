@@ -44,7 +44,7 @@ end_thread
 0004: $TONI4_ENEMY1_CLOSE_SECRET_DONE = 0
 0004: $TONI4_ENEMY2_CLOSE_SECRET_DONE = 0
 0004: $TONI4_ENEMY3_CLOSE_SECRET_DONE = 0
-0237: set_gang 1 primary_weapon_to WEAPONTYPE_UZI secondary_weapon_to WEAPONTYPE_PISTOL 
+0237: set_gang GANG_TRIAD primary_weapon_to WEAPONTYPE_UZI secondary_weapon_to WEAPONTYPE_PISTOL 
 0247: request_model #GANG01 
 0247: request_model #GANG02 
 0247: request_model #IND_NEWRIZZOS 
@@ -589,7 +589,7 @@ goto @MISSION_END_TONI4
 0249: release_model #GANG03 
 0249: release_model #GANG04 
 03F1: pedtype PEDTYPE_GANG_TRIAD add_threat THREAT_PLAYER1
-0237: set_gang 1 primary_weapon_to WEAPONTYPE_PISTOL secondary_weapon_to WEAPONTYPE_BASEBALLBAT 
+0237: set_gang GANG_TRIAD primary_weapon_to WEAPONTYPE_PISTOL secondary_weapon_to WEAPONTYPE_BASEBALLBAT 
 015C: set_zone_gang_info 'LITTLEI' DAY 17 300 0 0 0 0 0 0 20 
 015C: set_zone_gang_info 'LITTLEI' NIGHT 11 400 0 0 0 0 0 0 10 
 00D8: mission_has_finished

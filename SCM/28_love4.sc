@@ -1459,6 +1459,7 @@ then
 	else
 		0322: kill_player $PLAYER_CHAR
 	end
+	00BC: print_now 'BOOM' duration 5000 ms flag 1  // ~r~Boom goes the dynamite!
 end
 return
 
