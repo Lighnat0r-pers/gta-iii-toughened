@@ -39,7 +39,7 @@ end_thread
 0004: $IN_VAN2 = 0 
 0004: $IN_VAN3 = 0 
 0004: $IN_VAN4 = 0 
-0004: $TONI4_SECRET_DONE = 0
+0004: $TONI1_SECRET_DONE = 0
 0004: $TONI_SECRET_MESSAGE_FLAG = 0
 
 023C: load_special_actor 'TONY' as 1 
@@ -309,7 +309,7 @@ return
 :TONI1_SECRET
 if and
 	00F8:   player $PLAYER_CHAR stopped 0 940.0 -263.0 5.0 radius 5.0 5.0 5.0
-	0038:   $TONI4_SECRET_DONE == 0
+	0038:   $TONI1_SECRET_DONE == 0
 then
 	03BD: destroy_sphere $TONI1_SECRET_SPHERE
 	00BC: print_now 'TM1EX2' duration 6000 ms flag 1  // ~g~Good thinking! Misty must have lots of panties that need cleaning.
@@ -388,7 +388,7 @@ then
 	01B4: set_player $PLAYER_CHAR controllable 1 
 	01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 0 
 	03BD: destroy_sphere $TONI1_SECRET_SPHERE 
-	0004: $TONI4_SECRET_DONE = 1
+	0004: $TONI1_SECRET_DONE = 1
 	0004: $TONI_SECRET_MESSAGE_FLAG = 1
 end
 return
