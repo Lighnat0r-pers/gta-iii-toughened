@@ -202,7 +202,7 @@ once at the docks (where a boat is already spawned) spawn asuka and have her + m
 */
 :DIDNT_FALL_FOR_TRAP
 
-014D: text_pager 'FM4_1B' 140 10 2  // Salvatore might be listening in, so don't say anything. Drive us to the waterfront in Harwood.
+014D: text_pager 'FM4_1B' time_per_char 100 ms unknown_flags 10 2  // Salvatore might be listening in, so don't say anything. Drive us to the waterfront in Harwood.
 018A: $BLIP3_FM4 = create_checkpoint_at 766.0 -30.00 -100.0 
 
 // Create escape boat in Harwood.
@@ -588,7 +588,7 @@ then
 		0019:   17@ > 35000 // 35 sec, a time in which anyone should be able to reach the red light district
 		0121:   player $PLAYER_CHAR in_zone 'REDLIGH'  // Red Light District
 	then
-		014D: text_pager 'FM4_1' 140 10 2  // This is Maria. The boat's a trap! Meet me in the alley in the Red Light District.
+		014D: text_pager 'FM4_1' time_per_char 100 ms unknown_flags 10 2  // This is Maria. The boat's a trap! Meet me in the alley in the Red Light District.
 		//Create car which the player needs to get in to receive instructions for the next part of the mission.
 		00A5: $FAKE_BOMB_CAR = create_car #CHEETAH at 951.0 -421.0 14.5625
 		0186: $BLIP1_FM4 = create_marker_above_car $FAKE_BOMB_CAR

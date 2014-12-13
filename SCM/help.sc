@@ -16,7 +16,7 @@ while true
 	then
 		0215: destroy_pickup $SHOP_PISTOL
 		0213: $AMMUNATION_COLT_PICKUP = create_pickup #COLT45 type PICKUP_IN_SHOP at 1068.5 -400.75 15.1875
-		014D: text_pager 'COLT_IN' 140 2 0  // The Pistol is now in stock at Ammunation!
+		014D: text_pager 'COLT_IN' time_per_char 100 ms unknown_flags 2 0  // The Pistol is now in stock at Ammunation!
 		0004: $DISPLAYED_PISTOL_NOW_AT_AMMUNITION_HELP_TEXT = 1
 		end_thread
 	end
@@ -41,7 +41,7 @@ while true
 	then
 		0215: destroy_pickup $SHOP_UZI 
 		0213: $AMMUNATION_UZI_PICKUP = create_pickup #UZI type PICKUP_IN_SHOP at 1070.5 -400.75 15.1875
-		014D: text_pager 'UZI_IN' 140 2 0  // The Uzi is now in stock at Ammunation!
+		014D: text_pager 'UZI_IN' time_per_char 100 ms unknown_flags 2 0  // The Uzi is now in stock at Ammunation!
 		0004: $DISPLAYED_UZI_NOW_AT_AMMUNITION_HELP_TEXT = 1
 		end_thread
 	end
@@ -128,7 +128,7 @@ while true
 		if
 			0038:   $TRIADS_AND_TRIBULATIONS_COMPLETED == 0
 		then
-			014D: text_pager 'TONI_P' 140 2 0  // I've got some urgent work for you! -Toni
+			014D: text_pager 'TONI_P' time_per_char 100 ms unknown_flags 2 0  // I've got some urgent work for you! -Toni
 		end
 		004F: create_thread @TONI5_PAGER_LOOP
 		end_thread
@@ -157,7 +157,7 @@ while true
 			if
 				0038:   $BLOW_FISH_COMPLETED == 0
 			then
-				014D: text_pager 'TONI_P' 140 2 0  // I've got some urgent work for you! -Toni
+				014D: text_pager 'TONI_P' time_per_char 100 ms unknown_flags 2 0  // I've got some urgent work for you! -Toni
 			end
 			end_thread
 		end

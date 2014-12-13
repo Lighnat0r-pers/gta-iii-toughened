@@ -130,7 +130,7 @@ while 001A:   10 > $NUMBER_OF_PACKAGES_COLLECTED
     03E1: $NUMBER_OF_PACKAGES_COLLECTED = packages_found
 end
 030C: set_mission_points += 1
-014D: add_pager_message 'PAGEB1'  140  2  0   // Pistol delivered to hideout
+014D: text_pager 'PAGEB1' time_per_char 100 ms unknown_flags 2 0  // Pistol delivered to hideout
 0004: $EARNED_FREE_PISTOL = 1  
 
 while 001A:   20 > $NUMBER_OF_PACKAGES_COLLECTED  
@@ -138,7 +138,7 @@ while 001A:   20 > $NUMBER_OF_PACKAGES_COLLECTED
     03E1: $NUMBER_OF_PACKAGES_COLLECTED = packages_found
 end
 030C: set_mission_points += 1
-014D: add_pager_message 'PAGEB2'  140  2  0   // Uzi delivered to hideout
+014D: text_pager 'PAGEB2' time_per_char 100 ms unknown_flags 2 0  // Uzi delivered to hideout
 0004: $EARNED_FREE_UZI = 1  
 
 while 001A:   30 > $NUMBER_OF_PACKAGES_COLLECTED  
@@ -146,7 +146,7 @@ while 001A:   30 > $NUMBER_OF_PACKAGES_COLLECTED
     03E1: $NUMBER_OF_PACKAGES_COLLECTED = packages_found
 end
 030C: set_mission_points += 1
-014D: add_pager_message 'PAGEB5'  140  2  0   // Grenades delivered to hideout
+014D: text_pager 'PAGEB5' time_per_char 100 ms unknown_flags 2 0  // Grenades delivered to hideout
 0004: $EARNED_FREE_GRENADES = 1  
 
 while 001A:   40 > $NUMBER_OF_PACKAGES_COLLECTED  
@@ -154,7 +154,7 @@ while 001A:   40 > $NUMBER_OF_PACKAGES_COLLECTED
     03E1: $NUMBER_OF_PACKAGES_COLLECTED = packages_found
 end
 030C: set_mission_points += 1
-014D: add_pager_message 'PAGEB4'  140  2  0   // Shotgun delivered to hideout
+014D: text_pager 'PAGEB4' time_per_char 100 ms unknown_flags 2 0  // Shotgun delivered to hideout
 0004: $EARNED_FREE_SHOTGUN = 1  
 
 while 001A:   50 > $NUMBER_OF_PACKAGES_COLLECTED  
@@ -162,7 +162,7 @@ while 001A:   50 > $NUMBER_OF_PACKAGES_COLLECTED
     03E1: $NUMBER_OF_PACKAGES_COLLECTED = packages_found
 end
 030C: set_mission_points += 1
-014D: add_pager_message 'PAGEB3'  140  2  0   // Body armor delivered to hideout
+014D: text_pager 'PAGEB3' time_per_char 100 ms unknown_flags 2 0  // Body armor delivered to hideout
 0004: $EARNED_FREE_ARMOUR = 1  
 
 while 001A:   60 > $NUMBER_OF_PACKAGES_COLLECTED  
@@ -170,7 +170,7 @@ while 001A:   60 > $NUMBER_OF_PACKAGES_COLLECTED
     03E1: $NUMBER_OF_PACKAGES_COLLECTED = packages_found
 end
 030C: set_mission_points += 1
-014D: add_pager_message 'PAGEB6'  140  2  0   // molotovs delivered to hideout
+014D: text_pager 'PAGEB6' time_per_char 100 ms unknown_flags 2 0  // molotovs delivered to hideout
 0004: $EARNED_FREE_MOLOTOVS = 1  
 
 while 001A:   70 > $NUMBER_OF_PACKAGES_COLLECTED  
@@ -178,7 +178,7 @@ while 001A:   70 > $NUMBER_OF_PACKAGES_COLLECTED
     03E1: $NUMBER_OF_PACKAGES_COLLECTED = packages_found
 end
 030C: set_mission_points += 1
-014D: add_pager_message 'PAGEB7'  140  2  0   // AK47 delivered to hideout
+014D: text_pager 'PAGEB7' time_per_char 100 ms unknown_flags 2 0  // AK47 delivered to hideout
 0004: $EARNED_FREE_AK47 = 1  
 
 while 001A:   80 > $NUMBER_OF_PACKAGES_COLLECTED  
@@ -186,7 +186,7 @@ while 001A:   80 > $NUMBER_OF_PACKAGES_COLLECTED
     03E1: $NUMBER_OF_PACKAGES_COLLECTED = packages_found
 end
 030C: set_mission_points += 1
-014D: add_pager_message 'PAGEB8'  140  2  0   // Sniper rifle delivered to hideout
+014D: text_pager 'PAGEB8' time_per_char 100 ms unknown_flags 2 0  // Sniper rifle delivered to hideout
 0004: $EARNED_FREE_SNIPER = 1  
 
 while 001A:   90 > $NUMBER_OF_PACKAGES_COLLECTED  
@@ -194,7 +194,7 @@ while 001A:   90 > $NUMBER_OF_PACKAGES_COLLECTED
     03E1: $NUMBER_OF_PACKAGES_COLLECTED = packages_found
 end
 030C: set_mission_points += 1
-014D: add_pager_message 'PAGEB9'  140  2  0   // M16 delivered to hideout
+014D: text_pager 'PAGEB9' time_per_char 100 ms unknown_flags 2 0  // M16 delivered to hideout
 0004: $EARNED_FREE_M16 = 1  
 
 while 001A:   100 > $NUMBER_OF_PACKAGES_COLLECTED  
@@ -202,6 +202,6 @@ while 001A:   100 > $NUMBER_OF_PACKAGES_COLLECTED
     03E1: $NUMBER_OF_PACKAGES_COLLECTED = packages_found
 end
 030C: set_mission_points += 1
-014D: add_pager_message 'PAGEB10'  140  2  0    // Rocket Launcher delivered to hideout
+014D: text_pager 'PAGEB10' time_per_char 100 ms unknown_flags 2 0  // Rocket Launcher delivered to hideout
 0004: $EARNED_FREE_LAUNCHER = 1  
 end_thread
