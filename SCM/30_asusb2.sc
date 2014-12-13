@@ -73,9 +73,10 @@ end_thread
 0004: $FLAG_AS2_3 = 0 
 0004: $FLAG_PARTICLE_AS2 = 0 
 0004: $FLAG_GUARD1_CREATED = 0 
-0004: $KAPPA_TIME = 600000 
+0004: $KAPPA_TIME = 720000 
 0005: $KAPPA_CREATION_RADIUS = 150.0
 0004: $KAPPA_STALLS_TOTAL = 12
+0004: $BONUS_KAPPA_STALLS_TOTAL = 3
 0004: $AS2_MAP_MESSAGE_FLAG = 0
 0004: $KAPPA_STALLS_GET_BLIPS = 1
 0004: $AS2_MISSION_PART = 1
@@ -275,8 +276,8 @@ end
 03C4: set_status_text_to $COUNTER_KAPPA_DEAD COUNTER_DISPLAY_NUMBER 'KILLS'  // KILLS:
 0006: 16@ = 0 // For steam timer
 00BC: print_now 'AS2_12' duration 5000 ms flag 1  // ~g~Cruise Liberty's districts to find ~b~Espresso-2-Go stalls!
-00BD: print_soon 'AS2_12A' duration 5000 ms flag 1  // ~g~You will have 10 minutes before the Cartel warn their pushers!
-00BD: print_soon 'AS2EX0' duration 5000 ms flag 1 // ~p~You will get $10,000 for each stall destroyed. Useful if you're short on money!
+00BD: print_soon 'AS2_12A' duration 5000 ms flag 1  // ~g~You will have 12 minutes before the Cartel warn their pushers!
+00BD: print_soon 'AS2EX0' duration 5000 ms flag 1 // ~g~You will get $10,000 for each stall destroyed. Useful if you're short on money!
 0247: request_model #COFFEE 
 0247: request_model #COLUMB 
 0247: request_model #GANG11 
@@ -815,7 +816,6 @@ wait 1500 ms
 0151: remove_status_text $COUNTER_KAPPA_DEAD 
 03C4: set_status_text_to $COUNTER_BONUS_KAPPA_DEAD COUNTER_DISPLAY_NUMBER 'KILLS'  // KILLS:
 
-0004: $BONUS_KAPPA_STALLS_TOTAL = 3
 0004: $KAPPA_STALLS_GET_BLIPS = 0
 0004: $AS2_MISSION_PART = 2
 
