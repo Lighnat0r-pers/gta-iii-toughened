@@ -194,8 +194,8 @@ end
 // Define the follow car and create the thread that will handle creation and ai.
 0004: $FOLLOW_CAR_MODEL = #COLUMB
 0004: $FOLLOW_DRIVER_MODEL = #GANG11
-0006: $FOLLOW_CAR_START_X = 295.0
-0006: $FOLLOW_CAR_START_Y = -1580.0
+0005: $FOLLOW_CAR_START_X = 295.0
+0005: $FOLLOW_CAR_START_Y = -1580.0
 004F: create_thread @CAR_FOLLOWER
 
 0188: $BLIP1_AS4 = create_marker_above_object $PHONE_5_OBJ 
