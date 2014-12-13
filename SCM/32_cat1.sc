@@ -248,6 +248,10 @@ end
 0004: $COUNTDOWN_CAT1 = 421000 
 014E: start_timer_at $COUNTDOWN_CAT1 
 
+00A5: $CAT1_CAR_SECRET = create_car #COLUMB at -350.0 315.0 -100.0 
+0175: set_car $CAT1_CAR_SECRET z_angle_to 180.0 
+02AC: set_car $CAT1_CAR_SECRET immunities 1 1 1 1 1 
+
 if and
 	8118:   not actor $COLUBIAN_GUARD1 dead 
 	8118:   not actor $COLUBIAN_GUARD2 dead 
