@@ -31,6 +31,7 @@ end_thread
 03A4: name_thread 'JOEY3' 
 0001: wait 0 ms 
 0004: $IN_THE_LOCATE_JOEY3 = 0 
+0004: $JOEY3_AMBUSH_TRIGGERED = 0
 023C: load_special_actor 'JOEY' as 1 
 02F3: load_object #CUTOBJ01 'JOEYH' 
 02F3: load_object #CUTOBJ02 'PLAYERH' 
@@ -291,6 +292,11 @@ end
 
 0004: $FLAG_CAR_BLIP_DISPLAYED_JM3 = 1
 
+009A: $JOEY3_AMBUSH = create_char PEDTYPE_SPECIAL model #SPECIAL02 at 1453.0 -818.0 12.0
+0173: set_actor $JOEY3_AMBUSH z_angle_to 50.0 
+01B2: give_actor $JOEY3_AMBUSH weapon WEAPONTYPE_SHOTGUN ammo 20
+0243: set_actor $JOEY3_AMBUSH ped_stats_to PEDSTAT_TOUGH_GUY 
+011A: set_actor $JOEY3_AMBUSH search_threat THREAT_PLAYER1
 
 :GARAGE_STOP
 0006: 17@ = 0 
@@ -328,6 +334,13 @@ while true
 		then
 			0004: $IN_THE_LOCATE_JOEY3 = 0
 		end
+	end
+	if and
+		0038:   $JOEY3_AMBUSH_TRIGGERED == 0
+		00F5:   player $PLAYER_CHAR 0 1444.0 -811.0 11.75 radius 20.0 20.0 10.0
+	then
+		01CA: actor $JOEY3_AMBUSH kill_player $PLAYER_CHAR 
+		0004: $JOEY3_AMBUSH_TRIGGERED = 1 	
 	end
 end //while
 
