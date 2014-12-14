@@ -157,6 +157,12 @@ while true
 	wait 0 ms
 end //while
 
+00A5: $TONI2_TRIAD_VAN_FAKE = create_car #BELLYUP at 867.0 -663.5625 14.75
+0175: set_car $TONI2_TRIAD_VAN_FAKE z_angle_to 180.0 
+00A9: car_set_idle $TONI2_TRIAD_VAN_FAKE 
+02AC: set_car $TONI2_TRIAD_VAN_FAKE immunities 1 1 1 1 1 
+020A: set_car $TONI2_TRIAD_VAN_FAKE door_status_to CARLOCK_LOCKED
+
 while 8214:   not pickup $TONI2_BRIEFCASE picked_up 
 	wait 0 ms
 end
