@@ -42,6 +42,7 @@ end_thread
 0004: $BLOB_FLAG = 1 
 0004: $FLAG_CAMERA_MODE_LM3 = 0 
 0004: $CURRENT_STEP_FOR_BLIP_MANIPULATION = 0
+0004: $AMBUSH_TRIGGERED_LM3 = 0 
 
 // *****************************************START OF CUT_SCENE******************************
 
@@ -192,10 +193,17 @@ end
 0249: release_model #LUIGIINEERCLUB 
 03DE: set_ped_density_multiplier 1.0 
 023C: load_special_actor 'MISTY' as 2 
+0247: request_model #RHINO
+0247: request_model #CRIMINAL01
 
-while 823D:   not special_actor 2 loaded
+while true
+	if or
+		823D:   not special_actor 2 loaded
+		8248:   not model #RHINO available 
+		8248:   not model #CRIMINAL01 available 
+	jf break
 	wait 0 ms
-end
+end //while
 
 while fading
 	wait 0 ms
@@ -268,7 +276,6 @@ then
 		00DE:   is_player_in_model $PLAYER_CHAR model #MULE 
 		00DE:   is_player_in_model $PLAYER_CHAR model #AMBULAN 
 		00DE:   is_player_in_model $PLAYER_CHAR model #MRWHOOP 
-		00DE:   is_player_in_model $PLAYER_CHAR model #ENFORCER 
 	then
 		0004: $FLAG_CAMERA_MODE_LM3 = 1 
 	end
@@ -323,7 +330,6 @@ while 8042:   not  $DOOR1_POSITION_LM3 == 90.0
 	0177: set_object $MISTY_DOOR1 z_angle_to $DOOR1_POSITION_LM3 
 end //while
 
-wait 0 ms
 
 gosub @CHECK_MISTY_STATUS
 
@@ -412,6 +418,10 @@ end //while
 0004: $CURRENT_STEP_FOR_BLIP_MANIPULATION = 2
 0004: $BLOB_FLAG = 1 
 
+// ******************************************AMBUSH!*******************************************
+
+
+
 while true
 	if or
 		80E6:   not player $PLAYER_CHAR stopped $BLOB_FLAG 1196.0 -874.0 radius 3.0 4.0 
@@ -420,6 +430,17 @@ while true
 	wait 0 ms
 	gosub @CHECK_MISTY_STATUS
 	gosub @CHECK_MISTY_RANGE_STATUS
+	if
+		0038:   $AMBUSH_TRIGGERED_LM3 == 0
+	then
+		gosub @CHECK_AMBUSH_TRIGGER_LUIGI3
+	else
+		if
+			8119:   not car $AMBUSH_CAR_LM3 wrecked	
+		then
+			00AF: set_car_mission $AMBUSH_CAR_LM3 to MISSION_RAMPLAYER_FARAWAY 
+		end
+	end
 end //while
 
 0164: disable_marker $LUIGI3_JOEY_MARKER 
@@ -754,6 +775,85 @@ then
 end
 return
 
+////////////////////////////////////////
+
+:CHECK_AMBUSH_TRIGGER_LUIGI3
+0054: get_player_coordinates $PLAYER_CHAR store_to $PLAYER_X $PLAYER_Y $PLAYER_Z
+
+if
+	0020: $PLAYER_X > 960.0
+then
+	0004: $AMBUSH_LOCATION_FLAG_LM3 = 1
+	gosub @AMBUSH_LM3
+	0004: $AMBUSH_TRIGGERED_LM3 = 1
+else
+	if
+		0022: 920.0 > $PLAYER_X
+	then
+		0004: $AMBUSH_LOCATION_FLAG_LM3 = 2
+		gosub @AMBUSH_LM3
+		0004: $AMBUSH_TRIGGERED_LM3 = 1
+	else
+		if
+			0020: $PLAYER_Y > -185.0
+		then
+			00BC: print_now 'LM3EX1' duration 5000 ms flag 1  // ~r~Luigi wants a reliable driver. You went the wrong way!
+			goto @MISSION_FAILED_LUIGI3
+		end
+	end
+end
+return
+
+
+/////////////////////////////////////////
+
+:AMBUSH_LM3
+
+01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 1 
+01B4: set_player $PLAYER_CHAR controllable 0 
+02A3: toggle_widescreen 1 
+
+if
+	0038:   $AMBUSH_LOCATION_FLAG_LM3 == 1
+then
+	015F: set_camera_position 978.0 -259.0 13.0 rotation 0.0 0.0 0.0 
+	0395: clear_area 1 at 1002.0 -294.0 range 10.0 10.0
+	00A5: $AMBUSH_CAR_LM3 = create_car #RHINO at 1002.0 -294.0 5.0
+else
+	015F: set_camera_position 909.0 -257.0 13.0 rotation 0.0 0.0 0.0 
+	0395: clear_area 1 at 914.0 -296.0 range 10.0 10.0
+	00A5: $AMBUSH_CAR_LM3 = create_car #RHINO at 914.0 -296.0 -100.0 
+end
+wait 1000 ms
+0158: camera_on_vehicle $AMBUSH_CAR_LM3 mode FIXED switchstyle JUMP_CUT
+
+00BC: print_now 'LM3EX2' duration 2500 ms flag 1  // ~y~One of Misty's former lovers! 
+
+wait 2500 ms
+
+0129: $AMBUSH_PED_LM3 = create_actor PEDTYPE_CIVMALE #CRIMINAL01 in_car $AMBUSH_CAR_LM3 driverseat
+011A: set_actor $AMBUSH_PED_LM3 search_threat THREAT_PLAYER1
+00AF: set_car_mission $AMBUSH_CAR_LM3 to MISSION_RAMPLAYER_FARAWAY 
+00AD: set_car_cruise_speed $AMBUSH_CAR_LM3 to 60.0 
+00AE: set_car_driving_style $AMBUSH_CAR_LM3 to 3 
+02AC: set_car $AMBUSH_CAR_LM3 immunities 1 1 1 1 1
+020A: set_car $AMBUSH_CAR_LM3 door_status_to CARLOCK_LOCKED
+02AA: set_car $AMBUSH_CAR_LM3 immune_to_nonplayer 1 
+03AB: set_car $AMBUSH_CAR_LM3 strong 1 
+0423: car $AMBUSH_CAR_LM3 improve_handling 2.0
+01EC: make_car $AMBUSH_CAR_LM3 very_heavy 1
+
+wait 1000 ms
+
+01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 0 
+01B4: set_player $PLAYER_CHAR controllable 1 
+02A3: toggle_widescreen 0 
+
+02EB: restore_camera_jumpcut
+
+return
+
+
 /////////////////////////////////////////
 
 // Mission Failed
@@ -777,6 +877,7 @@ goto @MISSION_END_LUIGI3
 02A7: $JOEY_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_JOEY at 1191.688 -870.0 -100.0 
 004F: create_thread @JOEY_MISSION1_LOOP 
 return
+
 
 /////////////////////////////////////////
 
