@@ -42,7 +42,6 @@ end_thread
 0004: $FLAG_TAXI2_EXIT_CAR_FM2 = 0 
 0004: $FLAG_CAR_FM2_CREATED = 0 
 0004: $FLAG_MISSION_TAXI_FM2_CREATED = 0 
-0004: $FLAG_NO_LONGER_MAD = 0 
 0004: $FLAG_CURLEY_AT_POINT1_FM2 = 0 
 0004: $FLAG_CURLEY_AT_POINT2_FM2 = 0 
 0004: $FLAG_CURLEY_BOB_FM2_DEAD = 0 
@@ -429,10 +428,9 @@ end //while
 01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 0 
 0186: $RADAR_BLIP_CAR2_FM2 = create_marker_above_car $CAR_FM2 
 018B: show_on_radar $RADAR_BLIP_CAR2_FM2 MARKER_ONLY
-00AD: set_car_cruise_speed $CAR_FM2 to 30.0 
 02C2: car $CAR_FM2 drive_to_point 1529.0 -827.0 -100.0 
-00AE: set_car_driving_style $CAR_FM2 to DRIVINGMODE_SLOWDOWNFORCARS
-00AD: set_car_cruise_speed $CAR_FM2 to 20.0 
+00AE: set_car_driving_style $CAR_FM2 to DRIVINGMODE_AVOIDCARS
+00AD: set_car_cruise_speed $CAR_FM2 to 25.0 
 03CC: car $CAR_FM2 add_to_stuck_car_check 5.0 = 30000 
 03C4: set_status_text_to $SPOOKED_COUNTER COUNTER_DISPLAY_BAR 'FM2_16'  // SPOOKOMETER:
 0006: 17@ = 0 
@@ -574,26 +572,6 @@ while 81AD:   not car $CAR_FM2 sphere 0 near_point 1529.0 -827.0 radius 3.0 3.0
 		goto @MISSION_FAILED_FRANK2
 	end
 	if
-		00A3:   is_char_in_area_2d $CURLY_BOB_FM2 from 1538.0 -741.0 to 1304.0 -901.0 sphere 0
-	then
-		00AE: set_car_driving_style $CAR_FM2 to DRIVINGMODE_SLOWDOWNFORCARS 
-		00AD: set_car_cruise_speed $CAR_FM2 to 10.0 
-		0004: $FLAG_NO_LONGER_MAD = 1
-	end
-	if
-		0038:   $FLAG_NO_LONGER_MAD == 0
-	then
-		if
-			00E9:   player $PLAYER_CHAR 0 $CURLY_BOB_FM2 radius 30.0 30.0 
-		then
-			00AE: set_car_driving_style $CAR_FM2 to DRIVINGMODE_AVOIDCARS 
-			00AD: set_car_cruise_speed $CAR_FM2 to 25.0
-		else
-			00AE: set_car_driving_style $CAR_FM2 to DRIVINGMODE_SLOWDOWNFORCARS 
-			00AD: set_car_cruise_speed $CAR_FM2 to 20.0
-		end
-	end
-	if
 		03C9:   car $CAR_FM2 damaged
 	then
 		gosub @CHECK_CURLY_STATUS_SIMPLE_FRANK2
@@ -697,22 +675,10 @@ end
 // ***********************Curley Bob has finally got to the docks***************************
 
 :MISSION_JUMP4
-02A3: toggle_widescreen 1
-if
-	00E0:   is_player_in_any_car $PLAYER_CHAR
-then
-	0221: set_player $PLAYER_CHAR apply_brakes_to_car 1 
-end
-
-01B4: set_player $PLAYER_CHAR controllable 0 
-0110: clear_player $PLAYER_CHAR wanted_level // This might have to come out when this bit is an Alex cut-scene
-if
-	8118:   not actor $VAN_DRIVER_FM2 dead
-then
-	039E: set_char_cant_be_dragged_out $VAN_DRIVER_FM2 to 0 
-end
 
 01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 1 
+01B4: set_player $PLAYER_CHAR controllable 0 
+02A3: toggle_widescreen 1 
 0395: clear_area 1 at 1546.5 -834.75 range 12.6875 1.0 
 015F: set_camera_position 1546.5 -834.75 12.6875 0.0 rotation 0.0 0.0 
 0160: point_camera 1545.5 -834.5625 12.75 switchstyle JUMP_CUT
@@ -727,33 +693,10 @@ end //while
 
 gosub @CHECK_CURLY_STATUS_SIMPLE_FRANK2
 
-// ****************************************START OF CUTSCENE TWO****************************
+// ************************************START OF CUTSCENE TWO********************************
 
-01BD: $PRE_CUTSCENE_START_TIME = current_time_in_ms 
-0004: $PRE_CUTSCENE_ELAPSED_TIME = 0
-
-while true
-	if and
-		83EE:   not player $PLAYER_CHAR controllable 
-		001A:   5000 > $PRE_CUTSCENE_ELAPSED_TIME
-	jf break
-	wait 0 ms
-	gosub @CHECK_CURLY_STATUS_SIMPLE_FRANK2
-	01BD: $PRE_CUTSCENE_CURRENT_TIME = current_time_in_ms 
-	0084: $PRE_CUTSCENE_ELAPSED_TIME = $PRE_CUTSCENE_CURRENT_TIME 
-	0060: $PRE_CUTSCENE_ELAPSED_TIME -= $PRE_CUTSCENE_START_TIME
-end //while
-
-03EF: player $PLAYER_CHAR make_safe 
 0169: set_fade_color 0 0 0 
 016A: fade 0 for 1500 ms 
-03AF: set_streaming 0 
-023C: load_special_actor 'MIGUEL' as 3 
-023C: load_special_actor 'CAT' as 4 
-02F3: load_object #CUTOBJ01 'MIGUELH' 
-02F3: load_object #CUTOBJ02 'CATH' 
-02F3: load_object #CUTOBJ03 'CURLYH' 
-0247: request_model #COLUMB 
 
 while fading
 	wait 0 ms
@@ -765,148 +708,67 @@ then
 	009F: char_set_idle $CURLY_BOB_FM2 
 end
 
-038B: load_all_models_now 
+0395: clear_area 1 at 898.5625 -425.5625 range 13.875 1.0 
+015F: set_camera_position 1546.5 -834.75 12.6875 rotation 0.0 0.0 0.0 
+0159: camera_on_ped $CURLY_BOB_FM2 mode FIXED switchstyle JUMP_CUT
 
-// Cutscene stuff
+016A: fade 1 for 1500 ms
+
+0006: 17@ = 0
+
 while true
-	if or
-		823D:   not special_actor 3 loaded 
-		823D:   not special_actor 4 loaded 
-		8248:   not model #COLUMB available 
-		8248:   not model #CUTOBJ01 available 
-		8248:   not model #CUTOBJ02 available 
-		8248:   not model #CUTOBJ03 available
-	jf break
+	if and
+		001B:   7500 > 17@
+		80E1:   not is_button_pressed PAD1 button CROSS
+	jf break 
 	wait 0 ms
+	gosub @CHECK_CURLY_STATUS_SIMPLE_FRANK2
+	if and
+		0019:   17@ > 4500
+		0038:   $FM2_MESSAGE_FLAG_EXTRA == 0
+	then
+		00BC: print_now 'FM2EX1' duration 3500 ms flag 1  // ~w~Seems like Curly Bob is not the rat..
+		0004: $FM2_MESSAGE_FLAG_EXTRA = 1
+	end
 end //while
 
-// creates car
 
-00A5: $BADDIE_CAR_FM2 = create_car #COLUMB at 1542.875 -896.1875 10.5625
-0175: set_car $BADDIE_CAR_FM2 z_angle_to 90.0 
-02E4: load_cutscene_data 'S2_CTG2' 
-0244: set_cutscene_pos 1573.875 -906.0 11.0625 
-02E5: $CUTSCENE_CURLY = create_cutscene_object #SPECIAL02 
-02E6: set_cutscene_anim $CUTSCENE_CURLY 'CURLY' 
-02E5: $CUTSCENE_MIGUEL = create_cutscene_object #SPECIAL03 
-02E6: set_cutscene_anim $CUTSCENE_MIGUEL 'MIGUEL' 
-02E5: $CUTSCENE_CATALINA = create_cutscene_object #SPECIAL04 
-02E6: set_cutscene_anim $CUTSCENE_CATALINA 'CAT' 
-02F4: create_cutscene_actor $MIGUEL_CSHEAD from_head #CUTOBJ01 and_body $CUTSCENE_MIGUEL 
-02F5: set_head_anim $MIGUEL_CSHEAD 'MIGUEL' 
-02F4: create_cutscene_actor $CATALINA_CSHEAD from_head #CUTOBJ02 and_body $CUTSCENE_CATALINA 
-02F5: set_head_anim $CATALINA_CSHEAD 'CAT' 
-02F4: create_cutscene_actor $CURLY_CSHEAD from_head #CUTOBJ03 and_body $CUTSCENE_CURLY 
-02F5: set_head_anim $CURLY_CSHEAD 'CURLY' 
-0395: clear_area 1 at 898.5625 -425.5625 range 13.875 1.0 
-016A: fade 1 for 1500 ms 
-009B: delete_char $CURLY_BOB_FM2 
-03AF: set_streaming 1 
-02E7: start_cutscene 
-02E8: $CUT_SCENE_TIME = cutscenetime 
-
-// Displays cutscene text
-
-while 001A:   0 > $CUT_SCENE_TIME
-	wait 0 ms
-	02E8: $CUT_SCENE_TIME = cutscenetime 
-end
-00BC: print_now 'FM2_F' duration 10000 ms flag 1  // Here comes our little friend. Mr big mouth himself.
-while 001A:   3225 > $CUT_SCENE_TIME
-	wait 0 ms
-	02E8: $CUT_SCENE_TIME = cutscenetime 
-end
-00BC: print_now 'FM2_G' duration 10000 ms flag 1  // Were you followed? You know what goes on here is our little secret.
-while 001A:   7047 > $CUT_SCENE_TIME
-	wait 0 ms
-	02E8: $CUT_SCENE_TIME = cutscenetime 
-end
-00BC: print_now 'FM2_H' duration 10000 ms flag 1  // No..no, I wasn't followed. You got my stuff?
-while 001A:   10272 > $CUT_SCENE_TIME
-	wait 0 ms
-	02E8: $CUT_SCENE_TIME = cutscenetime 
-end
-00BC: print_now 'FM2_I' duration 10000 ms flag 1  // Here's your SPANK, squealer, now talk.
-while 001A:   13914 > $CUT_SCENE_TIME
-	wait 0 ms
-	02E8: $CUT_SCENE_TIME = cutscenetime 
-end
-00BC: print_now 'FM2_P' duration 10000 ms flag 1  // OK, so the Leone's are fighting wars on two fronts.
-while 001A:   16721 > $CUT_SCENE_TIME
-	wait 0 ms
-	02E8: $CUT_SCENE_TIME = cutscenetime 
-end
-00BC: print_now 'FM2_Q' duration 10000 ms flag 1  // They're in a turf war with the Triads with no sign of either side giving up.
-while 001A:   20483 > $CUT_SCENE_TIME
-	wait 0 ms
-	02E8: $CUT_SCENE_TIME = cutscenetime 
-end
-00BC: print_now 'FM2_R' duration 10000 ms flag 1  // Meanwhile Joey Leone has stirred up some bad blood with the Forellis.
-while 001A:   24246 > $CUT_SCENE_TIME
-	wait 0 ms
-	02E8: $CUT_SCENE_TIME = cutscenetime 
-end
-00BC: print_now 'FM2_S' duration 10000 ms flag 1  // Every day they're losing men and influence in the city.
-while 001A:   26993 > $CUT_SCENE_TIME
-	wait 0 ms
-	02E8: $CUT_SCENE_TIME = cutscenetime 
-end
-00BC: print_now 'FM2_T' duration 10000 ms flag 1  // Salvatore is becoming dangerous and paranoid. He suspects everybody and everything.
-while 001A:   31770 > $CUT_SCENE_TIME
-	wait 0 ms
-	02E8: $CUT_SCENE_TIME = cutscenetime 
-end
-00BC: print_now 'FM2_U' duration 10000 ms flag 1  // With loyalty like yours, what has he possibly got to worry about.
-while 001A:   35267 > $CUT_SCENE_TIME
-	wait 0 ms
-	02E8: $CUT_SCENE_TIME = cutscenetime 
-end
-03D5: remove_text 'FM2_U'  // With loyalty like yours, what has he possibly got to worry about.
-while 001A:   37000 > $CUT_SCENE_TIME
-	wait 0 ms
-	02E8: $CUT_SCENE_TIME = cutscenetime 
-end
-
-016A: fade 0 for 1500 ms
-
-while 82E9:   not cutscene_reached_end
-	wait 0 ms
-end
-
-00BE: clear_prints 
+016A: fade 0 for 1500 ms 
 
 while fading
 	wait 0 ms
 end
 
-02EA: end_cutscene
+009B: delete_char $CURLY_BOB_FM2 
+
+
 if and
 	0038:   $FLAG_CAR_FM2_DEAD == 0
 	8119:   not car $CAR_FM2 wrecked
 then
 	009B: delete_char $VAN_DRIVER_FM2 
-	00A6: delete_car $CAR_FM2 
-	0004: $FLAG_CAR_FM2_DEAD = 0 
+	00A6: delete_car $CAR_FM2
 end
 
-00A6: delete_car $BADDIE_CAR_FM2 
-0373: set_camera_directly_behind_player 
-0001: wait 500 ms 
+
+01B4: set_player $PLAYER_CHAR controllable 1 
+02A3: toggle_widescreen 0 
+015A: restore_camera 
+
+wait 500 ms
+
+01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 0  
+
+
+02A3: toggle_widescreen 0
+01B4: set_player $PLAYER_CHAR controllable 1 
 016A: fade 1 for 1500 ms 
-0373: set_camera_directly_behind_player 
-0296: unload_special_actor 3 
-0296: unload_special_actor 4 
-0249: release_model #COLUMB 
-0249: release_model #CUTOBJ01 
-0249: release_model #CUTOBJ02 
-0249: release_model #CUTOBJ03 
 
 // ******************************************END OF CUTSCENE TWO****************************
 
 
-// ********************************Kill Curley Bob Stuff************************************
+// ********************************Don't kill Curley Bob Stuff************************************
 
-02A3: toggle_widescreen 0 
 015A: restore_camera 
 01B4: set_player $PLAYER_CHAR controllable 1 
 01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 0 
@@ -915,43 +777,15 @@ end
 01B2: give_actor $CURLY_BOB_FM2 weapon WEAPONTYPE_SHOTGUN ammo 30000 
 01D0: actor $CURLY_BOB_FM2 avoid_player $PLAYER_CHAR 
 0187: $RADAR_BLIP_PED2_FM2 = create_marker_above_actor $CURLY_BOB_FM2 
-00BC: print_now 'FM2_8' duration 7000 ms flag 1  // ~g~Whack Curly Bob!
 
-while 8038:   not  $FLAG_CURLEY_BOB_DEAD_FM2 == 1 
+while true
+	if or
+		02CB:   is_actor_on_screen $CURLY_BOB_FM2 
+		00FB:   player $PLAYER_CHAR 0 $CURLY_BOB_FM2 radius 160.0 160.0 80.0 
+	jf break
 	wait 0 ms
-	if
-		0038:   $FLAG_CURLEY_BOB_DEAD_FM2 == 0 
-	then
-		if
-			0118:   actor $CURLY_BOB_FM2 dead
-		then
-			0004: $FLAG_CURLEY_BOB_DEAD_FM2 = 1
-		else
-			if
-				00FB:   player $PLAYER_CHAR 0 $CURLY_BOB_FM2 radius 40.0 40.0 40.0
-			then
-				if
-					0038:   $FLAG_CURLY_MAD_FM2 == 0
-				then
-					01CC: actor $CURLY_BOB_FM2 kill_player $PLAYER_CHAR 
-					0004: $FLAG_CURLY_MAD_FM2 = 1
-				end
-			else
-				0004: $FLAG_CURLY_MAD_FM2 = 0 
-				01D0: actor $CURLY_BOB_FM2 avoid_player $PLAYER_CHAR 
-			end
-			if and
-				82CB:   not is_actor_on_screen $CURLY_BOB_FM2 
-				80FB:   not player $PLAYER_CHAR 0 $CURLY_BOB_FM2 radius 160.0 160.0 80.0 
-			then
-				00BC: print_now 'FM2_10' duration 5000 ms flag 1  // ~r~Curly got away!
-				goto @MISSION_FAILED_FRANK2
-			end
-		end
-	end
+	gosub @CHECK_CURLY_STATUS_SIMPLE_FRANK2
 end //while
-
-0164: disable_marker $RADAR_BLIP_PED2_FM2 
 
 goto @MISSION_PASSED_FRANK2
 
