@@ -127,7 +127,7 @@ end
 018E: stop_sound $FIRE_SOUND_8BALL 
 018D: $FIRE_SOUND_8BALL = create_sound SOUND_PRETEND_FIRE_LOOP at 790.5 -935.625 38.0 
 01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 1 
-015F: set_camera_position 520.0 -930.75 45.75 0.0 rotation 0.0 0.0 
+015F: set_camera_position 520.0 -930.75 45.75 rotation 0.0 0.0 0.0 
 0159: camera_on_ped $EIGHTBALL mode FIXED switchstyle JUMP_CUT
 03CF: load_wav 'LIB_A1' 
 0169: set_fade_color 0 0 0 
