@@ -866,7 +866,7 @@ if
 	8118:   not actor $PHIL dead 
 then
 	020E: actor $PHIL look_at_actor $PLAYER_RM2 
-	0159: camera_on_ped $PHIL mode 15 switchstyle 2 
+	0159: camera_on_ped $PHIL mode FIXED switchstyle JUMP_CUT 
 end
 
 03CF: load_wav 'R2_F' 
