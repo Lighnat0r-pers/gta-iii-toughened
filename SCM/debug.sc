@@ -26,7 +26,6 @@ then
 	0109: player $PLAYER_CHAR money += 10000000
 	004F: create_thread @JOEYS_BUGGY_LOOP
 
-
 	//0055: set_player_coordinates $PLAYER_CHAR to 892.75 -425.75 13.875
 
 	02A7: $LUIGI_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_LUIGI at 892.75 -425.75 13.875
@@ -59,11 +58,11 @@ then
 	//0055: set_player_coordinates $PLAYER_CHAR to 1458.688 -187.25 -100.0
 
 	02A7: $SALVATORE_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_SAL at 1455.688 -187.25 -100.0
-	//004F: create_thread @FRANKIE_MISSION1_LOOP		//CHAPERONE
+	004F: create_thread @FRANKIE_MISSION1_LOOP		//CHAPERONE
 	//004F: create_thread @FRANKIE_MISSION2_LOOP		//CUTTING THE GRASS
 	//004F: create_thread @FRANKIE_MISSION21_LOOP		//BOMB DA BASE ACT I
 	//004F: create_thread @FRANKIE_MISSION3_LOOP		//BOMB DA BASE ACT II
-	004F: create_thread @FRANKIE_MISSION4_LOOP		//LAST REQUESTS
+	//004F: create_thread @FRANKIE_MISSION4_LOOP		//LAST REQUESTS
 
 
 
