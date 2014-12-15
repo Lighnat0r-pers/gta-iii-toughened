@@ -471,7 +471,6 @@ end //while
 wait 500 ms
 009F: char_set_idle $EIGHTBALL 
 011C: actor $PLAYER_ACTOR clear_objective 
-0055: set_player_coordinates $PLAYER_CHAR to 895.875 -311.375 7.6875 
 00A1: set_char_coordinates $EIGHTBALL to 884.25 -309.1875 7.5625 
 
 // Clothes change
