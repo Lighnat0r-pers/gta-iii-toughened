@@ -87,21 +87,48 @@ then
 end
 
 
-02CE: get_ground_z_for_3d_coord 540.0 -935.0 100.0 store_to $GROUND_EIGHT
+// RAMP STUFF
 
-0107: $RAMP_EIGHT = create_object #JUMP_BOX1 at 582.5 -930.0 38.3
-//01C7: remove_object_from_mission_cleanup_list $RAMP_EIGHT 
-0177: set_object $RAMP_EIGHT z_angle_to 90.0
-0382: set_object $RAMP_EIGHT collision_detection 1
+
+0107: $RAMP_EIGHT1 = create_object #ELECTRICGATE at 583.0 -930.0 37.7
+0453: object $RAMP_EIGHT1 set_rotation 90.0 0.0 0.0
+0382: set_object $RAMP_EIGHT1 collision_detection 1
+0392: object $RAMP_EIGHT1 toggle_in_moving_list 0 
+
+0107: $RAMP_EIGHT2 = create_object #ELECTRICGATE at 594.0 -930.0 37.7
+0453: object $RAMP_EIGHT2 set_rotation 90.0 0.0 0.0
+0382: set_object $RAMP_EIGHT2 collision_detection 1
+0392: object $RAMP_EIGHT2 toggle_in_moving_list 0 
+
+0107: $RAMP_EIGHT3 = create_object #ELECTRICGATE at 605.0 -930.0 37.7
+0453: object $RAMP_EIGHT3 set_rotation 90.0 0.0 0.0
+0382: set_object $RAMP_EIGHT3 collision_detection 1
+0392: object $RAMP_EIGHT3 toggle_in_moving_list 0 
+
+0107: $RAMP_EIGHT4 = create_object #ELECTRICGATE at 616.0 -930.0 37.7
+0453: object $RAMP_EIGHT4 set_rotation 90.0 0.0 0.0
+0382: set_object $RAMP_EIGHT4 collision_detection 1
+0392: object $RAMP_EIGHT4 toggle_in_moving_list 0 
+
+0107: $RAMP_EIGHT5 = create_object #ELECTRICGATE at 627.0 -930.0 37.7
+0453: object $RAMP_EIGHT5 set_rotation 90.0 0.0 0.0
+0382: set_object $RAMP_EIGHT5 collision_detection 1
+0392: object $RAMP_EIGHT5 toggle_in_moving_list 0 
+
 
 /*
 if
 	8038:   not $FAILED_ONCE_EIGHT == 1
 then
-	0382: set_object $RAMP_EIGHT collision_detection 0
+	0382: set_object $RAMP_EIGHT1 collision_detection 0
+	0382: set_object $RAMP_EIGHT2 collision_detection 0
+	0382: set_object $RAMP_EIGHT3 collision_detection 0
+	0382: set_object $RAMP_EIGHT4 collision_detection 0
+	0382: set_object $RAMP_EIGHT5 collision_detection 0
 	0004: $FAILED_ONCE_EIGHT = 1
 end
 */
+02CE: get_ground_z_for_3d_coord 540.0 -938.0 100.0 store_to $GROUND_EIGHT
 00A5: $CAR_EIGHTBALL = create_car #BANSHEE at 540.0 -938.0 $GROUND_EIGHT
 0229: set_car $CAR_EIGHTBALL color_to 58 1 
 0175: set_car $CAR_EIGHTBALL z_angle_to 270.0
@@ -598,7 +625,11 @@ then
 	018E: stop_sound $FIRE_SOUND_8BALL 
 	0108: destroy_object $BROKEN_BRIDGE_REMAINS 
 	0108: destroy_object $BROKEN_BRIDGE_POLICE_CARS
-	0108: destroy_object $RAMP_EIGHT 
+	0108: destroy_object $RAMP_EIGHT1 
+	0108: destroy_object $RAMP_EIGHT2
+	0108: destroy_object $RAMP_EIGHT3
+	0108: destroy_object $RAMP_EIGHT4
+	0108: destroy_object $RAMP_EIGHT5
 	if
 		0038:   $DEBUGUNLOCKISLANDS == 0
 	then 
