@@ -17,7 +17,6 @@ return
 03A4: name_thread 'TMP_THR'
 0111: set_wasted_busted_check_to 0
 
-wait 1000 ms
 if
 	0038:   $MASTERDEBUG == 1  
 then
@@ -134,7 +133,7 @@ while true
     then
         0007: 4@ = 10.0  
         0007: 5@ = 10.0  
-        0054: store_player $PLAYER_CHAR position_to 7@ 8@ 9@
+        0054: get_player_coordinates $PLAYER_CHAR store_to 7@ 8@ 9@
 	0170: 10@ = player $PLAYER_CHAR z_angle
 	// For whatever reason the game only want to show the first two text boxes created, 
 	// so we let X and Y be shown standard, and Z and Angle if the Look Behind key is held.
