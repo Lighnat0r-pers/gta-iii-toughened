@@ -17,12 +17,12 @@ OutputDir=.
 DisableProgramGroupPage=yes
 CloseApplicationsFilter=*.*
 DirExistsWarning=no
-; InfoAfterFile=Toughened Readme.txt                                        ACTIVATE THIS TO AUTOMATICALLY SHOW THE README IN THE INSTALL WIZARD
+; InfoAfterFile=Toughened Readme.txt            ACTIVATE THIS TO AUTOMATICALLY SHOW THE README IN THE INSTALL WIZARD
 InfoBeforeFile={#AppName} Install Guide.txt
 OutputBaseFilename={#AppName} Setup
 WizardImageFile={#AppName} Install Pic.bmp                                   
 WizardSmallImageFile=Sunrise (Logo).bmp 
-; SetupLogging=yes                                                          ACTIVATE THIS TO GENERATE A DEBUG LOG IN THE TEMP FOLDER
+; SetupLogging=yes                              ACTIVATE THIS TO GENERATE A DEBUG LOG IN THE TEMP FOLDER
 
 [Files]
 Source: "{#AppName}.exe"; DestDir: "{app}";     
@@ -32,14 +32,17 @@ Source: "tough.scm"; DestDir: "{app}\data";
 Source: "{#AppName} Readme.txt"; DestDir: "{app}"; Flags:isreadme;
 Source: "{#AppName} Install Guide.txt"; DestDir: "{app}";
 Source: "{#AppName} Update Checker.exe"; DestDir: "{app}";
-Source: "s3_aed.wav"; DestDir: "{app}\audio";
-Source: "s5_led.wav"; DestDir: "{app}\audio";
+
 Source: "a4_e.wav"; DestDir: "{app}\audio";
 Source: "a4_f.wav"; DestDir: "{app}\audio";
 Source: "a4_g.wav"; DestDir: "{app}\audio";
 Source: "a4_h.wav"; DestDir: "{app}\audio";
 Source: "a4_i.wav"; DestDir: "{app}\audio";
 Source: "a4_j.wav"; DestDir: "{app}\audio";
+Source: "s1_pfe.wav"; DestDir: "{app}\audio";
+Source: "s1_r.wav"; DestDir: "{app}\audio";
+Source: "s3_aed.wav"; DestDir: "{app}\audio";
+Source: "s5_led.mp3"; DestDir: "{app}\audio";
 ; Radio stuff needs to be included here still.
 
 [Icons]
