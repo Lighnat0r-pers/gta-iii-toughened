@@ -385,6 +385,7 @@ end //while
 03D1: play_wav 
 01B4: set_player $PLAYER_CHAR controllable 0 
 03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 1 
+02A3: toggle_widescreen 1 
 03F4: set_all_cars_can_be_damaged 0 
 00BC: print_now 'FM1_W' duration 5000 ms flag 1  // ~w~Alright Fido, you wait here and look after the car while I go and shake my butt alright.
 015F: set_camera_position 1246.813 -1107.625 18.0 rotation 0.0 0.0 0.0 
@@ -440,19 +441,26 @@ end //while
 0004: $MARIA_EXISTS = 0 
 009B: delete_char $MARIA 
 
-wait 1000 ms
+wait 500 ms
 
 00BC: print_now 'FM1EX1' duration 2000 ms flag 2  // ~y~You doze off...
+043C: set_game_sounds_fade 0
 
 wait 2000 ms
 
-016A: fade 0 for 1000 ms 
+016A: fade 0 for 500 ms 
 
 while fading
 	wait 0 ms
 end
 
-wait 1500 ms
+015F: set_camera_position 1246.813 -1107.625 -98.0 rotation 0.0 0.0 0.0 
+0160: point_camera 1246.813 -1107.625 -99.0 switchstyle INTERPOLATION
+wait 1000 ms
+
+016A: fade 1 for 0 ms 
+
+043C: set_game_sounds_fade 1
 
 while true
 	if or
@@ -588,11 +596,6 @@ end //while
 
 02EB: restore_camera_jumpcut
 
-016A: fade 1 for 250 ms 
-
-while fading
-	wait 0 ms
-end
 
 03D1: play_wav 
 00BC: print_now 'FM1_TT' duration 5000 ms flag 1  // ~w~IT'S A POLICE RAID!
@@ -601,6 +604,7 @@ end
 01B4: set_player $PLAYER_CHAR controllable 1
 03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 0
 03F4: set_all_cars_can_be_damaged 1
+02A3: toggle_widescreen 0
 
 while 001A:   9 > $CLUBBERS_FLEE_FLAG
 	wait 0 ms
