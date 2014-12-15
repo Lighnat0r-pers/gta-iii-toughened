@@ -254,9 +254,9 @@ then
 	00D9: $PLAYER_CAR = store_car_player_is_in $PLAYER_CHAR
 	if and
 		80DE:   not is_player_in_model $PLAYER_CHAR model #RHINO
-		0185:   car $PLAYER_CAR >= 500.0
+		0185:   car $PLAYER_CAR >= 500
 	then
-		0224: set_car $PLAYER_CAR health_to 500.0
+		0224: set_car $PLAYER_CAR health_to 500
 	end
 end
 
@@ -275,9 +275,9 @@ while 001A:   6 > $AMOUNT_OF_EVIDENCE_PLAYER_HAS
 			00D9: $PLAYER_CAR = store_car_player_is_in $PLAYER_CHAR
 			if and
 				80DE:   not is_player_in_model $PLAYER_CHAR model #RHINO
-				0185:   car $PLAYER_CAR >= 500.0
+				0185:   car $PLAYER_CAR >= 500
 			then
-				0224: set_car $PLAYER_CAR health_to 500.0
+				0224: set_car $PLAYER_CAR health_to 500
 			end
 
 		end

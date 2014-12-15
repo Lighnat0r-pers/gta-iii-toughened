@@ -132,7 +132,7 @@ end
 00A5: $CAR_EIGHTBALL = create_car #BANSHEE at 540.0 -938.0 $GROUND_EIGHT
 0229: set_car $CAR_EIGHTBALL color_to 58 1 
 0175: set_car $CAR_EIGHTBALL z_angle_to 270.0
-0224: set_car $CAR_EIGHTBALL health_to 500.0 
+0224: set_car $CAR_EIGHTBALL health_to 500
 
 0055: set_player_coordinates $PLAYER_CHAR to 540.0 -937.6 -100.0
 0171: set_player $PLAYER_CHAR z_angle_to 180.0 
@@ -584,7 +584,7 @@ then
 	00A5: $CAR_EIGHTBALL = create_car #MRWHOOP at $CAR_8BALL_X $CAR_8BALL_Y $CAR_8BALL_Z
 	0175: set_car $CAR_EIGHTBALL z_angle_to $CAR_8BALL_HEADING 
 	0229: set_car $CAR_EIGHTBALL color_to 0 0
-	0224: set_car $CAR_EIGHTBALL health_to 500.0 
+	0224: set_car $CAR_EIGHTBALL health_to 500
 	01B7: release_weather 
 	01D5: actor $PLAYER_ACTOR go_to_and_drive_car $CAR_EIGHTBALL 
 	01D4: actor $EIGHTBALL go_to_car $CAR_EIGHTBALL and_enter_it_as_a_passenger 

@@ -5,6 +5,7 @@
 //#####################################################################################
 
 :EIGHTBALL_MISSION_LOOP
+03A4: name_thread 'EIGHTTR' 
 wait 0 ms
 if or
     0038:   $FLAG_STAUNTON_OPEN == 1  
@@ -21,7 +22,7 @@ then
 		0038:   $FLAG_REACHED_HIDEOUT == 0 
 	then
 		if and
-			00E4:   player $PLAYER_CHAR 0 540.0 -937.6 radius 3.5 3.5
+			00E4:   player $PLAYER_CHAR 1 540.0 -937.6 radius 3.5 3.5
 			03EE:   player $PLAYER_CHAR controllable 
 		then
 			0417: start_mission M01_GIVEMELIBERTY
