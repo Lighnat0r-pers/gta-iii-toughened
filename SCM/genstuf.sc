@@ -20,10 +20,6 @@
 0004: $TRAMP2 = -1
 0004: $TRAMP3 = -1 
 0004: $TRAMP4 = -1
-// 0004: $TRAMP1_DEAD = 0 // NEVER USED
-// 0004: $TRAMP2_DEAD = 0 // NEVER USED
-// 0004: $TRAMP4_DEAD = 0 // NEVER USED 
-// 0004: $TRAMP3_DEAD = 0 // NEVER USED
 0004: $AMMU_SAMPLE = 0 
 0004: $SPECIAL_AMMU_AUDIO = 0
 0004: $AMMU_BLOKE_KILL_PLAYER = 0
@@ -37,6 +33,7 @@ create_thread @COM_AMMU
 create_thread @COM_CAR_PARK 
 create_thread @DOG_SOUND 
 create_thread @COBBLERS 
+create_thread @DEATH_PENALTY
 end_thread
 
 :COBBLERS
@@ -897,6 +894,8 @@ return
 03C5: create_random_car_for_carpark 302.375 -485.5 35.1875 266.0 
 return
 
+////////////////////////////////////////
+
 :LAUGHS
 03A4: name_thread 'LAUGHS' 
 while 0038:   $SHOULD_LAUGH == 1
@@ -978,5 +977,97 @@ while 0038:   $SHOULD_LAUGH == 1
 	end
 	wait 100 ms
 	goto @LAUGHS // keep looping
+end //while
+end_thread
+
+////////////////////////////////////////
+
+// Forcefully check the player health against a 'max health' var. If it's higher, reduce it. 
+// if the player health is not more than 0 (i.e. the player is dead) the var will be decreased by 1. 
+// A flag needs to be set to prevent the var from being decreased multiple times. If the var is 10 or less, 
+// the thread ends to stop the player from being instakilled by this thread when the var hits 0.
+:DEATH_PENALTY
+03A4: name_thread 'DEATH'
+0004: $MAX_HEALTH = 100
+0004: $DEATH_ONGOING_FLAG = 0
+while 0018: $MAX_HEALTH > 10
+	wait 0 ms
+	if
+		0183:   player $PLAYER_CHAR health > $MAX_HEALTH
+	then
+		0222: set_player $PLAYER_CHAR health_to $MAX_HEALTH
+	end
+	
+	if and
+		0038:   $DEATH_ONGOING_FLAG == 0
+		8183:   not player $PLAYER_CHAR health > 0
+	then
+		000C: $MAX_HEALTH -= 1
+		0004: $DEATH_ONGOING_FLAG = 1
+	end
+	if and
+		0038:   $DEATH_ONGOING_FLAG == 1
+		0183:   player $PLAYER_CHAR health > 0
+	then
+		0004: $DEATH_ONGOING_FLAG = 0
+	end
+end //while
+end_thread
+
+////////////////////////////////////////
+
+// Used to create a continuous supply of triads from the bus while the rest of the mission keeps going.
+// Thread will end on destruction of the bus or when the on_mission flag is false (player failed the mission).
+// This thread is in here instead of in 07_joey.sc because for some reason putting it in there crashes the \
+// game as soon as it is started.
+:CREATE_PEONS_JOEY4
+03A4: name_thread 'PEONS'
+wait 0 ms
+
+0247: request_model #GANG03 
+
+while 8248:   not model #GANG03 available
+	wait 0 ms
+end //while
+
+while true
+	if and
+		8119:   not car $JOEY4_BUS wrecked 
+		0038:   $ONMISSION == 1
+	jf break
+	wait 0 ms
+
+	01C8: $JOEY4_PEON = create_actor PEDTYPE_GANG_TRIAD model #GANG03 in_car $JOEY4_BUS passenger_seat 0
+	01B2: give_actor $JOEY4_PEON weapon WEAPONTYPE_PISTOL ammo 100 
+	0223: set_actor $JOEY4_PEON health_to 200
+	011A: set_actor $JOEY4_PEON search_threat THREAT_PLAYER1 
+
+
+	01D3: actor $JOEY4_PEON leave_car $JOEY4_BUS 
+	while 00DB:   is_char_in_car $JOEY4_PEON car $JOEY4_BUS 
+		wait 0 ms
+		if
+			0118:   actor $JOEY4_PEON dead 
+		then
+			goto @CREATE_PEONS_JOEY4 // Effectively a continue for the create peons loop
+		end
+		if
+			0119:   car $JOEY4_BUS wrecked 
+		then
+			end_thread // Effectively a break for the create peons loop
+		end			
+	end //while
+
+
+	0054: get_player_coordinates $PLAYER_CHAR store_to $PLAYER_X $PLAYER_Y $PLAYER_Z
+	0239: actor $JOEY4_PEON run_to $PLAYER_X $PLAYER_Y
+	wait 100 ms
+	if
+		0118:   actor $JOEY4_PEON dead 
+	then
+		goto @CREATE_PEONS_JOEY4 // Effectively a continue for the create peons loop
+	end
+	01CA: actor $JOEY4_PEON kill_player $PLAYER_CHAR 
+	01C2: remove_references_to_actor $JOEY4_PEON
 end //while
 end_thread

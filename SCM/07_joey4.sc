@@ -198,7 +198,6 @@ then
 	0369: put_player $PLAYER_CHAR in_car $TONIS_RIDE
 end
 
-03C7: set_sensitivity_to_crime 5.0
 0363: toggle_model_render_at 1192.188 -867.25 14.0625 radius 6.0 object #JOEY_DOOR1 1 
 0363: toggle_model_render_at 1192.188 -867.25 14.0625 radius 6.0 object #JOEY_DOOR2 1 
 0395: clear_area 1 at 1198.5 -871.375 range 15.0 10.0 
@@ -575,6 +574,15 @@ end //while
 0160: point_camera 836.6875 -677.125 15.625 switchstyle JUMP_CUT
 0001: wait 1500 ms
 
+03CF: load_wav 'J4_C'
+
+while 83D0: not wav_loaded
+	wait 0 ms
+end
+
+03D1: play_wav 
+00BC: print_now 'JM4_3' duration 4000 ms flag 1  // It's a Triad ambush! Get us out of here kid!
+
 //TRIADS RUN OUT
 
 if and
@@ -656,17 +664,33 @@ then
 	02AB: set_actor $JOEY4_TRIAD2 immunities BP 0 FP 0 EP 0 CP 0 MP 0
 end
 
+
+0247: request_model #COACH 
+
+while 8248:   not model #COACH available
+	wait 0 ms
+end //while
+
+0395: clear_area 1 at 831.0 -629.0 range 20.0 20.0 
+00A5: $JOEY4_BUS = create_car #COACH at 831.0 -629.0 -100.0
+0229: set_car $JOEY4_BUS color_to 5 5
+0175: set_car $JOEY4_BUS z_angle_to 120.0
+020A: set_car $JOEY4_BUS door_status_to CARLOCK_LOCKOUT_PLAYER_ONLY
+02AA: set_car $JOEY4_BUS immune_to_nonplayer 1 
+0224: set_car $JOEY4_BUS health_to 2000
+
+create_thread @CREATE_PEONS_JOEY4
+
+015F: set_camera_position 836.0 -649.0 16.5 0.0 rotation 0.0 0.0 
+0158: camera_on_vehicle $JOEY4_BUS mode FIXED switchstyle JUMP_CUT
+00BC: print_now 'JM4_9' duration 8000 ms flag 1  // ~g~The Triads have invented a cloning machine that looks suspiciously like a bus! Destroy it ASAP!
+
+wait 5000 ms
+
 01B4: set_player $PLAYER_CHAR controllable 1 
 02A3: toggle_widescreen 0 
 015A: restore_camera 
-03CF: load_wav 'J4_C'
 
-while 83D0: not wav_loaded
-	wait 0 ms
-end
-
-03D1: play_wav 
-00BC: print_now 'JM4_3' duration 4000 ms flag 1  // It's a Triad ambush! Get us out of here kid!
 01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 0 
 
 // CLOSE DOORS
@@ -683,7 +707,6 @@ end //while
 
 0004: $FLAG_CAR_BLIP_DISPLAYED_JM4 = 1 
 
-// waiting for the player to get to Toni's
 
 if
 	8118:   not actor $JOEY4_TRIAD1 dead
@@ -700,22 +723,17 @@ end
 0395: clear_area 1 at 1216.688 -328.0625 range 26.0 6.0 
 0004: $FLAG_DISPLAYED_WANTED_MESSAGE_JM4 = 0 
 0004: $BLOB_FLAG = 1 
-00BD: print_soon 'JM4_9' duration 5000 ms flag 1  // ~g~Obliterate the Triads for their insolence!
 
-while true
-	if or
-		8118:   not actor $JOEY4_TRIAD1 dead 
-		8118:   not actor $JOEY4_TRIAD2 dead 
-		8118:   not actor $JOEY4_TRIAD3 dead 
-		8118:   not actor $JOEY4_TRIAD4 dead 
-	jf break
+while 8119:   not car $JOEY4_BUS wrecked
 	wait 0 ms
 	gosub @CHECK_TONI_STATUS_JOEY4
 	gosub @CHECK_VEHICLE_FLIPPED_STATUS_JOEY4
 end //while
 
-0109: player $PLAYER_CHAR money += 2000
+0109: player $PLAYER_CHAR money += 20000
 018C: play_sound SOUND_PART_MISSION_COMPLETE at 0.0 0.0 0.0
+
+// waiting for the player to get to Toni's
 
 018A: $JOEY4_MOMMAS_MARKER = create_checkpoint_at 1216.75 -327.5625 -100.0 
 018B: show_on_radar $JOEY4_MOMMAS_MARKER 2
@@ -1029,6 +1047,7 @@ goto @MISSION_END_JOEY4
 0249: release_model #MAFIA 
 0249: release_model #GANG03 
 0249: release_model #GANG04 
+0249: release_model #BUS
 022A: switch_ped_roads_on 824.875 -633.75 13.0 to 845.25 -693.75 18.0 
 01E7: switch_roads_on 824.875 -633.75 13.0 to 845.25 -693.75 18.0 
 0296: unload_special_actor 2 
@@ -1037,3 +1056,9 @@ goto @MISSION_END_JOEY4
 03C7: set_sensitivity_to_crime 1.0
 00D8: mission_has_finished
 return
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
