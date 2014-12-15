@@ -267,19 +267,16 @@ then
 		00DE:   is_player_in_model $PLAYER_CHAR model #FIRETRUK 
 		00DE:   is_player_in_model $PLAYER_CHAR model #LANDSTAL 
 		00DE:   is_player_in_model $PLAYER_CHAR model #LINERUN
+		00DE:   is_player_in_model $PLAYER_CHAR model #TRASH 
+		00DE:   is_player_in_model $PLAYER_CHAR model #PONY 
 	then
 		0004: $FLAG_CAMERA_MODE_LM3 = 1 
 	end
 	if or
-		00DE:   is_player_in_model $PLAYER_CHAR model #TRASH 
-		00DE:   is_player_in_model $PLAYER_CHAR model #PONY 
+
 		00DE:   is_player_in_model $PLAYER_CHAR model #MULE 
 		00DE:   is_player_in_model $PLAYER_CHAR model #AMBULAN 
 		00DE:   is_player_in_model $PLAYER_CHAR model #MRWHOOP 
-	then
-		0004: $FLAG_CAMERA_MODE_LM3 = 1 
-	end
-	if or
 		00DE:   is_player_in_model $PLAYER_CHAR model #RUMPO 
 		00DE:   is_player_in_model $PLAYER_CHAR model #BELLYUP 
 		00DE:   is_player_in_model $PLAYER_CHAR model #MRWONGS 
@@ -892,5 +889,6 @@ return
 0249: release_model #STALLION 
 0164: disable_marker $LUIGI3_MISTY_MARKER 
 0164: disable_marker $LUIGI3_JOEY_MARKER 
+0164: disable_marker $RADAR_BLIP_PED1_LM3 
 00D8: mission_has_finished 
 return 
