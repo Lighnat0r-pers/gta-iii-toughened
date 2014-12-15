@@ -31,7 +31,6 @@ end_thread
 0317: increment_mission_attempts 
 01B6: set_weather WEATHER_CLOUDY
 00C0: set_current_time 4 0 
-03CB: load_scene 507.0 -937.0 36.5625 
 0001: wait 0 ms 
 0004: $FLAG_BLIP_ON_EIGHTBALL = 0 
 0004: $RADAR_BLIP_PED1_EIGHTBALL = 0 
@@ -63,6 +62,7 @@ end_thread
 if
 	0038:   $FLAG_REACHED_HIDEOUT == 0 
 then 
+	03CB: load_scene 507.0 -937.0 36.5625 
 	0247: request_model #BANSHEE 
 	023C: load_special_actor 'EIGHT' as 1 
 	038B: load_all_models_now 
@@ -90,27 +90,27 @@ end
 // RAMP STUFF
 
 
-0107: $RAMP_EIGHT1 = create_object #ELECTRICGATE at 583.0 -930.0 37.7
+0107: $RAMP_EIGHT1 = create_object #ELECTRICGATE at 582.5 -930.0 37.6
 0453: object $RAMP_EIGHT1 set_rotation 90.0 0.0 0.0
 0382: set_object $RAMP_EIGHT1 collision_detection 1
 0392: object $RAMP_EIGHT1 toggle_in_moving_list 0 
 
-0107: $RAMP_EIGHT2 = create_object #ELECTRICGATE at 594.0 -930.0 37.7
+0107: $RAMP_EIGHT2 = create_object #ELECTRICGATE at 593.5 -930.0 37.6
 0453: object $RAMP_EIGHT2 set_rotation 90.0 0.0 0.0
 0382: set_object $RAMP_EIGHT2 collision_detection 1
 0392: object $RAMP_EIGHT2 toggle_in_moving_list 0 
 
-0107: $RAMP_EIGHT3 = create_object #ELECTRICGATE at 605.0 -930.0 37.7
+0107: $RAMP_EIGHT3 = create_object #ELECTRICGATE at 604.5 -930.0 37.6
 0453: object $RAMP_EIGHT3 set_rotation 90.0 0.0 0.0
 0382: set_object $RAMP_EIGHT3 collision_detection 1
 0392: object $RAMP_EIGHT3 toggle_in_moving_list 0 
 
-0107: $RAMP_EIGHT4 = create_object #ELECTRICGATE at 616.0 -930.0 37.7
+0107: $RAMP_EIGHT4 = create_object #ELECTRICGATE at 615.5 -930.0 37.6
 0453: object $RAMP_EIGHT4 set_rotation 90.0 0.0 0.0
 0382: set_object $RAMP_EIGHT4 collision_detection 1
 0392: object $RAMP_EIGHT4 toggle_in_moving_list 0 
 
-0107: $RAMP_EIGHT5 = create_object #ELECTRICGATE at 627.0 -930.0 37.7
+0107: $RAMP_EIGHT5 = create_object #ELECTRICGATE at 626.5 -930.0 37.6
 0453: object $RAMP_EIGHT5 set_rotation 90.0 0.0 0.0
 0382: set_object $RAMP_EIGHT5 collision_detection 1
 0392: object $RAMP_EIGHT5 toggle_in_moving_list 0 
@@ -380,11 +380,6 @@ then
 	03D5: remove_text 'EBAL_B'  // This is the place right here, let's get off the street and find a change of clothes!
 end
 wait 1000 ms
-if
-	03D2:   wav_ended 
-then
-	03D5: remove_text 'EBAL_B'  // This is the place right here, let's get off the street and find a change of clothes!
-end
 gosub @CHECK_EIGHT_STATUS_EIGHTBALL
 gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 if
@@ -473,15 +468,9 @@ end //while
 :MISSION_BLOKE_STUCK_8BALL
 015F: set_camera_position 886.75 -310.0625 9.875 0.0 rotation 0.0 0.0 
 0160: point_camera 887.6875 -309.75 9.75 switchstyle JUMP_CUT
+wait 500 ms
 009F: char_set_idle $EIGHTBALL 
 011C: actor $PLAYER_ACTOR clear_objective 
-03E5: text_box 'S_PROMP'  // When not on a mission you can ~h~save your game here~w~, this will advance time six hours.
-wait 4000 ms
-gosub @CHECK_EIGHT_STATUS_EIGHTBALL
-gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
-
-03E5: text_box 'S_PROM2'  // The garage next door can store one vehicle when you save your game.
-0160: point_camera 887.75 -310.5 9.6875 switchstyle INTERPOLATION
 0055: set_player_coordinates $PLAYER_CHAR to 895.875 -311.375 7.6875 
 00A1: set_char_coordinates $EIGHTBALL to 884.25 -309.1875 7.5625 
 

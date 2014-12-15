@@ -1086,15 +1086,15 @@ if
 	8038:   not  $SKIP_FLAG == 2 
 then
 	0336: set_player $PLAYER_CHAR visible 1 
-	0247: request_model #KURUMA 
+	0247: request_model #BANSHEE 
 	038B: load_all_models_now 
-	while 8248:   not model #KURUMA available
+	while 8248:   not model #BANSHEE available
 		wait 0 ms
 		gosub @DO_BRIDGE_PARTICLES
 	end
-	00A5: $CAR_EIGHTBALL = create_car #KURUMA at 812.0 -945.5 35.75
+	00A5: $CAR_EIGHTBALL = create_car #BANSHEE at 812.0 -945.5 35.75
 	0229: set_car $CAR_EIGHTBALL color_to 58 1 
-	0175: set_car $CAR_EIGHTBALL z_angle_to 262.375 
+	0175: set_car $CAR_EIGHTBALL z_angle_to 270.0
 	009A: $EIGHTBALL = create_char PEDTYPE_SPECIAL model #SPECIAL01 at 811.875 -942.4375 -100.0
 	0245: set_actor $EIGHTBALL walk_style_to ANIM_GANG2_PED
 	01ED: clear_actor $EIGHTBALL threat_search 
