@@ -191,9 +191,8 @@ while true
 						wait 1000 ms
 						while true
 							if or
-								00D6: if or
-834E:   not move_object $STAUNTON_HIDEOUT_DOOR1 to 105.3125 -482.75 16.25 speed 0.0625 0.0 0.0 collision_check 0 
-834E:   not move_object $STAUNTON_HIDEOUT_DOOR2 to 100.6875 -482.75 16.25 speed 0.0625 0.0 0.0 collision_check 0
+								834E:   not move_object $STAUNTON_HIDEOUT_DOOR1 to 105.3125 -482.75 16.25 speed 0.0625 0.0 0.0 collision_check 0 
+								834E:   not move_object $STAUNTON_HIDEOUT_DOOR2 to 100.6875 -482.75 16.25 speed 0.0625 0.0 0.0 collision_check 0
 							jf break
 							wait 0 ms
 						end
