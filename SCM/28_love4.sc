@@ -1496,6 +1496,7 @@ goto @MISSION_END_LOVE4
 030C: set_mission_points += 1 
 02A7: $ASUKA1_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_ASUKA at 366.9375 -328.0 20.25 
 004F: create_thread @ASUKA_SUBURBAN_MISSION1_LOOP
+0164: disable_marker $DONALD_MISSION_MARKER 
 goto @MISSION_END_LOVE4
 
 /////////////////////////////////////////

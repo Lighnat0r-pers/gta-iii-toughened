@@ -257,34 +257,29 @@ gosub @CHECK_WRONG_VEHICLE_LUIGI3
 
 // Change camera angle if player in big vehicle
 
-if
-	00E5:   player $PLAYER_CHAR 0 937.875 -259.75 radius 3.0 3.0 
+if or
+	00DE:   is_player_in_model $PLAYER_CHAR model #BUS 
+	00DE:   is_player_in_model $PLAYER_CHAR model #COACH 
+	00DE:   is_player_in_model $PLAYER_CHAR model #FLATBED 
+	00DE:   is_player_in_model $PLAYER_CHAR model #FIRETRUK 
+	00DE:   is_player_in_model $PLAYER_CHAR model #LANDSTAL 
+	00DE:   is_player_in_model $PLAYER_CHAR model #LINERUN
+	00DE:   is_player_in_model $PLAYER_CHAR model #TRASH 
+	00DE:   is_player_in_model $PLAYER_CHAR model #PONY 
 then
-	if or
-		00DE:   is_player_in_model $PLAYER_CHAR model #BUS 
-		00DE:   is_player_in_model $PLAYER_CHAR model #COACH 
-		00DE:   is_player_in_model $PLAYER_CHAR model #FLATBED 
-		00DE:   is_player_in_model $PLAYER_CHAR model #FIRETRUK 
-		00DE:   is_player_in_model $PLAYER_CHAR model #LANDSTAL 
-		00DE:   is_player_in_model $PLAYER_CHAR model #LINERUN
-		00DE:   is_player_in_model $PLAYER_CHAR model #TRASH 
-		00DE:   is_player_in_model $PLAYER_CHAR model #PONY 
-	then
-		0004: $FLAG_CAMERA_MODE_LM3 = 1 
-	end
-	if or
-
-		00DE:   is_player_in_model $PLAYER_CHAR model #MULE 
-		00DE:   is_player_in_model $PLAYER_CHAR model #AMBULAN 
-		00DE:   is_player_in_model $PLAYER_CHAR model #MRWHOOP 
-		00DE:   is_player_in_model $PLAYER_CHAR model #RUMPO 
-		00DE:   is_player_in_model $PLAYER_CHAR model #BELLYUP 
-		00DE:   is_player_in_model $PLAYER_CHAR model #MRWONGS 
-		00DE:   is_player_in_model $PLAYER_CHAR model #YANKEE 
-		00DE:   is_player_in_model $PLAYER_CHAR model #SECURICA
-	then
-		0004: $FLAG_CAMERA_MODE_LM3 = 1 
-	end
+	0004: $FLAG_CAMERA_MODE_LM3 = 1 
+end
+if or
+	00DE:   is_player_in_model $PLAYER_CHAR model #MULE 
+	00DE:   is_player_in_model $PLAYER_CHAR model #AMBULAN 
+	00DE:   is_player_in_model $PLAYER_CHAR model #MRWHOOP 
+	00DE:   is_player_in_model $PLAYER_CHAR model #RUMPO 
+	00DE:   is_player_in_model $PLAYER_CHAR model #BELLYUP 
+	00DE:   is_player_in_model $PLAYER_CHAR model #MRWONGS 
+	00DE:   is_player_in_model $PLAYER_CHAR model #YANKEE 
+	00DE:   is_player_in_model $PLAYER_CHAR model #SECURICA
+then
+	0004: $FLAG_CAMERA_MODE_LM3 = 1 
 end
 
 if
@@ -782,14 +777,12 @@ if
 then
 	0004: $AMBUSH_LOCATION_FLAG_LM3 = 1
 	gosub @AMBUSH_LM3
-	0004: $AMBUSH_TRIGGERED_LM3 = 1
 else
 	if
 		0022: 920.0 > $PLAYER_X
 	then
 		0004: $AMBUSH_LOCATION_FLAG_LM3 = 2
 		gosub @AMBUSH_LM3
-		0004: $AMBUSH_TRIGGERED_LM3 = 1
 	else
 		if
 			0020: $PLAYER_Y > -185.0
@@ -847,7 +840,7 @@ wait 1000 ms
 02A3: toggle_widescreen 0 
 
 02EB: restore_camera_jumpcut
-
+0004: $AMBUSH_TRIGGERED_LM3 = 1
 return
 
 
@@ -872,7 +865,8 @@ goto @MISSION_END_LUIGI3
 0109: player $PLAYER_CHAR money += 1000 
 0110: clear_player $PLAYER_CHAR wanted_level 
 02A7: $JOEY_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_JOEY at 1191.688 -870.0 -100.0 
-004F: create_thread @JOEY_MISSION1_LOOP 
+004F: create_thread @JOEY_MISSION1_LOOP
+0164: disable_marker $LUIGI_MISSION_MARKER  
 return
 
 

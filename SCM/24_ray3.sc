@@ -688,6 +688,7 @@ goto @MISSION_END_RAY3
 030C: set_mission_points += 1 
 02A7: $DONALD_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_DON at 86.0625 -1548.688 28.25  
 004F: create_thread @LOVE_MISSION1_LOOP
+0164: disable_marker $RAY_MISSION_MARKER 
 goto @MISSION_END_RAY3
 
 /////////////////////////////////////////
@@ -752,6 +753,8 @@ then
 	end
 end
 return
+
+////////////////////////////////////////
 
 :EVIDENCE_COLLECTED
 0164: disable_marker $RAYS_EVIDENCE_BLIP 

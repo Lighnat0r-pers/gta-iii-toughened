@@ -1031,7 +1031,8 @@ goto @MISSION_END_JOEY4
 0318: set_latest_mission_passed 'JM4'  // 'CIPRIANI'S CHAUFFEUR'
 030C: set_mission_points += 1 
 02A7: $TONI_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_TONY at 1219.563 -321.0 26.375 
-004F: create_thread @TONI_MISSION1_LOOP 
+004F: create_thread @TONI_MISSION1_LOOP
+0164: disable_marker $JOEY_MISSION_MARKER   
 goto @MISSION_END_JOEY4
 
 /////////////////////////////////////////

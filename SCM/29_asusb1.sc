@@ -789,7 +789,6 @@ else
 	0164: disable_marker $BLIP_CARTELCAR_TEMP 
 end
 
-
 return
 
 /////////////////////////////////////////

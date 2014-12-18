@@ -819,11 +819,7 @@ end
 02E6: set_cutscene_anim $CS_LUDOOR 'LUDOOR' 
 0395: clear_area 1 at 896.5625 -426.1875 range 13.875 1.0 
 0055: set_player_coordinates $PLAYER_CHAR to 896.5625 -426.1875 13.875 
-0171: set_player $PLAYER_CHAR z_angle_to 270.0 
-0006: 16@ = 0 
-while 001B:   3500 > 16@
-	wait 0 ms
-end 
+0171: set_player $PLAYER_CHAR z_angle_to 270.0  
 016A: fade 1 for 1500 ms 
 0395: clear_area 1 at 887.375 -417.25 range 13.875 10.0 // This should get rid of anything in the alleway
 0395: clear_area 1 at 892.75 -425.5 range 13.875 3.0 

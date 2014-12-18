@@ -537,6 +537,7 @@ goto @MISSION_END_ASUKA4
 02A7: $RAY_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_RAY at 38.75 -725.375 -100.0 
 0373: set_camera_directly_behind_player 
 004F: create_thread @RAY_MISSION1_LOOP
+0164: disable_marker $ASUKA1_MISSION_MARKER 
 goto @MISSION_END_ASUKA4
 
 /////////////////////////////////////////

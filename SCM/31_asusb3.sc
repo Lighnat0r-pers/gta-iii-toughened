@@ -803,6 +803,7 @@ then
 	0004: $FLAG_MESSAGES = 1 
 end
 return
+
 /////////////////////////////////////////
 
 :CHECK_BOAT_BLIP
@@ -1141,5 +1142,6 @@ if and
 then
 	goto @MISSION_FAILED_AS3
 end
+return
 
 ////////////////////////////////////////
