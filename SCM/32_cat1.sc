@@ -37,7 +37,6 @@ end_thread
 0004: $BEEN_ON_HELI_PAD = 0 
 0004: $SET_AS_LEADER_BEFORE = 0 
 0004: $MARIA_CREATED_BEFORE = 0 
-0004: $ONMISSION = 1 
 0004: $CAMERA_CUT = 0 
 
 015C: set_zone_gang_info 'WEE_DAM' DAY 0 0 0 0 0 0 0 0 0 
@@ -1245,13 +1244,7 @@ end
 02EB: restore_camera_jumpcut 
 03C8: set_camera_directly_before_player 
 02A3: toggle_widescreen 0 
-0004: $ONMISSION = 0 
-0004: $ON_MISSION_FOR_CATALINA = 0 
-0006: 17@ = 0
-
-while 001B:   2500 > 17@ 
-	wait 0 ms
-end 
+wait 2500
 
 016A: fade 1 for 2000 ms 
 0440: stop_cutscene_music

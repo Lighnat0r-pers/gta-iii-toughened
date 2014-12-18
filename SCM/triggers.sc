@@ -68,7 +68,7 @@ then
 			0169: set_fade_color 0 0 0 
 			016A: fade 0 for 1500 ms 
 			03AF: set_streaming 0 
-			00BA: print_big 'LM2' duration 15000 ms style 2  // 'DON'T SPANK MA BITCH UP'
+			00BA: print_big 'LM2' duration 15000 ms style 2  // 'DON'T TEK MA BITCH UP'
 			while fading
 				wait 0 ms
 			end

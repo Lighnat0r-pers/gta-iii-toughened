@@ -19,7 +19,7 @@ then
 	gosub @MISSION_FAILED_EIGHTBALL 
 end
 
-:MISSION_EIGHTBALL_END
+:MISSION_END_EIGHTBALL
 gosub @MISSION_CLEANUP_EIGHTBALL 
 end_thread 
 
@@ -210,7 +210,6 @@ while 83D2:   not wav_ended
 	gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 end
 
-//03D5: remove_text 'EBAL_A'  // I know a place on the edge of the Red Light District where we can lay low,
 03CF: load_wav 'LIB_A2' 
 
 while 83D0:   not wav_loaded 
@@ -253,11 +252,6 @@ end
 gosub @SWITCH_CAR_GENERATOR  
 wait 500 ms
 
-if
-	03D2:   wav_ended 
-then
-	03D5: remove_text 'EBAL_A1'  // but my hands are all messed up so you better drive, brother.
-end
 gosub @CHECK_EIGHT_STATUS_EIGHTBALL
 gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 
@@ -502,7 +496,7 @@ end
 0055: set_player_coordinates $PLAYER_CHAR to 883.5 -308.1875 7.5625 
 01B7: release_weather 
 01D4: actor $EIGHTBALL go_to_car $CAR_EIGHTBALL and_enter_it_as_a_passenger 
-wait 1500 ms
+wait 750 ms
 gosub @CHECK_EIGHT_STATUS_EIGHTBALL
 gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 
@@ -608,6 +602,12 @@ then
 	0108: destroy_object $RAMP_EIGHT3
 	0108: destroy_object $RAMP_EIGHT4
 	0108: destroy_object $RAMP_EIGHT5
+	0108: destroy_object $RAMP_EIGHT_SECRET1
+	0108: destroy_object $RAMP_EIGHT_SECRET2
+	0108: destroy_object $RAMP_EIGHT_SECRET3
+	0108: destroy_object $RAMP_EIGHT_SECRET4
+	0108: destroy_object $RAMP_EIGHT_SECRET5
+	0108: destroy_object $RAMP_EIGHT_SECRET6
 	if
 		0038:   $DEBUGUNLOCKISLANDS == 0
 	then 
@@ -1392,7 +1392,7 @@ end
 while 8256:   not is_player $PLAYER_CHAR defined 
 	wait 0 ms
 end
-goto @MISSION_EIGHTBALL_END
+goto @MISSION_END_EIGHTBALL
 
 ////////////////////////////////////////////
 
@@ -1407,7 +1407,7 @@ goto @MISSION_EIGHTBALL_END
 0110: clear_player $PLAYER_CHAR wanted_level 
 02A7: $LUIGI_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_LUIGI at 892.75 -425.75 13.875 // New blip down alleyway
 004F: create_thread @LUIGI_MISSION2_LOOP
-return 
+goto @MISSION_END_EIGHTBALL
 
 ////////////////////////////////////////////
 

@@ -215,11 +215,6 @@ end
 00A8: car_wander_randomly $IA_CAR_RM3 
 0186: $PROSECUTION_CAR_BLIP = create_marker_above_car $IA_CAR_RM3 
 020A: set_car $IA_CAR_RM3 door_status_to CARLOCK_LOCKED
-if
-	0038:   $ONMISSION == 0 
-then
-	0187: $RAYS_EVIDENCE_BLIP = create_marker_above_actor $IA_CAR_DRIVER_1
-end
 
 00AA: get_car_coordinates $IA_CAR_RM3 store_to $CAR_STUCK_X $CAR_STUCK_Y $CAR_STUCK_Z 
 00AA: get_car_coordinates $IA_CAR_RM3 store_to $IA_CAR_X $IA_CAR_Y $IA_CAR_Z 

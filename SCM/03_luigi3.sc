@@ -762,7 +762,7 @@ if or
 	00DE:   is_player_in_model $PLAYER_CHAR model #FBICAR
 	00DE:   is_player_in_model $PLAYER_CHAR model #ENFORCER
 then
-	00BC: print_now 'LM3_11' duration 5000 ms flag 1  // ~r~You're a cop now? Get outa here!
+	00BC: print_now 'LM3_11' duration 5000 ms flag 1  // ~r~You're a cop now? Get outta here!
 	goto @MISSION_FAILED_LUIGI3
 end
 return
@@ -773,7 +773,7 @@ return
 0054: get_player_coordinates $PLAYER_CHAR store_to $PLAYER_X $PLAYER_Y $PLAYER_Z
 
 if
-	0020: $PLAYER_X > 960.0
+	0020: $PLAYER_X > 965.0
 then
 	0004: $AMBUSH_LOCATION_FLAG_LM3 = 1
 	gosub @AMBUSH_LM3
@@ -833,7 +833,14 @@ wait 2500 ms
 0423: car $AMBUSH_CAR_LM3 improve_handling 2.0
 01EC: make_car $AMBUSH_CAR_LM3 very_heavy 1
 
-wait 1000 ms
+// Location 1 is easier to escape, so give the ambush a bigger headstart.
+if
+	0038:   $AMBUSH_LOCATION_FLAG_LM3 == 1
+then
+	wait 3500 ms
+else
+	wait 1500 ms
+end
 
 01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 0 
 01B4: set_player $PLAYER_CHAR controllable 1 
@@ -867,8 +874,7 @@ goto @MISSION_END_LUIGI3
 02A7: $JOEY_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_JOEY at 1191.688 -870.0 -100.0 
 004F: create_thread @JOEY_MISSION1_LOOP
 0164: disable_marker $LUIGI_MISSION_MARKER  
-return
-
+goto @MISSION_END_LUIGI3
 
 /////////////////////////////////////////
 

@@ -339,12 +339,7 @@ while true
 		00F7:   player $PLAYER_CHAR sphere 0 near_point_in_car 925.0625 -350.5 9.25 radius 2.5 2.5 2.5 
 		00DC:   is_player_in_car $PLAYER_CHAR car $LUIGI2_DEALER_CAR 
 	then
-		if
-			0038:   $FLAG_HAD_SPRAY_HELP == 0
-		then
-			03E5: text_box 'SPRAY1'  // Drive your vehicle into the spray shop to lose your ~h~wanted level~w~, ~h~repair ~w~and ~h~respray ~w~your vehicle. Cost - ~h~$1000~w~. This time it's free.
-			0004: $FLAG_HAD_SPRAY_HELP = 1
-		end
+		0004: $FLAG_HAD_SPRAY_HELP = 1
 		03BD: destroy_sphere $SPHERE1_LM2 
 	end
 end //while
@@ -528,7 +523,7 @@ goto @MISSION_END_LUIGI2
 0109: player $PLAYER_CHAR money += 4000 
 0110: clear_player $PLAYER_CHAR wanted_level 
 004F: create_thread @LUIGI_MISSION3_LOOP 
-return
+goto @MISSION_END_LUIGI2
 
 /////////////////////////////////////////
 
