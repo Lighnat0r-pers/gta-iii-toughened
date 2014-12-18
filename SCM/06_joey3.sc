@@ -32,6 +32,11 @@ end_thread
 0001: wait 0 ms 
 0004: $IN_THE_LOCATE_JOEY3 = 0 
 0004: $JOEY3_AMBUSH_TRIGGERED = 0
+0004: $SECRET_TRIGGERED_JOEY3 = 0
+0004: $SECRET_TIMER_JOEY_STARTED_FLAG = 0
+0004: $SECRET_ACTIVATED_JOEY3 = 0
+0004: $PLAYER_PASSENGER = 0
+0004: $PLAYER_PASSENGER_OLD = 0
 023C: load_special_actor 'JOEY' as 1 
 02F3: load_object #CUTOBJ01 'JOEYH' 
 02F3: load_object #CUTOBJ02 'PLAYERH' 
@@ -140,17 +145,21 @@ end
 0249: release_model #JOGARAGEINT 
 023C: load_special_actor 'S_GUARD' as 2 
 0247: request_model #SECURICA 
+0247: request_model #PROSTITUTE 
 
 while true
 	if or
 		823D:   not special_actor 2 loaded 
 		8248:   not model #SECURICA available
+		8248:   not model #PROSTITUTE available 
 	jf break
 	wait 0 ms
 end //while
 
 // START OF MISSION
 
+009A: $JOEY3_SECRET_HOOKER = create_char PEDTYPE_SPECIAL model #PROSTITUTE at 1155.0 -854.0 -100.0
+0173: set_actor $JOEY3_SECRET_HOOKER z_angle_to 100.0 
 00A5: $JOEY3_VAN = create_car #SECURICA at 1063.0 -805.0 14.5625
 020A: set_car $JOEY3_VAN door_status_to CARLOCK_LOCKOUT_PLAYER_ONLY
 02AA: set_car $JOEY3_VAN immune_to_nonplayer 1 
@@ -164,13 +173,21 @@ end //while
 0243: set_actor $JOEY3_VAN_PASSENGER ped_stats_to PEDSTAT_GEEK_GUY
 0227: $JOEY3_VAN_HEALTH = car $JOEY3_VAN health 
 03C4: set_status_text_to $JOEY3_VAN_HEALTH COUNTER_DISPLAY_BAR 'DAM'  // DAMAGE:
-gosub @CHECK_SECURICAR_HEALTH_STATUS1_JOEY2
+gosub @CHECK_SECURICAR_HEALTH_STATUS1_JOEY3
 
 while 0185:   car $JOEY3_VAN health >= 999
 	wait 0 ms
 	gosub @CHECK_VEHICLE_STATUS_JOEY3
-	gosub @CHECK_SECURICAR_HEALTH_STATUS1_JOEY2
+	gosub @CHECK_SECURICAR_HEALTH_STATUS1_JOEY3
+	gosub @CHECK_SECRET_TRIGGER_JOEY3
+	gosub @SECRET_TIMER_JOEY3
 end //while
+
+if
+	8118:   not actor $PLAYER_PASSENGER dead
+then
+	01E0: clear_leader $PLAYER_PASSENGER
+end
 
 if
 	8119:   not car $JOEY3_VAN wrecked 
@@ -194,7 +211,7 @@ while 0185:   car $JOEY3_VAN health >= 900
 		then
 			010E: set_player $PLAYER_CHAR minimum_wanted_level_to 1 
 		end
-		gosub @CHECK_SECURICAR_HEALTH_STATUS2_JOEY2
+		gosub @CHECK_SECURICAR_HEALTH_STATUS2_JOEY3
 	end
 end //while
 
@@ -216,7 +233,7 @@ while 0185:   car $JOEY3_VAN health >= 750
 		then
 			010E: set_player $PLAYER_CHAR minimum_wanted_level_to 2 
 		end
-		gosub @CHECK_SECURICAR_HEALTH_STATUS2_JOEY2
+		gosub @CHECK_SECURICAR_HEALTH_STATUS2_JOEY3
 	end
 end //while
 
@@ -238,7 +255,7 @@ while 0185:   car $JOEY3_VAN health >= 600
 		then
 			010E: set_player $PLAYER_CHAR minimum_wanted_level_to 3 
 		end
-		gosub @CHECK_SECURICAR_HEALTH_STATUS2_JOEY2
+		gosub @CHECK_SECURICAR_HEALTH_STATUS2_JOEY3
 	end
 end //while
 
@@ -272,7 +289,7 @@ while true
 	gosub @CHECK_VEHICLE_STATUS_JOEY3
 end //while
 
-0001: wait 1600 ms 
+wait 1600 ms 
 gosub @CHECK_VEHICLE_STATUS_JOEY3
 
 if and
@@ -283,6 +300,7 @@ then
 	01D0: actor $JOEY3_VAN_PASSENGER avoid_player $PLAYER_CHAR 
 	041C: make_actor $JOEY3_VAN_PASSENGER say SOUND_SECURITY_GUARD_RUN_AWAY_SHOUT
 end
+
 
 if
 	8119:   not car $JOEY3_VAN wrecked
@@ -308,12 +326,23 @@ while true
 	wait 0 ms
 	gosub @CHECK_VEHICLE_STATUS_JOEY3
 	gosub @CHECK_IN_VEHICLE_STATUS_JOEY3
-	if and
-		8118:   not actor $JOEY3_VAN_PASSENGER dead
-		0019:   17@ > 4000 
+	if
+		0038:   $SECRET_ACTIVATED_JOEY3 == 0
 	then
-		0006: 17@ = 0 
-		041C: make_actor $JOEY3_VAN_PASSENGER say SOUND_SECURITY_GUARD_RUN_AWAY_SHOUT
+		if and
+			8118:   not actor $JOEY3_VAN_PASSENGER dead
+			0019:   17@ > 4000 
+		then
+			0006: 17@ = 0 
+			041C: make_actor $JOEY3_VAN_PASSENGER say SOUND_SECURITY_GUARD_RUN_AWAY_SHOUT
+		end
+		if and
+			0038:   $JOEY3_AMBUSH_TRIGGERED == 0
+			00F5:   player $PLAYER_CHAR 0 1444.0 -811.0 11.75 radius 20.0 20.0 10.0
+		then
+			01CA: actor $JOEY3_AMBUSH kill_player $PLAYER_CHAR 
+			0004: $JOEY3_AMBUSH_TRIGGERED = 1 	
+		end
 	end
 	if
 		0038:   $IN_THE_LOCATE_JOEY3 == 0
@@ -335,13 +364,6 @@ while true
 			0004: $IN_THE_LOCATE_JOEY3 = 0
 		end
 	end
-	if and
-		0038:   $JOEY3_AMBUSH_TRIGGERED == 0
-		00F5:   player $PLAYER_CHAR 0 1444.0 -811.0 11.75 radius 20.0 20.0 10.0
-	then
-		01CA: actor $JOEY3_AMBUSH kill_player $PLAYER_CHAR 
-		0004: $JOEY3_AMBUSH_TRIGGERED = 1 	
-	end
 end //while
 
 00BC: print_now 'OUT_VEH' duration 5000 ms flag 2  // ~g~Get out of the vehicle!
@@ -353,7 +375,8 @@ while 821C:   not car_inside_garage $SECURICAR_GARAGE
 	then
 		goto @GARAGE_STOP
 	end
-	wait 0 ms
+	wait 0 ms 	// has to be here otherwise it will see that the vehicle is destroyed failing the mission
+			// before seeing that it is in the garage.
 end //while
 
 0164: disable_marker $BLIP2_JM3 
@@ -403,7 +426,7 @@ return
 
 /////////////////////////////////////////
 
-:CHECK_SECURICAR_HEALTH_STATUS1_JOEY2
+:CHECK_SECURICAR_HEALTH_STATUS1_JOEY3
 0227: $JOEY3_VAN_HEALTH = car $JOEY3_VAN health 
 0004: $JOEY3_VAN_HEALTH_LOST = 1000 
 0060: $JOEY3_VAN_HEALTH_LOST -= $JOEY3_VAN_HEALTH 
@@ -418,7 +441,7 @@ return
 
 /////////////////////////////////////////
 
-:CHECK_SECURICAR_HEALTH_STATUS2_JOEY2
+:CHECK_SECURICAR_HEALTH_STATUS2_JOEY3
 0084: $JOEY3_VAN_HEALTH_OLD = $JOEY3_VAN_HEALTH 
 0004: $JOEY3_VAN_HEALTH_LOST = 1000 
 0060: $JOEY3_VAN_HEALTH_LOST -= $JOEY3_VAN_HEALTH 
@@ -430,6 +453,180 @@ end
 0084: $JOEY3_VAN_HEALTH = $JOEY3_VAN_HEALTH_LOST 
 0014: $JOEY3_VAN_HEALTH /= 4
 return
+
+////////////////////////////////////////
+
+:CHECK_SECRET_TRIGGER_JOEY3
+if
+	00E0:   is_player_in_any_car $PLAYER_CHAR
+then
+	00DA: $PLAYER_CAR = store_car_player_is_in $PLAYER_CHAR
+	if
+		8431:   not car $PLAYER_CAR passenger_seat_free 0
+	then
+		if or
+			0038:   $SECRET_HOOKER_PICKED_UP_JOEY3 == 0
+			0118:   actor $JOEY3_SECRET_HOOKER dead
+		then
+			0432: $PLAYER_PASSENGER = get_passenger_in_car $PLAYER_CAR seat 0
+		else
+			0084: $PLAYER_PASSENGER = $JOEY3_SECRET_HOOKER
+		end
+
+		// If it's not the same passenger as before, reset the timer, check if we're
+		// actually dealing with a prostitute and set the trigger flag for the secret if so.
+		if
+			803A:   not $PLAYER_PASSENGER_OLD == $PLAYER_PASSENGER
+		then
+			0084: $PLAYER_PASSENGER_OLD = $PLAYER_PASSENGER
+			0004: $SECRET_TIMER_JOEY_STARTED_FLAG = 0
+			if or
+				02F2:   actor $PLAYER_PASSENGER model == #PROSTITUTE
+				02F2:   actor $PLAYER_PASSENGER model == #PROSTITUTE2
+			then
+				//011C: actor $PLAYER_PASSENGER clear_objective
+				01DF: tie_actor $PLAYER_PASSENGER to_player $PLAYER_CHAR 
+				039E: set_char_cant_be_dragged_out $PLAYER_PASSENGER to 1
+				0004: $SECRET_TRIGGERED_JOEY3 = 1
+			else
+				0004: $SECRET_TRIGGERED_JOEY3 = 0
+			end
+		end
+	else
+		if or
+			0038:   $SECRET_HOOKER_PICKED_UP_JOEY3 == 0
+			0118:   actor $JOEY3_SECRET_HOOKER dead
+		then
+			0004: $SECRET_TIMER_JOEY_STARTED_FLAG = 0
+		end
+		if
+			8118:   not actor $JOEY3_SECRET_HOOKER dead
+		then
+			00A0: get_char_coordinates $JOEY3_SECRET_HOOKER store_to $JOEY3_HOOKER_X $JOEY3_HOOKER_Y $JOEY3_HOOKER_Z 
+			if
+				00E8: player $PLAYER_CHAR stopped 0 near_point_in_car $JOEY3_HOOKER_X $JOEY3_HOOKER_Y radius 5.0 5.0
+			then
+				01D4: actor $JOEY3_SECRET_HOOKER go_to_car $PLAYER_CAR and_enter_it_as_a_passenger
+				0004: $SECRET_HOOKER_PICKED_UP_JOEY3 = 1
+			end
+		end
+	end
+else
+	if or
+		0038:   $SECRET_HOOKER_PICKED_UP_JOEY3 == 0
+		0118:   actor $JOEY3_SECRET_HOOKER dead
+	then
+		0004: $SECRET_TIMER_JOEY_STARTED_FLAG = 0
+	end
+end
+return
+
+////////////////////////////////////////
+
+:SECRET_TIMER_JOEY3
+if
+	0038:   $SECRET_TRIGGERED_JOEY3 == 1
+then
+	if and
+		80DF:   not is_char_in_any_car $PLAYER_PASSENGER
+		00E0:   is_player_in_any_car $PLAYER_CHAR
+	then
+		00DA: $PLAYER_CAR = store_car_player_is_in $PLAYER_CHAR
+		01D4: actor $PLAYER_PASSENGER go_to_car $PLAYER_CAR and_enter_it_as_a_passenger
+	end
+	if
+		01FC:   player $PLAYER_CHAR near_car $JOEY3_VAN radius 10.0 10.0 unknown 0
+	then
+		if
+			0038:   $SECRET_TIMER_JOEY_STARTED_FLAG == 0
+		then
+			0006: 16@ = 0
+			0004: $SECRET_TIMER_JOEY_STARTED_FLAG = 1
+		else
+			if
+				0019:   16@ > 5000
+			then
+				goto @SECRET_ACTIVATE_JOEY3
+			end
+		end
+	else
+		0004: $SECRET_TIMER_JOEY_STARTED_FLAG = 0
+	end 
+end
+return
+
+/////////////////////////////////////////
+
+:SECRET_ACTIVATE_JOEY3
+0006: 16@ = 0
+01E0: clear_leader $PLAYER_PASSENGER
+020A: set_car $JOEY3_VAN door_status_to CARLOCK_UNLOCKED
+0151: remove_status_text $JOEY3_VAN_HEALTH
+if
+	8118:   not actor $JOEY3_VAN_DRIVER dead
+then
+	01D3: actor $JOEY3_VAN_DRIVER leave_car $JOEY3_VAN
+	0319: set_actor $JOEY3_VAN_DRIVER running 1
+end
+if
+	8118:   not actor $JOEY3_VAN_PASSENGER dead
+then
+	01D3: actor $JOEY3_VAN_PASSENGER leave_car $JOEY3_VAN
+	01D0: actor $JOEY3_VAN_PASSENGER avoid_player $PLAYER_CHAR 
+end
+while 00DB:   is_char_in_car $JOEY3_VAN_DRIVER car $JOEY3_VAN 
+	wait 0 ms
+	gosub @CHECK_VEHICLE_STATUS_JOEY3
+	if or
+		0019:   16@ > 10000
+		0118:   actor $JOEY3_VAN_DRIVER dead
+		0119:   car $PLAYER_CAR wrecked
+	then
+		goto @SECRET_FINISHED_JOEY3
+	end
+end //while
+
+if
+	8118:   not actor $JOEY3_VAN_DRIVER dead
+then
+	01D5: actor $JOEY3_VAN_DRIVER go_to_and_drive_car $PLAYER_CAR 
+end
+
+while 80DB:   not is_char_in_car $JOEY3_VAN_DRIVER car $PLAYER_CAR 
+	wait 0 ms
+	gosub @CHECK_VEHICLE_STATUS_JOEY3
+	if or
+		0019:   16@ > 10000
+		0118:   actor $JOEY3_VAN_DRIVER dead
+		0119:   car $PLAYER_CAR wrecked
+	then
+		goto @SECRET_FINISHED_JOEY3
+	end
+end //while
+
+if
+	8119:   not car $PLAYER_CAR wrecked
+then
+	00A8: car_wander_randomly $PLAYER_CAR
+end
+
+
+:SECRET_FINISHED_JOEY3
+if
+	8119:   not car $JOEY3_VAN wrecked
+then
+	021B: set_garage $SECURICAR_GARAGE to_accept_car $JOEY3_VAN
+end
+
+if and
+	8118:   not actor $JOEY3_VAN_DRIVER dead
+	8118:   not actor $PLAYER_PASSENGER dead
+then
+	01DE: tie_actor $PLAYER_PASSENGER to_actor $JOEY3_VAN_DRIVER 
+end
+0004: $FLAG_CAR_BLIP_DISPLAYED_JM3 = 1
+0004: $SECRET_ACTIVATED_JOEY3 = 1
+goto @GARAGE_STOP
 
 /////////////////////////////////////////
 

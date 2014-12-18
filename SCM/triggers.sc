@@ -5,7 +5,6 @@
 //#####################################################################################
 
 :EIGHTBALL_MISSION_LOOP
-03A4: name_thread 'EIGHTTR' 
 wait 0 ms
 if or
     0038:   $FLAG_STAUNTON_OPEN == 1  
