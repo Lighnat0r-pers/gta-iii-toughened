@@ -95,6 +95,8 @@ end
 0382: set_object $RAMP_EIGHT1 collision_detection 1
 0392: object $RAMP_EIGHT1 toggle_in_moving_list 0 
 
+
+
 0107: $RAMP_EIGHT2 = create_object #ELECTRICGATE at 593.5 -930.0 37.6
 0453: object $RAMP_EIGHT2 set_rotation 90.0 0.0 0.0
 0382: set_object $RAMP_EIGHT2 collision_detection 1
@@ -115,19 +117,44 @@ end
 0382: set_object $RAMP_EIGHT5 collision_detection 1
 0392: object $RAMP_EIGHT5 toggle_in_moving_list 0 
 
+0107: $RAMP_EIGHT_SECRET1 = create_object #COLUMBIANGATE at 594.0 -945.0 33.0
+0453: object $RAMP_EIGHT_SECRET1 set_rotation 90.0 0.0 0.0
+0382: set_object $RAMP_EIGHT_SECRET1 collision_detection 1
+0392: object $RAMP_EIGHT_SECRET1 toggle_in_moving_list 0 
+0363: toggle_model_render_at 594.0 -945.0 35.0 radius 6.0 object #COLUMBIANGATE 0 
 
-/*
-if
-	8038:   not $FAILED_ONCE_EIGHT == 1
-then
-	0382: set_object $RAMP_EIGHT1 collision_detection 0
-	0382: set_object $RAMP_EIGHT2 collision_detection 0
-	0382: set_object $RAMP_EIGHT3 collision_detection 0
-	0382: set_object $RAMP_EIGHT4 collision_detection 0
-	0382: set_object $RAMP_EIGHT5 collision_detection 0
-	0004: $FAILED_ONCE_EIGHT = 1
-end
-*/
+0107: $RAMP_EIGHT_SECRET2 = create_object #COLUMBIANGATE at 603.0 -945.0 33.0
+0453: object $RAMP_EIGHT_SECRET2 set_rotation 90.0 0.0 0.0
+0382: set_object $RAMP_EIGHT_SECRET2 collision_detection 1
+0392: object $RAMP_EIGHT_SECRET2 toggle_in_moving_list 0 
+0363: toggle_model_render_at 603.0 -945.0 35.0 radius 6.0 object #COLUMBIANGATE 0 
+
+0107: $RAMP_EIGHT_SECRET3 = create_object #COLUMBIANGATE at 612.0 -945.0 33.0
+0453: object $RAMP_EIGHT_SECRET3 set_rotation 90.0 0.0 0.0
+0382: set_object $RAMP_EIGHT_SECRET3 collision_detection 1
+0392: object $RAMP_EIGHT_SECRET3 toggle_in_moving_list 0 
+0363: toggle_model_render_at 612.0 -945.0 35.0 radius 6.0 object #COLUMBIANGATE 0 
+
+0107: $RAMP_EIGHT_SECRET4 = create_object #COLUMBIANGATE at 621.0 -945.0 33.0
+0453: object $RAMP_EIGHT_SECRET4 set_rotation 90.0 0.0 0.0
+0382: set_object $RAMP_EIGHT_SECRET4 collision_detection 1
+0392: object $RAMP_EIGHT_SECRET4 toggle_in_moving_list 0 
+0363: toggle_model_render_at 621.0 -945.0 35.0 radius 6.0 object #COLUMBIANGATE 0 
+
+0107: $RAMP_EIGHT_SECRET5 = create_object #COLUMBIANGATE at 630.0 -945.0 33.0
+0453: object $RAMP_EIGHT_SECRET5 set_rotation 90.0 0.0 0.0
+0382: set_object $RAMP_EIGHT_SECRET5 collision_detection 1
+0392: object $RAMP_EIGHT_SECRET5 toggle_in_moving_list 0 
+0363: toggle_model_render_at 630.0 -945.0 35.0 radius 6.0 object #COLUMBIANGATE 0 
+
+0107: $RAMP_EIGHT_SECRET6 = create_object #COLUMBIANGATE at 639.0 -945.0 33.0
+0453: object $RAMP_EIGHT_SECRET6 set_rotation 90.0 0.0 0.0
+0382: set_object $RAMP_EIGHT_SECRET6 collision_detection 1
+0392: object $RAMP_EIGHT_SECRET6 toggle_in_moving_list 0 
+0363: toggle_model_render_at 639.0 -945.0 35.0 radius 6.0 object #COLUMBIANGATE 0 
+
+
+
 02CE: get_ground_z_for_3d_coord 540.0 -938.0 100.0 store_to $GROUND_EIGHT
 00A5: $CAR_EIGHTBALL = create_car #BANSHEE at 540.0 -938.0 $GROUND_EIGHT
 0229: set_car $CAR_EIGHTBALL color_to 58 1 
@@ -168,7 +195,6 @@ while 83D0:   not wav_loaded
 	gosub @CHECK_EIGHT_STATUS_EIGHTBALL
 	gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 end
-wait 2000 ms
 gosub @CHECK_EIGHT_STATUS_EIGHTBALL
 gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 
@@ -184,7 +210,7 @@ while 83D2:   not wav_ended
 	gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 end
 
-03D5: remove_text 'EBAL_A'  // I know a place on the edge of the Red Light District where we can lay low,
+//03D5: remove_text 'EBAL_A'  // I know a place on the edge of the Red Light District where we can lay low,
 03CF: load_wav 'LIB_A2' 
 
 while 83D0:   not wav_loaded 
@@ -195,14 +221,6 @@ end
 
 03D1: play_wav 
 00BC: print_now 'EBAL_A1' duration 5000 ms flag 1  // but my hands are all messed up so you better drive, brother.
-if
-	03D2:   wav_ended 
-then
-	03D5: remove_text 'EBAL_A1'  // but my hands are all messed up so you better drive, brother.
-end
-
-gosub @CHECK_EIGHT_STATUS_EIGHTBALL
-gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 
 022F: set_actor $EIGHTBALL stop_looking 
 01D4: actor $EIGHTBALL go_to_car $CAR_EIGHTBALL and_enter_it_as_a_passenger 
@@ -218,19 +236,12 @@ while 80DB:   not is_char_in_car $EIGHTBALL car $CAR_EIGHTBALL
 end
 
 if
-	03D2:   wav_ended 
-then
-	03D5: remove_text 'EBAL_A1'  // but my hands are all messed up so you better drive, brother.
-end
-
-// This will tune the radio to HEAD RADIO
-if
     0038:   $FLAG_DONE_RADIO_8BALL == 0  
 then
-    041E: set_radio_station HEAD_RADIO 0
+    041E: set_radio_station BANG_RADIO 0
     0004: $FLAG_DONE_RADIO_8BALL = 1  
 else
-    041E: set_radio_station HEAD_RADIO -1
+    041E: set_radio_station BANG_RADIO -1
 end
 
 039E: set_char_cant_be_dragged_out $EIGHTBALL to 1 
@@ -250,12 +261,6 @@ end
 gosub @CHECK_EIGHT_STATUS_EIGHTBALL
 gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 
-
-0006: 17@ = 0 // Timer for police wanted level stuff
-wait 3000 ms
-gosub @CHECK_EIGHT_STATUS_EIGHTBALL
-gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
-
 // Waiting for the player to get into the car
 while true
 	if or
@@ -263,7 +268,6 @@ while true
 		80DB:   not is_char_in_car $EIGHTBALL car $CAR_EIGHTBALL 
 	jf break
 	wait 0 ms
-	gosub @CHECK_CLEAR_PLAYER_WANTED_LEVEL
 	gosub @CHECK_EIGHT_STATUS_EIGHTBALL
 	gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 	gosub @CHECK_PLAYER_IN_RESTRICTED_AREA
@@ -287,31 +291,14 @@ end
 00AD: set_car_cruise_speed $COP_CAR2_8BALL to 20.0 
 00A7: car_goto_coordinates $COP_CAR2_8BALL coords 718.6875 -922.1875 42.0 
 0164: disable_marker $RADAR_BLIP_CAR1_EIGHTBALL  
-wait 500 ms 
-gosub @CHECK_CLEAR_PLAYER_WANTED_LEVEL
-gosub @CHECK_EIGHT_STATUS_EIGHTBALL
-gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 
 02CE: get_ground_z_for_3d_coord 875.0 -309.0 -100.0 store_to $GROUND_SAFEHOUSE_EIGHT
 018A: $RADAR_BLIP_COORD1_EIGHTBALL = create_checkpoint_at 875.0 -309.0 $GROUND_SAFEHOUSE_EIGHT
 0004: $CURRENT_STEP_FOR_BLIP_MANIPULATION = 1 
-0006: 16@ = 0 
 0004: $BLOB_FLAG = 1 
-gosub @CHECK_CLEAR_PLAYER_WANTED_LEVEL
 03CF: load_wav 'LIB_A' 
-0006: 16@ = 0 
 
-while 10000 > 16@
-	wait 0 ms
-	gosub @CHECK_EIGHT_STATUS_EIGHTBALL
-	gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
-	gosub @CHECK_IN_VEHICLE_STATUS_EIGHTBALL
-	gosub @CHECK_PLAYER_IN_RESTRICTED_AREA
-end
-
-0006: 16@ = 0 
-
-// waiting for the player to get to Luigi's
+// waiting for the player to get to the hideout
 while true
 	if or
 		81A0:   not player $PLAYER_CHAR stopped $BLOB_FLAG 879.375 -303.375 7.25 870.0625 -311.6875 10.0 
@@ -321,7 +308,6 @@ while true
 		83D0:   not wav_loaded 
 	jf break
 	wait 0 ms
-	gosub @CHECK_CLEAR_PLAYER_WANTED_LEVEL
 	gosub @CHECK_EIGHT_STATUS_EIGHTBALL
 	gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 	gosub @CHECK_IN_VEHICLE_STATUS_EIGHTBALL
@@ -354,6 +340,7 @@ end
 0174: $CAR_8BALL_HEADING = car $CAR_EIGHTBALL z_angle 
 03F3: get_car $CAR_EIGHTBALL color $CAR_COLOUR1_8BALL $CAR_COLOUR2_8BALL 
 
+// Open hideout door
 while 834D:   not rotate_object $PORTLAND_HIDEOUT_DOOR from_angle 210.0 to 10.0 collision_check 0 
 	wait 0 ms
 	gosub @CHECK_EIGHT_STATUS_EIGHTBALL
@@ -374,19 +361,9 @@ end
 03D1: play_wav 
 00BC: print_now 'EBAL_B' duration 7000 ms flag 1  // This is the place right here, let's get off the street and find a change of clothes!
 0239: actor $EIGHTBALL run_to 892.6875 -308.5625 
-if
-	03D2:   wav_ended 
-then
-	03D5: remove_text 'EBAL_B'  // This is the place right here, let's get off the street and find a change of clothes!
-end
 wait 1000 ms
 gosub @CHECK_EIGHT_STATUS_EIGHTBALL
 gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
-if
-	03D2:   wav_ended 
-then
-	03D5: remove_text 'EBAL_B'  // This is the place right here, let's get off the street and find a change of clothes!
-end
 
 01D3: actor $PLAYER_ACTOR leave_car $CAR_EIGHTBALL 
 0395: clear_area 1 at 868.625 -311.6875 range 8.25 1.0 
@@ -473,6 +450,12 @@ wait 500 ms
 011C: actor $PLAYER_ACTOR clear_objective 
 00A1: set_char_coordinates $EIGHTBALL to 884.25 -309.1875 7.5625 
 
+// Close hideout door
+while 834D:   not rotate_object $PORTLAND_HIDEOUT_DOOR from_angle 0.0 to 10.0 collision_check 0 
+	wait 0 ms
+	gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
+end //while
+
 // Clothes change
 
 //8-Ball change
@@ -508,8 +491,13 @@ then
 end
 
 wait 3000 ms
-gosub @CHECK_EIGHT_STATUS_EIGHTBALL
-gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
+
+// Open hideout door
+while 834D:   not rotate_object $PORTLAND_HIDEOUT_DOOR from_angle 210.0 to 10.0 collision_check 0 
+	wait 0 ms
+	gosub @CHECK_EIGHT_STATUS_EIGHTBALL
+	gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
+end
 
 0055: set_player_coordinates $PLAYER_CHAR to 883.5 -308.1875 7.5625 
 01B7: release_weather 
@@ -540,6 +528,8 @@ while true
 	gosub @CHECK_EIGHT_STATUS_EIGHTBALL
 	gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 end //while
+
+// Close hideout door
 while 834D:   not rotate_object $PORTLAND_HIDEOUT_DOOR from_angle 0.0 to 10.0 collision_check 0 
 	wait 0 ms
 	gosub @CHECK_EIGHT_STATUS_EIGHTBALL
@@ -727,19 +717,15 @@ end
 
 // ****************************Player and eightball cut-scene at luigi's********************
 
-01BD: $PRE_CUTSCENE_START_TIME = current_time_in_ms 
-0004: $PRE_CUTSCENE_ELAPSED_TIME = 0  
+0006: 16@ = 0  
 
 while true
 	if and
 		83EE:   not player $PLAYER_CHAR controllable 
-		001A:   5000 > $PRE_CUTSCENE_ELAPSED_TIME  //	if player is not in control after 5 secs do the cutscene anyway
+		8019:   not 16@ > 5000  //	if player is not in control after 5 secs do the cutscene anyway
 	jf break
 	wait 0 ms
 	gosub @CHECK_EIGHT_STATUS_EIGHTBALL
-	01BD: $PRE_CUTSCENE_CURRENT_TIME = current_time_in_ms 
-	0084: $PRE_CUTSCENE_ELAPSED_TIME = $PRE_CUTSCENE_CURRENT_TIME 
-	0060: $PRE_CUTSCENE_ELAPSED_TIME -= $PRE_CUTSCENE_START_TIME 
 end
 
 03EF: player $PLAYER_CHAR make_safe 
@@ -1108,7 +1094,6 @@ end //while
 018A: $RADAR_BLIP_COORD1_LM1 = create_checkpoint_at 906.1875 -426.0 -100.0 
 0004: $CURRENT_STEP_FOR_BLIP_MANIPULATION = 3
 0004: $BLOB_FLAG = 1 
-0006: 16@ = 0 
 
 // waiting for the player to get to luigi's
 
@@ -1177,20 +1162,16 @@ end
 01E3: text_1number_styled 'M_PASS' number 1500 duration 5000 ms style 1  // MISSION PASSED! $~1~
 0109: player $PLAYER_CHAR money += 1500 
 0394: play_mission_passed_music 1 
-0006: 17@ = 0 
-while 5000 > 17@
-	wait 0 ms
-end
+
+wait 3500 ms
+
 0169: set_fade_color 0 0 0 
 016A: fade 0 for 1000 ms
 while fading
 	wait 0 ms
 end
-wait 0 ms
 0373: set_camera_directly_behind_player 
-wait 0 ms
 02A3: toggle_widescreen 0 
-wait 0 ms
 02EB: restore_camera_jumpcut 
 wait 750 ms 
 016A: fade 1 for 250 ms 
@@ -1284,17 +1265,6 @@ else
 		end
 		0004: $FLAG_CAR_MESSAGE_8BALL = 0 
 	end
-end
-return
-
-////////////////////////////////////////////
-
-// The first 2 minutes of the game, prevent the player from getting a wanted level.
-:CHECK_CLEAR_PLAYER_WANTED_LEVEL
-if 
-	120000 > 17@ // 2 min
-then
-	0110: clear_player $PLAYER_CHAR wanted_level
 end
 return
 

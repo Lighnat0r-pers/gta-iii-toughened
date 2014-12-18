@@ -243,7 +243,7 @@ end //while
 02A3: toggle_widescreen 1 
 
 00A5: $MARIAS_STRETCH = create_car #STRETCH at 1436.0 -183.0 50.0
-041E: set_radio_station RISE_FM -1 
+041E: set_radio_station BANG_RADIO -1 
 0175: set_car $MARIAS_STRETCH z_angle_to 90.0 
 0229: set_car $MARIAS_STRETCH color_to 0 0 // FRANKIES LIMO NEEDS A UNIQUE COLOUR
 03AB: set_car $MARIAS_STRETCH strong 1 

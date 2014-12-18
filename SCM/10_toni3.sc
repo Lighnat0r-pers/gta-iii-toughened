@@ -211,7 +211,7 @@ while 80DC:   not is_player_in_car $PLAYER_CHAR car $TONI3_LIMO
 end //while
 
 0164: disable_marker $TONI3_LIMO_MARKER 
-041E: set_radio_station DOUBLE_CLEFF_FM -1 
+041E: set_radio_station BANG_RADIO -1 
 009A: $JOEY_LEONE = create_char PEDTYPE_SPECIAL model #SPECIAL02 at 1179.375 -858.5625 14.0
 01ED: clear_actor $JOEY_LEONE threat_search
 

@@ -72,7 +72,7 @@ end //while
 00A5: $TONIS_RIDE = create_car #MAFIA at 1189.688 -864.25 14.0625
 0004: $TONIS_CAR_CREATED_BEFORE = 1 
 0175: set_car $TONIS_RIDE z_angle_to -142.0 
-041E: set_radio_station DOUBLE_CLEFF_FM -1
+041E: set_radio_station BANG_RADIO -1
 
 while true
 	if or
