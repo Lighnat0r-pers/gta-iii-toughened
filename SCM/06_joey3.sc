@@ -37,6 +37,7 @@ end_thread
 0004: $SECRET_ACTIVATED_JOEY3 = 0
 0004: $PLAYER_PASSENGER = 0
 0004: $PLAYER_PASSENGER_OLD = 0
+0004: $SECRET_SEAT_FLAG_JOEY3 = 0
 023C: load_special_actor 'JOEY' as 1 
 02F3: load_object #CUTOBJ01 'JOEYH' 
 02F3: load_object #CUTOBJ02 'PLAYERH' 
@@ -266,6 +267,7 @@ then
 	0151: remove_status_text $JOEY3_VAN_HEALTH
 	010E: set_player $PLAYER_CHAR minimum_wanted_level_to 4
 	02AC: set_car $JOEY3_VAN immunities 0 0 0 0 0
+	0224: set_car $JOEY3_VAN health_to 100
 	if
 		8118:   not actor $JOEY3_VAN_DRIVER dead
 	then
@@ -464,35 +466,27 @@ then
 	if
 		8431:   not car $PLAYER_CAR passenger_seat_free 0
 	then
-		if or
-			0038:   $SECRET_HOOKER_PICKED_UP_JOEY3 == 0
-			0118:   actor $JOEY3_SECRET_HOOKER dead
-		then
-			0432: $PLAYER_PASSENGER = get_passenger_in_car $PLAYER_CAR seat 0
-		else
-			0084: $PLAYER_PASSENGER = $JOEY3_SECRET_HOOKER
-		end
+		0004: $SECRET_SEAT_FLAG_JOEY3 = 0
+		gosub @SECRET_DO_PASSENGER_STUFF_JOEY3
+	end
+	if and
+		0038:   $SECRET_TRIGGERED_JOEY3 == 0
+		8431:   not car $PLAYER_CAR passenger_seat_free 1
+	then
+		0004: $SECRET_SEAT_FLAG_JOEY3 = 1
+		gosub @SECRET_DO_PASSENGER_STUFF_JOEY3
+	end
+	if and
+		0038:   $SECRET_TRIGGERED_JOEY3 == 0
+		8431:   not car $PLAYER_CAR passenger_seat_free 2
+	then
+		0004: $SECRET_SEAT_FLAG_JOEY3 = 2
+		gosub @SECRET_DO_PASSENGER_STUFF_JOEY3
+	end
 
-		// If it's not the same passenger as before, reset the timer, check if we're
-		// actually dealing with a prostitute and set the trigger flag for the secret if so.
-		if
-			803A:   not $PLAYER_PASSENGER_OLD == $PLAYER_PASSENGER
-		then
-			0084: $PLAYER_PASSENGER_OLD = $PLAYER_PASSENGER
-			0004: $SECRET_TIMER_JOEY_STARTED_FLAG = 0
-			if or
-				02F2:   actor $PLAYER_PASSENGER model == #PROSTITUTE
-				02F2:   actor $PLAYER_PASSENGER model == #PROSTITUTE2
-			then
-				//011C: actor $PLAYER_PASSENGER clear_objective
-				01DF: tie_actor $PLAYER_PASSENGER to_player $PLAYER_CHAR 
-				039E: set_char_cant_be_dragged_out $PLAYER_PASSENGER to 1
-				0004: $SECRET_TRIGGERED_JOEY3 = 1
-			else
-				0004: $SECRET_TRIGGERED_JOEY3 = 0
-			end
-		end
-	else
+	if
+		0038:   $SECRET_TRIGGERED_JOEY3 == 0 // No prostitute as passenger found.
+	then
 		if or
 			0038:   $SECRET_HOOKER_PICKED_UP_JOEY3 == 0
 			0118:   actor $JOEY3_SECRET_HOOKER dead
@@ -517,6 +511,38 @@ else
 		0118:   actor $JOEY3_SECRET_HOOKER dead
 	then
 		0004: $SECRET_TIMER_JOEY_STARTED_FLAG = 0
+	end
+end
+return
+
+////////////////////////////////////////
+
+:SECRET_DO_PASSENGER_STUFF_JOEY3
+if or
+	0038:   $SECRET_HOOKER_PICKED_UP_JOEY3 == 0
+	0118:   actor $JOEY3_SECRET_HOOKER dead
+then
+	0432: $PLAYER_PASSENGER = get_passenger_in_car $PLAYER_CAR seat $SECRET_SEAT_FLAG_JOEY3
+else
+	0084: $PLAYER_PASSENGER = $JOEY3_SECRET_HOOKER
+end
+
+// If it's not the same passenger as before, reset the timer, check if we're
+// actually dealing with a prostitute and set the trigger flag for the secret if so.
+if
+	803A:   not $PLAYER_PASSENGER_OLD == $PLAYER_PASSENGER
+then
+	0084: $PLAYER_PASSENGER_OLD = $PLAYER_PASSENGER
+	0004: $SECRET_TIMER_JOEY_STARTED_FLAG = 0
+	if or
+		02F2:   actor $PLAYER_PASSENGER model == #PROSTITUTE
+		02F2:   actor $PLAYER_PASSENGER model == #PROSTITUTE2
+	then
+		01DF: tie_actor $PLAYER_PASSENGER to_player $PLAYER_CHAR 
+		039E: set_char_cant_be_dragged_out $PLAYER_PASSENGER to 1
+		0004: $SECRET_TRIGGERED_JOEY3 = 1
+	else
+		0004: $SECRET_TRIGGERED_JOEY3 = 0
 	end
 end
 return
