@@ -704,18 +704,13 @@ while 001A:   9 > $CLUBBERS_FLEE_FLAG
 			goto @MISSION_FAILED_FRANKIE1
 		else
 			01D2: actor $MARIA follow_player $PLAYER_CHAR
-			if or
-				00EC:   actor $MARIA 0 1259.2 -1105.4 radius 0.5 0.5 
-				0019:   17@ > 10000 // To prevent softlock in case the position is blocked. 
+			01D2: actor $MARIA follow_player $PLAYER_CHAR 
+			if
+				00E9:   player $PLAYER_CHAR 0 $MARIA radius 4.0 4.0 
 			then
-				01D2: actor $MARIA follow_player $PLAYER_CHAR 
-				if
-					00E9:   player $PLAYER_CHAR 0 $MARIA radius 4.0 4.0 
-				then
-					01DF: tie_actor $MARIA to_player $PLAYER_CHAR 
-					0164: disable_marker $FM1_BLIP 
-					0004: $CLUBBERS_FLEE_FLAG = 9
-				end
+				01DF: tie_actor $MARIA to_player $PLAYER_CHAR 
+				0164: disable_marker $FM1_BLIP 
+				0004: $CLUBBERS_FLEE_FLAG = 9
 			end
 		end
 	end
@@ -1008,7 +1003,6 @@ return
 0054: get_player_coordinates $PLAYER_CHAR store_to $PLAYER_X $PLAYER_Y $PLAYER_Z 
 0239: actor $MARIA run_to $PLAYER_X $PLAYER_Y 
 0004: $CLUBBERS_FLEE_FLAG = 8 
-0006: 17@ = 0
 return
 
 /////////////////////////////////////////
