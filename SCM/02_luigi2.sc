@@ -298,6 +298,14 @@ end
 
 gosub @CHECK_VEHICLE_STATUS_LUIGI2
 
+// Sets the car the player is in on fire.
+if
+	00E0:   is_player_in_any_car $PLAYER_CHAR
+then
+	00DA: $PLAYER_CAR = store_car_player_is_in $PLAYER_CHAR
+	0224: set_car $PLAYER_CAR health_to 249
+end
+
 0135: set_car $LUIGI2_DEALER_CAR door_lock CARLOCK_UNLOCKED
 0186: $LUIGI2_DEALER_CAR_MARKER = create_marker_above_car $LUIGI2_DEALER_CAR 
 00BC: print_now 'LM2_1' duration 7000 ms flag 1  // ~g~Take his car and get it resprayed.

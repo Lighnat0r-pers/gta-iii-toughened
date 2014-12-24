@@ -159,7 +159,7 @@ end
 00A5: $CAR_EIGHTBALL = create_car #BANSHEE at 540.0 -938.0 $GROUND_EIGHT
 0229: set_car $CAR_EIGHTBALL color_to 58 1 
 0175: set_car $CAR_EIGHTBALL z_angle_to 270.0
-0224: set_car $CAR_EIGHTBALL health_to 500
+0224: set_car $CAR_EIGHTBALL health_to 750
 
 0055: set_player_coordinates $PLAYER_CHAR to 540.0 -937.6 -100.0
 0171: set_player $PLAYER_CHAR z_angle_to 180.0 
@@ -484,7 +484,16 @@ then
 	end
 end
 
-wait 3000 ms
+0006: 16@ = 0  
+
+// Shake the camera a bunch of times.
+while 8019:   not 16@ > 2500
+	0209: $SHAKE_INTENSITY = random_int_in_range 30 to 121
+	0209: $SHAKE_INTERVAL = random_int_in_range 300 to 701
+	0003: shake_cam $SHAKE_INTENSITY	
+	wait $SHAKE_INTERVAL ms
+end
+wait 250 ms
 
 // Open hideout door
 while 834D:   not rotate_object $PORTLAND_HIDEOUT_DOOR from_angle 210.0 to 10.0 collision_check 0 
