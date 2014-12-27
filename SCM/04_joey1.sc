@@ -342,14 +342,10 @@ while true
 	gosub @CHECK_FAKE_BOMB_CUTSCENE_JOEY1
 	gosub @CHECK_VEHICLE_STATUS_JOEY1
 	gosub @CHECK_TIMER_STATUS_JOEY1
-	if
-		80B1:   not is_car_in_area_3d $LIPSFORELLI_CAR from 1339.563 -459.5 49.0 to 1332.75 -462.75 53.0 sphere 0
-	then
-		00BC: print_now 'JM1_6' duration 5000 ms flag 1  // ~g~Put the car back in the correct position.
-		goto @JOEY_LABEL1
-	end
 	0174: $MIKES_CAR_HEADING = car $LIPSFORELLI_CAR z_angle
 	if or
+
+		80B1:   not is_car_in_area_3d $LIPSFORELLI_CAR from 1339.563 -459.5 49.0 to 1332.75 -462.75 53.0 sphere 0
 		0020:   $MIKES_CAR_HEADING > 92.0 
 		0022:   88.0 > $MIKES_CAR_HEADING
 	then
@@ -427,6 +423,8 @@ while 8126:   not actor $JOEY1_MIKELIPS walking
 	end
 end //while
 
+0006: 17@ = 0
+
 if
 	8118:   not actor $JOEY1_MIKELIPS dead
 then
@@ -476,7 +474,7 @@ end //while
 01E3: text_1number_styled 'M_PASS' number 10000 duration 5000 ms style 1  // MISSION PASSED! $~1~
 0109: player $PLAYER_CHAR money += 10000 
 0004: $MISSION_PASSED_FOR_LIPS_FINISHED = 1 
-0001: wait 5000 ms 
+0001: wait 4000 ms 
 01B4: set_player $PLAYER_CHAR controllable 1 
 02A3: toggle_widescreen 0 
 01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 0 
