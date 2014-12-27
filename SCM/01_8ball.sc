@@ -288,7 +288,7 @@ end
 0175: set_car $COP_CAR1_8BALL z_angle_to 90.0 
 0397: car $COP_CAR1_8BALL siren = 1 
 00AE: set_car_driving_style $COP_CAR1_8BALL to DRIVINGMODE_AVOIDCARS
-00AD: set_car_cruise_speed $COP_CAR1_8BALL to 20.0 
+00AD: set_car_cruise_speed $COP_CAR1_8BALL to 25.0 
 00A7: car_goto_coordinates $COP_CAR1_8BALL coords 713.875 -916.6875 42.0 
 00A5: $COP_CAR2_8BALL = create_car #POLICE at 1074.063 -946.6875 13.75
 0129: $COP2_8BALL = create_actor PEDTYPE_CIVMALE #COP in_car $COP_CAR2_8BALL driverseat
@@ -296,7 +296,7 @@ end
 0175: set_car $COP_CAR2_8BALL z_angle_to 90.0 
 0397: car $COP_CAR2_8BALL siren = 1 
 00AE: set_car_driving_style $COP_CAR2_8BALL to DRIVINGMODE_AVOIDCARS
-00AD: set_car_cruise_speed $COP_CAR2_8BALL to 20.0 
+00AD: set_car_cruise_speed $COP_CAR2_8BALL to 25.0 
 00A7: car_goto_coordinates $COP_CAR2_8BALL coords 718.6875 -922.1875 42.0 
 0164: disable_marker $RADAR_BLIP_CAR1_EIGHTBALL  
 
@@ -322,6 +322,7 @@ while true
 	gosub @CHECK_PLAYER_IN_RESTRICTED_AREA
 	gosub @CHECK_PLAYER_IN_PORTLAND_FOR_MARKER
 	gosub @CHECK_BRIBE_SECRET
+	gosub @CHECK_POLICE_CARS_HOSTILITY
 end
 
 0164: disable_marker $RADAR_BLIP_COORD1_EIGHTBALL 
@@ -1371,6 +1372,31 @@ then
 	00BC: print_now 'EBAL_X1' duration 3500 ms flag 1  // ~g~Bribing the law 0/10
 	010E: set_player $PLAYER_CHAR minimum_wanted_level_to 5
 	0004: $BRIBE_SECRET_TRIGGERED = 1
+end
+return
+
+////////////////////////////////////////////
+
+:CHECK_POLICE_CARS_HOSTILITY
+if
+	8119:   not car $COP_CAR1_8BALL wrecked	
+then
+	if
+		01FC:   player $PLAYER_CHAR near_car $COP_CAR1_8BALL radius 150.0 150.0 unknown 0
+	then
+		00AF: set_car_mission $COP_CAR1_8BALL to MISSION_RAMPLAYER_FARAWAY 
+		00AD: set_car_cruise_speed $COP_CAR1_8BALL to 60.0 
+	end
+end
+if
+	8119:   not car $COP_CAR2_8BALL wrecked	
+then
+	if
+		01FC:   player $PLAYER_CHAR near_car $COP_CAR2_8BALL radius 150.0 150.0 unknown 0
+	then
+		00AF: set_car_mission $COP_CAR2_8BALL to MISSION_RAMPLAYER_FARAWAY
+		00AD: set_car_cruise_speed $COP_CAR2_8BALL to 60.0 
+	end
 end
 return
 
