@@ -383,6 +383,7 @@ end //while
 0004: $CHICO_AUDIO_FLAG = 17
 
 03D1: play_wav 
+0164: disable_marker $FM1_BLIP_FAKE
 01B4: set_player $PLAYER_CHAR controllable 0 
 03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 1 
 02A3: toggle_widescreen 1 
