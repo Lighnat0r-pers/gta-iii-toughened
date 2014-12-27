@@ -43,7 +43,9 @@
 0213: $IND_PICKUP_BRIBE3 = create_pickup #BRIBE type PICKUP_ONCE at 1440.188 -891.0625 11.75 // Under large crane next to Colombian boat
 0213: $IND_PICKUP_BRIBE4 = create_pickup #BRIBE type PICKUP_ONCE at 1078.875 -912.5 15.1875 // Alleyway between Trenton and Chinatown
 0213: $IND_PICKUP_BRIBE5 = create_pickup #BRIBE type PICKUP_ONCE at 995.75 -438.75 22.6875 // Railway line (Redlight)
-0213: $IND_PICKUP_BRIBE6 = create_pickup #BRIBE type PICKUP_ONCE at 1061.875 -567.6875 16.5625 // Alleyway between Redlight and Chinatown
+0005: $IND_PICKUP_BRIBE6_X = 1061.875
+0005: $IND_PICKUP_BRIBE6_Y = -567.6875
+0213: $IND_PICKUP_BRIBE6 = create_pickup #BRIBE type PICKUP_ONCE at 1061.875 -567.6875 16.5625 // Alleyway between Redlight and Chinatown -- SPECIAL USE IN 8BALL
 0213: $IND_PICKUP_BRIBE7 = create_pickup #BRIBE type PICKUP_ONCE at 859.5625 -981.875 10.5 // On Greasy Joes
 0213: $IND_PICKUP_BRIBE8 = create_pickup #BRIBE type PICKUP_ONCE at 922.1875 -848.0625 14.875 // Basketball courts
 

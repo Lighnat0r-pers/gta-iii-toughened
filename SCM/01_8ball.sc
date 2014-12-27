@@ -39,6 +39,16 @@ end_thread
 0004: $FLAG_EIGHTBALL_IN_AREA = 0 
 0004: $CURRENT_STEP_FOR_BLIP_MANIPULATION = 0
 
+0004: $BRIBE_SECRET_TRIGGERED = 0
+0086: $BRIBE_AREA_X1 = $IND_PICKUP_BRIBE6_X
+000D: $BRIBE_AREA_X1 -= 1.0
+0086: $BRIBE_AREA_X2 = $IND_PICKUP_BRIBE6_X
+0009: $BRIBE_AREA_X2 += 1.0
+0086: $BRIBE_AREA_Y1 = $IND_PICKUP_BRIBE6_Y
+000D: $BRIBE_AREA_Y1 -= 1.0
+0086: $BRIBE_AREA_Y2 = $IND_PICKUP_BRIBE6_Y
+0009: $BRIBE_AREA_Y2 += 1.0
+
 // luigi variables
 0004: $FLAG_PLAYER_HAD_CAR_MESSAGE_LM1 = 0 
 0004: $FLAG_PLAYER_NOT_IN_CAR_MESSAGE_LM1 = 0 
@@ -195,8 +205,6 @@ while 83D0:   not wav_loaded
 	gosub @CHECK_EIGHT_STATUS_EIGHTBALL
 	gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 end
-gosub @CHECK_EIGHT_STATUS_EIGHTBALL
-gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 
 015F: set_camera_position 540.5625 -923.0 45.0 0.0 rotation 0.0 0.0 
 0157: camera_on_player $PLAYER_CHAR mode FIXED switchstyle JUMP_CUT
@@ -307,15 +315,15 @@ while true
 	gosub @CHECK_IN_VEHICLE_STATUS_EIGHTBALL
 	gosub @CHECK_PLAYER_IN_RESTRICTED_AREA
 	gosub @CHECK_PLAYER_IN_PORTLAND_FOR_MARKER
+	gosub @CHECK_BRIBE_SECRET
 end
 
-03E6: remove_text_box 
 0164: disable_marker $RADAR_BLIP_COORD1_EIGHTBALL 
 
 // ******************************Player and 8ball are at base scripted cutscene*************
 
 02A3: toggle_widescreen 1 
-0110: clear_player $PLAYER_CHAR wanted_level 
+//0110: clear_player $PLAYER_CHAR wanted_level 
 01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 1 
 01B4: set_player $PLAYER_CHAR controllable 0
 if 
@@ -361,15 +369,9 @@ gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 
 01D3: actor $PLAYER_ACTOR leave_car $CAR_EIGHTBALL 
 0395: clear_area 1 at 868.625 -311.6875 range 8.25 1.0 
-if 
-	0339:   objects_in_cube 870.375 -309.875 6.0 to 865.1875 -314.6875 12.0 flags 0 1 1 1 1 
-then
-	015F: set_camera_position 848.25 -295.25 19.125 0.0 rotation 0.0 0.0 //high camera that points to the water tower
-	0160: point_camera 849.0625 -295.75 19.125 switchstyle JUMP_CUT
-else
-	015F: set_camera_position 868.625 -311.6875 8.25 0.0 rotation 0.0 0.0 //low new camera that points to the save house
-	0160: point_camera 869.5625 -311.5 8.5 switchstyle JUMP_CUT
-end
+015F: set_camera_position 868.625 -311.6875 8.25 0.0 rotation 0.0 0.0 //low new camera that points to the save house
+0160: point_camera 869.5625 -311.5 8.5 switchstyle JUMP_CUT
+
 while 00DB:   is_char_in_car $PLAYER_ACTOR car $CAR_EIGHTBALL
 	wait 0 ms
 	if
@@ -393,30 +395,29 @@ while true
 	jf break
 	wait 0 ms
 	gosub @CHECK_EIGHT_STATUS_EIGHTBALL
-	gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 	if and
 		0038:   $FLAG_PLAYER_IN_AREA == 0 
-		00ED:   actor $PLAYER_ACTOR #NULL 892.375 -308.5 radius 0.5 0.5 
+		00ED:   actor $PLAYER_ACTOR 0 892.375 -308.5 radius 0.5 0.5 
 	then
 		0239: actor $PLAYER_ACTOR run_to 892.375 -305.5625 
 		0004: $FLAG_PLAYER_IN_AREA = 1 
 	end
 	if and
 		0038:   $FLAG_EIGHTBALL_IN_AREA == 0 
-		00ED:   actor $EIGHTBALL #NULL 892.6875 -308.5625 radius 0.5 0.5
+		00ED:   actor $EIGHTBALL 0 892.6875 -308.5625 radius 0.5 0.5
 	then
 		0239: actor $EIGHTBALL run_to 894.1875 -304.25 
 		0004: $FLAG_EIGHTBALL_IN_AREA = 1
 	end
 	if and
 		0038:   $FLAG_PLAYER_IN_AREA == 1
-		00ED:   actor $PLAYER_ACTOR #NULL 892.375 -305.5625 radius 0.5 0.5 
+		00ED:   actor $PLAYER_ACTOR 0 892.375 -305.5625 radius 0.5 0.5 
 	then
 		0004: $FLAG_PLAYER_IN_AREA = 2
 	end
 	if and
 		0038:   $FLAG_EIGHTBALL_IN_AREA == 1
-		00ED:   actor $EIGHTBALL #NULL 894.1875 -304.25 radius 0.5 0.5  
+		00ED:   actor $EIGHTBALL 0 894.1875 -304.25 radius 0.5 0.5  
 	then
 		0004: $FLAG_EIGHTBALL_IN_AREA = 2 
 	end
@@ -447,7 +448,6 @@ wait 500 ms
 // Close hideout door
 while 834D:   not rotate_object $PORTLAND_HIDEOUT_DOOR from_angle 0.0 to 10.0 collision_check 0 
 	wait 0 ms
-	gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 end //while
 
 // Clothes change
@@ -459,7 +459,6 @@ then
 	0352: set_actor $EIGHTBALL skin_to 'EIGHT2' 
 	while 8248:   not model #SPECIAL01 available 
 		wait 0 ms
-		gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 	end //while
 	if 
 		8118:   not actor $EIGHTBALL dead 
@@ -475,7 +474,6 @@ then
 	0352: set_actor $PLAYER_ACTOR skin_to 'PLAYER' 
 	while 8248:   not model #NULL available 
 		wait 0 ms
-		gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 	end //while
 	if 
 		8118:   not actor $PLAYER_ACTOR dead 
@@ -511,16 +509,8 @@ gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
 
 01D5: actor $PLAYER_ACTOR go_to_and_drive_car $CAR_EIGHTBALL 
 0395: clear_area 1 at 868.625 -311.6875 range 8.25 1.0  
-if 
-	0339:   objects_in_cube 870.375 -309.875 6.0 to 865.1875 -314.6875 12.0 flags 0 1 1 1 1 
-then
-	015F: set_camera_position 848.25 -295.25 19.125 0.0 rotation 0.0 0.0 //high camera that points to the water tower
-	0160: point_camera 849.0625 -295.75 19.125 switchstyle JUMP_CUT 
-else
-	015F: set_camera_position 868.625 -311.6875 8.25 0.0 rotation 0.0 0.0 //low new camera that points to the save house
-	0160: point_camera 869.5625 -311.5 8.5 switchstyle JUMP_CUT
-end
-03E6: remove_text_box 
+015F: set_camera_position 868.625 -311.6875 8.25 0.0 rotation 0.0 0.0 //low new camera that points to the save house
+0160: point_camera 869.5625 -311.5 8.5 switchstyle JUMP_CUT
 
 while true
 	if or
@@ -557,15 +547,8 @@ then
 	01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 1 
 	0171: set_player $PLAYER_CHAR z_angle_to 90.0 
 	0395: clear_area 1 at 868.625 -311.6875 range 8.25 1.0 
-	if 
-		0339:   objects_in_cube 870.375 -309.875 6.0 to 865.1875 -314.6875 12.0 flags 0 1 1 1 1 
-	then
-		015F: set_camera_position 848.25 -295.25 19.125 0.0 rotation 0.0 0.0 //high camera that points to the water tower
-		0160: point_camera 849.0625 -295.75 19.125 switchstyle JUMP_CUT
-	else
-		015F: set_camera_position 868.625 -311.6875 8.25 0.0 rotation 0.0 0.0 //low new camera that points to the save house
-		0160: point_camera 869.5625 -311.5 8.5 switchstyle JUMP_CUT
-	end
+	015F: set_camera_position 868.625 -311.6875 8.25 0.0 rotation 0.0 0.0 //low new camera that points to the save house
+	0160: point_camera 869.5625 -311.5 8.5 switchstyle JUMP_CUT
 	0177: set_object $PORTLAND_HIDEOUT_DOOR z_angle_to 0.0 
 	023C: load_special_actor 'EIGHT2' as 1 
 	0247: request_model #MRWHOOP 
@@ -679,7 +662,6 @@ while true
 	gosub @CHECK_IN_VEHICLE_STATUS_EIGHTBALL
 end
 
-03E6: remove_text_box 
 0164: disable_marker $RADAR_BLIP_COORD2_EIGHTBALL 
 02A3: toggle_widescreen 1 
 0110: clear_player $PLAYER_CHAR wanted_level 
@@ -702,11 +684,6 @@ while true
 	wait 0 ms
 	gosub @CHECK_EIGHT_STATUS_EIGHTBALL
 	gosub @CHECK_VEHICLE1_STATUS_EIGHTBALL
-	if
-		03D2:   wav_ended 
-	then
-		03D5: remove_text 'EBAL_G'  // This is Luigi's club. Let's go round the back and use the service door.
-	end
 end
 
 01C3: remove_references_to_car $CAR_EIGHTBALL 
@@ -722,7 +699,7 @@ end
 03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 0 
 01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 0 
 039E: set_char_cant_be_dragged_out $EIGHTBALL to 0 
-03E6: remove_text_box 
+
 
 // ****************************Player and eightball cut-scene at luigi's********************
 
@@ -915,14 +892,12 @@ end
 023C: load_special_actor 'MISTY' as 2 
 00BC: print_now 'EBAL_5' duration 5000 ms flag 1  // ~g~Get a vehicle!
 
-// Waiting for the player to be in a car
 
 while 823D:   not special_actor 2 loaded 
 	wait 0 ms
 end
 
 // Creates the first girl
-
 009A: $GIRL1_LM1 = create_char PEDTYPE_SPECIAL model #SPECIAL02 at 1141.563 -590.75 14.875
 01ED: clear_actor $GIRL1_LM1 threat_search 
 0173: set_actor $GIRL1_LM1 z_angle_to 90.0 
@@ -930,6 +905,8 @@ end
 0187: $RADAR_BLIP_PED1_LM1 = create_marker_above_actor $GIRL1_LM1 
 0004: $FLAG_BLIP_ON_GIRL1_LM1 = 1 
 03CF: load_wav 'LIB_D' 
+
+// Waiting for the player to be in a car
 while true
 	if or
 		80E0:   not is_player_in_any_car $PLAYER_CHAR 
@@ -943,8 +920,6 @@ while true
 		00DA: $CAR_LM1 = store_car_player_is_in $PLAYER_CHAR
 	end
 end
-
-03E6: remove_text_box 
 
 00BC: print_now 'EBAL_6' duration 5000 ms flag 1  // ~g~Pick up Misty!
 
@@ -989,7 +964,7 @@ while 0038:   $FLAG_GIRL1_IN_CAR_LM1 == 0
 		end
 		if and
 			00EB:   player $PLAYER_CHAR 0 $GIRL1_LM1 radius 40.0 40.0
-			80EB:   player $PLAYER_CHAR 0 $GIRL1_LM1 radius 10.0 10.0
+			80EB:   not player $PLAYER_CHAR 0 $GIRL1_LM1 radius 10.0 10.0
 		then
 			0319: set_actor $GIRL1_LM1 running 1
 			0054: get_player_coordinates $PLAYER_CHAR store_to $EIGHT_PLAYER_X $EIGHT_PLAYER_Y $EIGHT_PLAYER_Z 
@@ -1347,25 +1322,21 @@ return
 if
 	0022:   500.0 > $PLAYERX
 then
-	00BC: print_now 'AREA51' duration 10000 ms flag 1  // ~g~You're not supposed to be here, go back now!
+	00BC: print_now 'AREA51' duration 4000 ms flag 1  // ~g~You're not supposed to be here, go back now!
 	if
 		0038: $RESTICTED_TIMER_RESET_FLAG == 0
 	then
-		01BD: $RESTRICTED_TIMER_STARTED = current_time_in_ms
+		0006: 17@ = 0
 		0004: $RESTICTED_TIMER_RESET_FLAG = 1
 	else
-		01BD: $RESTRICTED_TIMER_CURRENT = current_time_in_ms 
-		0084: $RESTRICTED_TIMER = $RESTRICTED_TIMER_CURRENT 
-		0060: $RESTRICTED_TIMER -= $RESTRICTED_TIMER_STARTED
 		if
-			0018:   $RESTRICTED_TIMER > 10000 
+			0029:   17@ >= 10000 
 		then
 			gosub @KILL_PLAYER_RESTRICTED	
 		end
 	end
 else
 	0004: $RESTICTED_TIMER_RESET_FLAG = 0
-	00BE: clear_prints
 end
 return
 
@@ -1375,10 +1346,25 @@ return
 if
 	00E0:   is_player_in_any_car $PLAYER_CHAR
 then
-	00DA: $PLAYER_CAR_EIGHT = store_car_player_is_in $PLAYER_CHAR
-	020B: explode_car $PLAYER_CAR_EIGHT
+	00DA: $PLAYER_CAR = store_car_player_is_in $PLAYER_CHAR
+	020B: explode_car $PLAYER_CAR
 else
 	0322: kill_player $PLAYER_CHAR
+end
+return
+
+////////////////////////////////////////////
+
+:CHECK_BRIBE_SECRET
+if and
+	0038:   $BRIBE_SECRET_TRIGGERED == 0
+	0056:   is_player_in_area_2d $PLAYER_CHAR coords $BRIBE_AREA_X1 $BRIBE_AREA_Y1 to $BRIBE_AREA_X2 $BRIBE_AREA_Y2 sphere 0
+then
+	018C: play_sound SOUND_EVIDENCE_PICKUP at 0.0 0.0 0.0 
+	0215: destroy_pickup $IND_PICKUP_BRIBE6 
+	00BC: print_now 'EBAL_X1' duration 3500 ms flag 1  // ~g~Bribing the law 0/10
+	010E: set_player $PLAYER_CHAR minimum_wanted_level_to 5
+	0004: $BRIBE_SECRET_TRIGGERED = 1
 end
 return
 
