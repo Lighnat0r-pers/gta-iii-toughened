@@ -742,7 +742,6 @@ end //while
 while true
 	if or
 		81A0:   not player $PLAYER_CHAR stopped $BLOB_FLAG 1215.0 -326.875 25.0 1220.188 -330.5 27.0 
-		010F:   player $PLAYER_CHAR wanted_level > 0 
 		80DC:   not is_player_in_car $PLAYER_CHAR car $TONIS_RIDE
 	jf break
 	wait 0 ms
@@ -750,23 +749,6 @@ while true
 	gosub @CHECK_SIMPLE_VEHICLE_STATUS_JOEY4
 	gosub @CHECK_IN_VEHICLE_STATUS_JOEY4
 	gosub @CHECK_VEHICLE_FLIPPED_STATUS_JOEY4
-	if
-		01A0:   player $PLAYER_CHAR stopped 0 1215.0 -326.875 25.0 1220.188 -330.5 27.0
-	then
-		if and
-			010F:   player $PLAYER_CHAR wanted_level > 0
-			0038:   $FLAG_DISPLAYED_WANTED_MESSAGE_JM4 == 0
-		then
-			00BC: print_now 'WANTED1' duration 3000 ms flag 1  // ~g~Shake the cops and lose your wanted level!
-			0004: $FLAG_DISPLAYED_WANTED_MESSAGE_JM4 = 1
-		end
-	else
-		if
-			8057:   not is_player_in_area_3d $PLAYER_CHAR coords 1215.0 -326.875 25.0 to 1220.188 -330.5 27.0 sphere 0 
-		then
-			0004: $FLAG_DISPLAYED_WANTED_MESSAGE_JM4 = 0
-		end
-	end
 end //while
 
 0164: disable_marker $JOEY4_MOMMAS_MARKER 
