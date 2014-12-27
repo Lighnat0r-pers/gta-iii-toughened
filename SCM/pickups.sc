@@ -16,7 +16,7 @@
 032B: $IND_PICKUP_SHOTGUN1 = create_weapon_pickup #SHOTGUN type PICKUP_ON_STREET_SLOW ammo 10 at 1217.25 -255.1875 33.0625 // Little Italy behind park (rooftop)
 032B: $IND_PICKUP_SHOTGUN2 = create_weapon_pickup #SHOTGUN type PICKUP_ON_STREET_SLOW ammo 10 at 939.0 -113.25 3.6875 // Behind Hepburn Heights (far north)
 
-032B: $IND_PICKUP_CHAINGUN1 = create_weapon_pickup #AK47 type PICKUP_ON_STREET_SLOW ammo 90 at 1249.0 -858.5 20.5625 // Liberty Pharmaceuticals (roof)
+032B: $IND_PICKUP_CHAINGUN1 = create_weapon_pickup #AK47 type PICKUP_ON_STREET_SLOW ammo 120 at 1249.0 -858.5 20.5625 // Liberty Pharmaceuticals (roof)
 
 032B: $IND_PICKUP_FLAMETHROWER1 = create_weapon_pickup #FLAME type PICKUP_ON_STREET_SLOW ammo 150 at 1018.25 -30.75 22.5 // Radio station (roof)
 
