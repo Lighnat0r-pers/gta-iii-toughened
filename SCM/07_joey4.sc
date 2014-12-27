@@ -676,7 +676,6 @@ end //while
 0229: set_car $JOEY4_BUS color_to 5 5
 0175: set_car $JOEY4_BUS z_angle_to 120.0
 020A: set_car $JOEY4_BUS door_status_to CARLOCK_LOCKOUT_PLAYER_ONLY
-02AA: set_car $JOEY4_BUS immune_to_nonplayer 1 
 0224: set_car $JOEY4_BUS health_to 2000
 
 create_thread @CREATE_PEONS_JOEY4

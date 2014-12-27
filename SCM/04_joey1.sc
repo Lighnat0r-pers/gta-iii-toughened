@@ -284,7 +284,7 @@ while true
 	if or
 		81AC:   not car $LIPSFORELLI_CAR stopped $BLOB_FLAG 1339.563 -459.5 49.0 1332.75 -462.75 53.0 
 		010F:   player $PLAYER_CHAR wanted_level > 0 
-		03C9:   car $LIPSFORELLI_CAR damaged
+		8185:   not car $LIPSFORELLI_CAR health >= 999 
 	jf break
 	wait 0 ms
 	gosub @CHECK_VEHICLE_STATUS_JOEY1
@@ -356,9 +356,8 @@ while true
 		00BC: print_now 'JM1_6' duration 5000 ms flag 1  // ~g~Put the car back in the correct position.
 		goto @JOEY_LABEL1
 	end
-	if or
-		8185:   not car $LIPSFORELLI_CAR health >= 700 
-		03C9:   car $LIPSFORELLI_CAR damaged
+	if
+		8185:   not car $LIPSFORELLI_CAR health >= 999 
 	then
 		goto @JOEY_LABEL1
 	end
@@ -611,9 +610,8 @@ return
 /////////////////////////////////////////
 
 :CHECK_VEHICLE_NEEDS_REPAIR_JOEY1
-if or
-	8185:   not car $LIPSFORELLI_CAR health >= 700 
-	03C9:   car $LIPSFORELLI_CAR damaged
+if
+	8185:   not car $LIPSFORELLI_CAR health >= 999 
 then
 	00BD: print_soon 'JM1_4' duration 5000 ms flag 2  // ~g~You're trashing the vehicle! Get it repaired!
 	if
@@ -626,7 +624,7 @@ then
 	0186: $BLIP1_JM1 = create_marker_above_car $LIPSFORELLI_CAR 
 	018B: show_on_radar $BLIP1_JM1 BLIP_ONLY
 	0004: $FLAG_CAR_BLIP_DISPLAYED_JM1 = 1
-	while 03C9:   car $LIPSFORELLI_CAR damaged 
+	while 8185:   not car $LIPSFORELLI_CAR health >= 999
 		wait 0 ms
 		gosub @CHECK_VEHICLE_STATUS_JOEY1
 		if
@@ -723,7 +721,6 @@ if
 then
 	0294: set_car $LIPSFORELLI_CAR resprayable_to 1 
 	020A: set_car $LIPSFORELLI_CAR door_status_to CARLOCK_UNLOCKED
-	044F: make_craigs_car_a_bit_stronger $LIPSFORELLI_CAR 0 
 end
 021D: set_free_bomb_shop_to 0 
 00D8: mission_has_finished 

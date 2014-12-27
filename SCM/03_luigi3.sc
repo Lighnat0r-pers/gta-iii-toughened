@@ -402,6 +402,17 @@ while 83D2: not wav_ended
 	wait 0 ms
 	gosub @CHECK_MISTY_STATUS
 	gosub @CHECK_MISTY_RANGE_STATUS
+	if
+		0038:   $AMBUSH_TRIGGERED_LM3 == 0
+	then
+		gosub @CHECK_AMBUSH_TRIGGER_LUIGI3
+	else
+		if
+			8119:   not car $AMBUSH_CAR_LM3 wrecked	
+		then
+			00AF: set_car_mission $AMBUSH_CAR_LM3 to MISSION_RAMPLAYER_FARAWAY 
+		end
+	end
 end //while
 
 03D5: remove_text 'LM3_5'  // You working regular for Luigi now huh? It's about time he got a driver we can trust!

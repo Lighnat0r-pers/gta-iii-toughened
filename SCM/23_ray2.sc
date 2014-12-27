@@ -86,16 +86,6 @@ end_thread
 0005: $PHILS_DEFCON_X = 136.5 
 0005: $PHILS_DEFCON_Y = 176.6875 
 0005: $PHILS_DEFCON_Z = 11.5625 
-0005: $M16_X = 145.5 
-0005: $M16_Y = 170.0 
-0005: $UZI_X = 143.5 
-0005: $UZI_Y = 170.0 
-0005: $SHOTGUN_X = 141.5 
-0005: $SHOTGUN_Y = 170.0 
-0005: $ROCKET_X = 126.9375 
-0005: $ROCKET_Y = 198.1875 
-0005: $MOLOTOV_X = 126.9375 
-0005: $MOLOTOV_Y = 191.6875 
 
 // ****************************************START OF CUTSCENE********************************
 
@@ -299,11 +289,11 @@ end //while
 
 //-----------------------CREATE PHIL'S 'SUPPLIES'-------------------------------------
 
-032B: $PHILS_M16 = create_weapon_pickup #M16 type PICKUP_ONCE ammo 60 at $M16_X $M16_Y 11.5 
-0213: $PHILS_UZI = create_pickup #UZI type PICKUP_ONCE at $UZI_X $UZI_Y 11.5 
-0213: $PHILS_SHOTGUN = create_pickup #SHOTGUN type PICKUP_ONCE at $SHOTGUN_X $SHOTGUN_Y 11.5 
-032B: $PHILS_ROCKET = create_weapon_pickup #ROCKET type PICKUP_ONCE ammo 1 at $ROCKET_X $ROCKET_Y 14.5
-0213: $PHILS_MOLOTOV = create_pickup #MOLOTOV type PICKUP_ONCE at $MOLOTOV_X $MOLOTOV_Y 14.5
+032B: $PHILS_M16 = create_weapon_pickup #M16 type PICKUP_ONCE ammo 60 at 145.5 170.0 11.5 
+0213: $PHILS_UZI = create_pickup #UZI type PICKUP_ONCE at 143.5 170.0 11.5 
+0213: $PHILS_SHOTGUN = create_pickup #SHOTGUN type PICKUP_ONCE at 141.5 170.0 11.5 
+032B: $PHILS_ROCKET = create_weapon_pickup #ROCKET type PICKUP_ONCE ammo 1 at 126.9375 198.1875 14.5
+0213: $PHILS_MOLOTOV = create_pickup #MOLOTOV type PICKUP_ONCE at 126.9375 191.6875 14.5
 0213: $PHILS_ARMOUR = create_pickup #BODYARMOUR type PICKUP_ON_STREET_SLOW at 121.125 194.875 11.5 
 
 0164: disable_marker $BLIP_WAREHOUSE_RM2 
@@ -914,18 +904,12 @@ then
 	0215: destroy_pickup $PHILS_ARMOUR 
 end
 
-0005: $M16_X = 145.5 
-0005: $M16_Y = 170.0 
-0005: $UZI_X = 143.5 
-0005: $UZI_Y = 170.0 
-0005: $SHOTGUN_X = 141.5 
-0005: $SHOTGUN_Y = 170.0 
-0213: $PHILS_M16 = create_pickup #M16 type PICKUP_IN_SHOP at $M16_X $M16_Y 11.5 
-0213: $PHILS_UZI = create_pickup #SHOTGUN type PICKUP_IN_SHOP at $UZI_X $UZI_Y 11.5 
-0213: $PHILS_SHOTGUN = create_pickup #ROCKET type PICKUP_IN_SHOP at $SHOTGUN_X $SHOTGUN_Y 11.5 
+0213: $PHILS_M16 = create_pickup #M16 type PICKUP_IN_SHOP at 145.5 170.0 11.5 
+0213: $PHILS_SHOTGUN = create_pickup #SHOTGUN type PICKUP_IN_SHOP at 143.5 170.0 11.5 
+0213: $PHILS_ROCKET = create_pickup #ROCKET type PICKUP_IN_SHOP at 141.5 170.0 11.5 
 0004: $FLAG_M16_GONE = 1 
-0004: $FLAG_UZI_GONE = 1 
 0004: $FLAG_SHOTGUN_GONE = 1 
+0004: $FLAG_ROCKET_GONE = 1 
 03CF: load_wav 'R2_G' 
 
 while 83D0:   not wav_loaded 
@@ -966,17 +950,11 @@ then
 	0211: actor $PHIL walk_to 144.0 174.375 
 end
 
-while 0038:   $FLAG_PHIL_ARRIVED == 0 
+while 80ED:   not actor $PHIL 0 144.0 174.375 radius 1.0 1.0 
 	wait 0 ms
 	if
-		8118:   not actor $PHIL dead 
+		0118:   actor $PHIL dead 
 	then
-		if
-			00ED:   actor $PHIL #NULL 144.0 174.375 radius 1.0 1.0 
-		then
-			0004: $FLAG_PHIL_ARRIVED = 1 
-		end
-	else
 		goto @MISSION_FAILED_RAY2
 	end
 end //while
@@ -1006,36 +984,6 @@ goto @MISSION_END_RAY2
 // Mission Passed
 
 :MISSION_PASSED_RAY2
-if
-	0038:   $FLAG_M16_GONE == 0 
-then
-	0215: destroy_pickup $PHILS_M16 
-	0004: $FLAG_M16_GONE = 1 
-end
-if
-	0038:   $FLAG_SHOTGUN_GONE == 0 
-then
-	0215: destroy_pickup $PHILS_SHOTGUN 
-	0004: $FLAG_SHOTGUN_GONE = 1 
-end
-if
-	0038:   $FLAG_UZI_GONE == 0 
-then
-	0215: destroy_pickup $PHILS_UZI 
-	0004: $FLAG_UZI_GONE = 1 
-end
-if
-	0038:   $FLAG_MOLOTOV_GONE == 0 
-then
-	0215: destroy_pickup $PHILS_MOLOTOV 
-	0004: $FLAG_MOLOTOV_GONE = 1 
-end
-if
-	0038:   $FLAG_ROCKET_GONE == 0 
-then
-	0215: destroy_pickup $PHILS_ROCKET
-	0004: $FLAG_ROCKET_GONE = 1 
-end
 0004: $ARMS_SHORTAGE_COMPLETED = 1 
 01E3: text_1number_styled 'M_PASS' number 10000 duration 5000 ms style 1  // MISSION PASSED! $~1~
 0394: play_mission_passed_music 1 
@@ -1082,7 +1030,9 @@ goto @MISSION_END_RAY2
 0164: disable_marker $BLIP_V10 
 0164: disable_marker $BLIP_V11 
 0164: disable_marker $BLIP_V12 
-
+0215: destroy_pickup $PHILS_UZI 
+0215: destroy_pickup $PHILS_MOLOTOV 
+// Flags are checked to not destroy them if they are the shop pickups spawned at the end of the mission.
 if
 	0038:   $FLAG_M16_GONE == 0 
 then
@@ -1094,16 +1044,6 @@ then
 	0215: destroy_pickup $PHILS_SHOTGUN 
 end
 if
-	0038:   $FLAG_UZI_GONE == 0 
-then
-	0215: destroy_pickup $PHILS_UZI 
-end
-if
-	0038:   $FLAG_MOLOTOV_GONE == 0 
-then
-	0215: destroy_pickup $PHILS_MOLOTOV 
-end
-if
 	0038:   $FLAG_ROCKET_GONE == 0 
 then
 	0215: destroy_pickup $PHILS_ROCKET
@@ -1113,6 +1053,7 @@ if
 then
 	0215: destroy_pickup $PHILS_ARMOUR 
 end
+
 00D8: mission_has_finished 
 return
 
