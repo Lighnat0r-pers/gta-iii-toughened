@@ -974,8 +974,8 @@ while 0038:   $FLAG_GIRL1_IN_CAR_LM1 == 0
 			80EB:   not player $PLAYER_CHAR 0 $GIRL1_LM1 radius 10.0 10.0
 		then
 			0319: set_actor $GIRL1_LM1 running 1
-			0054: get_player_coordinates $PLAYER_CHAR store_to $EIGHT_PLAYER_X $EIGHT_PLAYER_Y $EIGHT_PLAYER_Z 
-			0239: actor $GIRL1_LM1 run_to $EIGHT_PLAYER_X $EIGHT_PLAYER_Y
+			0054: get_player_coordinates $PLAYER_CHAR store_to $PLAYER_X $PLAYER_Y $PLAYER_Z 
+			0239: actor $GIRL1_LM1 run_to $PLAYER_X $PLAYER_Y
 		end
 		if
 			00E0:   is_player_in_any_car $PLAYER_CHAR
@@ -1324,9 +1324,9 @@ return
 ////////////////////////////////////////////
 
 :CHECK_PLAYER_IN_RESTRICTED_AREA
-0054: get_player_coordinates $PLAYER_CHAR store_to $PLAYERX $PLAYERY $PLAYERZ
+0054: get_player_coordinates $PLAYER_CHAR store_to $PLAYER_X $PLAYER_Y $PLAYER_Z
 if
-	0022:   500.0 > $PLAYERX
+	0022:   500.0 > $PLAYER_X
 then
 	00BC: print_now 'AREA51' duration 4000 ms flag 1  // ~g~You're not supposed to be here, go back now!
 	if

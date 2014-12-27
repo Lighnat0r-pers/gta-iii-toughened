@@ -604,7 +604,6 @@ end
 
 while 83B5:   not catalina_shot_down 
 	wait 0 ms
-	0054: get_player_coordinates $PLAYER_CHAR store_to $PLAYERX_CAT $PLAYERY_CAT $PLAYERZ_CAT 
 	if
 		0038:   $COUNTDOWN_CAT1 == 0 
 	then

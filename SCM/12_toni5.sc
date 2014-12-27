@@ -251,9 +251,9 @@ while 81AC:   not car $BLOWFISH_GARBAGE_TRUCK stopped $BLOB_FLAG 961.0 -1112.5 1
 		0019:   17@ > 4000
 	then
 		0006: 17@ = 0
-		0054: get_player_coordinates $PLAYER_CHAR store_to $TONI5_PLAYER_X $TONI5_PLAYER_Y $TONI5_PLAYER_Z
+		0054: get_player_coordinates $PLAYER_CHAR store_to $PLAYER_X $PLAYER_Y $PLAYER_Z
 		wait 0 ms
-		02C7: scatter_platinum 1 at $TONI5_PLAYER_X $TONI5_PLAYER_Y $TONI5_PLAYER_Z 0.5
+		02C7: scatter_platinum 1 at $PLAYER_X $PLAYER_Y $PLAYER_Z 0.5
 	end
 end //while
 
