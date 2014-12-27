@@ -572,7 +572,6 @@ end
 0129: $TONI3_TRIAD1 = create_actor PEDTYPE_GANG_TRIAD #GANG03 in_car $TONI3_TRIAD_VAN1 driverseat
 01B2: give_actor $TONI3_TRIAD1 weapon WEAPONTYPE_UZI ammo 100 
 00AF: set_car_mission $TONI3_TRIAD_VAN1 to MISSION_RAMPLAYER_FARAWAY 
-011A: set_actor $TONI3_TRIAD1 search_threat THREAT_PLAYER1
  
 01C8: $TONI3_TRIAD2 = create_actor PEDTYPE_GANG_TRIAD model #GANG04 in_car $TONI3_TRIAD_VAN1 passenger_seat 0
 01B2: give_actor $TONI3_TRIAD2 weapon WEAPONTYPE_UZI ammo 100 
@@ -589,7 +588,6 @@ end
 0129: $TONI3_TRIAD3 = create_actor PEDTYPE_GANG_TRIAD #GANG03 in_car $TONI3_TRIAD_VAN2 driverseat
 01B2: give_actor $TONI3_TRIAD3 weapon WEAPONTYPE_UZI ammo 100 
 00AF: set_car_mission $TONI3_TRIAD_VAN2 to MISSION_RAMPLAYER_FARAWAY 
-011A: set_actor $TONI3_TRIAD3 search_threat THREAT_PLAYER1 
 
 01C8: $TONI3_TRIAD4 = create_actor PEDTYPE_GANG_TRIAD model #GANG04 in_car $TONI3_TRIAD_VAN2 passenger_seat 0
 01B2: give_actor $TONI3_TRIAD4 weapon WEAPONTYPE_UZI ammo 100 
@@ -606,7 +604,6 @@ end
 0129: $TONI3_TRIAD5 = create_actor PEDTYPE_GANG_TRIAD #GANG03 in_car $TONI3_TRIAD_VAN3 driverseat
 01B2: give_actor $TONI3_TRIAD5 weapon WEAPONTYPE_UZI ammo 100 
 00AF: set_car_mission $TONI3_TRIAD_VAN3 to MISSION_RAMPLAYER_FARAWAY 
-011A: set_actor $TONI3_TRIAD5 search_threat THREAT_PLAYER1 
 
 01C8: $TONI3_TRIAD6 = create_actor PEDTYPE_GANG_TRIAD model #GANG04 in_car $TONI3_TRIAD_VAN3 passenger_seat 0
 01B2: give_actor $TONI3_TRIAD6 weapon WEAPONTYPE_UZI ammo 100 
@@ -623,7 +620,6 @@ end
 0129: $TONI3_TRIAD7 = create_actor PEDTYPE_GANG_TRIAD #GANG03 in_car $TONI3_TRIAD_VAN4 driverseat
 01B2: give_actor $TONI3_TRIAD7 weapon WEAPONTYPE_UZI ammo 100 
 00AF: set_car_mission $TONI3_TRIAD_VAN4 to MISSION_RAMPLAYER_FARAWAY 
-011A: set_actor $TONI3_TRIAD7 search_threat THREAT_PLAYER1 
 
 01C8: $TONI3_TRIAD8 = create_actor PEDTYPE_GANG_TRIAD model #GANG04 in_car $TONI3_TRIAD_VAN4 passenger_seat 0
 01B2: give_actor $TONI3_TRIAD8 weapon WEAPONTYPE_UZI ammo 100 
