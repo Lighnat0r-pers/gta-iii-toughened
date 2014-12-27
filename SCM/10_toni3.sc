@@ -201,7 +201,9 @@ then
 		01D5: actor $PLAYER_ACTOR go_to_and_drive_car $TONI3_LIMO
 	end
 	fade 1 for 1000 ms
-	wait 1000 ms
+	while fading
+		wait 0 ms
+	end //while
 end
 
 gosub @CHECK_VEHICLE_STATUS_TONI3
@@ -290,9 +292,9 @@ end //while
 0004: $FLAG_DISPLAYED_WANTED_MESSAGE_TM3 = 0 
 
 00BC: print_now 'T3_JOEY' duration 5000 ms flag 2  //~g~Joey seems heavy today.
-0054: get_player_coordinates $PLAYER_CHAR store_to $TONI3_PLAYER_X $TONI3_PLAYER_Y $TONI3_PLAYER_Z
+0054: get_player_coordinates $PLAYER_CHAR store_to $PLAYER_X $PLAYER_Y $PLAYER_Z
 wait 0 ms
-02C7: scatter_platinum 2 at $TONI3_PLAYER_X $TONI3_PLAYER_Y $TONI3_PLAYER_Z 0.5
+02C7: scatter_platinum 2 at $PLAYER_X $PLAYER_Y $PLAYER_Z 0.5
 
 //PICK UP LUIGI
 
@@ -406,9 +408,9 @@ end
 0004: $FLAG_DISPLAYED_WANTED_MESSAGE_TM3 = 0 
 
 00BC: print_now 'T3_LUIG' duration 5000 ms flag 2  //~g~Luigi isn't much better.
-0054: get_player_coordinates $PLAYER_CHAR store_to $TONI3_PLAYER_X $TONI3_PLAYER_Y $TONI3_PLAYER_Z
+0054: get_player_coordinates $PLAYER_CHAR store_to $PLAYER_X $PLAYER_Y $PLAYER_Z
 wait 0 ms
-02C7: scatter_platinum 2 at $TONI3_PLAYER_X $TONI3_PLAYER_Y $TONI3_PLAYER_Z 0.5
+02C7: scatter_platinum 2 at $PLAYER_X $PLAYER_Y $PLAYER_Z 0.5
 
 009A: $TONI3_DARKEL = create_char PEDTYPE_SPECIAL model #SPECIAL04 at 1204.75 -306.60 24.97
 01ED: clear_actor $TONI3_DARKEL threat_search 
@@ -655,9 +657,9 @@ end
 02EB: restore_camera_jumpcut 
 
 00BC: print_now 'T3_TONI' duration 5000 ms flag 2  //~g~Seems like Toni had a REALLY big lunch today.
-0054: get_player_coordinates $PLAYER_CHAR store_to $TONI3_PLAYER_X $TONI3_PLAYER_Y $TONI3_PLAYER_Z
+0054: get_player_coordinates $PLAYER_CHAR store_to $PLAYER_X $PLAYER_Y $PLAYER_Z
 wait 0 ms
-02C7: scatter_platinum 4 at $TONI3_PLAYER_X $TONI3_PLAYER_Y $TONI3_PLAYER_Z 0.5
+02C7: scatter_platinum 3 at $PLAYER_X $PLAYER_Y $PLAYER_Z 0.5
 
 //GO TO FRANKIES
 
@@ -682,50 +684,22 @@ while 821C:   not car_inside_garage $SALVATORES_GARAGE
 	if
 		8119:   not car $TONI3_TRIAD_VAN1 wrecked 
 	then
-		if and
-			00B0:   is_car_in_area_2d $TONI3_TRIAD_VAN1 from 1393.563 -268.1875 to 1427.063 -154.0625 sphere 0
-			8118:   not actor $TONI3_TRIAD1 dead 
-			8118:   not actor $TONI3_TRIAD2 dead
-		then
-			01CA: actor $TONI3_TRIAD1 kill_player $PLAYER_CHAR 
-			01CA: actor $TONI3_TRIAD2 kill_player $PLAYER_CHAR
-		end
+		00AF: set_car_mission $TONI3_TRIAD_VAN1 to MISSION_RAMPLAYER_FARAWAY 
 	end
 	if
 		8119:   not car $TONI3_TRIAD_VAN2 wrecked 
 	then
-		if and
-			00B0:   is_car_in_area_2d $TONI3_TRIAD_VAN2 from 1393.563 -268.1875 to 1427.063 -154.0625 sphere 0
-			8118:   not actor $TONI3_TRIAD3 dead 
-			8118:   not actor $TONI3_TRIAD4 dead
-		then
-			01CA: actor $TONI3_TRIAD3 kill_player $PLAYER_CHAR 
-			01CA: actor $TONI3_TRIAD4 kill_player $PLAYER_CHAR
-		end
+		00AF: set_car_mission $TONI3_TRIAD_VAN2 to MISSION_RAMPLAYER_FARAWAY 
 	end
 	if
 		8119:   not car $TONI3_TRIAD_VAN3 wrecked 
 	then
-		if and
-			00B0:   is_car_in_area_2d $TONI3_TRIAD_VAN3 from 1393.563 -268.1875 to 1427.063 -154.0625 sphere 0
-			8118:   not actor $TONI3_TRIAD5 dead 
-			8118:   not actor $TONI3_TRIAD6 dead
-		then
-			01CA: actor $TONI3_TRIAD5 kill_player $PLAYER_CHAR 
-			01CA: actor $TONI3_TRIAD6 kill_player $PLAYER_CHAR
-		end
+		00AF: set_car_mission $TONI3_TRIAD_VAN3 to MISSION_RAMPLAYER_FARAWAY 
 	end
 	if
 		8119:   not car $TONI3_TRIAD_VAN4 wrecked 
 	then
-		if and
-			00B0:   is_car_in_area_2d $TONI3_TRIAD_VAN4 from 1393.563 -268.1875 to 1427.063 -154.0625 sphere 0
-			8118:   not actor $TONI3_TRIAD7 dead 
-			8118:   not actor $TONI3_TRIAD8 dead
-		then
-			01CA: actor $TONI3_TRIAD7 kill_player $PLAYER_CHAR 
-			01CA: actor $TONI3_TRIAD8 kill_player $PLAYER_CHAR
-		end
+		00AF: set_car_mission $TONI3_TRIAD_VAN4 to MISSION_RAMPLAYER_FARAWAY 
 	end
 end //while
 
@@ -1301,6 +1275,5 @@ goto @MISSION_END_TONI3
 0296: unload_special_actor 4 
 0296: unload_special_actor 5
 021B: set_garage $SALVATORES_GARAGE to_accept_car -1 
-03D5: remove_text 'IN_VEH'  // ~g~Hey! Get back in the vehicle!
 00D8: mission_has_finished 
 return
