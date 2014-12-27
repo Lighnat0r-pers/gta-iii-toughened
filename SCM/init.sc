@@ -689,10 +689,7 @@ return
 00D7: create_thread_without_extra_params @STARTER
 // GTA 3 normal threads
 00D7: create_thread_without_extra_params @INSANE_STUNT
-00D7: create_thread_without_extra_params @USJ
 00D7: create_thread_without_extra_params @GENSTUFF
-00D7: create_thread_without_extra_params @KILL_FRENZY
-00D7: create_thread_without_extra_params @ALL_REWARDS
 00D7: create_thread_without_extra_params @CAMERA
 00D7: create_thread_without_extra_params @GATES
 return
