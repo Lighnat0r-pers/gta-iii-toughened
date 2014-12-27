@@ -671,7 +671,7 @@ end
 
 0164: disable_marker $RADAR_BLIP_COORD2_EIGHTBALL 
 02A3: toggle_widescreen 1 
-0110: clear_player $PLAYER_CHAR wanted_level 
+//0110: clear_player $PLAYER_CHAR wanted_level 
 01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 1 
 03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 1 
 01B4: set_player $PLAYER_CHAR controllable 0 
@@ -1105,7 +1105,6 @@ end
 // *********************************MISTY CUT AT END****************************************
 02A3: toggle_widescreen 1 
 01B4: set_player $PLAYER_CHAR controllable 0 
-0110: clear_player $PLAYER_CHAR wanted_level 
 01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 1 
 03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 1 
 0395: clear_area 1 at 887.375 -417.25 range 13.875 10.0 // This should get rid of any stuff for the cut-scene
