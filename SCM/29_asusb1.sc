@@ -766,7 +766,7 @@ then
 		8118:   not actor $PASSENGER_4_TEMP dead 
 	then
 		if and
-			00ED:   actor $PASSENGER_4_TEMP #NULL $KILLZONE_CENT_X $KILLZONE_CENT_Y radius 15.0 15.0 
+			00ED:   actor $PASSENGER_4_TEMP 0 $KILLZONE_CENT_X $KILLZONE_CENT_Y radius 15.0 15.0 
 			8118:   not actor $TARGET_1_TEMP dead
 		then
 			01CB: actor $PASSENGER_4_TEMP kill_actor $TARGET_1_TEMP 

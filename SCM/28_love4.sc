@@ -404,7 +404,7 @@ while true
 			0038:   $GOON_IN_HANGAR1_FLAG == 1 
 		then
 			if
-				00F0:   actor $GOON_IN_HANGAR1 stopped #NULL -1280.188 -520.0625 radius 1.0 1.0
+				00F0:   actor $GOON_IN_HANGAR1 stopped 0 -1280.188 -520.0625 radius 1.0 1.0
 			then
 				0004: $GOON_IN_HANGAR1_FLAG = 2 
 				0004: $GOON_IN_HANGAR1_DUCKING = 1 
@@ -427,7 +427,7 @@ while true
 			0038:   $GOON_IN_HANGAR2_FLAG == 1 
 		then
 			if
-				00F0:   actor $GOON_IN_HANGAR2 stopped #NULL -1256.375 -521.25 radius 1.0 1.0
+				00F0:   actor $GOON_IN_HANGAR2 stopped 0 -1256.375 -521.25 radius 1.0 1.0
 			then
 				0004: $GOON_IN_HANGAR2_FLAG = 2 
 				0004: $GOON_IN_HANGAR2_DUCKING = 1 
@@ -451,7 +451,7 @@ while true
 			0038:   $GOON_IN_HANGAR3_FLAG == 1 
 		then
 			if
-				00F0:   actor $GOON_IN_HANGAR3 stopped #NULL -1254.375 -521.25 radius 1.0 1.0
+				00F0:   actor $GOON_IN_HANGAR3 stopped 0 -1254.375 -521.25 radius 1.0 1.0
 			then
 				0004: $GOON_IN_HANGAR3_FLAG = 2 
 				0004: $GOON_IN_HANGAR3_DUCKING = 1 
@@ -474,7 +474,7 @@ while true
 			0038:   $GOON_IN_HANGAR4_FLAG == 1 
 		then
 			if
-				00F0:   actor $GOON_IN_HANGAR4 stopped #NULL -1280.75 -529.1875 radius 1.0 1.0
+				00F0:   actor $GOON_IN_HANGAR4 stopped 0 -1280.75 -529.1875 radius 1.0 1.0
 			then
 				0004: $GOON_IN_HANGAR4_FLAG = 2 
 				0004: $GOON_IN_HANGAR4_DUCKING = 1 
@@ -1662,7 +1662,7 @@ return
 
 :DO_DUCKING_FOR_GOON
 if
-	00F0:   actor $GOON_TEMP stopped #NULL $TARGET_POS_X $TARGET_POS_Y radius 1.5 1.5 
+	00F0:   actor $GOON_TEMP stopped 0 $TARGET_POS_X $TARGET_POS_Y radius 1.5 1.5 
 then
 	if
 		0038:   $DUCKING_FLAG == 0
@@ -1712,21 +1712,21 @@ then
 	end
 	if and
 		0038:   $GOON_AT_YARD1_FLAG == 1 
-		00ED:   actor $GOON_AT_YARD1 #NULL 345.0625 -309.5625 radius 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD1 0 345.0625 -309.5625 radius 1.0 1.0 
 	then
 		0239: actor $GOON_AT_YARD1 run_to 345.3125 -313.1875 
 		0004: $GOON_AT_YARD1_FLAG = 2 
 	end
 	if and
 		0038:   $GOON_AT_YARD1_FLAG == 2 
-		00ED:   actor $GOON_AT_YARD1 #NULL 345.3125 -313.1875 radius 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD1 0 345.3125 -313.1875 radius 1.0 1.0 
 	then
 		0239: actor $GOON_AT_YARD1 run_to 342.125 -312.75 
 		0004: $GOON_AT_YARD1_FLAG = 3 
 	end
 	if and
 		0038:   $GOON_AT_YARD1_FLAG == 3 
-		00ED:   actor $GOON_AT_YARD1 #NULL 342.125 -312.75 radius 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD1 0 342.125 -312.75 radius 1.0 1.0 
 	then
 		0350: set_actor $GOON_AT_YARD1 maintain_position_when_attacked 1
 		0004: $GOON_AT_YARD1_FLAG = 4
@@ -1798,14 +1798,14 @@ then
 	end
 	if and
 		0038:   $GOON_AT_YARD2_FLAG == 2 
-		00ED:   actor $GOON_AT_YARD2 #NULL 333.625 -307.5625 radius 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD2 0 333.625 -307.5625 radius 1.0 1.0 
 	then
 		0239: actor $GOON_AT_YARD2 run_to 333.4375 -304.75 
 		0004: $GOON_AT_YARD2_FLAG = 3 
 	end
 	if and
 		0038:   $GOON_AT_YARD2_FLAG == 3 
-		00ED:   actor $GOON_AT_YARD2 #NULL 333.4375 -304.75 radius 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD2 0 333.4375 -304.75 radius 1.0 1.0 
 	then
 		0350: set_actor $GOON_AT_YARD2 maintain_position_when_attacked 1
 		0004: $GOON_AT_YARD2_FLAG = 4
@@ -1876,14 +1876,14 @@ then
 	end
 	if and
 		0038:   $GOON_AT_YARD3_FLAG == 2 
-		00ED:   actor $GOON_AT_YARD3 #NULL 331.6875 -329.125 radius 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD3 0 331.6875 -329.125 radius 1.0 1.0 
 	then
 		0239: actor $GOON_AT_YARD3 run_to 327.625 -329.125 
 		0004: $GOON_AT_YARD3_FLAG = 3 
 	end
 	if and
 		0038:   $GOON_AT_YARD3_FLAG == 3 
-		00ED:   actor $GOON_AT_YARD3 #NULL 327.625 -329.125 radius 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD3 0 327.625 -329.125 radius 1.0 1.0 
 	then
 		0350: set_actor $GOON_AT_YARD3 maintain_position_when_attacked 1
 		0004: $GOON_AT_YARD3_FLAG = 4
@@ -1960,7 +1960,7 @@ then
 	end
 	if and
 		0038:   $GOON_AT_YARD4_FLAG == 3 
-		00ED:   actor $GOON_AT_YARD4 #NULL 338.625 -329.375 radius 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD4 0 338.625 -329.375 radius 1.0 1.0 
 	then
 		0350: set_actor $GOON_AT_YARD4 maintain_position_when_attacked 1
 		0004: $GOON_AT_YARD4_FLAG = 4
@@ -2014,21 +2014,21 @@ then
 	end
 	if and
 		0038:   $GOON_AT_YARD5_FLAG == 1 
-		00ED:   actor $GOON_AT_YARD5 #NULL 354.625 -325.375 radius 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD5 0 354.625 -325.375 radius 1.0 1.0 
 	then
 		0239: actor $GOON_AT_YARD5 run_to 345.9375 -325.4375 
 		0004: $GOON_AT_YARD5_FLAG = 2
 	end
 	if and
 		0038:   $GOON_AT_YARD5_FLAG == 2 
-		00ED:   actor $GOON_AT_YARD5 #NULL 345.9375 -325.4375 radius 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD5 0 345.9375 -325.4375 radius 1.0 1.0 
 	then
 		0239: actor $GOON_AT_YARD5 run_to 341.625 -327.4375 
 		0004: $GOON_AT_YARD5_FLAG = 3 
 	end
 	if and
 		0038:   $GOON_AT_YARD5_FLAG == 3 
-		00ED:   actor $GOON_AT_YARD5 #NULL 341.625 -327.4375 radius 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD5 0 341.625 -327.4375 radius 1.0 1.0 
 	then
 		0350: set_actor $GOON_AT_YARD5 maintain_position_when_attacked 1
 		if
@@ -2063,7 +2063,7 @@ then
 		0038:   $GOON_AT_YARD6_FLAG == 1 
 	then
 		if
-			00ED:   actor $GOON_AT_YARD6 #NULL 365.875 -317.25 radius 1.0 1.0 
+			00ED:   actor $GOON_AT_YARD6 0 365.875 -317.25 radius 1.0 1.0 
 		then
 			0239: actor $GOON_AT_YARD6 run_to 335.6875 -316.25 
 			0004: $GOON_AT_YARD6_FLAG = 2
@@ -2073,7 +2073,7 @@ then
 		0038:   $GOON_AT_YARD6_FLAG == 2 
 	then
 		if
-			00ED:   actor $GOON_AT_YARD6 #NULL 335.6875 -316.25 radius 1.0 1.0 
+			00ED:   actor $GOON_AT_YARD6 0 335.6875 -316.25 radius 1.0 1.0 
 		then
 			0350: set_actor $GOON_AT_YARD6 maintain_position_when_attacked 1
 			if
@@ -2149,14 +2149,14 @@ then
 	end
 	if and
 		0038:   $GOON_AT_YARD8_FLAG == 1 
-		00ED:   actor $GOON_AT_YARD8 #NULL 375.4375 -331.1875 radius 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD8 0 375.4375 -331.1875 radius 1.0 1.0 
 	then
 		0239: actor $GOON_AT_YARD8 run_to 363.6875 -330.9375 
 		0004: $GOON_AT_YARD8_FLAG = 2
 	end
 	if and
 		0038:   $GOON_AT_YARD8_FLAG == 2 
-		00ED:   actor $GOON_AT_YARD8 #NULL 363.6875 -330.9375 radius 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD8 0 363.6875 -330.9375 radius 1.0 1.0 
 	then
 		0350: set_actor $GOON_AT_YARD8 maintain_position_when_attacked 1
 		0004: $GOON_AT_YARD8_FLAG = 3 
@@ -2213,28 +2213,28 @@ then
 	end
 	if and
 		0038:   $GOON_AT_YARD9_FLAG == 1 
-		00ED:   actor $GOON_AT_YARD9 #NULL 374.9375 -311.8125 radius 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD9 0 374.9375 -311.8125 radius 1.0 1.0 
 	then
 		0239: actor $GOON_AT_YARD9 run_to 348.125 -301.9375 
 		0004: $GOON_AT_YARD9_FLAG = 2
 	end
 	if and
 		0038:   $GOON_AT_YARD9_FLAG == 2 
-		00ED:   actor $GOON_AT_YARD9 #NULL 348.125 -301.9375 radius 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD9 0 348.125 -301.9375 radius 1.0 1.0 
 	then
 		0239: actor $GOON_AT_YARD9 run_to 342.9375 -302.625
 		0004: $GOON_AT_YARD9_FLAG = 3 
 	end
 	if and
 		0038:   $GOON_AT_YARD9_FLAG == 3 
-		00ED:   actor $GOON_AT_YARD9 #NULL 342.9375 -302.625 radius 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD9 0 342.9375 -302.625 radius 1.0 1.0 
 	then
 		0239: actor $GOON_AT_YARD9 run_to 327.625 -317.25 
 		0004: $GOON_AT_YARD9_FLAG = 4 
 	end
 	if and
 		0038:   $GOON_AT_YARD9_FLAG == 4 
-		00ED:   actor $GOON_AT_YARD9 #NULL 327.625 -317.25 radius 1.0 1.0
+		00ED:   actor $GOON_AT_YARD9 0 327.625 -317.25 radius 1.0 1.0
 	then
 		if
 			0038:   $C_SITE_AREA_FLAG == 4
@@ -2256,7 +2256,7 @@ then
 	end
 	if and
 		0038:   $GOON_AT_YARD9_FLAG == 5 
-		00ED:   actor $GOON_AT_YARD9 #NULL 335.1875 -334.875 radius 1.0 1.0
+		00ED:   actor $GOON_AT_YARD9 0 335.1875 -334.875 radius 1.0 1.0
 	then
 		if
 			0038:   $C_SITE_AREA_FLAG == 5
@@ -2278,7 +2278,7 @@ then
 	end
 	if and
 		0038:   $GOON_AT_YARD9_FLAG == 6 
-		00ED:   actor $GOON_AT_YARD9 #NULL 360.375 -337.9375 radius 1.0 1.0
+		00ED:   actor $GOON_AT_YARD9 0 360.375 -337.9375 radius 1.0 1.0
 	then
 		0350: set_actor $GOON_AT_YARD9 maintain_position_when_attacked 1 
 		if
@@ -2314,7 +2314,7 @@ then
 	end
 	if and
 		0038:   $GOON_AT_YARD10_FLAG == 1 
-		00ED:   actor $GOON_AT_YARD10 #NULL 372.5625 -298.4375 radius 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD10 0 372.5625 -298.4375 radius 1.0 1.0 
 	then
 		0350: set_actor $GOON_AT_YARD10 maintain_position_when_attacked 1 
 		0004: $GOON_AT_YARD10_FLAG = 2
@@ -2358,35 +2358,35 @@ then
 	end
 	if and
 		0038:   $GOON_AT_YARD10_FLAG == 3 
-		00ED:   actor $GOON_AT_YARD10 #NULL 372.8125 -266.8125 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD10 0 372.8125 -266.8125 1.0 1.0 
 	then
 		0239: actor $GOON_AT_YARD10 run_to 363.875 -266.5 
 		0004: $GOON_AT_YARD10_FLAG = 4 
 	end
 	if and
 		0038:   $GOON_AT_YARD10_FLAG == 4 
-		00ED:   actor $GOON_AT_YARD10 #NULL 363.875 -266.5 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD10 0 363.875 -266.5 1.0 1.0 
 	then
 		0239: actor $GOON_AT_YARD10 run_to 361.9375 -290.5 
 		0004: $GOON_AT_YARD10_FLAG = 5 
 	end
 	if and
 		0038:   $GOON_AT_YARD10_FLAG == 5 
-		00ED:   actor $GOON_AT_YARD10 #NULL 361.9375 -290.5 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD10 0 361.9375 -290.5 1.0 1.0 
 	then
 		0239: actor $GOON_AT_YARD10 run_to 341.375 -298.1875 
 		0004: $GOON_AT_YARD10_FLAG = 6 
 	end
 	if and
 		0038:   $GOON_AT_YARD10_FLAG == 6 
-		00ED:   actor $GOON_AT_YARD10 #NULL 341.375 -298.1875 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD10 0 341.375 -298.1875 1.0 1.0 
 	then
 		0239: actor $GOON_AT_YARD10 run_to 342.3125 -303.625 
 		0004: $GOON_AT_YARD10_FLAG = 7 
 	end
 	if and
 		0038:   $GOON_AT_YARD10_FLAG == 7 
-		00ED:   actor $GOON_AT_YARD10 #NULL 342.3125 -303.625 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD10 0 342.3125 -303.625 1.0 1.0 
 	then
 		if
 			0038:   $C_SITE_AREA_FLAG == 2
@@ -2408,14 +2408,14 @@ then
 	end
 	if and
 		0038:   $GOON_AT_YARD10_FLAG == 8 
-		00ED:   actor $GOON_AT_YARD10 #NULL 338.1875 -308.1875 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD10 0 338.1875 -308.1875 1.0 1.0 
 	then
 		0239: actor $GOON_AT_YARD10 run_to 330.4375 -314.0625 
 		0004: $GOON_AT_YARD10_FLAG = 9 
 	end
 	if and
 		0038:   $GOON_AT_YARD10_FLAG == 9 
-		00ED:   actor $GOON_AT_YARD10 #NULL 330.4375 -314.0625 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD10 0 330.4375 -314.0625 1.0 1.0 
 	then
 		if or
 			0038:   $C_SITE_AREA_FLAG == 3
@@ -2438,7 +2438,7 @@ then
 	end
 	if and
 		0038:   $GOON_AT_YARD10_FLAG == 10 
-		00ED:   actor $GOON_AT_YARD10 #NULL 334.625 -338.6875 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD10 0 334.625 -338.6875 1.0 1.0 
 	then
 		if
 			0038:   $C_SITE_AREA_FLAG == 5
@@ -2460,7 +2460,7 @@ then
 	end
 	if and
 		0038:   $GOON_AT_YARD10_FLAG == 11 
-		00ED:   actor $GOON_AT_YARD10 #NULL 360.1875 -336.6875 1.0 1.0 
+		00ED:   actor $GOON_AT_YARD10 0 360.1875 -336.6875 1.0 1.0 
 	then
 		0350: set_actor $GOON_AT_YARD10 maintain_position_when_attacked 1
 		if

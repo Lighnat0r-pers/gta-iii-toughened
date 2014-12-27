@@ -445,14 +445,14 @@ while true
 		else
 			if and
 				0038:   $MAFIA_8_FLAG == 1
-				00ED:   actor $ASUKA1_MAFIA8 #NULL $BOTTOM_OF_STEPS_X $BOTTOM_OF_STEPS_Y radius 1.0 1.0 
+				00ED:   actor $ASUKA1_MAFIA8 0 $BOTTOM_OF_STEPS_X $BOTTOM_OF_STEPS_Y radius 1.0 1.0 
 			then
 				0211: actor $ASUKA1_MAFIA8 walk_to 887.5625 -418.5 
 				0004: $MAFIA_8_FLAG = 2
 			end
 			if and
 				0038:   $MAFIA_8_FLAG == 2
-				00F0:   actor $ASUKA1_MAFIA8 stopped #NULL 887.5625 -418.5 radius 0.5 0.5
+				00F0:   actor $ASUKA1_MAFIA8 stopped 0 887.5625 -418.5 radius 0.5 0.5
 			then
 				0173: set_actor $ASUKA1_MAFIA8 z_angle_to 90.0 
 				009F: char_set_idle $ASUKA1_MAFIA8 
@@ -879,7 +879,7 @@ while 80DF:   not is_char_in_any_car $SALVATORE
 		0038:   $FRANKIE_FLAG == 0
 	then
 		if
-			00ED:   actor $SALVATORE #NULL $BOTTOM_OF_STEPS_X $BOTTOM_OF_STEPS_Y radius 1.0 1.0
+			00ED:   actor $SALVATORE 0 $BOTTOM_OF_STEPS_X $BOTTOM_OF_STEPS_Y radius 1.0 1.0
 		then
 			0239: actor $SALVATORE run_to $STREET_X $STREET_Y 
 			0004: $FRANKIE_FLAG = 5 
@@ -944,7 +944,7 @@ while 80DF:   not is_char_in_any_car $SALVATORE
 
 	if and
 		0038:   $FRANKIE_FLAG == 4
-		00ED:   actor $SALVATORE #NULL $BOTTOM_OF_STEPS_X $BOTTOM_OF_STEPS_Y radius 1.0 1.0 
+		00ED:   actor $SALVATORE 0 $BOTTOM_OF_STEPS_X $BOTTOM_OF_STEPS_Y radius 1.0 1.0 
 	then
 		0239: actor $SALVATORE run_to $CREATE_CHAR_IN_CLUB_X $CREATE_CHAR_IN_CLUB_Y 
 		0004: $FRANKIE_FLAG = 6 
@@ -954,7 +954,7 @@ while 80DF:   not is_char_in_any_car $SALVATORE
 		0038:   $FRANKIE_FLAG == 5 
 	then
 		if
-			00ED:   actor $SALVATORE #NULL $STREET_X $STREET_Y radius 1.0 1.0 
+			00ED:   actor $SALVATORE 0 $STREET_X $STREET_Y radius 1.0 1.0 
 		then
 			if and
 				0038:   $BEAMER_1_DEAD_FLAG == 0 
@@ -989,7 +989,7 @@ while 80DF:   not is_char_in_any_car $SALVATORE
 		0038:   $FRANKIE_FLAG == 6
 	then
 		if
-			00ED:   actor $SALVATORE #NULL $CREATE_CHAR_IN_CLUB_X $CREATE_CHAR_IN_CLUB_Y radius 1.0 1.0 
+			00ED:   actor $SALVATORE 0 $CREATE_CHAR_IN_CLUB_X $CREATE_CHAR_IN_CLUB_Y radius 1.0 1.0 
 		then
 			009B: delete_char $SALVATORE 
 			00BC: print_now 'AM1_9' duration 5000 ms flag 1  // ~r~Salvatore has escaped back into Luigi's Club!
@@ -1415,7 +1415,7 @@ then
 		0004: $DUMMY_VAR_ASUKA1 = 1
 	else
 		if
-			80ED:   not actor $MAFIA_PREVIOUS_ASUKA1 #NULL $CREATE_CHAR_IN_CLUB_X $CREATE_CHAR_IN_CLUB_Y radius 2.0 2.0 
+			80ED:   not actor $MAFIA_PREVIOUS_ASUKA1 0 $CREATE_CHAR_IN_CLUB_X $CREATE_CHAR_IN_CLUB_Y radius 2.0 2.0 
 		then
 			0004: $DUMMY_VAR_ASUKA1 = 1
 		end
@@ -1446,7 +1446,7 @@ if
 	0038:   $MAFIA_CURRENT_FLAG_ASUKA1 == 1
 then
 	if
-		00ED:   actor $MAFIA_CURRENT_ASUKA1 #NULL $BOTTOM_OF_STEPS_X $BOTTOM_OF_STEPS_Y radius 1.0 1.0 
+		00ED:   actor $MAFIA_CURRENT_ASUKA1 0 $BOTTOM_OF_STEPS_X $BOTTOM_OF_STEPS_Y radius 1.0 1.0 
 	then
 		0211: actor $MAFIA_CURRENT_ASUKA1 walk_to $MAFIA_CURRENT_X $MAFIA_CURRENT_Y 
 		0004: $MAFIA_CURRENT_FLAG_ASUKA1 = 2
@@ -1456,7 +1456,7 @@ if
 	0038:   $MAFIA_CURRENT_FLAG_ASUKA1 == 2
 then
 	if
-		00F0:   actor $MAFIA_CURRENT_ASUKA1 stopped #NULL $MAFIA_CURRENT_X $MAFIA_CURRENT_Y radius 0.5 0.5
+		00F0:   actor $MAFIA_CURRENT_ASUKA1 stopped 0 $MAFIA_CURRENT_X $MAFIA_CURRENT_Y radius 0.5 0.5
 	then
 		0173: set_actor $MAFIA_CURRENT_ASUKA1 z_angle_to 90.0 
 		009F: char_set_idle $MAFIA_CURRENT_ASUKA1
@@ -1505,21 +1505,21 @@ if
 then
 	if and
 		0038:   $MAFIA_CURRENT_FLAG_ASUKA1 == 5 
-		00ED:   actor $MAFIA_CURRENT_ASUKA1 #NULL $BACK_OF_ALLEY_X $BACK_OF_ALLEY_Y radius 1.0 1.0 
+		00ED:   actor $MAFIA_CURRENT_ASUKA1 0 $BACK_OF_ALLEY_X $BACK_OF_ALLEY_Y radius 1.0 1.0 
 	then
 		0211: actor $MAFIA_CURRENT_ASUKA1 walk_to $BOTTOM_OF_STEPS_X $BOTTOM_OF_STEPS_Y 
 		0004: $MAFIA_CURRENT_FLAG_ASUKA1 = 6 
 	end
 	if and
 		0038:   $MAFIA_CURRENT_FLAG_ASUKA1 == 6 
-		00ED:   actor $MAFIA_CURRENT_ASUKA1 #NULL $BOTTOM_OF_STEPS_X $BOTTOM_OF_STEPS_Y radius 1.0 1.0 
+		00ED:   actor $MAFIA_CURRENT_ASUKA1 0 $BOTTOM_OF_STEPS_X $BOTTOM_OF_STEPS_Y radius 1.0 1.0 
 	then
 		0211: actor $MAFIA_CURRENT_ASUKA1 walk_to $CREATE_CHAR_IN_CLUB_X $CREATE_CHAR_IN_CLUB_Y 
 		0004: $MAFIA_CURRENT_FLAG_ASUKA1 = 7 
 	end
 	if and
 		0038:   $MAFIA_CURRENT_FLAG_ASUKA1 == 7 
-		00ED:   actor $MAFIA_CURRENT_ASUKA1 #NULL $CREATE_CHAR_IN_CLUB_X $CREATE_CHAR_IN_CLUB_Y radius 0.5 0.5 
+		00ED:   actor $MAFIA_CURRENT_ASUKA1 0 $CREATE_CHAR_IN_CLUB_X $CREATE_CHAR_IN_CLUB_Y radius 0.5 0.5 
 	then
 		009B: delete_char $MAFIA_CURRENT_ASUKA1 
 		0004: $MAFIA_CURRENT_FLAG_ASUKA1 = 4 
@@ -2017,14 +2017,14 @@ then
 	then
 		if and
 			0038:   $MAFIA_5_KILL_PLAYER_FLAG == 1
-			00ED:   actor $ASUKA1_MAFIA5 #NULL 919.25 -397.0 radius 1.0 1.0 //CORNER OF STREET
+			00ED:   actor $ASUKA1_MAFIA5 0 919.25 -397.0 radius 1.0 1.0 //CORNER OF STREET
 		then
 			0239: actor $ASUKA1_MAFIA5 run_to 958.375 -397.0625 //IN FRONT OF ALLEY
 			0004: $MAFIA_5_KILL_PLAYER_FLAG = 2 
 		end
 		if and
 			0038:   $MAFIA_5_KILL_PLAYER_FLAG == 2
-			00ED:   actor $ASUKA1_MAFIA5 #NULL 958.375 -397.0625 radius 1.0 1.0 //IN FRONT OF ALLEY
+			00ED:   actor $ASUKA1_MAFIA5 0 958.375 -397.0625 radius 1.0 1.0 //IN FRONT OF ALLEY
 		then
 			0411: set_actor $ASUKA1_MAFIA5 use_pednode_seek 0 
 			0239: actor $ASUKA1_MAFIA5 run_to 958.0 -416.6875 //BOTTOM OF STEPS
@@ -2032,28 +2032,28 @@ then
 		end
 		if and
 			0038:   $MAFIA_5_KILL_PLAYER_FLAG == 3
-			00ED:   actor $ASUKA1_MAFIA5 #NULL 958.0 -416.6875 radius 1.0 1.0 //BOTTOM OF STEPS
+			00ED:   actor $ASUKA1_MAFIA5 0 958.0 -416.6875 radius 1.0 1.0 //BOTTOM OF STEPS
 		then
 			0239: actor $ASUKA1_MAFIA5 run_to 949.0625 -416.5625 //LANDING ON STEPS
 			0004: $MAFIA_5_KILL_PLAYER_FLAG = 4 
 		end
 		if and
 			0038:   $MAFIA_5_KILL_PLAYER_FLAG == 4
-			00ED:   actor $ASUKA1_MAFIA5 #NULL 949.0625 -416.5625 radius 1.0 1.0 //LANDING ON STEPS
+			00ED:   actor $ASUKA1_MAFIA5 0 949.0625 -416.5625 radius 1.0 1.0 //LANDING ON STEPS
 		then
 			0239: actor $ASUKA1_MAFIA5 run_to 948.9375 -407.5625 //TOP OF STEPS
 			0004: $MAFIA_5_KILL_PLAYER_FLAG = 5 
 		end
 		if and
 			0038:   $MAFIA_5_KILL_PLAYER_FLAG == 5
-			00ED:   actor $ASUKA1_MAFIA5 #NULL 948.9375 -407.5625 radius 1.0 1.0 //TOP OF STEPS
+			00ED:   actor $ASUKA1_MAFIA5 0 948.9375 -407.5625 radius 1.0 1.0 //TOP OF STEPS
 		then
 			0239: actor $ASUKA1_MAFIA5 run_to 929.8125 -404.75 //ON THE SNIPER ROOF
 			0004: $MAFIA_5_KILL_PLAYER_FLAG = 6 
 		end
 		if and
 			0038:   $MAFIA_5_KILL_PLAYER_FLAG == 6
-			00ED:   actor $ASUKA1_MAFIA5 #NULL 929.8125 -404.75 radius 1.0 1.0 //ON THE SNIPER ROOF
+			00ED:   actor $ASUKA1_MAFIA5 0 929.8125 -404.75 radius 1.0 1.0 //ON THE SNIPER ROOF
 		then
 			0350: set_actor $ASUKA1_MAFIA5 maintain_position_when_attacked 1 
 			01CA: actor $ASUKA1_MAFIA5 kill_player $PLAYER_CHAR 
@@ -2083,14 +2083,14 @@ then
 	then
 		if and
 			0038:   $MAFIA_7_KILL_PLAYER_FLAG == 1
-			00ED:   actor $ASUKA1_MAFIA7 #NULL 919.25 -397.0 radius 1.0 1.0 //CORNER OF STREET
+			00ED:   actor $ASUKA1_MAFIA7 0 919.25 -397.0 radius 1.0 1.0 //CORNER OF STREET
 		then
 			0239: actor $ASUKA1_MAFIA7 run_to 958.375 -397.0625 //IN FRONT OF ALLEY
 			0004: $MAFIA_7_KILL_PLAYER_FLAG = 2 
 		end
 		if and
 			0038:   $MAFIA_7_KILL_PLAYER_FLAG == 2
-			00ED:   actor $ASUKA1_MAFIA7 #NULL 958.375 -397.0625 radius 1.0 1.0 //IN FRONT OF ALLEY
+			00ED:   actor $ASUKA1_MAFIA7 0 958.375 -397.0625 radius 1.0 1.0 //IN FRONT OF ALLEY
 		then
 			0411: set_actor $ASUKA1_MAFIA7 use_pednode_seek 0 
 			0239: actor $ASUKA1_MAFIA7 run_to 958.0 -416.6875 //BOTTOM OF STEPS
@@ -2098,28 +2098,28 @@ then
 		end
 		if and
 			0038:   $MAFIA_7_KILL_PLAYER_FLAG == 3
-			00ED:   actor $ASUKA1_MAFIA7 #NULL 958.0 -416.6875 radius 1.0 1.0 //BOTTOM OF STEPS
+			00ED:   actor $ASUKA1_MAFIA7 0 958.0 -416.6875 radius 1.0 1.0 //BOTTOM OF STEPS
 		then
 			0239: actor $ASUKA1_MAFIA7 run_to 949.0625 -416.5625 //LANDING ON STEPS
 			0004: $MAFIA_7_KILL_PLAYER_FLAG = 4 
 		end
 		if and
 			0038:   $MAFIA_7_KILL_PLAYER_FLAG == 4
-			00ED:   actor $ASUKA1_MAFIA7 #NULL 949.0625 -416.5625 radius 1.0 1.0 //LANDING ON STEPS
+			00ED:   actor $ASUKA1_MAFIA7 0 949.0625 -416.5625 radius 1.0 1.0 //LANDING ON STEPS
 		then
 			0239: actor $ASUKA1_MAFIA7 run_to 948.9375 -407.5625 //TOP OF STEPS
 			0004: $MAFIA_7_KILL_PLAYER_FLAG = 5 
 		end
 		if and
 			0038:   $MAFIA_7_KILL_PLAYER_FLAG == 5
-			00ED:   actor $ASUKA1_MAFIA7 #NULL 948.9375 -407.5625 radius 1.0 1.0 //TOP OF STEPS
+			00ED:   actor $ASUKA1_MAFIA7 0 948.9375 -407.5625 radius 1.0 1.0 //TOP OF STEPS
 		then
 			0239: actor $ASUKA1_MAFIA7 run_to 930.0625 -407.9375 //ON THE SNIPER ROOF
 			0004: $MAFIA_7_KILL_PLAYER_FLAG = 6 
 		end
 		if and
 			0038:   $MAFIA_7_KILL_PLAYER_FLAG == 6
-			00ED:   actor $ASUKA1_MAFIA7 #NULL 930.0625 -407.9375 radius 1.0 1.0 //ON THE SNIPER ROOF
+			00ED:   actor $ASUKA1_MAFIA7 0 930.0625 -407.9375 radius 1.0 1.0 //ON THE SNIPER ROOF
 		then
 			0350: set_actor $ASUKA1_MAFIA7 maintain_position_when_attacked 1 
 			01CA: actor $ASUKA1_MAFIA7 kill_player $PLAYER_CHAR 
@@ -2158,14 +2158,14 @@ then
 	then
 		if and
 			0038:   $MAFIA_15_KILL_PLAYER_FLAG == 1
-			00ED:   actor $ASUKA1_MAFIA15 #NULL 949.0625 -416.5625  radius 1.0 1.0 //LANDING ON STEPS
+			00ED:   actor $ASUKA1_MAFIA15 0 949.0625 -416.5625  radius 1.0 1.0 //LANDING ON STEPS
 		then
 			0239: actor $ASUKA1_MAFIA15 run_to 948.9375 -407.5625 //TOP OF STEPS
 			0004: $MAFIA_15_KILL_PLAYER_FLAG = 2 
 		end
 		if and
 			0038:   $MAFIA_15_KILL_PLAYER_FLAG == 2
-			00ED:   actor $ASUKA1_MAFIA15 #NULL 948.9375 -407.5625 radius 1.0 1.0 //TOP OF STEPS
+			00ED:   actor $ASUKA1_MAFIA15 0 948.9375 -407.5625 radius 1.0 1.0 //TOP OF STEPS
 		then
 			0411: set_actor $ASUKA1_MAFIA15 use_pednode_seek 0 
 			0239: actor $ASUKA1_MAFIA15 run_to 929.5 -406.625 //ON THE SNIPER ROOF
@@ -2173,7 +2173,7 @@ then
 		end
 		if and
 			0038:   $MAFIA_15_KILL_PLAYER_FLAG == 3
-			00ED:   actor $ASUKA1_MAFIA15 #NULL 929.5 -406.625 radius 1.0 1.0 //ON THE SNIPER ROOF
+			00ED:   actor $ASUKA1_MAFIA15 0 929.5 -406.625 radius 1.0 1.0 //ON THE SNIPER ROOF
 		then
 			0350: set_actor $ASUKA1_MAFIA15 maintain_position_when_attacked 1 
 			01CA: actor $ASUKA1_MAFIA15 kill_player $PLAYER_CHAR 

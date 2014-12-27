@@ -788,14 +788,14 @@ while 8038:   not  $FLAG_BLOKE_IN_AREA_FM3 == 13
 			if and
 				0038:   $FLAG_8BALL_MOVED1 == 0 
 				0029:   16@ >= 25000
-				80ED:   not actor $FRANK3_8BALL #NULL 1545.875 -867.6875 radius 1.0 1.0 
+				80ED:   not actor $FRANK3_8BALL 0 1545.875 -867.6875 radius 1.0 1.0 
 			then
 				00A1: set_char_coordinates $FRANK3_8BALL to 1545.875 -867.6875 10.75 
 				0004: $FLAG_8BALL_MOVED1 = 1 
 			end
 			if and
 				0038:   $FLAG_8BALL_DUCKING_FM3 == 0 
-				00ED:   actor $FRANK3_8BALL #NULL 1545.875 -867.6875 radius 1.0 1.0
+				00ED:   actor $FRANK3_8BALL 0 1545.875 -867.6875 radius 1.0 1.0
 			then
 				0004: $FLAG_8BALL_MOVED1 = 1 
 				0372: set_actor $FRANK3_8BALL anim WAITSTATE_PLAYANIM_DUCK wait_state_time 10000 ms
@@ -831,7 +831,7 @@ while 8038:   not  $FLAG_BLOKE_IN_AREA_FM3 == 13
 				0004: $FLAG_TIMER_SET_FM3 = 1 
 			end
 			if
-				00ED:   actor $FRANK3_8BALL #NULL 1527.0 -899.0 radius 2.0 2.0 
+				00ED:   actor $FRANK3_8BALL 0 1527.0 -899.0 radius 2.0 2.0 
 			then
 				0004: $FLAG_8BALL_MOVED2 = 1 
 				0004: $FLAG_BLOKE_IN_AREA_FM3 = 3 
@@ -839,7 +839,7 @@ while 8038:   not  $FLAG_BLOKE_IN_AREA_FM3 == 13
 			if and
 				0038:   $FLAG_8BALL_MOVED2 == 0
 				0029:   16@ >= 20000
-				80ED:   not actor $FRANK3_8BALL #NULL 1527.0 -899.0 radius 2.0 2.0
+				80ED:   not actor $FRANK3_8BALL 0 1527.0 -899.0 radius 2.0 2.0
 			then
 				00A1: set_char_coordinates $FRANK3_8BALL to 1527.0 -899.0 10.75 
 				0004: $FLAG_8BALL_MOVED2 = 1 
@@ -858,7 +858,7 @@ while 8038:   not  $FLAG_BLOKE_IN_AREA_FM3 == 13
 				0004: $FLAG_TIMER_SET_FM3 = 2
 			end
 			if
-				00ED:   actor $FRANK3_8BALL #NULL 1526.0 -919.0  radius 2.0 2.0 
+				00ED:   actor $FRANK3_8BALL 0 1526.0 -919.0  radius 2.0 2.0 
 			then
 				0004: $FLAG_8BALL_MOVED3 = 1 
 				0004: $FLAG_BLOKE_IN_AREA_FM3 = 4 
@@ -866,7 +866,7 @@ while 8038:   not  $FLAG_BLOKE_IN_AREA_FM3 == 13
 			if and
 				0038:   $FLAG_8BALL_MOVED3 == 0
 				0029:   16@ >= 20000
-				80ED:   not actor $FRANK3_8BALL #NULL 1526.0 -919.0 radius 2.0 2.0
+				80ED:   not actor $FRANK3_8BALL 0 1526.0 -919.0 radius 2.0 2.0
 			then
 				00A1: set_char_coordinates $FRANK3_8BALL to 1526.0 -919.0 18.375 
 				0004: $FLAG_8BALL_MOVED3 = 1 
@@ -887,13 +887,13 @@ while 8038:   not  $FLAG_BLOKE_IN_AREA_FM3 == 13
 			if and
 				0038:   $FLAG_8BALL_MOVED4 == 0
 				0029:   16@ >= 25000
-				80ED:   not actor $FRANK3_8BALL #NULL 1522.875 -924.25 radius 1.0 1.0 
+				80ED:   not actor $FRANK3_8BALL 0 1522.875 -924.25 radius 1.0 1.0 
 			then
 				00A1: set_char_coordinates $FRANK3_8BALL to 1522.875 -924.25 18.375
 				0004: $FLAG_8BALL_MOVED4 = 1 
 			end
 			if
-				00ED:   actor $FRANK3_8BALL #NULL 1522.875 -924.25 radius 1.0 1.0 
+				00ED:   actor $FRANK3_8BALL 0 1522.875 -924.25 radius 1.0 1.0 
 			then
 				0004: $FLAG_8BALL_MOVED4 = 1 
 				if
@@ -933,13 +933,13 @@ while 8038:   not  $FLAG_BLOKE_IN_AREA_FM3 == 13
 			if and
 				0038:   $FLAG_8BALL_MOVED5 == 0
 				0029:   16@ >= 25000
-				80ED:   not actor $FRANK3_8BALL #NULL 1517.0 -929.0 radius 1.0 1.0 
+				80ED:   not actor $FRANK3_8BALL 0 1517.0 -929.0 radius 1.0 1.0 
 			then
 				00A1: set_char_coordinates $FRANK3_8BALL to 1517.0 -929.0 18.375
 				0004: $FLAG_8BALL_MOVED5 = 1 
 			end
 			if
-				00ED:   actor $FRANK3_8BALL #NULL 1517.0 -929.0 radius 1.0 1.0 
+				00ED:   actor $FRANK3_8BALL 0 1517.0 -929.0 radius 1.0 1.0 
 			then
 				0004: $FLAG_8BALL_MOVED5 = 1 
 				03CF: load_wav 'S3_B'
@@ -991,13 +991,13 @@ while 8038:   not  $FLAG_BLOKE_IN_AREA_FM3 == 13
 			if and
 				0038:   $FLAG_8BALL_MOVED6 == 0
 				0029:   16@ >= 25000
-				80ED:   not actor $FRANK3_8BALL #NULL 1510.0 -923.0 radius 1.0 1.0 
+				80ED:   not actor $FRANK3_8BALL 0 1510.0 -923.0 radius 1.0 1.0 
 			then
 				00A1: set_char_coordinates $FRANK3_8BALL to 1510.0 -923.0 18.375
 				0004: $FLAG_8BALL_MOVED6 = 1 
 			end
 			if
-				00ED:   actor $FRANK3_8BALL #NULL 1510.0 -923.0 radius 1.0 1.0 
+				00ED:   actor $FRANK3_8BALL 0 1510.0 -923.0 radius 1.0 1.0 
 			then
 				0004: $FLAG_8BALL_MOVED6 = 1 
 				if
@@ -1036,13 +1036,13 @@ while 8038:   not  $FLAG_BLOKE_IN_AREA_FM3 == 13
 			if and
 				0038:   $FLAG_8BALL_MOVED7 == 0
 				0029:   16@ >= 25000
-				80ED:   not actor $FRANK3_8BALL #NULL 1504.375 -928.5625 radius 1.0 1.0 
+				80ED:   not actor $FRANK3_8BALL 0 1504.375 -928.5625 radius 1.0 1.0 
 			then
 				00A1: set_char_coordinates $FRANK3_8BALL to 1504.375 -928.5625 18.375
 				0004: $FLAG_8BALL_MOVED7 = 1 
 			end
 			if
-				00ED:   actor $FRANK3_8BALL #NULL 1504.375 -928.5625 radius 1.0 1.0 
+				00ED:   actor $FRANK3_8BALL 0 1504.375 -928.5625 radius 1.0 1.0 
 			then
 				0004: $FLAG_8BALL_MOVED7 = 1 
 				if
@@ -1081,13 +1081,13 @@ while 8038:   not  $FLAG_BLOKE_IN_AREA_FM3 == 13
 			if and
 				0038:   $FLAG_8BALL_MOVED8 == 0
 				0029:   16@ >= 25000
-				80ED:   not actor $FRANK3_8BALL #NULL 1493.688 -922.0625 radius 1.0 1.0 
+				80ED:   not actor $FRANK3_8BALL 0 1493.688 -922.0625 radius 1.0 1.0 
 			then
 				00A1: set_char_coordinates $FRANK3_8BALL to 1493.688 -922.0625 18.375
 				0004: $FLAG_8BALL_MOVED8 = 1 
 			end
 			if
-				00ED:   actor $FRANK3_8BALL #NULL 1493.688 -922.0625 radius 1.0 1.0 
+				00ED:   actor $FRANK3_8BALL 0 1493.688 -922.0625 radius 1.0 1.0 
 			then
 				0004: $FLAG_8BALL_MOVED8 = 1 
 				if
@@ -1126,13 +1126,13 @@ while 8038:   not  $FLAG_BLOKE_IN_AREA_FM3 == 13
 			if and
 				0038:   $FLAG_8BALL_MOVED9 == 0
 				0029:   16@ >= 25000
-				80ED:   not actor $FRANK3_8BALL #NULL 1487.0 -930.1875 radius 1.0 1.0 
+				80ED:   not actor $FRANK3_8BALL 0 1487.0 -930.1875 radius 1.0 1.0 
 			then
 				00A1: set_char_coordinates $FRANK3_8BALL to 1487.0 -930.1875 18.375
 				0004: $FLAG_8BALL_MOVED9 = 1 
 			end
 			if
-				00ED:   actor $FRANK3_8BALL #NULL 1487.0 -930.1875 radius 1.0 1.0 
+				00ED:   actor $FRANK3_8BALL 0 1487.0 -930.1875 radius 1.0 1.0 
 			then
 				0004: $FLAG_8BALL_MOVED9 = 1 
 				if
@@ -1171,13 +1171,13 @@ while 8038:   not  $FLAG_BLOKE_IN_AREA_FM3 == 13
 			if and
 				0038:   $FLAG_8BALL_MOVED10 == 0
 				0029:   16@ >= 15000
-				80ED:   not actor $FRANK3_8BALL #NULL 1481.5 -926.75 radius 1.0 1.0 
+				80ED:   not actor $FRANK3_8BALL 0 1481.5 -926.75 radius 1.0 1.0 
 			then
 				00A1: set_char_coordinates $FRANK3_8BALL to 1481.5 -926.75 18.375
 				0004: $FLAG_8BALL_MOVED10 = 1 
 			end
 			if
-				00ED:   actor $FRANK3_8BALL #NULL 1481.5 -926.75 radius 1.0 1.0 
+				00ED:   actor $FRANK3_8BALL 0 1481.5 -926.75 radius 1.0 1.0 
 			then
 				0004: $FLAG_8BALL_MOVED10 = 1 
 				0004: $FLAG_BLOKE_IN_AREA_FM3 = 11
@@ -1198,13 +1198,13 @@ while 8038:   not  $FLAG_BLOKE_IN_AREA_FM3 == 13
 			if and
 				0038:   $FLAG_8BALL_MOVED11 == 0
 				0029:   16@ >= 15000
-				80ED:   not actor $FRANK3_8BALL #NULL 1475.75 -940.25 radius 1.0 1.0 
+				80ED:   not actor $FRANK3_8BALL 0 1475.75 -940.25 radius 1.0 1.0 
 			then
 				00A1: set_char_coordinates $FRANK3_8BALL to 1475.75 -940.25 18.375
 				0004: $FLAG_8BALL_MOVED11 = 1 
 			end
 			if
-				00ED:   actor $FRANK3_8BALL #NULL 1475.75 -940.25 radius 1.0 1.0 
+				00ED:   actor $FRANK3_8BALL 0 1475.75 -940.25 radius 1.0 1.0 
 			then
 				0004: $FLAG_8BALL_MOVED11 = 1 
 				0004: $FLAG_BLOKE_IN_AREA_FM3 = 12
@@ -1225,13 +1225,13 @@ while 8038:   not  $FLAG_BLOKE_IN_AREA_FM3 == 13
 			if and
 				0038:   $FLAG_8BALL_MOVED12 == 0
 				0029:   16@ >= 25000
-				80ED:   not actor $FRANK3_8BALL #NULL 1474.188 -940.1875 radius 1.0 1.0 
+				80ED:   not actor $FRANK3_8BALL 0 1474.188 -940.1875 radius 1.0 1.0 
 			then
 				00A1: set_char_coordinates $FRANK3_8BALL to 1474.188 -940.1875 18.375
 				0004: $FLAG_8BALL_MOVED12 = 1 
 			end
 			if
-				00ED:   actor $FRANK3_8BALL #NULL 1474.188 -940.1875 radius 1.0 1.0 
+				00ED:   actor $FRANK3_8BALL 0 1474.188 -940.1875 radius 1.0 1.0 
 			then
 				0004: $FLAG_8BALL_MOVED12 = 1 
 				009F: char_set_idle $FRANK3_8BALL 
@@ -1654,7 +1654,7 @@ then
 					0038:   $FLAG_COLOMB_CAR2_DEAD == 0
 				then
 					if
-						00FF:   actor $FRANK3_CARTEL1 #NULL 1517.563 -896.5625 10.75 radius 0.5 0.5 2.0 
+						00FF:   actor $FRANK3_CARTEL1 0 1517.563 -896.5625 10.75 radius 0.5 0.5 2.0 
 					then
 						0194: set_actor $FRANK3_CARTEL1 objective_to_guard_point 1517.563 -896.5625 10.75 
 						0350: set_actor $FRANK3_CARTEL1 maintain_position_when_attacked 1 
@@ -1662,7 +1662,7 @@ then
 					end
 				else
 					if
-						00FF:   actor $FRANK3_CARTEL1 #NULL 1523.25 -893.6875 10.75 radius 0.5 0.5 2.0 
+						00FF:   actor $FRANK3_CARTEL1 0 1523.25 -893.6875 10.75 radius 0.5 0.5 2.0 
 					then
 						0194: set_actor $FRANK3_CARTEL1 objective_to_guard_point 1523.25 -893.6875 10.75 
 						0350: set_actor $FRANK3_CARTEL1 maintain_position_when_attacked 1 
@@ -1710,7 +1710,7 @@ then
 					0038:   $FLAG_COLOMB_CAR1_DEAD == 0
 				then
 					if
-						00FF:   actor $FRANK3_CARTEL2 #NULL 1532.875 -893.75 10.75 radius 0.5 0.5 2.0 
+						00FF:   actor $FRANK3_CARTEL2 0 1532.875 -893.75 10.75 radius 0.5 0.5 2.0 
 					then
 						0194: set_actor $FRANK3_CARTEL2 objective_to_guard_point 1532.875 -893.75 10.75 
 						01BE: set_actor $FRANK3_CARTEL2 to_look_at_spot $EIGHTBALL_X_FM3 $EIGHTBALL_Y_FM3 $EIGHTBALL_Z_FM3 
@@ -1718,7 +1718,7 @@ then
 					end
 				else
 					if
-						00FF:   actor $FRANK3_CARTEL2 #NULL 1528.563 -892.1875 10.75 radius 0.5 0.5 2.0 
+						00FF:   actor $FRANK3_CARTEL2 0 1528.563 -892.1875 10.75 radius 0.5 0.5 2.0 
 					then
 						0194: set_actor $FRANK3_CARTEL2 objective_to_guard_point 1528.563 -892.1875 10.75 
 						01BE: set_actor $FRANK3_CARTEL2 to_look_at_spot $EIGHTBALL_X_FM3 $EIGHTBALL_Y_FM3 $EIGHTBALL_Z_FM3 
@@ -1755,7 +1755,7 @@ then
 			end
 			if and
 				0038:   $FLAG_GUARD3_LOOKING_FOR_8BALL == 1
-				00FF:   actor $FRANK3_CARTEL3 #NULL 1534.063 -931.1875 18.375 radius 0.5 0.5 2.0 
+				00FF:   actor $FRANK3_CARTEL3 0 1534.063 -931.1875 18.375 radius 0.5 0.5 2.0 
 			then
 				0194: set_actor $FRANK3_CARTEL3 objective_to_guard_point 1534.063 -931.1875 18.375 
 				01BE: set_actor $FRANK3_CARTEL3 to_look_at_spot $EIGHTBALL_X_FM3 $EIGHTBALL_Y_FM3 $EIGHTBALL_Z_FM3 

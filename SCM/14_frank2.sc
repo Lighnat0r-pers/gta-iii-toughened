@@ -247,13 +247,13 @@ then
 	01ED: clear_actor $CURLY_BOB_FM2 threat_search 
 	0211: actor $CURLY_BOB_FM2 walk_to 902.6875 -430.375 
 	0006: 17@ = 0
-	while 80ED:   not actor $CURLY_BOB_FM2 #NULL 902.6875 -430.375 radius 1.0 1.0 
+	while 80ED:   not actor $CURLY_BOB_FM2 0 902.6875 -430.375 radius 1.0 1.0 
 		wait 0 ms
 		gosub @CHECK_CURLY_STATUS_FRANK2
 		if and
 			0038:   $FLAG_CURLY_MOVED_FM2 == 0 
 			0029:   17@ >= 15000 
-			80ED:   not actor $CURLY_BOB_FM2 #NULL 902.6875 -430.375 radius 1.0 1.0
+			80ED:   not actor $CURLY_BOB_FM2 0 902.6875 -430.375 radius 1.0 1.0
 		then
 			00A1: set_char_coordinates $CURLY_BOB_FM2 to 902.6875 -430.375 13.6875 
 			0004: $FLAG_CURLY_MOVED_FM2 = 1
@@ -276,23 +276,23 @@ else
 	//waiting for curly bob to get to the pavement
 	0006: 17@ = 0 
 
-	while 80ED:   not actor $CURLY_BOB_FM2 #NULL 904.0 -427.25 radius 1.0 1.0 
+	while 80ED:   not actor $CURLY_BOB_FM2 0 904.0 -427.25 radius 1.0 1.0 
 		wait 0 ms
 		gosub @CHECK_CURLY_STATUS_FRANK2
 		if
-			00ED:   actor $CURLY_BOB_FM2 #NULL 888.0 -425.0 radius 1.0 1.0
+			00ED:   actor $CURLY_BOB_FM2 0 888.0 -425.0 radius 1.0 1.0
 		then
 			0239: actor $CURLY_BOB_FM2 run_to 892.0625 -425.25
 		end
 		if
-			00ED:   actor $CURLY_BOB_FM2 #NULL 892.0625 -425.25 radius 1.0 1.0 
+			00ED:   actor $CURLY_BOB_FM2 0 892.0625 -425.25 radius 1.0 1.0 
 		then
 			0211: actor $CURLY_BOB_FM2 walk_to 904.0 -427.25
 		end
 		if and
 			0038:   $FLAG_CURLY_MOVED_FM2 == 0 
 			0029:   17@ >= 25000 
-			80ED:   not actor $CURLY_BOB_FM2 #NULL 904.0 -427.25 radius 1.0 1.0
+			80ED:   not actor $CURLY_BOB_FM2 0 904.0 -427.25 radius 1.0 1.0
 		then
 			00A1: set_char_coordinates $CURLY_BOB_FM2 to 904.0 -427.25 13.875 
 			0004: $FLAG_CURLY_MOVED_FM2 = 1

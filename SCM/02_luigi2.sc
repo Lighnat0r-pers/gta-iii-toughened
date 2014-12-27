@@ -593,7 +593,7 @@ then
 			end
 			if and
 				0038:   $FLAG_GIRL1_RUNNING_LM2 == 1
-				00FF:   actor $BUYER1_LM2 #NULL 1387.188 -837.375 10.75 radius 4.0 4.0 4.0
+				00FF:   actor $BUYER1_LM2 0 1387.188 -837.375 10.75 radius 4.0 4.0 4.0
 			then
 				01D0: actor $BUYER1_LM2 avoid_player $PLAYER_CHAR 
 				0004: $FLAG_GIRL1_RUNNING_LM2 = 2
@@ -618,7 +618,7 @@ then
 			end
 			if and
 				0038:   $FLAG_GIRL2_RUNNING_LM2 == 1
-				00FF:   actor $BUYER2_LM2 #NULL 1385.938 -839.25 10.75 radius 4.0 4.0 4.0 
+				00FF:   actor $BUYER2_LM2 0 1385.938 -839.25 10.75 radius 4.0 4.0 4.0 
 			then
 				01D0: actor $BUYER2_LM2 avoid_player $PLAYER_CHAR 
 				0004: $FLAG_GIRL2_RUNNING_LM2 = 2

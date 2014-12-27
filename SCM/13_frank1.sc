@@ -426,7 +426,7 @@ end //while
 
 0211: actor $MARIA walk_to $INSIDE_WAREHOUSE_X $INSIDE_WAREHOUSE_Y 
 
-while 80ED:   not actor $MARIA #NULL $INSIDE_WAREHOUSE_X $INSIDE_WAREHOUSE_Y radius 1.0 1.0 
+while 80ED:   not actor $MARIA 0 $INSIDE_WAREHOUSE_X $INSIDE_WAREHOUSE_Y radius 1.0 1.0 
 	wait 0 ms
 	gosub @DRAW_DISCO_LIGHTS
 	if
@@ -862,7 +862,7 @@ while 8038:   not  $FLAG_BLIP_ON_MARIA == 8
 	end
 	if and
 		0038:   $FLAG_BLIP_ON_MARIA == 0
-		00ED:   actor $MARIA #NULL 1436.25 -180.625 radius 1.0 1.0 
+		00ED:   actor $MARIA 0 1436.25 -180.625 radius 1.0 1.0 
 	then
 		0211: actor $MARIA walk_to 1440.5 -179.125 
 		0004: $FLAG_BLIP_ON_MARIA = 1
@@ -876,7 +876,7 @@ while 8038:   not  $FLAG_BLIP_ON_MARIA == 8
 	end
 	if and
 		0038:   $FLAG_BLIP_ON_MARIA == 2
-		00F0:   actor $MARIA stopped #NULL 1440.5 -179.125 radius 1.0 1.0 
+		00F0:   actor $MARIA stopped 0 1440.5 -179.125 radius 1.0 1.0 
 	then
 		0172: $MARIA_HEADING = actor $MARIA z_angle 
 		000D: $MARIA_HEADING -= 3.0 
@@ -1143,7 +1143,7 @@ end //while
 01CB: actor $CHICO_DRUGDEALER kill_actor $MARIA
 00A0: get_char_coordinates $CHICO_DRUGDEALER store_to $CHICO_X $CHICO_Y $CHICO_Z 
 
-while 80F0:   not actor $MARIA stopped #NULL $CHICO_X $CHICO_Y radius 3.0 3.0
+while 80F0:   not actor $MARIA stopped 0 $CHICO_X $CHICO_Y radius 3.0 3.0
 	wait 0 ms
 	gosub @CHECK_MARIA_STATUS_FRANKIE1
 	00A0: get_char_coordinates $CHICO_DRUGDEALER store_to $CHICO_X $CHICO_Y $CHICO_Z

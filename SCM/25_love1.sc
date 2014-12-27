@@ -864,14 +864,14 @@ end //while
 0160: point_camera 93.875 -1548.875 28.25 switchstyle 2 
 0006: 17@ = 0 
 
-while 80FF:   not actor $OJG_LOVE1 #NULL 98.6875 -1548.75 27.25 radius 0.5 0.5 4.0 
+while 80FF:   not actor $OJG_LOVE1 0 98.6875 -1548.75 27.25 radius 0.5 0.5 4.0 
 	wait 0 ms
 	gosub @CHECK_OGG_STATUS_LOVE1
 	if
 		0029:   17@ >= 8000 
 	then
 		if
-			80FF:   not actor $OJG_LOVE1 #NULL 98.6875 -1548.75 27.25 radius 0.5 0.5 4.0 
+			80FF:   not actor $OJG_LOVE1 0 98.6875 -1548.75 27.25 radius 0.5 0.5 4.0 
 		then
 			034F: destroy_actor_with_fade $OJG_LOVE1 
 			goto @MISSION_BLOKE_STUCK_LOVE1
