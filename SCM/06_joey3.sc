@@ -529,7 +529,10 @@ end
 
 // If it's not the same passenger as before, reset the timer, check if we're
 // actually dealing with a prostitute and set the trigger flag for the secret if so.
-if
+// If the player enters through the passenger door the script will see him being the 
+// passenger but the model check is made for a char not a player so it would cause a crash.
+if and
+	803A:   not $PLAYER_PASSENGER == $PLAYER_CHAR
 	803A:   not $PLAYER_PASSENGER_OLD == $PLAYER_PASSENGER
 then
 	0084: $PLAYER_PASSENGER_OLD = $PLAYER_PASSENGER
