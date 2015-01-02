@@ -154,69 +154,69 @@ end
 
 // START MISSION
 
-00A5: $BLOWFISH_GARBAGE_TRUCK = create_car #TRASH at 1314.0 -106.0 -100.0
-02AC: set_car $BLOWFISH_GARBAGE_TRUCK immunities 1 1 0 0 1 
-0242: set_car $BLOWFISH_GARBAGE_TRUCK bomb_status_to CARBOMB_TIMED 
+00A5: $GARBAGE_TRUCK_TONI5 = create_car #TRASH at 1314.0 -106.0 -100.0
+02AC: set_car $GARBAGE_TRUCK_TONI5 immunities 1 1 0 0 1 
+0242: set_car $GARBAGE_TRUCK_TONI5 bomb_status_to CARBOMB_TIMED 
 0004: $FISH_FACTORY_DESTROYED = 0 
-0186: $TONI5_GARBAGE_TRUCK_MARKER = create_marker_above_car $BLOWFISH_GARBAGE_TRUCK
+0186: $TONI5_GARBAGE_TRUCK_MARKER = create_marker_above_car $GARBAGE_TRUCK_TONI5
 
-while 80DC:   not is_player_in_car $PLAYER_CHAR car $BLOWFISH_GARBAGE_TRUCK 
+while 80DC:   not is_player_in_car $PLAYER_CHAR car $GARBAGE_TRUCK_TONI5 
 	wait 0 ms
 	if
-		0119:   car $BLOWFISH_GARBAGE_TRUCK wrecked
+		0119:   car $GARBAGE_TRUCK_TONI5 wrecked
 	then
 		goto @MISSION_FAILED_TONI5
 	end
-	gosub @TRIAD_AI //subroutine in 11_toni4.sc
+	0004: $DO_TRIAD_AI_FLAG = 1
 	if and
-		8185:   not car $BLOWFISH_GARBAGE_TRUCK health >= 950 
-		80B1:   not is_car_in_area_3d $BLOWFISH_GARBAGE_TRUCK from 961.0 -1112.5 12.5 to 969.5 -1122.75 15.0 sphere 0
+		8185:   not car $GARBAGE_TRUCK_TONI5 health >= 900 
+		80B1:   not is_car_in_area_3d $GARBAGE_TRUCK_TONI5 from 961.0 -1112.5 12.5 to 969.5 -1122.75 15.0 sphere 0
 	then
-		020B: explode_car $BLOWFISH_GARBAGE_TRUCK 
+		020B: explode_car $GARBAGE_TRUCK_TONI5 
 		goto @MISSION_FAILED_TONI5
 	end
 end //while
 
-0004: $TONI5_TIMER = 151000 
-014E: start_timer_at $TONI5_TIMER 
 0006: 17@ = 0
 00BC: text_highpriority 'T5ENGIN' 5000 ms 1  // ~g~Be careful, the engine was damaged when planting the bomb and is deteriorating fast!
-0227: $EXPLOSIVE_TRUCK_HEALTH = car $BLOWFISH_GARBAGE_TRUCK health 
+0227: $EXPLOSIVE_TRUCK_HEALTH = car $GARBAGE_TRUCK_TONI5 health 
 03C4: set_status_text_to $EXPLOSIVE_TRUCK_HEALTH COUNTER_DISPLAY_BAR 'DAM'  // DAMAGE:
 0004: $EXPLOSIVE_TRUCK_HEALTH_LOST = 1000 
 0060: $EXPLOSIVE_TRUCK_HEALTH_LOST -= $EXPLOSIVE_TRUCK_HEALTH 
+0325: set_car_on_fire $GARBAGE_TRUCK_TONI5 store_to $CAR_FIRE_TONI5
 
 if
-	0018:   $EXPLOSIVE_TRUCK_HEALTH_LOST > 50
+	0018:   $EXPLOSIVE_TRUCK_HEALTH_LOST > 100
 then
-	0004: $EXPLOSIVE_TRUCK_HEALTH_LOST = 50
+	0004: $EXPLOSIVE_TRUCK_HEALTH_LOST = 100
 end
 
 0084: $EXPLOSIVE_TRUCK_HEALTH = $EXPLOSIVE_TRUCK_HEALTH_LOST 
 0004: $FLAG_CAR_BLIP_DISPLAYED_TM5 = 1 
 0004: $BLOB_FLAG = 1
 
+
 :TONI5_WAIT_FOR_VAN
 wait 0 ms
 
 if
-	0119:   car $BLOWFISH_GARBAGE_TRUCK wrecked
+	0119:   car $GARBAGE_TRUCK_TONI5 wrecked
 then
 	goto @MISSION_FAILED_TONI5
 end
 
-while 81AC:   not car $BLOWFISH_GARBAGE_TRUCK stopped $BLOB_FLAG 961.0 -1112.5 12.5 969.5 -1122.75 15.0
+while 81AC:   not car $GARBAGE_TRUCK_TONI5 stopped $BLOB_FLAG 961.0 -1112.5 12.5 969.5 -1122.75 15.0
 	wait 0 ms
 	if
-		0119:   car $BLOWFISH_GARBAGE_TRUCK wrecked
+		0119:   car $GARBAGE_TRUCK_TONI5 wrecked
 	then
 		gosub @BLOWUP_TRUCK_TONI5
 	end
-	gosub @TRIAD_AI //subroutine in 11_toni4.sc
+	0004: $DO_TRIAD_AI_FLAG = 1
 	gosub @TRUCK_HEALTH
-	00AA: get_car_coordinates $BLOWFISH_GARBAGE_TRUCK store_to $TONI5_GARBAGE_TRUCK_X $TONI5_GARBAGE_TRUCK_Y $TONI5_GARBAGE_TRUCK_Z
+	00AA: get_car_coordinates $GARBAGE_TRUCK_TONI5 store_to $TONI5_GARBAGE_TRUCK_X $TONI5_GARBAGE_TRUCK_Y $TONI5_GARBAGE_TRUCK_Z
 	if and
-		00DC:   is_player_in_car $PLAYER_CHAR car $BLOWFISH_GARBAGE_TRUCK
+		00DC:   is_player_in_car $PLAYER_CHAR car $GARBAGE_TRUCK_TONI5
 		0038:   $FLAG_CAR_BLIP_DISPLAYED_TM5 == 1
 	then
 		018A: $BLIP2_TM5 = create_checkpoint_at 965.0 -1117.0 -100.0 
@@ -225,36 +225,23 @@ while 81AC:   not car $BLOWFISH_GARBAGE_TRUCK stopped $BLOB_FLAG 961.0 -1112.5 1
 		0004: $FLAG_CAR_BLIP_DISPLAYED_TM5 = 0
 	end
 	if and
-		80DC:   not is_player_in_car $PLAYER_CHAR car $BLOWFISH_GARBAGE_TRUCK 
+		80DC:   not is_player_in_car $PLAYER_CHAR car $GARBAGE_TRUCK_TONI5 
 		0038:   $FLAG_CAR_BLIP_DISPLAYED_TM5 == 0
 	then
-		0186: $TONI5_GARBAGE_TRUCK_MARKER = create_marker_above_car $BLOWFISH_GARBAGE_TRUCK 
+		0186: $TONI5_GARBAGE_TRUCK_MARKER = create_marker_above_car $GARBAGE_TRUCK_TONI5 
 		0004: $BLOB_FLAG = 0 
 		0164: disable_marker $BLIP2_TM5 
 		00BC: print_now 'IN_VEH' duration 5000 ms flag 1  // ~g~Hey! Get back in the vehicle!
 		0004: $FLAG_CAR_BLIP_DISPLAYED_TM5 = 1
 	end
 	if and
-		8185:   not car $BLOWFISH_GARBAGE_TRUCK health >= 950 
-		80B1:   not is_car_in_area_3d $BLOWFISH_GARBAGE_TRUCK from 961.0 -1112.5 12.5 to 969.5 -1122.75 15.0 sphere 0 
+		80B1:   not is_car_in_area_3d $GARBAGE_TRUCK_TONI5 from 961.0 -1112.5 12.5 to 969.5 -1122.75 15.0 sphere 0 
+		8185:   not car $GARBAGE_TRUCK_TONI5 health >= 900 
 	then
 		gosub @BLOWUP_TRUCK_TONI5
 	end
-	if and
-		0038:   $TONI5_TIMER == 0 
-		80B1:   not is_car_in_area_3d $BLOWFISH_GARBAGE_TRUCK from 961.0 -1112.5 12.5 to 969.5 -1122.75 15.0 sphere 0
-	then
-		gosub @BLOWUP_TRUCK_TONI5
-	end
-	if and
-		00DC:   is_player_in_car $PLAYER_CHAR car $BLOWFISH_GARBAGE_TRUCK
-		0019:   17@ > 4000
-	then
-		0006: 17@ = 0
-		0054: get_player_coordinates $PLAYER_CHAR store_to $PLAYER_X $PLAYER_Y $PLAYER_Z
-		wait 0 ms
-		02C7: scatter_platinum 1 at $PLAYER_X $PLAYER_Y $PLAYER_Z 0.5
-	end
+
+	gosub @HEALTH_TIMER_TONI5
 end //while
 
 0247: request_model #FSHFCTRY_DSTRYD 
@@ -262,7 +249,7 @@ end //while
 01B5: force_weather 0
 
 if
-	0119:   car $BLOWFISH_GARBAGE_TRUCK wrecked
+	0119:   car $GARBAGE_TRUCK_TONI5 wrecked
 then
 	00BC: print_now 'WRECKED' duration 5000 ms flag 1  // ~r~The vehicle is wrecked!
 	goto @MISSION_FAILED_TONI5
@@ -271,30 +258,29 @@ end
 while 8356:   not explosion_type EXPLOSION_CAR in_cube 961.0 -1112.5 12.5 to 969.5 -1122.75 15.0
 	wait 0 ms
 	if
-		0119:   car $BLOWFISH_GARBAGE_TRUCK wrecked 
+		0119:   car $GARBAGE_TRUCK_TONI5 wrecked 
 	then
 		039D: scatter_particles type POBJECT_FIREBALL_AND_SMOKE 4.0 0 0 0 4000 from $TONI5_GARBAGE_TRUCK_X $TONI5_GARBAGE_TRUCK_Y $TONI5_GARBAGE_TRUCK_Z to 0.0 0.0 0.0
 		goto @EXPLOSION
 	end
-	gosub @TRIAD_AI //subroutine in 11_toni4.sc
+	0004: $DO_TRIAD_AI_FLAG = 1
 	gosub @TRUCK_HEALTH
-	00AA: get_car_coordinates $BLOWFISH_GARBAGE_TRUCK store_to $TONI5_GARBAGE_TRUCK_X $TONI5_GARBAGE_TRUCK_Y $TONI5_GARBAGE_TRUCK_Z
+	00AA: get_car_coordinates $GARBAGE_TRUCK_TONI5 store_to $TONI5_GARBAGE_TRUCK_X $TONI5_GARBAGE_TRUCK_Y $TONI5_GARBAGE_TRUCK_Z
 	if
-		80B1:   not is_car_in_area_3d $BLOWFISH_GARBAGE_TRUCK from 961.0 -1112.5 12.5 to 969.5 -1122.75 15.0 sphere 0 
+		80B1:   not is_car_in_area_3d $GARBAGE_TRUCK_TONI5 from 961.0 -1112.5 12.5 to 969.5 -1122.75 15.0 sphere 0 
 	then
 		goto @TONI5_WAIT_FOR_VAN
 	end
 	if and
-		80DC:   not is_player_in_car $PLAYER_CHAR car $BLOWFISH_GARBAGE_TRUCK 
-		8228:   not car $BLOWFISH_GARBAGE_TRUCK bomb_status == CARBOMB_TIMEDACTIVE
+		80DC:   not is_player_in_car $PLAYER_CHAR car $GARBAGE_TRUCK_TONI5 
+		8228:   not car $GARBAGE_TRUCK_TONI5 bomb_status == CARBOMB_TIMEDACTIVE
 	then
 		00BC: print_now 'JM1_5' duration 5000 ms flag 1  // ~g~The car bomb's not set!
 	end
-	if or
-		8185:   not car $BLOWFISH_GARBAGE_TRUCK health >= 950
-		0038:   $TONI5_TIMER == 0
+	if
+		8185:   not car $GARBAGE_TRUCK_TONI5 health >= 900
 	then
-		020B: explode_car $BLOWFISH_GARBAGE_TRUCK 
+		020B: explode_car $GARBAGE_TRUCK_TONI5 
 		039D: scatter_particles type POBJECT_FIREBALL_AND_SMOKE 4.0 0 0 0 4000 from $TONI5_GARBAGE_TRUCK_X $TONI5_GARBAGE_TRUCK_Y $TONI5_GARBAGE_TRUCK_Z to 0.0 0.0 0.0
 		goto @EXPLOSION
 	end
@@ -302,7 +288,6 @@ end //while
 
 :EXPLOSION
 
-014F: stop_timer $TONI5_TIMER 
 01B4: set_player $PLAYER_CHAR controllable 0 
 02A3: toggle_widescreen 1 
 01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 1 
@@ -408,10 +393,24 @@ goto @MISSION_PASSED_TONI5
 
 /////////////////////////////////////////
 
+:HEALTH_TIMER_TONI5
+if
+	0019:   17@ > 1000
+then
+	0227: $TRUCK_HEALTH_TONI5 = car $GARBAGE_TRUCK_TONI5 health 
+	000C: $TRUCK_HEALTH_TONI5 -= 1
+	0224: set_car $GARBAGE_TRUCK_TONI5 health_to $TRUCK_HEALTH_TONI5
+	0006: 17@ = 0
+end
+return
+
+/////////////////////////////////////////
+
 // Mission Failed
 
 :MISSION_FAILED_TONI5
 00BA: print_big 'M_FAIL' duration 5000 ms style 1  // MISSION FAILED!
+02D1: remove_fire $CAR_FIRE_TONI5
 goto @MISSION_END_TONI5
 
 /////////////////////////////////////////
@@ -447,7 +446,6 @@ goto @MISSION_END_TONI5
 0004: $ON_MISSION_FOR_TONI = 0 
 0164: disable_marker $TONI5_GARBAGE_TRUCK_MARKER 
 0164: disable_marker $BLIP2_TM5 
-014F: stop_timer $TONI5_TIMER 
 0151: remove_status_text $EXPLOSIVE_TRUCK_HEALTH 
 0249: release_model #TRASH 
 0249: release_model #FSHFCTRY_DSTRYD 
@@ -460,9 +458,9 @@ return
 
 :BLOWUP_TRUCK_TONI5
 if
-	8119:   not car $BLOWFISH_GARBAGE_TRUCK wrecked
+	8119:   not car $GARBAGE_TRUCK_TONI5 wrecked
 then
-	020B: explode_car $BLOWFISH_GARBAGE_TRUCK 
+	020B: explode_car $GARBAGE_TRUCK_TONI5 
 end
 039D: scatter_particles type POBJECT_FIREBALL_AND_SMOKE 4.0 0 0 0 4000 from $TONI5_GARBAGE_TRUCK_X $TONI5_GARBAGE_TRUCK_Y $TONI5_GARBAGE_TRUCK_Z to 0.0 0.0 0.0
 goto @MISSION_FAILED_TONI5
@@ -472,15 +470,15 @@ return
 
 :TRUCK_HEALTH
 if
-	8119:   not car $BLOWFISH_GARBAGE_TRUCK wrecked
+	8119:   not car $GARBAGE_TRUCK_TONI5 wrecked
 then
-	0227: $EXPLOSIVE_TRUCK_HEALTH = car $BLOWFISH_GARBAGE_TRUCK health 
+	0227: $EXPLOSIVE_TRUCK_HEALTH = car $GARBAGE_TRUCK_TONI5 health 
 	0004: $EXPLOSIVE_TRUCK_HEALTH_LOST = 1000 
 	0060: $EXPLOSIVE_TRUCK_HEALTH_LOST -= $EXPLOSIVE_TRUCK_HEALTH 
 	if
-		0018:   $EXPLOSIVE_TRUCK_HEALTH_LOST > 50 
+		0018:   $EXPLOSIVE_TRUCK_HEALTH_LOST > 100 
 	then
-		0004: $EXPLOSIVE_TRUCK_HEALTH_LOST = 50 
+		0004: $EXPLOSIVE_TRUCK_HEALTH_LOST = 100 
 	end
 	0084: $EXPLOSIVE_TRUCK_HEALTH = $EXPLOSIVE_TRUCK_HEALTH_LOST
 end
