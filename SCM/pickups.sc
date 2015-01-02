@@ -11,10 +11,11 @@
 032B: $IND_PICKUP_UZI1 = create_weapon_pickup #UZI type PICKUP_ON_STREET_SLOW ammo 50 at 1138.688 -1035.5 20.1875 // Saw mill roof
 032B: $IND_PICKUP_UZI2 = create_weapon_pickup #UZI type PICKUP_ON_STREET_SLOW ammo 50 at 1309.5 -380.875 40.1875 // Little Italy (back alley)
 032B: $IND_PICKUP_UZI3 = create_weapon_pickup #UZI type PICKUP_ON_STREET_SLOW ammo 50 at 1224.75 141.875 9.25 // Far north (south of little rocky island)
-032B: $IND_PICKUP_UZI4 = create_weapon_pickup #UZI type PICKUP_ON_STREET_SLOW ammo 75 at 886.0 -403.5 25.75 // Top of Luigi's club on ledge next to OOB bit
+
 
 032B: $IND_PICKUP_SHOTGUN1 = create_weapon_pickup #SHOTGUN type PICKUP_ON_STREET_SLOW ammo 10 at 1217.25 -255.1875 33.0625 // Little Italy behind park (rooftop)
 032B: $IND_PICKUP_SHOTGUN2 = create_weapon_pickup #SHOTGUN type PICKUP_ON_STREET_SLOW ammo 10 at 939.0 -113.25 3.6875 // Behind Hepburn Heights (far north)
+032B: $IND_PICKUP_SHOTGUN3 = create_weapon_pickup #SHOTGUN type PICKUP_ON_STREET_SLOW ammo 15 at 886.0 -403.5 25.75 // Top of Luigi's club on ledge next to OOB bit
 
 032B: $IND_PICKUP_CHAINGUN1 = create_weapon_pickup #AK47 type PICKUP_ON_STREET_SLOW ammo 120 at 1249.0 -858.5 20.5625 // Liberty Pharmaceuticals (roof)
 
