@@ -241,7 +241,6 @@ end //while
 01B2: give_actor $FBI11 weapon WEAPONTYPE_M16 ammo 600 
 0350: set_actor $FBI11 maintain_position_when_attacked 1 
 0243: set_actor $FBI11 ped_stats_to PEDSTAT_TOUGH_GUY 
-0187: $BLIP11_FBI11 = create_marker_above_actor $FBI11 
 
 //FEDS AT PARK**********************************************************************************
 
@@ -376,7 +375,6 @@ while 8038:   not  $NUMBER_OF_FEDS_KILLED == 11
 		0118:   actor $FBI11 dead 
 		0038:   $FED11_ALREADY_DEAD == 0 
 	then
-		0164: disable_marker $BLIP11_FBI11 
 		0008: $NUMBER_OF_FEDS_KILLED += 1 
 		0004: $FED11_ALREADY_DEAD = 1 
 	end
@@ -617,7 +615,6 @@ goto @MISSION_END_ASUKA2
 0164: disable_marker $BLIP8_FBI8 
 0164: disable_marker $BLIP9_FBI9 
 0164: disable_marker $BLIP10_FBI10 
-0164: disable_marker $BLIP11_FBI11 
 014F: stop_timer $COUNTDOWN_AS2 
 00D8: mission_has_finished 
 return
