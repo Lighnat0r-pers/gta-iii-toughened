@@ -238,13 +238,14 @@ while 80E3:   not player $PLAYER_CHAR 1 $WH_X_RM2 $WH_Y_RM2 radius 4.0 4.0
 		00A5: $PHIL_TRUCK_1 = create_car #RHINO at 132.0 173.875 11.5625 
 		0175: set_car $PHIL_TRUCK_1 z_angle_to 0.0 
 		00A9: car_set_idle $PHIL_TRUCK_1 
-		02AC: set_car $PHIL_TRUCK_1 immunities 1 0 0 0 0 
+		02AC: set_car $PHIL_TRUCK_1 immunities 1 1 1 1 1 
+		020A: set_car $PHIL_TRUCK_1 door_status_to CARLOCK_UNLOCKED 
 		00A5: $PHIL_TRUCK_2 = create_car #BARRACKS at 133.5 208.75 11.875 
 		0175: set_car $PHIL_TRUCK_2 z_angle_to 180.0 
 		00A9: car_set_idle $PHIL_TRUCK_2 
 		02AC: set_car $PHIL_TRUCK_2 immunities 1 0 0 0 0 
-		020A: set_car $PHIL_TRUCK_2 door_status_to CARLOCK_LOCKED 
-		0004: $FLAG_TRUCKS = 1 
+		020A: set_car $PHIL_TRUCK_2 door_status_to CARLOCK_UNLOCKED 
+		0004: $FLAG_TRUCKS = 1
 	end
 	if
 		0038:   $FLAG_GATE == 0 
@@ -447,12 +448,6 @@ end //while
 0395: clear_area 1 at $STAGE_3_X $STAGE_3_Y range 11.5 20.0 
 0395: clear_area 1 at $STAGE_1_X $STAGE_1_Y range 11.5 20.0 
 0395: clear_area 1 at $STAGE_2_X $STAGE_2_Y range 11.5 20.0 
-
-if
-	8119:   not car $PHIL_TRUCK_2 wrecked 
-then
-	020A: set_car $PHIL_TRUCK_2 door_status_to CARLOCK_UNLOCKED 
-end
 
 while true
 	if and
