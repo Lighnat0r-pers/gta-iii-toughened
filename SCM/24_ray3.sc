@@ -246,7 +246,7 @@ end
 if
 	00E0:   is_player_in_any_car $PLAYER_CHAR
 then
-	00D9: $PLAYER_CAR = store_car_player_is_in $PLAYER_CHAR
+	00DA: $PLAYER_CAR = store_car_player_is_in $PLAYER_CHAR
 	if and
 		80DE:   not is_player_in_model $PLAYER_CHAR model #RHINO
 		0185:   car $PLAYER_CAR >= 500
@@ -267,7 +267,7 @@ while 001A:   6 > $AMOUNT_OF_EVIDENCE_PLAYER_HAS
 		if 
 			80DC:   not is_player_in_car $PLAYER_CHAR car $PLAYER_CAR
 		then
-			00D9: $PLAYER_CAR = store_car_player_is_in $PLAYER_CHAR
+			00DA: $PLAYER_CAR = store_car_player_is_in $PLAYER_CHAR
 			if and
 				80DE:   not is_player_in_model $PLAYER_CHAR model #RHINO
 				0185:   car $PLAYER_CAR >= 500
