@@ -589,7 +589,6 @@ goto @MISSION_END_ASUKA2
 0109: player $PLAYER_CHAR money += 15000 
 0318: set_latest_mission_passed 'AM2'  // 'UNDER SURVEILLANCE'
 030C: set_mission_points += 1 
-02A7: $KENJI_MISION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_KENJI at 459.0625 -1413.0 26.0625 
 0164: disable_marker $STAUNTON_AMMUNATION_MARKER 
 0164: disable_marker $STAUNTON_PAYNSPRAY_MARKER 
 004F: create_thread @ASUKA_MISSION3_LOOP 
