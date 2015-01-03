@@ -129,20 +129,20 @@
 0213: $SUB_PICKUP_BRIBE4 = create_pickup #BRIBE type PICKUP_ONCE at -618.6875 -722.5625 18.875 // At airport statue next to subway
 0213: $SUB_PICKUP_BRIBE5 = create_pickup #BRIBE type PICKUP_ONCE at -1252.375 -641.5625 11.0625 // Airport in the middle of the planes
 0213: $SUB_PICKUP_BRIBE6 = create_pickup #BRIBE type PICKUP_ONCE at -853.375 -255.5625 32.875 // Grassy verge between airport and Pike Creek
-return 
+ 
 
 // Ammunation pickups
 
-0213: $COM_AMMU_UZI = create_pickup #UZI type PICKUP_IN_SHOP at 346.5 -719.0 26.375 // SSV ammunation
-0213: $COM_AMMU_AK47 = create_pickup #AK47 type PICKUP_IN_SHOP at 342.5 -713.0 26.375 // SSV ammunation
-0213: $COM_AMMU_SNIPER = create_pickup #SNIPER type PICKUP_IN_SHOP at 342.5 -716.0 26.375 // SSV ammunation
-0213: $COM_AMMU_GRENADE = create_pickup #GRENADE type PICKUP_IN_SHOP at 344.5 -719.0 26.375 // SSV ammunation
-0213: $COM_AMMU_ARMOUR = create_pickup #BODYARMOUR type PICKUP_IN_SHOP at 342.5 -719.0 26.375 // SSV ammunation
+0213: $COM_AMMU_UZI = create_pickup #UZI type PICKUP_IN_SHOP at 346.5 -719.0 26.375 // Staunton ammunation
+0213: $COM_AMMU_AK47 = create_pickup #AK47 type PICKUP_IN_SHOP at 342.5 -713.0 26.375 // Staunton ammunation
+0213: $COM_AMMU_SNIPER = create_pickup #SNIPER type PICKUP_IN_SHOP at 342.5 -716.0 26.375 // Staunton ammunation
+0213: $COM_AMMU_GRENADE = create_pickup #GRENADE type PICKUP_IN_SHOP at 344.5 -719.0 26.375 // Staunton ammunation
+0213: $COM_AMMU_ARMOUR = create_pickup #BODYARMOUR type PICKUP_IN_SHOP at 342.5 -719.0 26.375 // Staunton ammunation
 
 0213: $SUB_AMMU_FLAME = create_pickup #FLAME type PICKUP_IN_SHOP at -1206.563 -6.5625 53.25 // Behind SSV Police station
 0213: $SUB_AMMU_MOLOTOV = create_pickup #MOLOTOV type PICKUP_IN_SHOP at -1210.563 -6.5625 53.25 // Behind SSV Police station
 if
-	$MASTERDEBUG == 1
+	0038:   $MASTERDEBUG == 1
 then
 	0213: $AMMUNATION_COLT_PICKUP = create_pickup #COLT45 type PICKUP_IN_SHOP at 1068.5 -400.75 15.1875
 	0213: $AMMUNATION_UZI_PICKUP = create_pickup #UZI type PICKUP_IN_SHOP at 1070.5 -400.75 15.1875  
