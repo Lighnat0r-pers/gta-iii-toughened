@@ -366,18 +366,14 @@ while 80F6:   not player $PLAYER_CHAR 1 38.75 -725.375 22.75 radius 1.0 1.0 2.0
 end
 
 0164: disable_marker $BLIP1_AS4 
-01BD: $PRE_CUTSCENE_START_TIME = current_time_in_ms 
-0004: $PRE_CUTSCENE_ELAPSED_TIME = 0 
+0006: 16@ = 0  
 
 while true
 	if and
 		83EE:   not player $PLAYER_CHAR controllable 
-		001A:   5000 > $PRE_CUTSCENE_ELAPSED_TIME // if player is not in control after 5 secs do the cutscene anyway
+		8019:   not 16@ > 5000 // if player is not in control after 5 secs do the cutscene anyway
 	jf break
 	wait 0 ms
-	01BD: $PRE_CUTSCENE_CURRENT_TIME = current_time_in_ms 
-	0084: $PRE_CUTSCENE_ELAPSED_TIME = $PRE_CUTSCENE_CURRENT_TIME 
-	0060: $PRE_CUTSCENE_ELAPSED_TIME -= $PRE_CUTSCENE_START_TIME 
 end //while
 
 //RAY CUT SCENE*************************************************************************

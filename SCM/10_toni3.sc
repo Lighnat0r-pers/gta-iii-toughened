@@ -30,7 +30,6 @@ end_thread
 03A4: name_thread 'TONI3' 
 03D6: remove_styled_text 'M_PASS'  // MISSION PASSED! $~1~
 0001: wait 0 ms 
-0004: $CUTSCENE_SEEN_FLAG = 0 
 0004: $FLAVOUR_TEXT_FLAG_TONI3 = 0
 0004: $CURRENT_STEP_FOR_BLIP_MANIPULATION = 1
 0004: $LIMO_CAR_MODEL = #PEREN
@@ -796,19 +795,15 @@ then
 	00A6: delete_car $TONI3_TRIAD_VAN6
 end
 
-01BD: $PRE_CUTSCENE_START_TIME = current_time_in_ms 
-0004: $PRE_CUTSCENE_ELAPSED_TIME = 0
+0006: 16@ = 0  
 
 while true
 	if and
 		83EE:   not player $PLAYER_CHAR controllable 
-		001A:   5000 > $PRE_CUTSCENE_ELAPSED_TIME //	if player is not in control after 5 secs do the cutscene anyway
+		8019:   not 16@ > 5000 //	if player is not in control after 5 secs do the cutscene anyway
 	jf break
 	wait 0 ms
 	gosub @CHECK_VEHICLE_STATUS_TONI3
-	01BD: $PRE_CUTSCENE_CURRENT_TIME = current_time_in_ms 
-	0084: $PRE_CUTSCENE_ELAPSED_TIME = $PRE_CUTSCENE_CURRENT_TIME 
-	0060: $PRE_CUTSCENE_ELAPSED_TIME -= $PRE_CUTSCENE_START_TIME
 end //while
 
 03EF: player $PLAYER_CHAR make_safe 

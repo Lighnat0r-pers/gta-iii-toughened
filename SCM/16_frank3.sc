@@ -1261,19 +1261,15 @@ end //while
 
 // ***********************************BOAT BLOWING UP CUTSCENE******************************
 
-01BD: $PRE_CUTSCENE_START_TIME = current_time_in_ms 
-0004: $PRE_CUTSCENE_ELAPSED_TIME = 0 
+0006: 16@ = 0  
 
 while true
 	if and
 		83EE:   not player $PLAYER_CHAR controllable 
-		001A:   5000 > $PRE_CUTSCENE_ELAPSED_TIME
+		8019:   not 16@ > 5000
 	jf break
 	wait 0 ms
 	gosub @CHECK_8BALL_STATUS_FRANK3
-	01BD: $PRE_CUTSCENE_CURRENT_TIME = current_time_in_ms 
-	0084: $PRE_CUTSCENE_ELAPSED_TIME = $PRE_CUTSCENE_CURRENT_TIME 
-	0060: $PRE_CUTSCENE_ELAPSED_TIME -= $PRE_CUTSCENE_START_TIME
 end //while
 
 03EF: player $PLAYER_CHAR make_safe 

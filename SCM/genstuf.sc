@@ -224,10 +224,12 @@ end //while
 :FISH_FACTORY_GEN
 03A4: name_thread 'FISHGEN'
 while true
-	wait 1000 ms
+	wait 0 ms
 	if
 		0256:   is_player $PLAYER_CHAR defined 
 	then
+		wait 1000 ms
+
 		//FISH FACTORY SET UP
 		if
 			0038:   $FISH_FACTORY_DESTROYED == 0
@@ -320,7 +322,97 @@ while true
 			end
 		end //fish_factory_destroyed
 	end //IS_PLAYER_PLAYING
+	if
+		0038:   $DO_TRIAD_AI_FLAG == 1
+	then
+		if and
+			0121:   player $PLAYER_CHAR in_zone 'PORT_W'  // Callahan Point
+			0038:   $HAS_PLAYER_BEEN_AT_FISH_BEFORE == 1 
+			0038:   $CLEAR_TRIADS_THREATS == 0 
+		then
+			if 
+				8118:   not actor $FISH_TRIAD1 dead
+			then
+				01ED: clear_actor $FISH_TRIAD1 threat_search
+			end
+			if 
+				8118:   not actor $FISH_TRIAD2 dead
+			then
+				01ED: clear_actor $FISH_TRIAD2 threat_search
+			end
+			if 
+				8118:   not actor $FISH_TRIAD3 dead
+			then
+				01ED: clear_actor $FISH_TRIAD3 threat_search
+			end
+			if 
+				8118:   not actor $FISH_TRIAD4 dead
+			then
+				01ED: clear_actor $FISH_TRIAD4 threat_search
+			end
+			if 
+				8118:   not actor $FISH_TRIAD5 dead
+			then
+				01ED: clear_actor $FISH_TRIAD5 threat_search
+			end
+			if 
+				8118:   not actor $FISH_TRIAD6 dead
+			then
+				01ED: clear_actor $FISH_TRIAD6 threat_search
+			end
+			03F2: pedgroup PEDTYPE_GANG_TRIAD remove_threat THREAT_PLAYER1 
+			0004: $CLEAR_TRIADS_THREATS = 1
+		end
+		if and
+			0121:   player $PLAYER_CHAR in_zone 'FISHFAC'
+			0038:   $TRIADS_SPOT_YOU == 0
+		then
+			if or
+				80E0:   not is_player_in_any_car $PLAYER_CHAR 
+				0118:   actor $FISH_TRIAD1 dead 
+				0118:   actor $FISH_TRIAD2 dead 
+				0118:   actor $FISH_TRIAD3 dead 
+				0118:   actor $FISH_TRIAD4 dead 
+				0118:   actor $FISH_TRIAD5 dead 
+				0118:   actor $FISH_TRIAD6 dead
+			then
+				if
+					8118:   not actor $FISH_TRIAD1 dead 
+				then
+					011A: set_actor $FISH_TRIAD1 search_threat THREAT_PLAYER1
+				end
+				if
+					8118:   not actor $FISH_TRIAD2 dead 
+				then
+					011A: set_actor $FISH_TRIAD2 search_threat THREAT_PLAYER1
+				end
+				if
+					8118:   not actor $FISH_TRIAD3 dead 
+				then
+					011A: set_actor $FISH_TRIAD3 search_threat THREAT_PLAYER1
+				end
+				if
+					8118:   not actor $FISH_TRIAD4 dead 
+				then
+					011A: set_actor $FISH_TRIAD4 search_threat THREAT_PLAYER1
+				end
+				if
+					8118:   not actor $FISH_TRIAD5 dead 
+				then
+					011A: set_actor $FISH_TRIAD5 search_threat THREAT_PLAYER1
+				end
+				if
+					8118:   not actor $FISH_TRIAD6 dead 
+				then
+					011A: set_actor $FISH_TRIAD6 search_threat THREAT_PLAYER1
+				end
+				0004: $TRIADS_SPOT_YOU = 1 
+			end
+		end
+		0004: $DO_TRIAD_AI_FLAG = 0
+	end
 end //while
+
 
 :TRAMP_TUNNEL
 03A4: name_thread 'TRAMPS'
@@ -661,7 +753,7 @@ while true
 				043C: set_game_sounds_fade 1 
 				0004: $CAMERA_AMMU2 = 0
 			end
-		end // IF IS_PLAYER_IN_ZONE player LITTLEI
+		end // IF IS_PLAYER_IN_ZONE player COM_EAS
 	end // IS_PLAYER_PLAYING
 end //while
 
