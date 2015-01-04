@@ -51,8 +51,8 @@ end_thread
 0005: $PLANEX = 0.0 
 0005: $PLANEY = 0.0 
 0005: $PLANEZ = 0.0 
-0004: $FRENZY_KILL_AMOUNT = 20
-0004: $FRENZY_TIME = 12000 // 120 seconds
+0004: $FRENZY_KILL_AMOUNT = 15
+0004: $FRENZY_TIME = 90000
 01F0: set_max_wanted_level_to 5
 014C: set_parked_car_generator $COM_CAR13 cars_to_generate_to 0
 
@@ -173,6 +173,13 @@ end //while
 0186: $PLAYERS_BOAT_BLIP = create_marker_above_car $PLAYERS_BOAT 
 00BC: print_now 'LOVE3_1' duration 5000 ms flag 1  // ~g~Get a ~r~boat~g~ and follow the ~y~plane~g~!
 0358: start_drug_drop_off 
+
+// Impossible if statement because reasons.
+if
+	0038:   $ONMISSION == 0
+then
+	018A: $PLANE_BLIP = create_checkpoint_at $PLANEX $PLANEY $PLANEZ 
+end
 
 wait 1000 ms 
 0004: $PLANE_TIMER = 120000 
@@ -434,10 +441,10 @@ end
 // NEW STUFF HERE
 010E: set_player $PLAYER_CHAR minimum_wanted_level_to 5 // Should be this already, but just in case since it's needed for the rampage to work.
 
-01F9: init_rampage 'PAGE_00' weapon WEAPONTYPE_FLAMETHROWER time $FRENZY_TIME $FRENZY_KILL_AMOUNT targets CAR_POLICE CAR_ENFORCER CAR_FBI CAR_BARRACKS flag 0  // .
+01F9: init_rampage 'PAGE_00' weapon WEAPONTYPE_M16 time $FRENZY_TIME $FRENZY_KILL_AMOUNT targets CAR_POLICE CAR_ENFORCER CAR_FBI CAR_BARRACKS flag 0  // .
 0014: $FRENZY_TIME /= 1000 // Convert from ms to sec
 00BA: print_big 'RAMPAGE' duration 5000 ms style 5  // RAMPAGE!!
-036D: text_2numbers_styled 'LOVE3PG' numbers $FRENZY_KILL_AMOUNT $FRENZY_TIME duration 6000 ms style 6  // Destroy ~1~ law enforcement vehicles in ~2~ seconds to scare them away!
+036D: text_2numbers_styled 'LOVE3PG' numbers $FRENZY_KILL_AMOUNT $FRENZY_TIME duration 10000 ms style 6  // Destroy ~1~ law enforcement vehicles in ~2~ seconds to scare them away!
 01FA: $FRENZY_STATUS = rampage_status
 
 while 0038:   $FRENZY_STATUS == FRENZY_ONGOING
