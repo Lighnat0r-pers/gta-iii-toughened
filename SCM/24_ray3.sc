@@ -39,10 +39,11 @@ end_thread
 0005: $IA_START_X = -53.0 
 0005: $IA_START_Y = -1380.5 
 0005: $IA_START_Z = 26.0 
-0004: $AMOUNT_DAMAGE_IA_DROP_EVIDENCE = 100
+0004: $AMOUNT_DAMAGE_IA_DROP_EVIDENCE = 1
 0004: $WANTED_LEVEL_CHANGE = 1 
 0004: $DROP_ONE_FLAG = 0 
 0004: $DROP_EVIDENCE = 0 
+0004: $MAX_HEALTH_PLAYER_CAR = 750
 0004: $GREEN = 250 
 0004: $RED = 0 
 0004: $RED_INCREASE_FLAG = 0 
@@ -243,17 +244,6 @@ end
 035C: place_object $EVIDENCE_5 relative_to_car $IA_CAR_RM3 offset -0.25 -0.6875 -0.0625 
 035C: place_object $EVIDENCE_6 relative_to_car $IA_CAR_RM3 offset -0.25 -1.6875 -0.0625 
 0004: $IA_HAVE_EVIDENCE_FLAG = 1
-if
-	00E0:   is_player_in_any_car $PLAYER_CHAR
-then
-	00DA: $PLAYER_CAR = store_car_player_is_in $PLAYER_CHAR
-	if and
-		80DE:   not is_player_in_model $PLAYER_CHAR model #RHINO
-		0185:   car $PLAYER_CAR >= 500
-	then
-		0224: set_car $PLAYER_CAR health_to 500
-	end
-end
 
 while 001A:   6 > $AMOUNT_OF_EVIDENCE_PLAYER_HAS
 	wait 0 ms
@@ -270,11 +260,15 @@ while 001A:   6 > $AMOUNT_OF_EVIDENCE_PLAYER_HAS
 			00DA: $PLAYER_CAR = store_car_player_is_in $PLAYER_CHAR
 			if and
 				80DE:   not is_player_in_model $PLAYER_CHAR model #RHINO
-				0185:   car $PLAYER_CAR >= 500
+				0185:   car $PLAYER_CAR >= $MAX_HEALTH_PLAYER_CAR
 			then
-				0224: set_car $PLAYER_CAR health_to 500
+				0224: set_car $PLAYER_CAR health_to $MAX_HEALTH_PLAYER_CAR
 			end
-
+			if
+				00DE:   is_player_in_model $PLAYER_CHAR model #LANDSTAL
+			then
+				02AC: set_car $IA_CAR_RM3 immunities 0 0 0 0 0 
+			end
 		end
 	end
 	if
