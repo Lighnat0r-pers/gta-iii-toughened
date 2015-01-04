@@ -6,9 +6,9 @@
 014C: set_parked_car_generator $JOEYS_BUGGY cars_to_generate_to 0 
 014B: $SWANK_TAXI = init_parked_car_generator #BORGNINE -1 -1 force_spawn 0 alarm 50 door_lock 0 min_delay 0 max_delay 10000 at 933.6875 -65.5625 -100.0 angle 0.0 
 // PORTLAND VIEW
-014B: $GEN_CAR1 = init_parked_car_generator #AMBULAN -1 -1 force_spawn 0 alarm 0 door_lock 30 min_delay 0 max_delay 10000 at 1140.688 -630.1875 -100.0 angle 0.0 // At hospital
-014B: $GEN_CAR2 = init_parked_car_generator #POLICE -1 -1 force_spawn 0 alarm 0 door_lock 60 min_delay 0 max_delay 10000 at 1139.0 -646.0 -100.0 angle 90.0 // At police station
-014B: $GEN_CAR3 = init_parked_car_generator #POLICE -1 -1 force_spawn 0 alarm 0 door_lock 70 min_delay 0 max_delay 10000 at 1139.688 -684.6875 -100.0 angle 270.0 // At police station
+014B: $GEN_CAR1 = init_parked_car_generator #AMBULAN -1 -1 force_spawn 0 alarm 100 door_lock 0 min_delay 0 max_delay 10000 at 1140.688 -630.1875 -100.0 angle 0.0 // At hospital
+014B: $GEN_CAR2 = init_parked_car_generator #POLICE -1 -1 force_spawn 0 alarm 100 door_lock 0 min_delay 0 max_delay 10000 at 1139.0 -646.0 -100.0 angle 90.0 // At police station
+014B: $GEN_CAR3 = init_parked_car_generator #POLICE -1 -1 force_spawn 0 alarm 100 door_lock 0 min_delay 0 max_delay 10000 at 1139.688 -684.6875 -100.0 angle 270.0 // At police station
 014B: $GEN_CAR4 = init_parked_car_generator #IDAHO -1 -1 force_spawn 0 alarm 40 door_lock 0 min_delay 0 max_delay 10000 at 1284.25 -620.5 11.6875 angle 0.0 // Supa save car park
 014B: $GEN_CAR5 = init_parked_car_generator #PATRIOT -1 -1 force_spawn 0 alarm 40 door_lock 0 min_delay 0 max_delay 10000 at 1299.0 -641.75 11.6875 angle 0.0 // Supa save car park
 014B: $GEN_CAR6 = init_parked_car_generator #BOBCAT -1 -1 force_spawn 0 alarm 40 door_lock 0 min_delay 0 max_delay 10000 at 1265.875 -620.75 11.6875 angle 180.0 // Supa save car park
@@ -96,27 +96,27 @@
 014B: $COM_CAR28 = init_parked_car_generator #LANDSTAL -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at 63.375 -591.25 25.875 angle 90.0 // By cottage
 // TORRINGTON
 014B: $COM_CAR29 = init_parked_car_generator #MANANA -1 -1 force_spawn 0 alarm 20 door_lock 0 min_delay 0 max_delay 10000 at 233.5 -1236.688 20.5 angle 0.0 // Underground car park
-014B: $COM_CAR30 = init_parked_car_generator #YAKUZA -1 -1 force_spawn 0 alarm 60 door_lock 40 min_delay 0 max_delay 10000 at 259.1875 -1196.688 20.5 angle 90.0 // Underground car park
-014B: $COM_CAR31 = init_parked_car_generator #BLISTA -1 -1 force_spawn 0 alarm 30 door_lock 40 min_delay 0 max_delay 10000 at 228.75 -1205.688 20.5 angle 180.0 // Underground car park
-014B: $COM_CAR32 = init_parked_car_generator #KURUMA -1 -1 force_spawn 0 alarm 20 door_lock 70 min_delay 0 max_delay 10000 at 211.5 -1213.5 20.5 angle 90.0 // Underground car park
-014B: $COM_CAR33 = init_parked_car_generator #SENTINEL -1 -1 force_spawn 0 alarm 20 door_lock 70 min_delay 0 max_delay 10000 at 458.875 -1503.375 -100.0 angle 0.0 // Casino car park
-014B: $COM_CAR34 = init_parked_car_generator #YAKUZA -1 -1 force_spawn 0 alarm 50 door_lock 50 min_delay 0 max_delay 10000 at 442.6875 -1465.688 18.375 angle 180.0 // Casino car park
-014B: $COM_CAR35 = init_parked_car_generator #IDAHO -1 -1 force_spawn 0 alarm 30 door_lock 30 min_delay 0 max_delay 10000 at 424.375 -1501.0 -100.0 angle 90.0 // Casino car park
+014B: $COM_CAR30 = init_parked_car_generator #YAKUZA -1 -1 force_spawn 0 alarm 60 door_lock 0 min_delay 0 max_delay 10000 at 259.1875 -1196.688 20.5 angle 90.0 // Underground car park
+014B: $COM_CAR31 = init_parked_car_generator #BLISTA -1 -1 force_spawn 0 alarm 30 door_lock 0 min_delay 0 max_delay 10000 at 228.75 -1205.688 20.5 angle 180.0 // Underground car park
+014B: $COM_CAR32 = init_parked_car_generator #KURUMA -1 -1 force_spawn 0 alarm 20 door_lock 0 min_delay 0 max_delay 10000 at 211.5 -1213.5 20.5 angle 90.0 // Underground car park
+014B: $COM_CAR33 = init_parked_car_generator #SENTINEL -1 -1 force_spawn 0 alarm 20 door_lock 0 min_delay 0 max_delay 10000 at 458.875 -1503.375 -100.0 angle 0.0 // Casino car park
+014B: $COM_CAR34 = init_parked_car_generator #YAKUZA -1 -1 force_spawn 0 alarm 50 door_lock 0 min_delay 0 max_delay 10000 at 442.6875 -1465.688 18.375 angle 180.0 // Casino car park
+014B: $COM_CAR35 = init_parked_car_generator #IDAHO -1 -1 force_spawn 0 alarm 30 door_lock 0 min_delay 0 max_delay 10000 at 424.375 -1501.0 -100.0 angle 90.0 // Casino car park
 014B: $COM_CAR36 = init_parked_car_generator #BANSHEE -1 -1 force_spawn 0 alarm 80 door_lock 0 min_delay 0 max_delay 10000 at 476.0625 -1496.375 -100.0 angle 220.0 // Casino car park
 // FORT STAUNTON
-014B: $COM_CAR37 = init_parked_car_generator #COLUMB -1 -1 force_spawn 0 alarm 0 door_lock 30 min_delay 0 max_delay 10000 at 352.375 -345.5 -100.0 angle 180.0 // Construction site
-014B: $COM_CAR38 = init_parked_car_generator #COLUMB -1 -1 force_spawn 0 alarm 20 door_lock 30 min_delay 0 max_delay 10000 at 394.6875 -171.375 -100.0 angle 295.0 // Construction site
+014B: $COM_CAR37 = init_parked_car_generator #COLUMB -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at 352.375 -345.5 -100.0 angle 180.0 // Construction site
+014B: $COM_CAR38 = init_parked_car_generator #COLUMB -1 -1 force_spawn 0 alarm 20 door_lock 0 min_delay 0 max_delay 10000 at 394.6875 -171.375 -100.0 angle 295.0 // Construction site
 014B: $COM_CAR39 = init_parked_car_generator #PANLANT -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at 388.0 -95.0 -100.0 angle 65.0 // Construction site
 014B: $COM_CAR40 = init_parked_car_generator #PANLANT -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at 302.875 -245.1875 -100.0 angle 270.0 // Construction site
 014B: $GEN_CAR60 = init_parked_car_generator #YAKUZA -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at 339.8125 -290.625 16.0 angle 158.1875 // Construction site
 014B: $GEN_CAR61 = init_parked_car_generator #YAKUZA -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at 359.0625 -291.0625 16.0 angle 146.8125 // Construction site
 014B: $GEN_CAR62 = init_parked_car_generator #YAKUZA -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at 361.875 -339.0625 16.0 angle 339.3125 // Construction site
 // ASPATRIA
-014B: $COM_CAR41 = init_parked_car_generator #BOBCAT -1 -1 force_spawn 0 alarm 30 door_lock 30 min_delay 0 max_delay 10000 at -51.5625 -324.0 -100.0 angle 90.0 // Stadium parking lot
-014B: $COM_CAR42 = init_parked_car_generator #IDAHO -1 -1 force_spawn 0 alarm 30 door_lock 30 min_delay 0 max_delay 10000 at -40.5 -346.75 -100.0 angle 270.0 // Stadium parking lot
-014B: $COM_CAR43 = init_parked_car_generator #MULE -1 -1 force_spawn 0 alarm 30 door_lock 30 min_delay 0 max_delay 10000 at -30.0 -366.875 -100.0 angle 270.0 // Stadium parking lot
-014B: $COM_CAR44 = init_parked_car_generator #BLISTA -1 -1 force_spawn 0 alarm 30 door_lock 30 min_delay 0 max_delay 10000 at -62.25 -344.0625 -100.0 angle 90.0 // Stadium parking lot
-014B: $COM_CAR45 = init_parked_car_generator #STALLION -1 -1 force_spawn 0 alarm 30 door_lock 30 min_delay 0 max_delay 10000 at -72.1875 -332.5 -100.0 angle 270.0 // Stadium parking lot
+014B: $COM_CAR41 = init_parked_car_generator #BOBCAT -1 -1 force_spawn 0 alarm 30 door_lock 0 min_delay 0 max_delay 10000 at -51.5625 -324.0 -100.0 angle 90.0 // Stadium parking lot
+014B: $COM_CAR42 = init_parked_car_generator #IDAHO -1 -1 force_spawn 0 alarm 30 door_lock 0 min_delay 0 max_delay 10000 at -40.5 -346.75 -100.0 angle 270.0 // Stadium parking lot
+014B: $COM_CAR43 = init_parked_car_generator #MULE -1 -1 force_spawn 0 alarm 30 door_lock 0 min_delay 0 max_delay 10000 at -30.0 -366.875 -100.0 angle 270.0 // Stadium parking lot
+014B: $COM_CAR44 = init_parked_car_generator #BLISTA -1 -1 force_spawn 0 alarm 30 door_lock 0 min_delay 0 max_delay 10000 at -62.25 -344.0625 -100.0 angle 90.0 // Stadium parking lot
+014B: $COM_CAR45 = init_parked_car_generator #STALLION -1 -1 force_spawn 0 alarm 30 door_lock 0 min_delay 0 max_delay 10000 at -72.1875 -332.5 -100.0 angle 270.0 // Stadium parking lot
 014B: $GEN_CAR35 = init_parked_car_generator #FIRETRUK -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at -83.875 -443.5625 -100.0 angle 90.0 // At Fire Dept.
 // NEWPORT
 014B: $COM_CAR15 = init_parked_car_generator #ESPERANT -1 -1 force_spawn 0 alarm 70 door_lock 0 min_delay 0 max_delay 10000 at 301.6875 -582.5 25.875 angle 270.6875 // Multi story car park
@@ -132,11 +132,11 @@
 // PHIL'S TRUCK
 014B: $PHIL_CAR = init_parked_car_generator #BARRACKS -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 10000 max_delay 40000 at 133.5 208.75 11.875 angle 180.0 // Phil's truck
 // KINGDOM COME CARPARK
-014B: $COM_CAR46 = init_parked_car_generator #MOONBEAM -1 -1 force_spawn 0 alarm 20 door_lock 20 min_delay 0 max_delay 10000 at -52.25 -1458.25 26.125 angle 90.0 // Kingdom Come carpark
-014B: $COM_CAR47 = init_parked_car_generator #KURUMA -1 -1 force_spawn 0 alarm 20 door_lock 20 min_delay 0 max_delay 10000 at -77.5 -1485.0 26.0 angle 90.0 // Kingdom Come carpark
-014B: $COM_CAR48 = init_parked_car_generator #STINGER -1 -1 force_spawn 0 alarm 40 door_lock 40 min_delay 0 max_delay 10000 at -70.875 -1443.563 25.75 angle 180.0 // Kingdom Come carpark
+014B: $COM_CAR46 = init_parked_car_generator #MOONBEAM -1 -1 force_spawn 0 alarm 20 door_lock 0 min_delay 0 max_delay 10000 at -52.25 -1458.25 26.125 angle 90.0 // Kingdom Come carpark
+014B: $COM_CAR47 = init_parked_car_generator #KURUMA -1 -1 force_spawn 0 alarm 20 door_lock 0 min_delay 0 max_delay 10000 at -77.5 -1485.0 26.0 angle 90.0 // Kingdom Come carpark
+014B: $COM_CAR48 = init_parked_car_generator #STINGER -1 -1 force_spawn 0 alarm 40 door_lock 0 min_delay 0 max_delay 10000 at -70.875 -1443.563 25.75 angle 180.0 // Kingdom Come carpark
 // UNDERGROUND BEDFORD POINT
-014B: $COM_CAR49 = init_parked_car_generator #RUMPO -1 -1 force_spawn 0 alarm 40 door_lock 40 min_delay 0 max_delay 10000 at 9.5 -1475.688 19.6875 angle 0.0 // Underground Bedford Point
+014B: $COM_CAR49 = init_parked_car_generator #RUMPO -1 -1 force_spawn 0 alarm 40 door_lock 0 min_delay 0 max_delay 10000 at 9.5 -1475.688 19.6875 angle 0.0 // Underground Bedford Point
 // PHIL'S TANK
 014B: $SPECIAL_TANK = init_parked_car_generator #RHINO -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at 132.0 173.875 11.5625 angle 0.0 // Phil's Tank
 
@@ -145,38 +145,38 @@
 014B: $SUB_CAR2 = init_parked_car_generator #LANDSTAL -1 -1 force_spawn 0 alarm 100 door_lock 0 min_delay 0 max_delay 10000 at -585.0625 265.0 -100.0 angle 0.0 // Swankville carpark
 014B: $SUB_CAR3 = init_parked_car_generator #STINGER -1 -1 force_spawn 0 alarm 100 door_lock 0 min_delay 0 max_delay 10000 at -712.0625 263.5625 -100.0 angle 180.0 // Swankville carpark
 014B: $SUB_CAR4 = init_parked_car_generator #AMBULAN -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at -1249.063 -92.5 -100.0 angle 90.0 // At Hospital
-014B: $SUB_CAR5 = init_parked_car_generator #POLICE -1 -1 force_spawn 0 alarm 0 door_lock 50 min_delay 0 max_delay 10000 at -1266.0 -37.6875 -100.0 angle 160.0 // At police station
+014B: $SUB_CAR5 = init_parked_car_generator #POLICE -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at -1266.0 -37.6875 -100.0 angle 160.0 // At police station
 014B: $SUB_CAR6 = init_parked_car_generator #COLUMB -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at -402.0 291.5625 -100.0 angle 252.0 // Swankville carpark
 014B: $SUB_CAR7 = init_parked_car_generator #PATRIOT -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at -218.5 263.6875 3.5 angle 90.0 // Picnic area
 014B: $SUB_CAR25 = init_parked_car_generator #FIRETRUK -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at -839.375 -463.75 -100.0 angle 90.0 // At airport
 014B: $GEN_CAR63 = init_parked_car_generator #DODO -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at -1268.438 -528.625 10.1875 angle 180.0 // At airport
 014B: $SUB_CAR40 = init_parked_car_generator #BANSHEE -1 -1 force_spawn 0 alarm 80 door_lock 0 min_delay 0 max_delay 10000 at -755.0 204.25 27.6875 angle 179.8125 // Projects
-014B: $SUB_CAR41 = init_parked_car_generator #STALLION -1 -1 force_spawn 0 alarm 70 door_lock 5 min_delay 0 max_delay 10000 at -724.75 180.1875 27.6875 angle 182.0 // Projects
-014B: $SUB_CAR42 = init_parked_car_generator #BLISTA -1 -1 force_spawn 0 alarm 70 door_lock 5 min_delay 0 max_delay 10000 at -668.25 99.25 17.75 angle 359.5625 // Projects
-014B: $SUB_CAR43 = init_parked_car_generator #COLUMB -1 -1 force_spawn 0 alarm 70 door_lock 5 min_delay 0 max_delay 10000 at -449.9375 -13.1875 2.875 angle 0.625 // Projects
-014B: $SUB_CAR44 = init_parked_car_generator #LANDSTAL -1 -1 force_spawn 0 alarm 70 door_lock 5 min_delay 0 max_delay 10000 at -510.8125 74.5 2.875 angle 0.25 // Projects
-014B: $SUB_CAR45 = init_parked_car_generator #BOBCAT -1 -1 force_spawn 0 alarm 70 door_lock 2 min_delay 0 max_delay 10000 at -217.625 318.75 2.5 angle 358.8125 // Projects
-014B: $SUB_CAR46 = init_parked_car_generator #KURUMA -1 -1 force_spawn 0 alarm 70 door_lock 1 min_delay 0 max_delay 10000 at -561.3125 -6.3125 2.875 angle 91.0 // Projects
+014B: $SUB_CAR41 = init_parked_car_generator #STALLION -1 -1 force_spawn 0 alarm 70 door_lock 0 min_delay 0 max_delay 10000 at -724.75 180.1875 27.6875 angle 182.0 // Projects
+014B: $SUB_CAR42 = init_parked_car_generator #BLISTA -1 -1 force_spawn 0 alarm 70 door_lock 0 min_delay 0 max_delay 10000 at -668.25 99.25 17.75 angle 359.5625 // Projects
+014B: $SUB_CAR43 = init_parked_car_generator #COLUMB -1 -1 force_spawn 0 alarm 70 door_lock 0 min_delay 0 max_delay 10000 at -449.9375 -13.1875 2.875 angle 0.625 // Projects
+014B: $SUB_CAR44 = init_parked_car_generator #LANDSTAL -1 -1 force_spawn 0 alarm 70 door_lock 0 min_delay 0 max_delay 10000 at -510.8125 74.5 2.875 angle 0.25 // Projects
+014B: $SUB_CAR45 = init_parked_car_generator #BOBCAT -1 -1 force_spawn 0 alarm 70 door_lock 0 min_delay 0 max_delay 10000 at -217.625 318.75 2.5 angle 358.8125 // Projects
+014B: $SUB_CAR46 = init_parked_car_generator #KURUMA -1 -1 force_spawn 0 alarm 70 door_lock 0 min_delay 0 max_delay 10000 at -561.3125 -6.3125 2.875 angle 91.0 // Projects
 // ********************AIRPORT CARPARK********************************************************
-014B: $SUB_CAR8 = init_parked_car_generator #LANDSTAL -1 -1 force_spawn 0 alarm 20 door_lock 20 min_delay 0 max_delay 10000 at -896.625 -414.1875 11.25 angle 90.0 // At airport
-014B: $SUB_CAR9 = init_parked_car_generator #BLISTA -1 -1 force_spawn 0 alarm 20 door_lock 40 min_delay 0 max_delay 10000 at -896.625 -395.1875 11.25 angle 270.0 // At airport
-014B: $SUB_CAR10 = init_parked_car_generator #STALLION -1 -1 force_spawn 0 alarm 30 door_lock 20 min_delay 0 max_delay 10000 at -882.0625 -391.6875 11.0 angle 0.0 // At airport
-014B: $SUB_CAR11 = init_parked_car_generator #INFERNUS -1 -1 force_spawn 0 alarm 60 door_lock 20 min_delay 0 max_delay 10000 at -862.875 -404.375 11.0 angle 180.0 // At airport
-014B: $SUB_CAR12 = init_parked_car_generator #SENTINEL -1 -1 force_spawn 0 alarm 30 door_lock 40 min_delay 0 max_delay 10000 at -846.625 -413.5625 11.0 angle 180.0 // At airport
-014B: $SUB_CAR13 = init_parked_car_generator #MANANA -1 -1 force_spawn 0 alarm 10 door_lock 20 min_delay 0 max_delay 10000 at -814.8125 -372.375 11.0 angle 180.0 // At airport
-014B: $SUB_CAR14 = init_parked_car_generator #RUMPO -1 -1 force_spawn 0 alarm 10 door_lock 10 min_delay 0 max_delay 10000 at -821.1875 -404.6875 11.0 angle 180.0 // At airport
-014B: $SUB_CAR15 = init_parked_car_generator #TAXI -1 -1 force_spawn 0 alarm 10 door_lock 20 min_delay 0 max_delay 10000 at -767.875 -404.625 11.0 angle 0.0 // At airport
-014B: $SUB_CAR16 = init_parked_car_generator #ESPERANT -1 -1 force_spawn 0 alarm 20 door_lock 20 min_delay 0 max_delay 10000 at -773.375 -373.125 11.0 angle 180.0 // At airport
+014B: $SUB_CAR8 = init_parked_car_generator #LANDSTAL -1 -1 force_spawn 0 alarm 20 door_lock 0 min_delay 0 max_delay 10000 at -896.625 -414.1875 11.25 angle 90.0 // At airport
+014B: $SUB_CAR9 = init_parked_car_generator #BLISTA -1 -1 force_spawn 0 alarm 20 door_lock 0 min_delay 0 max_delay 10000 at -896.625 -395.1875 11.25 angle 270.0 // At airport
+014B: $SUB_CAR10 = init_parked_car_generator #STALLION -1 -1 force_spawn 0 alarm 30 door_lock 0 min_delay 0 max_delay 10000 at -882.0625 -391.6875 11.0 angle 0.0 // At airport
+014B: $SUB_CAR11 = init_parked_car_generator #INFERNUS -1 -1 force_spawn 0 alarm 60 door_lock 0 min_delay 0 max_delay 10000 at -862.875 -404.375 11.0 angle 180.0 // At airport
+014B: $SUB_CAR12 = init_parked_car_generator #SENTINEL -1 -1 force_spawn 0 alarm 30 door_lock 0 min_delay 0 max_delay 10000 at -846.625 -413.5625 11.0 angle 180.0 // At airport
+014B: $SUB_CAR13 = init_parked_car_generator #MANANA -1 -1 force_spawn 0 alarm 10 door_lock 0 min_delay 0 max_delay 10000 at -814.8125 -372.375 11.0 angle 180.0 // At airport
+014B: $SUB_CAR14 = init_parked_car_generator #RUMPO -1 -1 force_spawn 0 alarm 10 door_lock 0 min_delay 0 max_delay 10000 at -821.1875 -404.6875 11.0 angle 180.0 // At airport
+014B: $SUB_CAR15 = init_parked_car_generator #TAXI -1 -1 force_spawn 0 alarm 10 door_lock 0 min_delay 0 max_delay 10000 at -767.875 -404.625 11.0 angle 0.0 // At airport
+014B: $SUB_CAR16 = init_parked_car_generator #ESPERANT -1 -1 force_spawn 0 alarm 20 door_lock 0 min_delay 0 max_delay 10000 at -773.375 -373.125 11.0 angle 180.0 // At airport
 // *****************************OUT FRONT OF AIRPORT******************************************
-014B: $SUB_CAR19 = init_parked_car_generator #TAXI -1 -1 force_spawn 0 alarm 20 door_lock 20 min_delay 0 max_delay 10000 at -750.375 -603.125 11.0 angle 270.0 // At airport
-014B: $SUB_CAR20 = init_parked_car_generator #TAXI -1 -1 force_spawn 0 alarm 20 door_lock 20 min_delay 0 max_delay 10000 at -750.375 -567.125 11.0 angle 270.0 // At airport
+014B: $SUB_CAR19 = init_parked_car_generator #TAXI -1 -1 force_spawn 0 alarm 20 door_lock 0 min_delay 0 max_delay 10000 at -750.375 -603.125 11.0 angle 270.0 // At airport
+014B: $SUB_CAR20 = init_parked_car_generator #TAXI -1 -1 force_spawn 0 alarm 20 door_lock 0 min_delay 0 max_delay 10000 at -750.375 -567.125 11.0 angle 270.0 // At airport
 //  **************************AIRSTRIP********************************************************
 014B: $SUB_CAR17 = init_parked_car_generator #SPEEDER -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at -856.375 -1228.125 1.0 angle 250.0 // Runway
 014B: $SUB_CAR18 = init_parked_car_generator #PREDATOR -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at -1126.375 -1034.125 1.0 angle 270.0 // Runway
 014B: $SUB_CAR21 = init_parked_car_generator #POLICE -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at -1574.0 -873.0 11.0 angle 90.0 // Police helipad
-014B: $SUB_CAR22 = init_parked_car_generator #RUMPO -1 -1 force_spawn 0 alarm 20 door_lock 10 min_delay 0 max_delay 10000 at -1073.0 -753.0 11.0 angle 360.0 // Freight terminal
-014B: $SUB_CAR23 = init_parked_car_generator #RUMPO -1 -1 force_spawn 0 alarm 20 door_lock 10 min_delay 0 max_delay 10000 at -1088.0 -753.0 11.0 angle 360.0 // Freight terminal
-014B: $SUB_CAR24 = init_parked_car_generator #RUMPO -1 -1 force_spawn 0 alarm 20 door_lock 10 min_delay 0 max_delay 10000 at -848.0 -657.0 11.0 angle 90.0 // Freight terminal
+014B: $SUB_CAR22 = init_parked_car_generator #RUMPO -1 -1 force_spawn 0 alarm 20 door_lock 0 min_delay 0 max_delay 10000 at -1073.0 -753.0 11.0 angle 360.0 // Freight terminal
+014B: $SUB_CAR23 = init_parked_car_generator #RUMPO -1 -1 force_spawn 0 alarm 20 door_lock 0 min_delay 0 max_delay 10000 at -1088.0 -753.0 11.0 angle 360.0 // Freight terminal
+014B: $SUB_CAR24 = init_parked_car_generator #RUMPO -1 -1 force_spawn 0 alarm 20 door_lock 0 min_delay 0 max_delay 10000 at -848.0 -657.0 11.0 angle 90.0 // Freight terminal
 014B: $SUB_CAR30 = init_parked_car_generator #DODO -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at -847.5625 -753.1875 10.1875 angle 143.6875 // In hangar
 014B: $SUB_CAR31 = init_parked_car_generator #DODO -1 -1 force_spawn 0 alarm 0 door_lock 0 min_delay 0 max_delay 10000 at -1525.313 -924.25 10.1875 angle 246.75 // West airport by choppers
 // ******************RC DESTRUCTION DERBY*****************************************************
