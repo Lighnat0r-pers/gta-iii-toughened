@@ -247,7 +247,7 @@ end //while
 0175: set_car $GET_AWAY_CAR z_angle_to 90.0 
 020A: set_car $GET_AWAY_CAR door_status_to CARLOCK_LOCKOUT_PLAYER_ONLY 
 03AB: set_car $GET_AWAY_CAR strong 1 
-0224: set_car $GET_AWAY_CAR health_to 5000
+0224: set_car $GET_AWAY_CAR health_to 2000
 02AC: set_car $GET_AWAY_CAR immunities 1 0 0 0 0 
 0129: $POLICE_GUARD1 = create_actor PEDTYPE_CIVMALE #COP in_car $GET_AWAY_CAR driverseat 
 01C8: $THE_WITNESS = create_actor PEDTYPE_CIVMALE model #LI_MAN2 in_car $GET_AWAY_CAR passenger_seat 1 
