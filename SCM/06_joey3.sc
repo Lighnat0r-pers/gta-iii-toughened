@@ -537,13 +537,19 @@ if and
 then
 	0084: $PLAYER_PASSENGER_OLD = $PLAYER_PASSENGER
 	0004: $SECRET_TIMER_JOEY_STARTED_FLAG = 0
-	if or
-		02F2:   actor $PLAYER_PASSENGER model == #PROSTITUTE
-		02F2:   actor $PLAYER_PASSENGER model == #PROSTITUTE2
+	if
+		8118:   not actor $PLAYER_PASSENGER dead
 	then
-		01DF: tie_actor $PLAYER_PASSENGER to_player $PLAYER_CHAR 
-		039E: set_char_cant_be_dragged_out $PLAYER_PASSENGER to 1
-		0004: $SECRET_TRIGGERED_JOEY3 = 1
+		if or
+			02F2:   actor $PLAYER_PASSENGER model == #PROSTITUTE
+			02F2:   actor $PLAYER_PASSENGER model == #PROSTITUTE2
+		then
+			01DF: tie_actor $PLAYER_PASSENGER to_player $PLAYER_CHAR 
+			039E: set_char_cant_be_dragged_out $PLAYER_PASSENGER to 1
+			0004: $SECRET_TRIGGERED_JOEY3 = 1
+		else
+			0004: $SECRET_TRIGGERED_JOEY3 = 0
+		end
 	else
 		0004: $SECRET_TRIGGERED_JOEY3 = 0
 	end
