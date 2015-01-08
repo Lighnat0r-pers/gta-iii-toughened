@@ -523,6 +523,7 @@ if or
 	0118:   actor $JOEY3_SECRET_HOOKER dead
 then
 	0432: $PLAYER_PASSENGER = get_passenger_in_car $PLAYER_CAR seat $SECRET_SEAT_FLAG_JOEY3
+	01F5: $PLAYER_ACTOR = create_emulated_actor_from_player $PLAYER_CHAR 
 else
 	0084: $PLAYER_PASSENGER = $JOEY3_SECRET_HOOKER
 end
@@ -533,6 +534,7 @@ end
 // passenger but the model check is made for a char not a player so it would cause a crash.
 if and
 	803A:   not $PLAYER_PASSENGER == $PLAYER_CHAR
+	803A:   not $PLAYER_PASSENGER == $PLAYER_ACTOR
 	803A:   not $PLAYER_PASSENGER_OLD == $PLAYER_PASSENGER
 then
 	0084: $PLAYER_PASSENGER_OLD = $PLAYER_PASSENGER
