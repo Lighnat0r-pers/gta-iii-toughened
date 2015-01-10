@@ -325,6 +325,9 @@ while true
 	gosub @CHECK_PLAYER_AT_PLATFORM
 	gosub @CHECK_PLANE_STATUS
 	gosub @CHECK_TIMER_FINISHED
+
+	03A6: get_drug_plane_coords $DODO_AS3_X $DODO_AS3_Y $DODO_AS3_Z 
+
 	gosub @AREA_CHECK
 	gosub @BADDIES
 
@@ -384,6 +387,9 @@ while true
 	
 	gosub @CHECK_PLANE_STATUS
 	gosub @CHECK_TIMER_FINISHED
+
+	03A6: get_drug_plane_coords $DODO_AS3_X $DODO_AS3_Y $DODO_AS3_Z 
+
 	gosub @AREA_CHECK
 	gosub @BADDIES
 
