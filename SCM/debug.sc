@@ -46,11 +46,11 @@ then
 	//0055: set_player_coordinates $PLAYER_CHAR to 1219.563 -324.0 26.375
 
 	02A7: $TONI_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_TONY at 1219.563 -321.0 26.375
-	//004F: create_thread @TONI_MISSION1_LOOP			//TAKING OUT THE LAUNDRY
+	004F: create_thread @TONI_MISSION1_LOOP			//TAKING OUT THE LAUNDRY
 	//004F: create_thread @TONI_MISSION2_LOOP		//THE PICKUP
 	//004F: create_thread @TONI_MISSION3_LOOP		//SALVATORES CALLED A MEETING
 	//004F: create_thread @TONI_MISSION4_LOOP		//TRIADS AND TRIBULATIONS
-	004F: create_thread @TONI_MISSION5_LOOP		//BLOW FISH
+	//004F: create_thread @TONI_MISSION5_LOOP		//BLOW FISH
 
 
 
@@ -78,18 +78,18 @@ then
 	//0055: set_player_coordinates $PLAYER_CHAR to 35.75 -725.375 -100.0
 
 	02A7: $RAY_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_RAY at 38.75 -725.375 -100.0 
-	//004F: create_thread @RAY_MISSION1_LOOP			//SILENCE THE SNEAK
+	004F: create_thread @RAY_MISSION1_LOOP			//SILENCE THE SNEAK
 	//004F: create_thread @RAY_MISSION2_LOOP		//ARMS SHORTAGE
-	004F: create_thread @RAY_MISSION3_LOOP		//EVIDENCE DASH
+	//004F: create_thread @RAY_MISSION3_LOOP		//EVIDENCE DASH
 
 
 
 	//0055: set_player_coordinates $PLAYER_CHAR to 84.0625 -1548.688 28.25
 
 	02A7: $DONALD_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_DON at 86.0625 -1548.688 28.25
-	//004F: create_thread @LOVE_MISSION1_LOOP			//LIBERATOR
+	004F: create_thread @LOVE_MISSION1_LOOP			//LIBERATOR
 	//004F: create_thread @LOVE_MISSION2_LOOP		//WAKA GASHIRA WIPEOUT
-	004F: create_thread @LOVE_MISSION3_LOOP		//A DROP IN THE OCEAN
+	//004F: create_thread @LOVE_MISSION3_LOOP		//A DROP IN THE OCEAN
 	//004F: create_thread @LOVE_MISSION4_LOOP		//GRAND THEFT AERO
 
 
@@ -97,9 +97,9 @@ then
 	//0055: set_player_coordinates $PLAYER_CHAR to 365.9375 -328.0 20.25
 
 	02A7: $ASUKA2_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_ASUKA at 366.9375 -328.0 20.25
-	004F: create_thread @ASUKA_SUBURBAN_MISSION1_LOOP		//BAIT
+	//004F: create_thread @ASUKA_SUBURBAN_MISSION1_LOOP		//BAIT
 	//004F: create_thread @ASUKA_SUBURBAN_MISSION2_LOOP		//ESPRESSO 2 GO
-	//004F: create_thread @ASUKA_SUBURBAN_MISSION3_LOOP		//SAM
+	004F: create_thread @ASUKA_SUBURBAN_MISSION3_LOOP		//SAM
 
 
 

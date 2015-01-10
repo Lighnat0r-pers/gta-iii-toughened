@@ -644,6 +644,26 @@ end //while
 00BC: print_now 'STASH' duration 4000 ms flag 1  // ~g~Stash the SPANK back at the ~p~construction site!
 018A: $BLIP_STASH = create_checkpoint_at 367.25 -328.0 19.5 
 
+009A: $KAPPA_CARTEL11 = create_char PEDTYPE_GANG_COLOMBIAN model #GANG12 at 370.0 -350.5 44.5
+0173: set_actor $KAPPA_CARTEL11 z_angle_to 140.0
+011A: set_actor $KAPPA_CARTEL11 search_threat THREAT_PLAYER1 
+0350: set_actor $KAPPA_CARTEL11 maintain_position_when_attacked 1
+01B2: give_actor $KAPPA_CARTEL11 weapon WEAPONTYPE_M16 ammo 500 
+02E2: set_actor $KAPPA_CARTEL11 weapon_accuracy_to 100 
+035F: set_actor $KAPPA_CARTEL11 armour_to 100 
+01CC: actor $KAPPA_CARTEL11 kill_player $PLAYER_CHAR 
+
+
+009A: $KAPPA_CARTEL12 = create_char PEDTYPE_GANG_COLOMBIAN model #GANG11 at 348.0 -344.75 16.7
+0173: set_actor $KAPPA_CARTEL12 z_angle_to 195.0 
+011A: set_actor $KAPPA_CARTEL12 search_threat THREAT_PLAYER1 
+0350: set_actor $KAPPA_CARTEL12 maintain_position_when_attacked 1
+01B2: give_actor $KAPPA_CARTEL12 weapon WEAPONTYPE_M16 ammo 500 
+02E2: set_actor $KAPPA_CARTEL12 weapon_accuracy_to 100 
+035F: set_actor $KAPPA_CARTEL12 armour_to 100 
+01CC: actor $KAPPA_CARTEL12 kill_player $PLAYER_CHAR 
+
+
 while 80F6:   not player $PLAYER_CHAR 1 366.9375 -328.0 18.5 radius 1.0 1.0 4.0 
 	wait 0 ms
 end
