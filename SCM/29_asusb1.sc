@@ -1155,7 +1155,7 @@ then
 		0038:   $CARTEL9_AS1_DEAD == 0 
 		0118:   actor $CARTEL9_AS1 dead 
 	then
-		0004: $CARTEL9_AS1 = 1 
+		0004: $CARTEL9_AS1_DEAD = 1 
 		0008: $COUNTER_CARTELS_KILLED_AS1 += 1 
 		0164: disable_marker $BLIP_CARTEL9 
 	end
@@ -1176,12 +1176,12 @@ then
 		0164: disable_marker $BLIP_CARTEL11 
 	end
 	if and
-		0038:   $CARTEL2_AS1_DEAD == 0 
-		0118:   actor $CARTEL2_AS1 dead 
+		0038:   $CARTEL12_AS1_DEAD == 0 
+		0118:   actor $CARTEL12_AS1 dead 
 	then
-		0004: $CARTEL2_AS1_DEAD = 1 
+		0004: $CARTEL12_AS1_DEAD = 1 
 		0008: $COUNTER_CARTELS_KILLED_AS1 += 1 
-		0164: disable_marker $BLIP_CARTEL2 
+		0164: disable_marker $BLIP_CARTEL12 
 	end
 	if and
 		0038:   $CARTEL9_AS1_DEAD == 1 
