@@ -178,11 +178,16 @@ while true
 	wait 0 ms
 end //while
 
-03CF: load_wav 'LO2_A' 
+while fading
+	wait 0 ms
+end
 
-00BC: print_now 'LOVE2_1' duration 6000 ms flag 1  // ~g~To make sure there are enough witnesses, Donald has informed the FBI of your planned hit!
 010E: set_player $PLAYER_CHAR minimum_wanted_level_to 5
-wait 6000 ms
+
+00BC: print_now 'LOV2FBI' duration 6000 ms flag 1  // ~g~To make sure there are enough witnesses, Donald has informed the FBI of your planned hit!
+0001: wait 6000 ms
+
+03CF: load_wav 'LO2_A' 
 
 //While loop 1: player not at carpark AND player not in CAR_COLUMB
 
