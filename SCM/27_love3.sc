@@ -174,13 +174,6 @@ end //while
 00BC: print_now 'LOVE3_1' duration 5000 ms flag 1  // ~g~Get a ~r~boat~g~ and follow the ~y~plane~g~!
 0358: start_drug_drop_off 
 
-// Impossible if statement because reasons.
-if
-	0038:   $ONMISSION == 0
-then
-	018A: $PLANE_BLIP = create_checkpoint_at $PLANEX $PLANEY $PLANEZ 
-end
-
 wait 1000 ms 
 0004: $PLANE_TIMER = 120000 
 014E: start_timer_at $PLANE_TIMER 
@@ -444,7 +437,7 @@ end
 01F9: init_rampage 'PAGE_00' weapon WEAPONTYPE_M16 time $FRENZY_TIME $FRENZY_KILL_AMOUNT targets CAR_POLICE CAR_ENFORCER CAR_FBI CAR_BARRACKS flag 0  // .
 0014: $FRENZY_TIME /= 1000 // Convert from ms to sec
 00BA: print_big 'RAMPAGE' duration 5000 ms style 5  // RAMPAGE!!
-036D: text_2numbers_styled 'LOVE3PG' numbers $FRENZY_KILL_AMOUNT $FRENZY_TIME duration 10000 ms style 6  // Destroy ~1~ law enforcement vehicles in ~2~ seconds to scare them away!
+02FC: text_2numbers 'LOVE3PG' numbers $FRENZY_KILL_AMOUNT $FRENZY_TIME duration 10000 ms flag 6  // Destroy ~1~ law enforcement vehicles in ~2~ seconds to scare them away!
 01FA: $FRENZY_STATUS = rampage_status
 
 while 0038:   $FRENZY_STATUS == FRENZY_ONGOING
