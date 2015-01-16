@@ -252,6 +252,7 @@ while true
 	wait 0 ms
 end //while
 
+gosub @EVERYONE_HATES_YOU
 0297: clear_rampage_kills 
 
 while 001A:   16 > $COUNTER_CARTELS_KILLED_AS1 
@@ -561,7 +562,6 @@ then
 				01ED: clear_actor $YAKUZA1_AS1 threat_search 
 				011A: set_actor $YAKUZA1_AS1 search_threat THREAT_GANG_COLOMBIAN 
 				011A: set_actor $YAKUZA1_AS1 search_threat THREAT_COP 
-				035F: set_actor $YAKUZA1_AS1 armour_to 100 
 				01B2: give_actor $YAKUZA1_AS1 weapon WEAPONTYPE_CHAINGUN ammo 999 
 				0350: set_actor $YAKUZA1_AS1 maintain_position_when_attacked 1 
 			end
@@ -573,7 +573,6 @@ then
 				01ED: clear_actor $YAKUZA2_AS1 threat_search 
 				011A: set_actor $YAKUZA2_AS1 search_threat THREAT_GANG_COLOMBIAN 
 				011A: set_actor $YAKUZA2_AS1 search_threat THREAT_COP 
-				035F: set_actor $YAKUZA2_AS1 armour_to 100 
 				01B2: give_actor $YAKUZA2_AS1 weapon WEAPONTYPE_SHOTGUN ammo 999 
 				0350: set_actor $YAKUZA2_AS1 maintain_position_when_attacked 1 
 			end
@@ -585,7 +584,6 @@ then
 				01ED: clear_actor $YAKUZA3_AS1 threat_search 
 				011A: set_actor $YAKUZA3_AS1 search_threat THREAT_GANG_COLOMBIAN 
 				011A: set_actor $YAKUZA3_AS1 search_threat THREAT_COP 
-				035F: set_actor $YAKUZA3_AS1 armour_to 100 
 				01B2: give_actor $YAKUZA3_AS1 weapon WEAPONTYPE_CHAINGUN ammo 999 
 				0350: set_actor $YAKUZA3_AS1 maintain_position_when_attacked 1 
 			end
@@ -597,7 +595,6 @@ then
 				01ED: clear_actor $YAKUZA4_AS1 threat_search 
 				011A: set_actor $YAKUZA4_AS1 search_threat THREAT_GANG_COLOMBIAN 
 				011A: set_actor $YAKUZA4_AS1 search_threat THREAT_COP 
-				035F: set_actor $YAKUZA4_AS1 armour_to 100 
 				01B2: give_actor $YAKUZA4_AS1 weapon WEAPONTYPE_CHAINGUN ammo 999 
 				0350: set_actor $YAKUZA4_AS1 maintain_position_when_attacked 1 
 			end
@@ -609,7 +606,6 @@ then
 				01ED: clear_actor $YAKUZA5_AS1 threat_search 
 				011A: set_actor $YAKUZA5_AS1 search_threat THREAT_GANG_COLOMBIAN 
 				011A: set_actor $YAKUZA5_AS1 search_threat THREAT_COP_CAR 
-				035F: set_actor $YAKUZA5_AS1 armour_to 100 
 				01B2: give_actor $YAKUZA5_AS1 weapon WEAPONTYPE_CHAINGUN ammo 999 
 				0350: set_actor $YAKUZA5_AS1 maintain_position_when_attacked 1 
 			end
@@ -621,7 +617,6 @@ then
 				01ED: clear_actor $YAKUZA6_AS1 threat_search 
 				011A: set_actor $YAKUZA6_AS1 search_threat THREAT_GANG_COLOMBIAN 
 				011A: set_actor $YAKUZA6_AS1 search_threat THREAT_COP_CAR
-				035F: set_actor $YAKUZA6_AS1 armour_to 100 
 				01B2: give_actor $YAKUZA6_AS1 weapon WEAPONTYPE_SHOTGUN ammo 999 
 				0350: set_actor $YAKUZA6_AS1 maintain_position_when_attacked 1 
 			end
@@ -793,6 +788,125 @@ return
 
 /////////////////////////////////////////
 
+:EVERYONE_HATES_YOU
+// Store threat search for all ped types to be able to clear only the only set by this mission afterwards.
+// Then, set all ped types to have the player as threat.
+// Yakuza and special are not affected by this.
+// Columbian and mafia are also not done, because they are always already hostile at this point.
+if
+	042A:   ped_threat_exists PEDTYPE_CIVMALE THREAT_PLAYER1
+then
+	0004: $CIVMALE_HOSTILE_OLD = 1
+end
+if
+	042A:   ped_threat_exists PEDTYPE_CIVFEMALE THREAT_PLAYER1
+then
+	0004: $CIVFEMALE_HOSTILE_OLD = 1
+end
+if
+	042A:   ped_threat_exists PEDTYPE_COP THREAT_PLAYER1
+then
+	0004: $COP_HOSTILE_OLD = 1
+end
+if
+	042A:   ped_threat_exists PEDTYPE_GANG_TRIAD THREAT_PLAYER1
+then
+	0004: $TRIAD_HOSTILE_OLD = 1
+end
+if
+	042A:   ped_threat_exists PEDTYPE_GANG_DIABLO THREAT_PLAYER1
+then
+	0004: $DIABLO_HOSTILE_OLD = 1
+end
+if
+	042A:   ped_threat_exists PEDTYPE_GANG_YARDIE THREAT_PLAYER1
+then
+	0004: $YARDIE_HOSTILE_OLD = 1
+end
+if
+	042A:   ped_threat_exists PEDTYPE_GANG_HOOD THREAT_PLAYER1
+then
+	0004: $HOOD_HOSTILE_OLD = 1
+end
+if
+	042A:   ped_threat_exists PEDTYPE_BUM THREAT_PLAYER1
+then
+	0004: $BUM_HOSTILE_OLD = 1
+end
+if
+	042A:   ped_threat_exists PEDTYPE_PROSTITUTE THREAT_PLAYER1
+then
+	0004: $PROSTITUTE_HOSTILE_OLD = 1
+end
+
+03F1: pedtype PEDTYPE_CIVMALE add_threat THREAT_PLAYER1
+03F1: pedtype PEDTYPE_CIVFEMALE add_threat THREAT_PLAYER1
+03F1: pedtype PEDTYPE_COP add_threat THREAT_PLAYER1
+03F1: pedtype PEDTYPE_GANG_TRIAD add_threat THREAT_PLAYER1
+03F1: pedtype PEDTYPE_GANG_DIABLO add_threat THREAT_PLAYER1
+03F1: pedtype PEDTYPE_GANG_YARDIE add_threat THREAT_PLAYER1
+03F1: pedtype PEDTYPE_GANG_HOOD add_threat THREAT_PLAYER1
+03F1: pedtype PEDTYPE_BUM add_threat THREAT_PLAYER1
+03F1: pedtype PEDTYPE_PROSTITUTE add_threat THREAT_PLAYER1
+
+0004: $EVERYONE_HOSTILE_FLAG = 1
+return
+
+/////////////////////////////////////////
+
+:STOP_THE_HATE
+
+// Clears threat search for ped types that didn't have it before this mission.
+if
+	8038:   not $CIVMALE_HOSTILE_OLD == 1
+then
+	03F2: pedgroup PEDTYPE_CIVMALE remove_threat THREAT_PLAYER1
+end
+if
+	8038:   not $CIVFEMALE_HOSTILE_OLD == 1
+then
+	03F2: pedgroup PEDTYPE_CIVFEMALE remove_threat THREAT_PLAYER1
+end
+if
+	8038:   not $COP_HOSTILE_OLD == 1
+then
+	03F2: pedgroup PEDTYPE_COP remove_threat THREAT_PLAYER1
+end
+if
+	8038:   not $TRIAD_HOSTILE_OLD == 1
+then
+	03F2: pedgroup PEDTYPE_GANG_TRIAD remove_threat THREAT_PLAYER1
+end
+if
+	8038:   not $DIABLO_HOSTILE_OLD == 1
+then
+	03F2: pedgroup PEDTYPE_GANG_DIABLO remove_threat THREAT_PLAYER1
+end
+if
+	8038:   not $YARDIE_HOSTILE_OLD == 1
+then
+	03F2: pedgroup PEDTYPE_GANG_YARDIE remove_threat THREAT_PLAYER1
+end
+if
+	8038:   not $HOOD_HOSTILE_OLD == 1
+then
+	03F2: pedgroup PEDTYPE_GANG_HOOD remove_threat THREAT_PLAYER1
+end
+if
+	8038:   not $BUM_HOSTILE_OLD == 1
+then
+	03F2: pedgroup PEDTYPE_BUM remove_threat THREAT_PLAYER1
+end
+if
+	8038:   not $PROSTITUTE_HOSTILE_OLD == 1
+then
+	03F2: pedgroup PEDTYPE_PROSTITUTE remove_threat THREAT_PLAYER1
+end
+0004: $EVERYONE_HOSTILE_FLAG = 0
+return
+
+/////////////////////////////////////////
+
 // Mission Failed
 
 :MISSION_FAILED_AS1
@@ -832,6 +946,7 @@ goto @MISSION_END_AS1
 :MISSION_CLEANUP_AS1
 0004: $ONMISSION = 0 
 0004: $ON_MISSION_FOR_ASUKA2 = 0 
+gosub @STOP_THE_HATE
 0151: remove_status_text $COUNTER_CARTELS_KILLED_AS1 
 0164: disable_marker $BLIP_CARTEL1 
 0164: disable_marker $BLIP_CARTEL2 

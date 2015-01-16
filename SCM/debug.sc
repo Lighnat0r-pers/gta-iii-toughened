@@ -97,9 +97,9 @@ then
 	//0055: set_player_coordinates $PLAYER_CHAR to 365.9375 -328.0 20.25
 
 	02A7: $ASUKA2_MISSION_MARKER = create_icon_marker_and_sphere RADAR_SPRITE_ASUKA at 366.9375 -328.0 20.25
-	//004F: create_thread @ASUKA_SUBURBAN_MISSION1_LOOP		//BAIT
+	004F: create_thread @ASUKA_SUBURBAN_MISSION1_LOOP		//BAIT
 	//004F: create_thread @ASUKA_SUBURBAN_MISSION2_LOOP		//ESPRESSO 2 GO
-	004F: create_thread @ASUKA_SUBURBAN_MISSION3_LOOP		//SAM
+	//004F: create_thread @ASUKA_SUBURBAN_MISSION3_LOOP		//SAM
 
 
 
@@ -157,16 +157,6 @@ while true
         	0087: 2@ = 10@
         	gosub @COORDS_FRACT
         	gosub @COORDS_DRAW
-		/*
-		if
-			0038:   $SHOULD_LAUGH == 1
-		then
-			0004: $SHOULD_LAUGH = 0
-		else
-			0004: $SHOULD_LAUGH = 1
-			004F: create_thread @LAUGHS
-		end
-		*/
 	end
         wait 250 ms
         03F0: text_draw_toggle  0
