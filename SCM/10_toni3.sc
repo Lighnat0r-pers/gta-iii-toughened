@@ -383,9 +383,10 @@ end //while
 01D4: actor $TONI3_LUIGI go_to_car $TONI3_LIMO and_enter_it_as_a_passenger
 
 while 80DB:   not is_char_in_car $TONI3_LUIGI car $TONI3_LIMO
-	wait 0 ms
 	gosub @CHECK_LUIGI_STATUS_TONI3
 	gosub @CHECK_VEHICLE_STATUS_TONI3
+	gosub @CHECK_VEHICLE_FULL_TONI3
+	wait 0 ms
 end //while
 
 039E: set_char_cant_be_dragged_out $TONI3_LUIGI to 1
@@ -545,9 +546,10 @@ end
 01D4: actor $TONI_CIPRIANI go_to_car $TONI3_LIMO and_enter_it_as_a_passenger
 
 while 80DB:   not is_char_in_car $TONI_CIPRIANI car $TONI3_LIMO
-	wait 0 ms
 	gosub @CHECK_TONI_STATUS_TONI3
 	gosub @CHECK_VEHICLE_STATUS_TONI3
+	gosub @CHECK_VEHICLE_FULL_TONI3
+	wait 0 ms
 end //while
 
 while 83D0:   not wav_loaded
@@ -1206,6 +1208,19 @@ while 8185:   not car $TONI3_LIMO health >= 600
 end //while
 0004: $CURRENT_STEP_FOR_BLIP_MANIPULATION = 1
 0164: disable_marker $BLIP5_T3
+return
+
+/////////////////////////////////////////
+
+:CHECK_VEHICLE_FULL_TONI3
+01E9: $PLAYER_NUM_PASSENGERS = car $TONI3_LIMO num_passengers
+01EA: $PLAYER_MAX_PASSENGERS = car $TONI3_LIMO max_passengers
+if
+	801C:   not $PLAYER_MAX_PASSENGERS > $PLAYER_NUM_PASSENGERS
+then
+	00BC: print_now 'TM3EX1' duration 5000 ms flag 2  // ~r~The limo is full. How are they supposed to get to the meeting now?
+	goto @MISSION_FAILED_TONI3
+end
 return
 
 /////////////////////////////////////////
