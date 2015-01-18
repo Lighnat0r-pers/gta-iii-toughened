@@ -10,6 +10,7 @@
 // Mission start stuff
 
 :M04_MIKELIPSLASTLUNCH
+03A4: name_thread 'JOEY1' 
 
 gosub @MISSION_START_JOEY1
 if 
@@ -30,7 +31,8 @@ end_thread
 0004: $ON_MISSION_FOR_JOEY = 1 
 0004: $MISSION_PASSED_FOR_LIPS_FINISHED = 0 
 0004: $CURRENT_STEP_FOR_BLIP_MANIPULATION = 0
-03A4: name_thread 'JOEY1' 
+00C0: set_current_time 10 0 
+01B6: set_weather WEATHER_RAINY
 0001: wait 0 ms 
 
 0004: $FLAG_DISPLAYED_WANTED_MESSAGE_JM1 = 0 
@@ -175,7 +177,6 @@ end
 
 03AD: set_rubbish 1 
 02EA: end_cutscene 
-01B6: set_weather WEATHER_RAINY
 0363: toggle_model_render_at 1192.188 -867.25 14.0625 radius 6.0 object #JOEY_DOOR1 1 
 0363: toggle_model_render_at 1192.188 -867.25 14.0625 radius 6.0 object #JOEY_DOOR2 1 
 03C8: set_camera_directly_before_player 

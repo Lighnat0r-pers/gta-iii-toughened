@@ -157,39 +157,23 @@ then
 	if
 		00F6:   player $PLAYER_CHAR 0 1191.688 -870.0 15.0 radius 1.0 1.0 2.0 
 	then
-		00BF: get_time_of_day $CURRENT_TIME_HOURS $CURRENT_TIME_MINUTES
-		if and
-			0028:   $CURRENT_TIME_HOURS >= 5
-			001A:   21 > $CURRENT_TIME_HOURS
+		if
+			03EE:   player $PLAYER_CHAR controllable 
 		then
-			if
-				03EE:   player $PLAYER_CHAR controllable 
-			then
-				03EF: player $PLAYER_CHAR make_safe 
-				0169: set_fade_color 0 0 0 
-				016A: fade 0 for 1500 ms 
-				03AF: set_streaming 0 
-				00BA: print_big 'JM1' duration 15000 ms style 2  // 'MIKE LIPS LAST LUNCH'
-				while fading
-					wait 0 ms
-				end
-				0417: start_mission M04_MIKELIPSLASTLUNCH
-			end
-			if
-				8256:   not is_player $PLAYER_CHAR defined
-			then
-				goto @JOEY_MISSION1_LOOP
-			end
-			while 00F6:   player $PLAYER_CHAR 0 1191.688 -870.0 15.0 radius 1.0 1.0 2.0 
+			03EF: player $PLAYER_CHAR make_safe 
+			0169: set_fade_color 0 0 0 
+			016A: fade 0 for 1500 ms 
+			03AF: set_streaming 0 
+			00BA: print_big 'JM1' duration 15000 ms style 2  // 'MIKE LIPS LAST LUNCH'
+			while fading
 				wait 0 ms
-				if
-					8256:   not is_player $PLAYER_CHAR defined
-				then
-					goto @JOEY_MISSION1_LOOP
-				end
-			end //while
-		else
-			00BC: print_now 'WRONGT1' duration 5000 ms flag 1  // ~g~Come back between 05:00 and 21:00 for a job
+			end
+			0417: start_mission M04_MIKELIPSLASTLUNCH
+		end
+		if
+			8256:   not is_player $PLAYER_CHAR defined
+		then
+			goto @JOEY_MISSION1_LOOP
 		end
 		while 00F6:   player $PLAYER_CHAR 0 1191.688 -870.0 15.0 radius 1.0 1.0 2.0 
 			wait 0 ms
@@ -198,10 +182,11 @@ then
 			then
 				goto @JOEY_MISSION1_LOOP
 			end
-			00BF: get_time_of_day $CURRENT_TIME_HOURS $CURRENT_TIME_MINUTES
-			if and
-				0028:   $CURRENT_TIME_HOURS >= 5
-				001A:   21 > $CURRENT_TIME_HOURS
+		end //while
+		while 00F6:   player $PLAYER_CHAR 0 1191.688 -870.0 15.0 radius 1.0 1.0 2.0 
+			wait 0 ms
+			if
+				8256:   not is_player $PLAYER_CHAR defined
 			then
 				goto @JOEY_MISSION1_LOOP
 			end
