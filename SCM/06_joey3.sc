@@ -497,7 +497,7 @@ then
 	end
 	if and
 		01FC:   player $PLAYER_CHAR near_car $JOEY3_VAN radius 10.0 10.0 sphere 0
-		01FC:   actor $JOEY3_SECRET_HOOKER near_car $JOEY3_VAN radius 10.0 10.0 sphere 0
+		0202:   actor $JOEY3_SECRET_HOOKER near_car $JOEY3_VAN radius 10.0 10.0 sphere 0
 	then
 		if
 			0038:   $SECRET_TIMER_JOEY3_STARTED_FLAG == 0
