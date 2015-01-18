@@ -5,7 +5,7 @@
 // *******************************************************************************************
 // *******************************************************************************************
 // *******************************************************************************************
-// For some reason SannyBuilder complains about a jump to zero offset for this mission and dummymissions8.sc but not for any of the others. The 0000: opcode (which does nothing) is included to prevent this error.
+// For some reason SannyBuilder complains about a jump to zero offset for this mission but not for any of the others. The 0000: opcode (which does nothing) is included to prevent this error.
 0000:
 
 // Mission start stuff
