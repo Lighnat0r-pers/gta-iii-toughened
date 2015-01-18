@@ -40,9 +40,9 @@ end_thread
 0005: $DIFFERENCE_IN_HEADING_DOOR2_LM3 = 0.0 
 0004: $FLAG_BLIP_ON_MISTY_LM3 = 0 
 0004: $BLOB_FLAG = 1 
-0004: $FLAG_CAMERA_MODE_LM3 = 0 
 0004: $CURRENT_STEP_FOR_BLIP_MANIPULATION = 0
 0004: $AMBUSH_TRIGGERED_LM3 = 0 
+0004: $GET_IN_CAR_FAILED_LUIGI3 = 1
 
 // *****************************************START OF CUT_SCENE******************************
 
@@ -216,7 +216,7 @@ while 80E0:   not is_player_in_any_car $PLAYER_CHAR
 end
 
 00DA: $LUIGI3_PLAYER_CAR = store_car_player_is_in $PLAYER_CHAR
-00BC: print_now 'LM3_4' duration 7000 ms flag 1  // ~g~Go pick up Misty!
+00BC: print_now 'LM3_4' duration 5000 ms flag 1  // ~g~Go pick up Misty!
 03CF: load_wav 'L2_A' 
 018A: $LUIGI3_MISTY_MARKER = create_checkpoint_at 937.875 -259.75 -100.0 
 0004: $CURRENT_STEP_FOR_BLIP_MANIPULATION = 1
@@ -255,44 +255,9 @@ gosub @CHECK_WRONG_VEHICLE_LUIGI3
 01B4: set_player $PLAYER_CHAR controllable 0 
 0395: clear_area 1 at 936.1875 -263.875 range 5.0 1.0 
 
-// Change camera angle if player in big vehicle
-
-if or
-	00DE:   is_player_in_model $PLAYER_CHAR model #BUS 
-	00DE:   is_player_in_model $PLAYER_CHAR model #COACH 
-	00DE:   is_player_in_model $PLAYER_CHAR model #FLATBED 
-	00DE:   is_player_in_model $PLAYER_CHAR model #FIRETRUK 
-	00DE:   is_player_in_model $PLAYER_CHAR model #LANDSTAL 
-	00DE:   is_player_in_model $PLAYER_CHAR model #LINERUN
-	00DE:   is_player_in_model $PLAYER_CHAR model #TRASH 
-	00DE:   is_player_in_model $PLAYER_CHAR model #PONY 
-then
-	0004: $FLAG_CAMERA_MODE_LM3 = 1 
-end
-if or
-	00DE:   is_player_in_model $PLAYER_CHAR model #MULE 
-	00DE:   is_player_in_model $PLAYER_CHAR model #AMBULAN 
-	00DE:   is_player_in_model $PLAYER_CHAR model #MRWHOOP 
-	00DE:   is_player_in_model $PLAYER_CHAR model #RUMPO 
-	00DE:   is_player_in_model $PLAYER_CHAR model #BELLYUP 
-	00DE:   is_player_in_model $PLAYER_CHAR model #MRWONGS 
-	00DE:   is_player_in_model $PLAYER_CHAR model #YANKEE 
-	00DE:   is_player_in_model $PLAYER_CHAR model #SECURICA
-then
-	0004: $FLAG_CAMERA_MODE_LM3 = 1 
-end
-
-if
-	0038:   $FLAG_CAMERA_MODE_LM3 == 1
-then
-	0395: clear_area 1 at 930.0625 -264.9375 range 7.3125 4.0 
-	015F: set_camera_position 930.0625 -264.9375 7.3125 0.0 rotation 0.0 0.0 
-	0160: point_camera 930.9375 -265.4375 7.125 switchstyle JUMP_CUT
-else
-	0395: clear_area 1 at 928.125 -267.5 range 4.0 4.0 
-	015F: set_camera_position 928.125 -267.5 5.5625 0.0 rotation 0.0 0.0 
-	0160: point_camera 929.125 -267.375 5.625 switchstyle JUMP_CUT
-end
+0395: clear_area 1 at 930.0625 -264.9375 range 7.3125 4.0 
+015F: set_camera_position 930.0625 -264.9375 7.3125 0.0 rotation 0.0 0.0 
+0160: point_camera 930.9375 -265.4375 7.125 switchstyle JUMP_CUT
 
 01F7: set_player $PLAYER_CHAR ignored_by_cops_state_to 1 
 03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 1 
@@ -363,17 +328,34 @@ if
 	00E0:   is_player_in_any_car $PLAYER_CHAR 
 then
 	00DA: $LUIGI3_PLAYER_CAR = store_car_player_is_in $PLAYER_CHAR
-	01D4: actor $LUIGI3_MISTY go_to_car $LUIGI3_PLAYER_CAR and_enter_it_as_a_passenger 
-	gosub @CHECK_VEHICLE_STATUS_LUIGI3
 
-	// waiting for Misty to get into the car 
-
-	while 80DB:   not is_char_in_car $LUIGI3_MISTY car $LUIGI3_PLAYER_CAR
-		wait 0 ms
-		gosub @CHECK_MISTY_STATUS
+	// Check if Misty fits in the car to avoid a softlock
+	01E9: $PLAYER_NUM_PASSENGERS = car $LUIGI3_PLAYER_CAR num_passengers
+	01EA: $PLAYER_MAX_PASSENGERS = car $LUIGI3_PLAYER_CAR max_passengers
+	if
+		001C: $PLAYER_MAX_PASSENGERS > $PLAYER_NUM_PASSENGERS
+	then
+		01D4: actor $LUIGI3_MISTY go_to_car $LUIGI3_PLAYER_CAR and_enter_it_as_a_passenger 
 		gosub @CHECK_VEHICLE_STATUS_LUIGI3
-	end //while
+
+		// waiting for Misty to get into the car 
+
+		while 80DB:   not is_char_in_car $LUIGI3_MISTY car $LUIGI3_PLAYER_CAR
+			wait 0 ms
+			gosub @CHECK_MISTY_STATUS
+			gosub @CHECK_VEHICLE_STATUS_LUIGI3
+		end //while
+	else
+		0004: $GET_IN_CAR_FAILED_LUIGI3 = 1
+	end
 else
+	0004: $GET_IN_CAR_FAILED_LUIGI3 = 1
+end
+
+// Do this if the player was not in a car or the car was full.
+if
+	0038:   $GET_IN_CAR_FAILED_LUIGI3 == 1
+then
 	01D2: actor $LUIGI3_MISTY follow_player $PLAYER_CHAR
 	while 8126:   not actor $LUIGI3_MISTY walking 
 		wait 0 ms
