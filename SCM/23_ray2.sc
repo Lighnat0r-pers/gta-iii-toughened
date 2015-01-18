@@ -37,7 +37,7 @@ end_thread
 0004: $FLAG_UZI_GONE = 0 
 0004: $FLAG_ROCKET_GONE = 0 
 0004: $FLAG_SHOTGUN_GONE = 0 
-0004: $FLAG_MOLOTOV_GONE = 0 
+0004: $FLAG_MOLOTOV_GONE = 0
 0004: $FLAG_PHIL_IN_AREA = 0 
 0004: $FLAG_PHIL_ARRIVED = 0 
 0004: $FLAG_PHIL_DEAD = 0 
@@ -563,6 +563,7 @@ while 001A:   12 > $COUNTER_DEAD_VARMINTS
 		then
 			0004: $FLAG_LAUNCH_STALLION = 1 
 			0164: disable_marker $BLIP_SENTINEL1 
+			0004: $FLAG_CARTEL_ARRIVED = 1 
 		else
 			if
 				8185:   not car $SENTINEL1_RM2 health >= 950 
@@ -648,6 +649,7 @@ while 001A:   12 > $COUNTER_DEAD_VARMINTS
 		then
 			0004: $FLAG_LAUNCH_PERENIAL = 1 
 			0164: disable_marker $BLIP_STALLION1 
+			0004: $FLAG_CARTEL_ARRIVED = 1 
 		else
 			if
 				8185:   not car $STALLION1_RM2 health >= 950 
@@ -714,6 +716,7 @@ while 001A:   12 > $COUNTER_DEAD_VARMINTS
 			end
 		else
 			0164: disable_marker $BLIP_PERENIAL1 
+			0004: $FLAG_CARTEL_ARRIVED = 1 
 		end
 	end
 
