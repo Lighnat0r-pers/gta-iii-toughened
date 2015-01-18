@@ -73,6 +73,7 @@ end_thread
 0004: $FLAG_AS2_3 = 0 
 0004: $FLAG_PARTICLE_AS2 = 0 
 0004: $FLAG_GUARD1_CREATED = 0 
+0004: $AS2_INITIAL_MESSAGES_FLAG = 0
 0004: $KAPPA_TIME = 720000 
 0005: $KAPPA_CREATION_RADIUS = 150.0
 0004: $KAPPA_STALLS_TOTAL = 12
@@ -275,9 +276,10 @@ end
 014E: start_timer_at $KAPPA_TIME 
 03C4: set_status_text_to $COUNTER_KAPPA_DEAD COUNTER_DISPLAY_NUMBER 'KILLS'  // KILLS:
 0006: 16@ = 0 // For steam timer
+0006: 17@ = 0 // For messages timer
+01B1: give_player $PLAYER_CHAR weapon WEAPONTYPE_GRENADE ammo 30 
+01B8: set_player $PLAYER_CHAR armed_weapon_to WEAPONTYPE_GRENADE 
 00BC: print_now 'AS2_12' duration 5000 ms flag 1  // ~g~Cruise Liberty's districts to find ~b~Espresso-2-Go stalls!
-00BD: print_soon 'AS2_12A' duration 5000 ms flag 1  // ~g~You will have 12 minutes before the Cartel warn their pushers!
-00BD: print_soon 'AS2EX0' duration 5000 ms flag 1 // ~g~You will get $10,000 for each stall destroyed. Useful if you're short on money!
 0247: request_model #COFFEE 
 0247: request_model #COLUMB 
 0247: request_model #GANG11 
@@ -297,6 +299,24 @@ end //while
 while 001C:   $KAPPA_STALLS_TOTAL > $COUNTER_KAPPA_DEAD 
 	wait 0 ms
 
+	//----------------------------------MESSAGES-----------------------------------
+
+	if and
+		0038:   $AS2_INITIAL_MESSAGES_FLAG == 0
+		0019:   17@ > 5000
+	then
+		00BC: print_now 'AS2_12A' duration 5000 ms flag 1  // ~g~You will have 12 minutes before the Cartel warn their pushers!
+		0004: $AS2_INITIAL_MESSAGES_FLAG = 1
+	end
+	if and
+		0038:   $AS2_INITIAL_MESSAGES_FLAG == 1
+		0019:   17@ > 5000
+	then
+		00BC: print_now 'AS2EX0' duration 6000 ms flag 1  // ~g~You will get $10,000 for each stall destroyed. Useful if you're short on money!
+		0004: $AS2_INITIAL_MESSAGES_FLAG = 2
+	end
+
+
 	//--------------------------------CREATE KAPPAS--------------------------------
 	if
 		03C6:   current_island == LEVEL_INDUSTRIAL
@@ -305,7 +325,6 @@ while 001C:   $KAPPA_STALLS_TOTAL > $COUNTER_KAPPA_DEAD
 		if
 			0038:   $FLAG_KAPPA1_CREATED == 0
 		then
-			0004: $FLAG_KAPPA_TEMP_CREATED = 0
 			0086: $KAPPA_TEMP_X = $KAPPA1_X
 			0086: $KAPPA_TEMP_Y = $KAPPA1_Y
 			0086: $KAPPA_TEMP_CARTEL_HEADING = $KAPPA1_CARTEL_HEADING
@@ -325,7 +344,6 @@ while 001C:   $KAPPA_STALLS_TOTAL > $COUNTER_KAPPA_DEAD
 		if
 			0038:   $FLAG_KAPPA2_CREATED == 0
 		then
-			0004: $FLAG_KAPPA_TEMP_CREATED = 0
 			0086: $KAPPA_TEMP_X = $KAPPA2_X
 			0086: $KAPPA_TEMP_Y = $KAPPA2_Y
 			0086: $KAPPA_TEMP_CARTEL_HEADING = $KAPPA2_CARTEL_HEADING
@@ -345,7 +363,6 @@ while 001C:   $KAPPA_STALLS_TOTAL > $COUNTER_KAPPA_DEAD
 		if
 			0038:   $FLAG_KAPPA3_CREATED == 0
 		then
-			0004: $FLAG_KAPPA_TEMP_CREATED = 0
 			0086: $KAPPA_TEMP_X = $KAPPA3_X
 			0086: $KAPPA_TEMP_Y = $KAPPA3_Y
 			0086: $KAPPA_TEMP_CARTEL_HEADING = $KAPPA3_CARTEL_HEADING
@@ -369,7 +386,6 @@ while 001C:   $KAPPA_STALLS_TOTAL > $COUNTER_KAPPA_DEAD
 		if
 			0038:   $FLAG_KAPPA4_CREATED == 0
 		then
-			0004: $FLAG_KAPPA_TEMP_CREATED = 0
 			0086: $KAPPA_TEMP_X = $KAPPA4_X
 			0086: $KAPPA_TEMP_Y = $KAPPA4_Y
 			0086: $KAPPA_TEMP_CARTEL_HEADING = $KAPPA4_CARTEL_HEADING
@@ -389,7 +405,6 @@ while 001C:   $KAPPA_STALLS_TOTAL > $COUNTER_KAPPA_DEAD
 		if
 			0038:   $FLAG_KAPPA5_CREATED == 0
 		then
-			0004: $FLAG_KAPPA_TEMP_CREATED = 0
 			0086: $KAPPA_TEMP_X = $KAPPA5_X
 			0086: $KAPPA_TEMP_Y = $KAPPA5_Y
 			0086: $KAPPA_TEMP_CARTEL_HEADING = $KAPPA5_CARTEL_HEADING
@@ -409,7 +424,6 @@ while 001C:   $KAPPA_STALLS_TOTAL > $COUNTER_KAPPA_DEAD
 		if
 			0038:   $FLAG_KAPPA6_CREATED == 0
 		then
-			0004: $FLAG_KAPPA_TEMP_CREATED = 0
 			0086: $KAPPA_TEMP_X = $KAPPA6_X
 			0086: $KAPPA_TEMP_Y = $KAPPA6_Y
 			0086: $KAPPA_TEMP_CARTEL_HEADING = $KAPPA6_CARTEL_HEADING
@@ -429,7 +443,6 @@ while 001C:   $KAPPA_STALLS_TOTAL > $COUNTER_KAPPA_DEAD
 		if
 			0038:   $FLAG_KAPPA7_CREATED == 0
 		then
-			0004: $FLAG_KAPPA_TEMP_CREATED = 0
 			0086: $KAPPA_TEMP_X = $KAPPA7_X
 			0086: $KAPPA_TEMP_Y = $KAPPA7_Y
 			0086: $KAPPA_TEMP_CARTEL_HEADING = $KAPPA7_CARTEL_HEADING
@@ -449,7 +462,6 @@ while 001C:   $KAPPA_STALLS_TOTAL > $COUNTER_KAPPA_DEAD
 		if
 			0038:   $FLAG_KAPPA8_CREATED == 0
 		then
-			0004: $FLAG_KAPPA_TEMP_CREATED = 0
 			0086: $KAPPA_TEMP_X = $KAPPA8_X
 			0086: $KAPPA_TEMP_Y = $KAPPA8_Y
 			0086: $KAPPA_TEMP_CARTEL_HEADING = $KAPPA8_CARTEL_HEADING
@@ -469,7 +481,6 @@ while 001C:   $KAPPA_STALLS_TOTAL > $COUNTER_KAPPA_DEAD
 		if
 			0038:   $FLAG_KAPPA9_CREATED == 0
 		then
-			0004: $FLAG_KAPPA_TEMP_CREATED = 0
 			0086: $KAPPA_TEMP_X = $KAPPA9_X
 			0086: $KAPPA_TEMP_Y = $KAPPA9_Y
 			0086: $KAPPA_TEMP_CARTEL_HEADING = $KAPPA9_CARTEL_HEADING
@@ -493,7 +504,6 @@ while 001C:   $KAPPA_STALLS_TOTAL > $COUNTER_KAPPA_DEAD
 		if
 			0038:   $FLAG_KAPPA10_CREATED == 0
 		then
-			0004: $FLAG_KAPPA_TEMP_CREATED = 0
 			0086: $KAPPA_TEMP_X = $KAPPA10_X
 			0086: $KAPPA_TEMP_Y = $KAPPA10_Y
 			0086: $KAPPA_TEMP_CARTEL_HEADING = $KAPPA10_CARTEL_HEADING
@@ -513,7 +523,6 @@ while 001C:   $KAPPA_STALLS_TOTAL > $COUNTER_KAPPA_DEAD
 		if
 			0038:   $FLAG_KAPPA11_CREATED == 0
 		then
-			0004: $FLAG_KAPPA_TEMP_CREATED = 0
 			0086: $KAPPA_TEMP_X = $KAPPA11_X
 			0086: $KAPPA_TEMP_Y = $KAPPA11_Y
 			0086: $KAPPA_TEMP_CARTEL_HEADING = $KAPPA11_CARTEL_HEADING
@@ -533,7 +542,6 @@ while 001C:   $KAPPA_STALLS_TOTAL > $COUNTER_KAPPA_DEAD
 		if
 			0038:   $FLAG_KAPPA12_CREATED == 0
 		then
-			0004: $FLAG_KAPPA_TEMP_CREATED = 0
 			0086: $KAPPA_TEMP_X = $KAPPA12_X
 			0086: $KAPPA_TEMP_Y = $KAPPA12_Y
 			0086: $KAPPA_TEMP_CARTEL_HEADING = $KAPPA12_CARTEL_HEADING
@@ -720,6 +728,7 @@ while 001C:   $KAPPA_STALLS_TOTAL > $COUNTER_KAPPA_DEAD
 		0038:   $COUNTER_KAPPA_DEAD_IND == 3 
 		0038:   $FLAG_AS2_1 == 0 
 	then
+		0008: $KAPPA_TIME += 60000
 		00BC: print_now 'AS2_1' duration 3000 ms flag 1  // ~g~All espresso stalls in Portland wrecked!!
 		0001: wait 3000 ms 
 		0004: $FLAG_AS2_1 = 1
@@ -750,6 +759,7 @@ while 001C:   $KAPPA_STALLS_TOTAL > $COUNTER_KAPPA_DEAD
 		0038:   $COUNTER_KAPPA_DEAD_COM == 6
 		0038:   $FLAG_AS2_2 == 0 
 	then
+		0008: $KAPPA_TIME += 120000
 		00BC: print_now 'AS2_2' duration 3000 ms flag 1  // ~g~All espresso stalls in Staunton Island wrecked!!
 		0001: wait 3000 ms 
 		0004: $FLAG_AS2_2 = 1
@@ -780,6 +790,7 @@ while 001C:   $KAPPA_STALLS_TOTAL > $COUNTER_KAPPA_DEAD
 		0038:   $COUNTER_KAPPA_DEAD_SUB == 3
 		0038:   $FLAG_AS2_3 == 0 
 	then
+		0008: $KAPPA_TIME += 60000
 		00BC: print_now 'AS2_3' duration 3000 ms flag 1  // ~g~All espresso stalls in Shoreside Vale wrecked!!
 		0001: wait 3000 ms 
 		0004: $FLAG_AS2_3 = 1
@@ -813,13 +824,14 @@ wait 1500 ms
 0006: 16@ = 0 // For steam timer
 0006: 17@ = 0 // For messages timer
 014D: text_pager 'AS2EX1' time_per_char 100 ms unknown_flags 10 2  // Good job, but there are new shops. Destroy those too!
+0008: $KAPPA_TIME += 60000
 0151: remove_status_text $COUNTER_KAPPA_DEAD 
 03C4: set_status_text_to $COUNTER_BONUS_KAPPA_DEAD COUNTER_DISPLAY_NUMBER 'KILLS'  // KILLS:
 
 0004: $KAPPA_STALLS_GET_BLIPS = 0
 0004: $AS2_MISSION_PART = 2
 
-wait 5000 ms
+wait 3000 ms
 while 001C:   $BONUS_KAPPA_STALLS_TOTAL > $COUNTER_BONUS_KAPPA_DEAD 
 	wait 0 ms
 	//-----------------------------TIMER-------TIMER----TIMER----------------------
@@ -909,7 +921,6 @@ while 001C:   $BONUS_KAPPA_STALLS_TOTAL > $COUNTER_BONUS_KAPPA_DEAD
 	if
 		0038:   $FLAG_KAPPAEX1_CREATED == 0
 	then
-		0004: $FLAG_KAPPA_TEMP_CREATED = 0
 		0086: $KAPPA_TEMP_X = $KAPPAEX1_X
 		0086: $KAPPA_TEMP_Y = $KAPPAEX1_Y
 		0086: $KAPPA_TEMP_CARTEL_HEADING = $KAPPAEX1_CARTEL_HEADING
@@ -942,7 +953,6 @@ while 001C:   $BONUS_KAPPA_STALLS_TOTAL > $COUNTER_BONUS_KAPPA_DEAD
 	if
 		0038:   $FLAG_KAPPAEX2_CREATED == 0
 	then
-		0004: $FLAG_KAPPA_TEMP_CREATED = 0
 		0086: $KAPPA_TEMP_X = $KAPPAEX2_X
 		0086: $KAPPA_TEMP_Y = $KAPPAEX2_Y
 		0086: $KAPPA_TEMP_CARTEL_HEADING = $KAPPAEX2_CARTEL_HEADING
@@ -961,7 +971,6 @@ while 001C:   $BONUS_KAPPA_STALLS_TOTAL > $COUNTER_BONUS_KAPPA_DEAD
 	if
 		0038:   $FLAG_KAPPAEX3_CREATED == 0
 	then
-		0004: $FLAG_KAPPA_TEMP_CREATED = 0
 		0086: $KAPPA_TEMP_X = $KAPPAEX3_X
 		0086: $KAPPA_TEMP_Y = $KAPPAEX3_Y
 		0086: $KAPPA_TEMP_CARTEL_HEADING = $KAPPAEX3_CARTEL_HEADING
@@ -1139,6 +1148,7 @@ return
 /////////////////////////////////////////
 
 :CREATE_KAPPA
+0004: $FLAG_KAPPA_TEMP_CREATED = 0
 if
 	00E3:   player $PLAYER_CHAR 0 $KAPPA_TEMP_X $KAPPA_TEMP_Y radius $KAPPA_CREATION_RADIUS $KAPPA_CREATION_RADIUS
 then
