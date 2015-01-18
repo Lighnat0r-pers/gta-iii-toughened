@@ -52,7 +52,7 @@ end_thread
 0005: $PLANEY = 0.0 
 0005: $PLANEZ = 0.0 
 0004: $FRENZY_KILL_AMOUNT = 15
-0004: $FRENZY_TIME = 90000
+0004: $FRENZY_TIME = 105000
 01F0: set_max_wanted_level_to 5
 014C: set_parked_car_generator $COM_CAR13 cars_to_generate_to 0
 
