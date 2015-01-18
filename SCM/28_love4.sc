@@ -1323,14 +1323,14 @@ end
 
 018A: $LOVE_4_BLIP = create_checkpoint_at 87.25 -1548.563 27.25 // LOVES PAD
 
-009A: $LOVE4_AMBUSH_GOON1 = create_char PEDTYPE_GANG_COLOMBIAN model #GANG11 at 80.5 -1556.0 -100.0 
+009A: $LOVE4_AMBUSH_GOON1 = create_char PEDTYPE_GANG_COLOMBIAN model #GANG11 at 80.5 -1556.0 27.25
 01B2: give_actor $LOVE4_AMBUSH_GOON1 weapon WEAPONTYPE_M16 ammo 9999 
 01ED: clear_actor $LOVE4_AMBUSH_GOON1 threat_search 
 011A: set_actor $LOVE4_AMBUSH_GOON1 search_threat THREAT_PLAYER1 
 0173: set_actor $LOVE4_AMBUSH_GOON1 z_angle_to 350.0 
 0350: set_actor $LOVE4_AMBUSH_GOON1 maintain_position_when_attacked 1 
 
-009A: $LOVE4_AMBUSH_GOON2 = create_char PEDTYPE_GANG_COLOMBIAN model #GANG11 at 80.5 -1533.0 -100.0 
+009A: $LOVE4_AMBUSH_GOON2 = create_char PEDTYPE_GANG_COLOMBIAN model #GANG11 at 80.5 -1533.0 27.25
 01B2: give_actor $LOVE4_AMBUSH_GOON2 weapon WEAPONTYPE_M16 ammo 9999 
 01ED: clear_actor $LOVE4_AMBUSH_GOON2 threat_search 
 011A: set_actor $LOVE4_AMBUSH_GOON2 search_threat THREAT_PLAYER1 
