@@ -1091,7 +1091,7 @@ then
 		0038: $CURRENT_STEP_FOR_BLIP_MANIPULATION == 0
 	then
 		0004: $LOCATE_DOME_FLAG = 1
-		018A: $FM1_BLIP = create_checkpoint_at 1262.063 -1099.375 -100.0
+		018A: $FM1_BLIP = create_checkpoint_at 1256.563 -1099.25 -11.6875
 	else
 		if
 			0038: $CURRENT_STEP_FOR_BLIP_MANIPULATION == 3
@@ -1201,6 +1201,8 @@ if
 then
 	018E: stop_sound $FRANK1_PARTY_SOUND
 end
+034F: destroy_actor_with_fade $MARIA 
+01C2: remove_references_to_actor $MARIA 
 03AE: remove_objects_from_cube 1264.0 -1111.0 5.0 to 1275.0 -1103.0 15.0 
 0249: release_model #CRIMINAL01 
 0249: release_model #STRETCH 
