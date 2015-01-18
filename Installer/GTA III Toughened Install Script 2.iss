@@ -1,5 +1,5 @@
 #define AppName "GTA III Toughened"
-#define AppVersion "0.6"
+#define AppVersion "0.7"
 
 [Setup]
 AppName={#AppName}
@@ -28,7 +28,8 @@ WizardSmallImageFile={#AppName} Icon.bmp
 Source: "{#AppName}.exe"; DestDir: "{app}";     
 Source: "toughened.gxt"; DestDir: "{app}\TEXT";
 Source: "objtgh.dat"; DestDir: "{app}\data";
-Source: "tough.scm"; DestDir: "{app}\data";   
+Source: "tough.scm"; DestDir: "{app}\data";  
+Source: "tghm.txd"; DestDir: "{app}\models";   
 Source: "{#AppName} Readme.txt"; DestDir: "{app}"; Flags:isreadme;
 Source: "{#AppName} Install Guide.txt"; DestDir: "{app}";
 Source: "{#AppName} Update Checker.exe"; DestDir: "{app}";
