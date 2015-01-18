@@ -1,5 +1,5 @@
 #define AppName "GTA III Toughened"
-#define AppVersion "0.5"
+#define AppVersion "0.6"
 
 [Setup]
 AppName={#AppName}
@@ -20,8 +20,8 @@ DirExistsWarning=no
 ; InfoAfterFile=Toughened Readme.txt            ACTIVATE THIS TO AUTOMATICALLY SHOW THE README IN THE INSTALL WIZARD
 InfoBeforeFile={#AppName} Install Guide.txt
 OutputBaseFilename={#AppName} Setup
-WizardImageFile={#AppName} Install Pic.bmp                                   
-WizardSmallImageFile=Sunrise (Logo).bmp 
+WizardImageFile={#AppName} Install Boxart.bmp                                   
+WizardSmallImageFile={#AppName} Icon.bmp 
 ; SetupLogging=yes                              ACTIVATE THIS TO GENERATE A DEBUG LOG IN THE TEMP FOLDER
 
 [Files]
@@ -43,7 +43,7 @@ Source: "s1_pfe.wav"; DestDir: "{app}\audio";
 Source: "s1_r.wav"; DestDir: "{app}\audio";
 Source: "s3_aed.wav"; DestDir: "{app}\audio";
 Source: "s5_led.mp3"; DestDir: "{app}\audio";
-; Radio stuff needs to be included here still.
+Source: "bang.mp3"; DestDir: "{app}\audio";
 
 [Icons]
 Name: "{commondesktop}\{#AppName}"; Filename: "{app}\{#AppName}.exe"; Tasks: desktopicon
