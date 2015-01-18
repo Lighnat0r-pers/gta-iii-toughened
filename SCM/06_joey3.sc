@@ -32,12 +32,9 @@ end_thread
 0001: wait 0 ms 
 0004: $IN_THE_LOCATE_JOEY3 = 0 
 0004: $JOEY3_AMBUSH_TRIGGERED = 0
-0004: $SECRET_TRIGGERED_JOEY3 = 0
-0004: $SECRET_TIMER_JOEY_STARTED_FLAG = 0
+0004: $SECRET_TIMER_JOEY3_STARTED_FLAG = 0
 0004: $SECRET_ACTIVATED_JOEY3 = 0
-0004: $PLAYER_PASSENGER = 0
-0004: $PLAYER_PASSENGER_OLD = 0
-0004: $SECRET_SEAT_FLAG_JOEY3 = 0
+0004: $SECRET_HOOKER_PICKED_UP_JOEY3 = 0
 023C: load_special_actor 'JOEY' as 1 
 02F3: load_object #CUTOBJ01 'JOEYH' 
 02F3: load_object #CUTOBJ02 'PLAYERH' 
@@ -185,9 +182,9 @@ while 0185:   car $JOEY3_VAN health >= 999
 end //while
 
 if
-	8118:   not actor $PLAYER_PASSENGER dead
+	8118:   not actor $JOEY3_SECRET_HOOKER dead
 then
-	01E0: clear_leader $PLAYER_PASSENGER
+	01E0: clear_leader $JOEY3_SECRET_HOOKER
 end
 
 if
@@ -462,99 +459,26 @@ return
 if
 	00E0:   is_player_in_any_car $PLAYER_CHAR
 then
-	00DA: $PLAYER_CAR = store_car_player_is_in $PLAYER_CHAR
 	if
-		8431:   not car $PLAYER_CAR passenger_seat_free 0
+		8118:   not actor $JOEY3_SECRET_HOOKER dead
 	then
-		0004: $SECRET_SEAT_FLAG_JOEY3 = 0
-		gosub @SECRET_DO_PASSENGER_STUFF_JOEY3
-	end
-	if and
-		0038:   $SECRET_TRIGGERED_JOEY3 == 0
-		8431:   not car $PLAYER_CAR passenger_seat_free 1
-	then
-		0004: $SECRET_SEAT_FLAG_JOEY3 = 1
-		gosub @SECRET_DO_PASSENGER_STUFF_JOEY3
-	end
-	if and
-		0038:   $SECRET_TRIGGERED_JOEY3 == 0
-		8431:   not car $PLAYER_CAR passenger_seat_free 2
-	then
-		0004: $SECRET_SEAT_FLAG_JOEY3 = 2
-		gosub @SECRET_DO_PASSENGER_STUFF_JOEY3
-	end
-
-	if
-		0038:   $SECRET_TRIGGERED_JOEY3 == 0 // No prostitute as passenger found.
-	then
-		if or
-			0038:   $SECRET_HOOKER_PICKED_UP_JOEY3 == 0
-			0118:   actor $JOEY3_SECRET_HOOKER dead
-		then
-			0004: $SECRET_TIMER_JOEY_STARTED_FLAG = 0
-		end
+		00A0: get_char_coordinates $JOEY3_SECRET_HOOKER store_to $JOEY3_HOOKER_X $JOEY3_HOOKER_Y $JOEY3_HOOKER_Z 
 		if
-			8118:   not actor $JOEY3_SECRET_HOOKER dead
+			00E8: player $PLAYER_CHAR stopped 0 near_point_in_car $JOEY3_HOOKER_X $JOEY3_HOOKER_Y radius 5.0 5.0
 		then
-			00A0: get_char_coordinates $JOEY3_SECRET_HOOKER store_to $JOEY3_HOOKER_X $JOEY3_HOOKER_Y $JOEY3_HOOKER_Z 
-			if
-				00E8: player $PLAYER_CHAR stopped 0 near_point_in_car $JOEY3_HOOKER_X $JOEY3_HOOKER_Y radius 5.0 5.0
-			then
-				01D4: actor $JOEY3_SECRET_HOOKER go_to_car $PLAYER_CAR and_enter_it_as_a_passenger
-				0004: $SECRET_HOOKER_PICKED_UP_JOEY3 = 1
-			end
+			00DA: $PLAYER_CAR = store_car_player_is_in $PLAYER_CHAR
+			01D4: actor $JOEY3_SECRET_HOOKER go_to_car $PLAYER_CAR and_enter_it_as_a_passenger
+			01DF: tie_actor $JOEY3_SECRET_HOOKER to_player $PLAYER_CHAR 
+			//039E: set_char_cant_be_dragged_out $JOEY3_SECRET_HOOKER to 1
+			0004: $SECRET_HOOKER_PICKED_UP_JOEY3 = 1
 		end
-	end
-else
-	if or
-		0038:   $SECRET_HOOKER_PICKED_UP_JOEY3 == 0
-		0118:   actor $JOEY3_SECRET_HOOKER dead
-	then
-		0004: $SECRET_TIMER_JOEY_STARTED_FLAG = 0
 	end
 end
-return
 
-////////////////////////////////////////
-
-:SECRET_DO_PASSENGER_STUFF_JOEY3
-if or
-	0038:   $SECRET_HOOKER_PICKED_UP_JOEY3 == 0
+if
 	0118:   actor $JOEY3_SECRET_HOOKER dead
 then
-	0432: $PLAYER_PASSENGER = get_passenger_in_car $PLAYER_CAR seat $SECRET_SEAT_FLAG_JOEY3
-	01F5: $PLAYER_ACTOR = create_emulated_actor_from_player $PLAYER_CHAR 
-else
-	0084: $PLAYER_PASSENGER = $JOEY3_SECRET_HOOKER
-end
-
-// If it's not the same passenger as before, reset the timer, check if we're
-// actually dealing with a prostitute and set the trigger flag for the secret if so.
-// If the player enters through the passenger door the script will see him being the 
-// passenger but the model check is made for a char not a player so it would cause a crash.
-if and
-	803A:   not $PLAYER_PASSENGER == $PLAYER_CHAR
-	803A:   not $PLAYER_PASSENGER == $PLAYER_ACTOR
-	803A:   not $PLAYER_PASSENGER_OLD == $PLAYER_PASSENGER
-then
-	0084: $PLAYER_PASSENGER_OLD = $PLAYER_PASSENGER
-	0004: $SECRET_TIMER_JOEY_STARTED_FLAG = 0
-	if
-		8118:   not actor $PLAYER_PASSENGER dead
-	then
-		if or
-			02F2:   actor $PLAYER_PASSENGER model == #PROSTITUTE
-			02F2:   actor $PLAYER_PASSENGER model == #PROSTITUTE2
-		then
-			01DF: tie_actor $PLAYER_PASSENGER to_player $PLAYER_CHAR 
-			039E: set_char_cant_be_dragged_out $PLAYER_PASSENGER to 1
-			0004: $SECRET_TRIGGERED_JOEY3 = 1
-		else
-			0004: $SECRET_TRIGGERED_JOEY3 = 0
-		end
-	else
-		0004: $SECRET_TRIGGERED_JOEY3 = 0
-	end
+	0004: $SECRET_HOOKER_PICKED_UP_JOEY3 = 0
 end
 return
 
@@ -562,23 +486,24 @@ return
 
 :SECRET_TIMER_JOEY3
 if
-	0038:   $SECRET_TRIGGERED_JOEY3 == 1
+	0038:   $SECRET_HOOKER_PICKED_UP_JOEY3 == 1
 then
 	if and
-		80DF:   not is_char_in_any_car $PLAYER_PASSENGER
+		80DF:   not is_char_in_any_car $JOEY3_SECRET_HOOKER
 		00E0:   is_player_in_any_car $PLAYER_CHAR
 	then
 		00DA: $PLAYER_CAR = store_car_player_is_in $PLAYER_CHAR
-		01D4: actor $PLAYER_PASSENGER go_to_car $PLAYER_CAR and_enter_it_as_a_passenger
+		01D4: actor $JOEY3_SECRET_HOOKER go_to_car $PLAYER_CAR and_enter_it_as_a_passenger
 	end
-	if
-		01FC:   player $PLAYER_CHAR near_car $JOEY3_VAN radius 10.0 10.0 unknown 0
+	if and
+		01FC:   player $PLAYER_CHAR near_car $JOEY3_VAN radius 10.0 10.0 sphere 0
+		01FC:   actor $JOEY3_SECRET_HOOKER near_car $JOEY3_VAN radius 10.0 10.0 sphere 0
 	then
 		if
-			0038:   $SECRET_TIMER_JOEY_STARTED_FLAG == 0
+			0038:   $SECRET_TIMER_JOEY3_STARTED_FLAG == 0
 		then
 			0006: 16@ = 0
-			0004: $SECRET_TIMER_JOEY_STARTED_FLAG = 1
+			0004: $SECRET_TIMER_JOEY3_STARTED_FLAG = 1
 		else
 			if
 				0019:   16@ > 5000
@@ -587,7 +512,7 @@ then
 			end
 		end
 	else
-		0004: $SECRET_TIMER_JOEY_STARTED_FLAG = 0
+		0004: $SECRET_TIMER_JOEY3_STARTED_FLAG = 0
 	end 
 end
 return
@@ -596,7 +521,7 @@ return
 
 :SECRET_ACTIVATE_JOEY3
 0006: 16@ = 0
-01E0: clear_leader $PLAYER_PASSENGER
+01E0: clear_leader $JOEY3_SECRET_HOOKER
 020A: set_car $JOEY3_VAN door_status_to CARLOCK_UNLOCKED
 0151: remove_status_text $JOEY3_VAN_HEALTH
 if
@@ -657,9 +582,9 @@ end
 
 if and
 	8118:   not actor $JOEY3_VAN_DRIVER dead
-	8118:   not actor $PLAYER_PASSENGER dead
+	8118:   not actor $JOEY3_SECRET_HOOKER dead
 then
-	01DE: tie_actor $PLAYER_PASSENGER to_actor $JOEY3_VAN_DRIVER 
+	01DE: tie_actor $JOEY3_SECRET_HOOKER to_actor $JOEY3_VAN_DRIVER 
 end
 0004: $FLAG_CAR_BLIP_DISPLAYED_JM3 = 1
 0004: $SECRET_ACTIVATED_JOEY3 = 1
