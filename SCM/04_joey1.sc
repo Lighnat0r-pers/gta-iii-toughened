@@ -316,8 +316,8 @@ if
 then
 	0174: $MIKES_CAR_HEADING = car $LIPSFORELLI_CAR z_angle
 	if or
-		0020:   $MIKES_CAR_HEADING > 92.0 
-		0022:   88.0 > $MIKES_CAR_HEADING
+		0020:   $MIKES_CAR_HEADING > 93.0 
+		0022:   87.0 > $MIKES_CAR_HEADING
 	then
 		00BC: print_now 'JM1_6' duration 5000 ms flag 1  // ~g~Put the car back in the correct position.
 		goto @JOEY_LABEL1
@@ -346,8 +346,8 @@ while true
 	if or
 
 		80B1:   not is_car_in_area_3d $LIPSFORELLI_CAR from 1339.563 -459.5 49.0 to 1332.75 -462.75 53.0 sphere 0
-		0020:   $MIKES_CAR_HEADING > 92.0 
-		0022:   88.0 > $MIKES_CAR_HEADING
+		0020:   $MIKES_CAR_HEADING > 95.0 
+		0022:   85.0 > $MIKES_CAR_HEADING
 	then
 		00BC: print_now 'JM1_6' duration 5000 ms flag 1  // ~g~Put the car back in the correct position.
 		goto @JOEY_LABEL1
