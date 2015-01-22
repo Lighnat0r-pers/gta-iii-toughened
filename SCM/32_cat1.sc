@@ -1029,7 +1029,6 @@ while 8436:   not reached_end_of_credits
 		016A: fade 0 for 1500 ms 
 		while fading
 			wait 0 ms
-			gosub @CHECK_SKIP_BUTTON_CREDITS
 		end //while
 
 		:FIRST_CREDITS_LOOP
@@ -1041,7 +1040,6 @@ while 8436:   not reached_end_of_credits
 
 		while 001B:   20000 > 17@ 
 			wait 0 ms
-			gosub @CHECK_SKIP_BUTTON_CREDITS
 			gosub @CHECK_CREDITS_DONE
 		end //while
 
@@ -1050,7 +1048,6 @@ while 8436:   not reached_end_of_credits
 
 		while 001B:   30000 > 17@ 
 			wait 0 ms
-			gosub @CHECK_SKIP_BUTTON_CREDITS
 			gosub @CHECK_CREDITS_DONE
 		end //while
 		0004: $CAMERA_CUT = 1 
@@ -1062,7 +1059,6 @@ while 8436:   not reached_end_of_credits
 		016A: fade 0 for 1500 ms 
 		while fading
 			wait 0 ms
-			gosub @CHECK_SKIP_BUTTON_CREDITS
 			gosub @CHECK_CREDITS_DONE
 		end //while
 		
@@ -1074,7 +1070,6 @@ while 8436:   not reached_end_of_credits
 
 		while 001B:   20000 > 17@ 
 			wait 0 ms
-			gosub @CHECK_SKIP_BUTTON_CREDITS
 			gosub @CHECK_CREDITS_DONE
 		end //while
 
@@ -1083,7 +1078,6 @@ while 8436:   not reached_end_of_credits
 
 		while 001B:   30000 > 17@ 
 			wait 0 ms
-			gosub @CHECK_SKIP_BUTTON_CREDITS
 			gosub @CHECK_CREDITS_DONE
 		end //while
 		0004: $CAMERA_CUT = 2 
@@ -1095,7 +1089,6 @@ while 8436:   not reached_end_of_credits
 		016A: fade 0 for 1500 ms 
 		while fading
 			wait 0 ms
-			gosub @CHECK_SKIP_BUTTON_CREDITS
 			gosub @CHECK_CREDITS_DONE
 		end //while
 		
@@ -1106,7 +1099,6 @@ while 8436:   not reached_end_of_credits
 
 		while 001B:   20000 > 17@ 
 			wait 0 ms
-			gosub @CHECK_SKIP_BUTTON_CREDITS
 			gosub @CHECK_CREDITS_DONE
 		end //while
 
@@ -1115,7 +1107,6 @@ while 8436:   not reached_end_of_credits
 
 		while 001B:   30000 > 17@ 
 			wait 0 ms
-			gosub @CHECK_SKIP_BUTTON_CREDITS
 			gosub @CHECK_CREDITS_DONE
 		end //while
 		0004: $CAMERA_CUT = 3 
@@ -1127,7 +1118,6 @@ while 8436:   not reached_end_of_credits
 		016A: fade 0 for 1500 ms 
 		while fading
 			wait 0 ms
-			gosub @CHECK_SKIP_BUTTON_CREDITS
 			gosub @CHECK_CREDITS_DONE
 		end //while
 
@@ -1139,7 +1129,6 @@ while 8436:   not reached_end_of_credits
 
 		while 001B:   20000 > 17@ 
 			wait 0 ms
-			gosub @CHECK_SKIP_BUTTON_CREDITS
 			gosub @CHECK_CREDITS_DONE
 		end //while
 
@@ -1148,7 +1137,6 @@ while 8436:   not reached_end_of_credits
 
 		while 001B:   30000 > 17@ 
 			wait 0 ms
-			gosub @CHECK_SKIP_BUTTON_CREDITS
 			gosub @CHECK_CREDITS_DONE
 		end //while
 		0004: $CAMERA_CUT = 4 
