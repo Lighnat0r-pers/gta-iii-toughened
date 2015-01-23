@@ -1,1 +1,3 @@
-Dummy text
+For the installation folder, please choose a folder with a valid GTA III Installation (any version will do), as this is required for the mod. 
+
+No original files will be replaced, within the folder you can run the base game using the original "gta3.exe" and the mod using the new "GTA III Toughened.exe".

@@ -1,5 +1,5 @@
 #define AppName "GTA III Toughened"
-#define AppVersion "0.7"
+#define AppVersion "1.0"
 
 [Setup]
 AppName={#AppName}
@@ -17,7 +17,7 @@ OutputDir=.
 DisableProgramGroupPage=yes
 CloseApplicationsFilter=*.*
 DirExistsWarning=no
-; InfoAfterFile=Toughened Readme.txt            ACTIVATE THIS TO AUTOMATICALLY SHOW THE README IN THE INSTALL WIZARD
+InfoAfterFile=Toughened Readme.txt            
 InfoBeforeFile={#AppName} Install Guide.txt
 OutputBaseFilename={#AppName} Setup
 WizardImageFile={#AppName} Install Boxart.bmp                                   
