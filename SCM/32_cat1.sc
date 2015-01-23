@@ -114,24 +114,29 @@ end //while
 
 009A: $COLUBIAN_GUARD1 = create_char PEDTYPE_GANG_COLOMBIAN model #GANG11 at -395.375 293.375 -100.0 //Near Cat
 01B2: give_actor $COLUBIAN_GUARD1 weapon WEAPONTYPE_M16 ammo 200 
+02E2: set_actor $COLUBIAN_GUARD1 weapon_accuracy_to 10
 
 009A: $COLUBIAN_GUARD3 = create_char PEDTYPE_GANG_COLOMBIAN model #GANG11 at -368.0625 252.375 -100.0 //Guarding gate (west)
 01B2: give_actor $COLUBIAN_GUARD3 weapon WEAPONTYPE_M16 ammo 200 
 0173: set_actor $COLUBIAN_GUARD3 z_angle_to 0.0 
+02E2: set_actor $COLUBIAN_GUARD3 weapon_accuracy_to 10
 
 009A: $COLUBIAN_GUARD4 = create_char PEDTYPE_GANG_COLOMBIAN model #GANG12 at -358.0 251.75 -100.0 //Guarding gate	(east)
 01B2: give_actor $COLUBIAN_GUARD4 weapon WEAPONTYPE_M16 ammo 200 
 0173: set_actor $COLUBIAN_GUARD4 z_angle_to 0.0 
+02E2: set_actor $COLUBIAN_GUARD4 weapon_accuracy_to 10
 
 009A: $COLUBIAN_GUARD12 = create_char PEDTYPE_GANG_COLOMBIAN model #GANG11 at -392.375 301.0 70.6875 //On mansion balcony (west)
 01B2: give_actor $COLUBIAN_GUARD12 weapon WEAPONTYPE_M16 ammo 200 
 0173: set_actor $COLUBIAN_GUARD12 z_angle_to 0.0 
 0350: set_actor $COLUBIAN_GUARD12 maintain_position_when_attacked 1 
+02E2: set_actor $COLUBIAN_GUARD12 weapon_accuracy_to 10
 
 009A: $COLUBIAN_GUARD13 = create_char PEDTYPE_GANG_COLOMBIAN model #GANG12 at -374.0 301.0 70.6875 //On mansion balcony (east)
 01B2: give_actor $COLUBIAN_GUARD13 weapon WEAPONTYPE_M16 ammo 200 
 0173: set_actor $COLUBIAN_GUARD13 z_angle_to 0.0 
 0350: set_actor $COLUBIAN_GUARD13 maintain_position_when_attacked 1 
+02E2: set_actor $COLUBIAN_GUARD13 weapon_accuracy_to 10
 
 03BF: set_player $PLAYER_CHAR ignored_by_everyone_to 1 
 020F: actor $COLUBIAN_GUARD1 look_at_player $PLAYER_CHAR 
