@@ -11,7 +11,7 @@
 // Mission start stuff
 
 
-:M79_THEEXCHANGE
+:M32_THEEXCHANGE
 
 gosub @MISSION_START_CAT1
 if 
