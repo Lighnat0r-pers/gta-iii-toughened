@@ -515,7 +515,8 @@ end //while
 011A: set_actor $COLUBIAN_GUARD_AMBUSH search_threat THREAT_PLAYER1 
 01B2: give_actor $COLUBIAN_GUARD_AMBUSH weapon WEAPONTYPE_M16 ammo 1000 
 02E2: set_actor $COLUBIAN_GUARD_AMBUSH weapon_accuracy_to 100 
-0350: set_actor $COLUBIAN_GUARD_AMBUSH maintain_position_when_attacked 1 
+0350: set_actor $COLUBIAN_GUARD_AMBUSH maintain_position_when_attacked 1
+02A9: set_char_only_damaged_by_player $COLUBIAN_GUARD_AMBUSH to 1 // To prevent being killed by the heli 
 
 009A: $MARIA = create_char PEDTYPE_SPECIAL model #SPECIAL01 at -1201.563 338.5625 -100.0 
 02AB: set_actor $MARIA immunities BP 1 FP 1 EP 1 CP 1 MP 1 
