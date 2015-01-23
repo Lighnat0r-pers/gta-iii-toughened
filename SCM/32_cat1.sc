@@ -258,14 +258,11 @@ end
 
 if and
 	8118:   not actor $COLUBIAN_GUARD1 dead 
-	8118:   not actor $COLUBIAN_GUARD2 dead 
 	8118:   not actor $COLUBIAN_GUARD12 dead 
 	8118:   not actor $COLUBIAN_GUARD13 dead 
 then
 	01CC: actor $COLUBIAN_GUARD1 kill_player $PLAYER_CHAR 
 	011A: set_actor $COLUBIAN_GUARD1 search_threat THREAT_PLAYER1 
-	01CC: actor $COLUBIAN_GUARD2 kill_player $PLAYER_CHAR 
-	011A: set_actor $COLUBIAN_GUARD2 search_threat THREAT_PLAYER1 
 	01CC: actor $COLUBIAN_GUARD12 kill_player $PLAYER_CHAR 
 	011A: set_actor $COLUBIAN_GUARD12 search_threat THREAT_PLAYER1 
 	01CC: actor $COLUBIAN_GUARD13 kill_player $PLAYER_CHAR 
