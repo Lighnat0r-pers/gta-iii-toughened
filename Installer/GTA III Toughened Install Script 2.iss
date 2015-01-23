@@ -45,6 +45,7 @@ Source: "s1_r.wav"; DestDir: "{app}\audio";
 Source: "s3_aed.wav"; DestDir: "{app}\audio";
 Source: "s5_led.mp3"; DestDir: "{app}\audio";
 Source: "bang.mp3"; DestDir: "{app}\audio";
+Source: "END_a.mp3"; DestDir: "{app}\audio";
 
 [Icons]
 Name: "{commondesktop}\{#AppName}"; Filename: "{app}\{#AppName}.exe"; Tasks: desktopicon
