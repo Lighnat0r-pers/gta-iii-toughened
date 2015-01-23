@@ -4,6 +4,8 @@ As a reminder, this mod does not replace any existing files so you run both the 
 
 To check for updates, run "GTA III Toughened Update Checker.exe" located in the game folder. Keep in mind that new versions are most likely not savegame compatible.
 
+For more information, check out http://www.speedrun.com/gtaiii_toughened
+
 Have fun! ;)
 
 
